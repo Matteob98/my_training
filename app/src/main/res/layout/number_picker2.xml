@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutNumberPicker2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/titleNumberPicker2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Tabata"
+            android:padding="16dp"
+            android:layout_marginStart="4dp"
+            android:textColor="#FFFFFF"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline5" />
+
+    </LinearLayout>
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstPickerNumberPicker2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutNumberPicker2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/secondPickerNumberPicker2" />
+
+    <TextView
+        android:id="@+id/firstTextNumberPicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        tools:text="First"
+        app:layout_constraintTop_toBottomOf="@+id/firstPickerNumberPicker2"
+        app:layout_constraintStart_toStartOf="@+id/firstPickerNumberPicker2"
+        app:layout_constraintEnd_toEndOf="@+id/firstPickerNumberPicker2"/>
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/secondPickerNumberPicker2"
+        app:layout_constraintTop_toTopOf="@+id/firstPickerNumberPicker2"
+        app:layout_constraintStart_toEndOf="@+id/firstPickerNumberPicker2"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/secondTextNumberPicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        tools:text="Second"
+        app:layout_constraintTop_toBottomOf="@+id/secondPickerNumberPicker2"
+        app:layout_constraintStart_toStartOf="@+id/secondPickerNumberPicker2"
+        app:layout_constraintEnd_toEndOf="@+id/secondPickerNumberPicker2"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

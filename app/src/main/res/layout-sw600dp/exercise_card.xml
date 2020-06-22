@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/exerciseCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="40dp"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimaryDark">
+
+
+                 <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                     android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/exerciseNameExerciseCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exercise"
+                        android:textColor="@color/textColor"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:textSize="24sp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="8dp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/deleteExerciseCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_delete2"
+                    android:backgroundTint="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="32dp"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <NumberPicker
+                        android:id="@+id/repsPickerExerciseCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:layout_marginEnd="16dp"
+                        android:theme="@style/my_time_picker_style"/>
+
+                    <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
+                        android:id="@+id/repsSecsSingleSelect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:saveEnabled="true"
+                        android:textColor="@color/selector_text_circular"
+                        android:textSize="16sp"
+                        android:layout_marginStart="16dp"
+                        app:tbgAnimationType="scale"
+                        app:tbgButtonSpacing="32dp"
+                        app:tbgCheckedBackground="@drawable/circle_primary_color"
+                        app:tbgFlow="false"
+                        app:tbgTextButtons="@array/repsSecs" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightGray"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:id="@+id/restPickerExerciseCard"
+                        android:layout_marginEnd="16dp"
+                        android:theme="@style/my_time_picker_style"/>
+
+                    <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
+                        android:id="@+id/restNoRestSingleSelect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/selector_text_circular"
+                        android:saveEnabled="true"
+                        app:tbgTextButtons="@array/restNoRest"
+                        app:tbgFlow="false"
+                        app:tbgButtonSpacing="32dp"
+                        app:tbgAnimationType="scale"
+                        app:tbgCheckedBackground="@drawable/circle_primary_color"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightGray"
+                    android:layout_marginTop="32dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center">
+
+                    <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
+                        android:id="@+id/repetitionNumberSingleSelect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="@color/selector_text_simple"
+                        android:saveEnabled="true"
+                        app:tbgTextButtons="@array/repetitionNumber"
+                        app:tbgFlow="false"
+                        app:tbgButtonSpacing="auto"
+                        app:tbgAnimationType="scale"
+                        app:tbgCheckedBackground="@drawable/circle_white"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

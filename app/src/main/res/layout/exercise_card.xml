@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/exerciseCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CardView.Light"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="12dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/topBarExerciseCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutExerciseCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintStart_toEndOf="@id/arrowButtonExerciseCard"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/exerciseNameExerciseCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="32dp"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:textColor="@color/textColor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/arrowButtonExerciseCard"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/expandableViewExerciseCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp"
+                android:visibility="gone"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/topBarExerciseCard"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <NumberPicker
+                    android:id="@+id/repsPickerExerciseCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="22dp"
+                    app:layout_constraintTop_toTopOf="@+id/expandableViewExerciseCard"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
+                    android:id="@+id/repsSecsSingleSelect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:saveEnabled="true"
+                    android:textColor="@color/selector_text_circular"
+                    android:textSize="16sp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/repsPickerExerciseCard"
+                    app:layout_constraintStart_toEndOf="@+id/repsPickerExerciseCard"
+                    app:layout_constraintTop_toTopOf="@+id/repsPickerExerciseCard"
+                    app:tbgAnimationType="scale"
+                    app:tbgButtonSpacing="32dp"
+                    app:tbgCheckedBackground="@drawable/circle_primary_color"
+                    app:tbgFlow="false"
+                    app:tbgTextButtons="@array/repsSecs" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightGray"
+                    android:layout_margin="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repsPickerExerciseCard"
+                    />
+
+                <NumberPicker
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:id="@+id/restPickerExerciseCard"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginStart="22dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repsPickerExerciseCard"/>
+
+                <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
+                    android:id="@+id/restNoRestSingleSelect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/selector_text_circular"
+                    android:saveEnabled="true"
+                    app:tbgTextButtons="@array/restNoRest"
+                    app:tbgFlow="false"
+                    app:tbgButtonSpacing="32dp"
+                    app:tbgAnimationType="scale"
+                    android:layout_marginStart="32dp"
+                    app:tbgCheckedBackground="@drawable/circle_primary_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/restPickerExerciseCard"
+                    app:layout_constraintStart_toEndOf="@+id/restPickerExerciseCard"
+                    app:layout_constraintTop_toTopOf="@+id/restPickerExerciseCard"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightGray"
+                    android:layout_margin="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/restPickerExerciseCard"/>
+
+                <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
+                    android:id="@+id/repetitionNumberSingleSelect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:saveEnabled="true"
+                    android:textColor="@color/selector_text_simple"
+                    android:textSize="16sp"
+                    app:tbgAnimationType="scale"
+                    app:tbgButtonSpacing="auto"
+                    app:tbgCheckedBackground="@drawable/circle_white"
+                    app:tbgFlow="false"
+                    app:tbgTextButtons="@array/repetitionNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/restPickerExerciseCard"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/deleteExerciseCard"
+                    app:layout_constraintStart_toEndOf="@+id/deleteExerciseCard"
+                    app:layout_constraintTop_toTopOf="@+id/deleteExerciseCard" />
+
+                <Button
+                    android:id="@+id/deleteExerciseCard"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/ic_delete2_black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/repetitionNumberSingleSelect" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

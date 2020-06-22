@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <androidx.cardview.widget.CardView
+        android:id="@+id/lap_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/backgroundColor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lapNumberTextCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+                        tools:text="Lap n" />
+
+                    <TextView
+                        android:id="@+id/totalTimeTextCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        style="@style/TextAppearance.MdcTypographyStyles.Caption"
+                        tools:text="Trascorsi 00:00:00" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/lapTimeTextCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+                    tools:text="00:00:00" />
+
+                <ImageButton
+                    android:id="@+id/deleteButtonCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_delete"
+                    android:backgroundTint="@color/backgroundColor" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/lightGray"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

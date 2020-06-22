@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="repsSecs">
+        <item>Reps</item>
+        <item>Secs</item>
+    </string-array>
+    <string-array name="restNoRest">
+        <item>Rest</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="repetitionNumber">
+        <item>X1</item>
+        <item>X2</item>
+        <item>X3</item>
+        <item>X4</item>
+        <item>X5</item>
+    </string-array>
+</resources>
