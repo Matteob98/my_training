@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">108255456361-rq4fvbnjs586gmql6j6ek9sklhhoqq7j.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://my-training-c61fa.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">108255456361</string>
+    <string name="google_api_key" translatable="false">AIzaSyDBb5cYYgZmkt8dmrt_1kVu2gYCinMZeEo</string>
+    <string name="google_app_id" translatable="false">1:108255456361:android:242da4ed3939bf2d1986f8</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDBb5cYYgZmkt8dmrt_1kVu2gYCinMZeEo</string>
+    <string name="google_storage_bucket" translatable="false">my-training-c61fa.appspot.com</string>
+    <string name="project_id" translatable="false">my-training-c61fa</string>
+</resources>
