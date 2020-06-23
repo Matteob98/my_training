@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "108255456361",
+    "firebase_url": "https://my-training-c61fa.firebaseio.com",
+    "project_id": "my-training-c61fa",
+    "storage_bucket": "my-training-c61fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108255456361:android:242da4ed3939bf2d1986f8",
+        "android_client_info": {
+          "package_name": "com.italianswapp.yourtraining"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108255456361-rq4fvbnjs586gmql6j6ek9sklhhoqq7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBb5cYYgZmkt8dmrt_1kVu2gYCinMZeEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108255456361-rq4fvbnjs586gmql6j6ek9sklhhoqq7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

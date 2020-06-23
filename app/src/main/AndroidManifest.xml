@@ -10,6 +10,11 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8919261416525349~1732676159"/>
+
         <activity
             android:name=".HelpActivity"
             android:screenOrientation="portrait"
