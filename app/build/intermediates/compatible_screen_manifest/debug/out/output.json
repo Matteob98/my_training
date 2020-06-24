@@ -1,1 +1,6 @@
-[]
+{
+  "version": 1,
+  "applicationId": "com.italianswapp.yourtraining",
+  "variantType": "BASE_APK",
+  "elements": []
+}

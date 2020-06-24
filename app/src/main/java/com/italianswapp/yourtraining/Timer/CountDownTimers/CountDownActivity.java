@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,16 +19,21 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.italianswapp.yourtraining.FinishActivity;
 import com.italianswapp.yourtraining.Utilities;
 import com.italianswapp.yourtraining.R;
-
-import org.w3c.dom.Text;
 
 import java.util.Objects;
 
@@ -71,7 +77,12 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected Runnable progressBarRun;
     protected Handler progressBarHandler;
 
-
+    private final static String TEST_ADS ="ca-app-pub-3940256099942544/1033173712";
+    private final static String ADS_CODE = "ca-app-pub-8919261416525349/9438301000";
+    /**
+     * Banner a schermo intero che viene visualizzato appena viene aperta l'applicazione
+     */
+    private InterstitialAd mInterstitialAd;
 
     /**
      * Se vero abilita i suoni (tick, fine circuito, ecc.)
@@ -122,7 +133,69 @@ public abstract class CountDownActivity extends AppCompatActivity {
         setContentView(R.layout.activity_count_down_timer);
         
         res = getResources();
+        isTablet = res.getBoolean(R.bool.isTablet);
 
+        /*
+        Importo tutti gli oggetti dal layout xml
+         */
+        layoutImports();
+
+        /*
+        Gestisco colori e opzioni della toolbar
+         */
+        toolbarSettings();
+
+        /*
+        Inizializza tutte le variabili
+         */
+        variableInitialize();
+
+        /*
+        Gestisto la progress bar intorno al timer
+         */
+        progressBarSettings();
+
+        /*
+        Carica l'interstitialAds che viene mostrato prima di andare all'activity finish
+         */
+        loadAds();
+
+        /*
+        Il timer è inizializzato con la scritta ready ed un conto alla rovescia a partire da 3
+         */
+        readyLayoutSettings();
+
+    }
+
+    /**
+     * Si occupa di inizializzare tutte le variabili dell'activity
+     */
+    private void variableInitialize() {
+        ifSound=true;
+        isFirstStart=true;
+        isRunning=false;
+        isWork=false;
+        work=0;
+        rest=0;
+        setsNumber=1;
+        currentSet=1;
+    }
+
+    /**
+     * Si occupa di settare le impostazioni per la toolbar
+     */
+    private void toolbarSettings() {
+        getWindow().setStatusBarColor(res.getColor(R.color.colorPrimaryDark)); //Colora barra notifiche
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //Schermo sempre acceso
+        setSupportActionBar(mToolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(res.getString(R.string.toolbar_title));
+        mToolbar.setTitleTextColor(res.getColor(R.color.textColor));
+    }
+
+    /**
+     * Si occupa di importare tutti gli oggetti dall'xml a partire dal findViewById
+     */
+    private void layoutImports() {
         mTimeTextView = findViewById(R.id.textEmomActivity);
         mPrimaryTextView = findViewById(R.id.primaryBottomTextEmomActivity);
         mSecondaryTextView = findViewById(R.id.secondaryBottomTextEmomActivity);
@@ -136,27 +209,12 @@ public abstract class CountDownActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbarEmomActivity);
         mUpperBarCountDownTimer = findViewById(R.id.upperBarCountDownTimer);
         mProgressBar = findViewById(R.id.myProgress);
+    }
 
-        getWindow().setStatusBarColor(res.getColor(R.color.colorPrimaryDark)); //Colora barra notifiche
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //Schermo sempre acceso
-        setSupportActionBar(mToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(res.getString(R.string.toolbar_title));
-        mToolbar.setTitleTextColor(res.getColor(R.color.textColor));
-
-        isTablet = res.getBoolean(R.bool.isTablet);
-
-        ifSound=true;
-        isFirstStart=true;
-        isRunning=false;
-        isWork=false;
-        work=0;
-        rest=0;
-        setsNumber=1;
-        currentSet=1;
-
-        /*
-        Gestisto la progress bar intorno al timer
-         */
+    /**
+     * Inizializza e setta le impostazioni della progress bar circolare
+     */
+    private void progressBarSettings() {
         mProgressBar.setVisibility(View.VISIBLE);
         mProgressBar.setProgress(0);
         mProgressBar.setMax(maxProgress);
@@ -172,11 +230,21 @@ public abstract class CountDownActivity extends AppCompatActivity {
                     mProgressBar.setProgress( maxProgress - ((maxProgress * secRemaining) / secDuration)) ;
             }
         };
+    }
 
-        /*
-        Il timer è inizializzato con la scritta ready ed un conto alla rovescia a partire da 3
-         */
-        readyLayoutSettings();
+    /**
+     * Carica l'interstitial Ads che viene mostrato quando l'allenamento finisce, prima di
+     * mostrare l'activity finish
+     */
+    private void loadAds() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(TEST_ADS);
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
     }
 
@@ -241,6 +309,9 @@ public abstract class CountDownActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Fa partire il cronometro
+     */
     protected void startChronometer() {
         startTime = SystemClock.uptimeMillis();
         timeHandler.postDelayed(updateTimerThread, 10);
@@ -305,6 +376,9 @@ public abstract class CountDownActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Imposta e fa partire il work
+     */
     protected void startWork() {
         remainingTime =work;
         currentDuration = work;
@@ -320,11 +394,17 @@ public abstract class CountDownActivity extends AppCompatActivity {
         tick1000=true; tick2000=true; tick3000=true; tickHalf=true;
     }
 
+    /**
+     * Fa partire il suono del work
+     */
     protected void workSound() {
         if(ifSound)
             MediaPlayer.create(this, R.raw.go_sound).start();
     }
 
+    /**
+     * Imposta e fa partire il riposo
+     */
     protected void startRest() {
         remainingTime =rest;
         currentDuration = rest;
@@ -339,11 +419,22 @@ public abstract class CountDownActivity extends AppCompatActivity {
         tick1000=true; tick2000=true; tick3000=true; tickHalf=true;
     }
 
+    /**
+     * Fa partire il suono del riposo
+     */
     protected void restSound() {
         if(ifSound)
             MediaPlayer.create(this, R.raw.rest_sound).start();
     }
 
+    /**
+     * Si occupa di gestire il comportamento dell'activity quando termina l'allenamento
+     * Ferma il timer
+     * Ferma il cronometro
+     * Mostra l'ad se è stato caricato
+     * Fa paertire l'activity finish
+     * Passa all'activity finish un testo standard
+     */
     protected void finishCountDown() {
         finishCountDown(res.getString(R.string.workout_completed_in) + " " +
                 (Utilities.getHoursFromMills(updateTime) >0 ?
@@ -352,7 +443,19 @@ public abstract class CountDownActivity extends AppCompatActivity {
 
     }
 
-    protected void finishCountDown(String text) {
+    /**
+     * Si occupa di gestire il comportamento dell'activity quando termina l'allenamento
+     * Ferma il timer
+     * Ferma il cronometro
+     * Mostra l'ad se è stato caricato
+     * Fa paertire l'activity finish
+     * @param text Il testo da mostrare nell'activity finish
+     */
+    protected void finishCountDown(final String text) {
+
+        /*
+        Arresto il timer
+         */
         try {
             timer.cancel();
         }
@@ -362,16 +465,45 @@ public abstract class CountDownActivity extends AppCompatActivity {
             Ma va fatto per quando l'utente decide di uscire dal tasto off sul menu
              */
         }
+        /*
+        Stoppa il cronometro
+         */
         timeHandler.removeCallbacks(updateTimerThread);
 
+        /*
+        Se l'ad è stato caricato lo mostro prima di passare alla finishActivity
+         */
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
+        else
+            //Se per un qualsiasi motivo l'ads non viene caricato
+            openFinishActivity(text);
+
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                openFinishActivity(text);
+            }
+        });
+
+    }
+
+    /**
+     * Si occupa di lanciare la finishActivty passando il testo ricevuto come parametro
+     * @param text
+     */
+    private void openFinishActivity(String text) {
+        Intent intent= FinishActivity.getInstance(getApplicationContext(), text ) ;
+        /*
+        Se deve suonare suona
+         */
         if(ifSound)
             MediaPlayer.create(this, R.raw.timer_sound).start();
-
-        Intent intent= FinishActivity.getInstance(getApplicationContext(), text ) ;
         startActivity(intent);
         finish();
     }
-
     /**
      * Imposta il colore della text view e della progress bar del timer
      */
@@ -384,6 +516,9 @@ public abstract class CountDownActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Imposta i colori dell'activity quando si è in riposo
+     */
     protected void restLayoutSettings() {
         mTimeTextView.setTextColor(res.getColor(R.color.colorAccent));
         mWorkDescriptionTextView.setText(res.getString(R.string.rest));
@@ -525,6 +660,10 @@ public abstract class CountDownActivity extends AppCompatActivity {
         this.ifSound = ifSound;
     }
 
+    /**
+     * Crea un timer che dura 3 secondi per permettere all'utente di prepararsi prima di iniziare un allenamento
+     * @return Il timer creato
+     */
     protected CountDownTimer readyTimer() {
         startButtonEnabled(false);
         mWorkDescriptionTextView.setText(res.getString(R.string.ready));

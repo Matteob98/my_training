@@ -17,24 +17,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class FinishActivity extends AppCompatActivity {
 
     private final static String FINISH = "finish";
-    private final static String TEST_ADS ="ca-app-pub-3940256099942544/1033173712";
-    private final static String ADS_CODE = "ca-app-pub-8919261416525349/9438301000";
-
 
     private FloatingActionButton mHomeButton;
     private TextView mFinishTextView;
-
-    /**
-     * Banner a schermo intero che viene visualizzato appena viene aperta l'applicazione
-     */
-    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish);
-
-       //loadInterstitialAd();
 
         mFinishTextView = findViewById(R.id.finishTextView);
         mHomeButton = findViewById(R.id.homeButtonFinishActivity);
@@ -49,44 +39,6 @@ public class FinishActivity extends AppCompatActivity {
         String text = getIntent().getStringExtra(FINISH);
         mFinishTextView.setText(text);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(TEST_ADS);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-        //TODO non carica l'ad
-        mInterstitialAd.show();
-        /*
-        if (mInterstitialAd.isLoaded())
-            mInterstitialAd.show();
-        else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
-
-         */
-
-    }
-
-    /**
-     * Carica il banner pubblicitario a schermo intero
-     */
-    private void loadInterstitialAd() {
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(TEST_ADS);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-        /*
-        Ora il banner è solo caricato, viene mostrato alla fine fine di onCreate
-         */
     }
 
     private void goToHome() {

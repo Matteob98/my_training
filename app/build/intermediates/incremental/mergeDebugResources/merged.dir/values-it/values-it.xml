@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="Concentric">Concentrica</string>
+    <string name="Continue">continua</string>
+    <string name="Eccentric">Eccentrica</string>
+    <string name="For">per</string>
+    <string name="Lap">Giro</string>
     <string msgid="7903180715631665059" name="abc_action_bar_home_description">"Portami a casa"</string>
     <string msgid="6794660482873516081" name="abc_action_bar_up_description">"Torna indietro"</string>
     <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"Altre opzioni"</string>
@@ -27,6 +32,17 @@
     <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Condividi con"</string>
     <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Condividi tramite <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
     <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Comprimi"</string>
+    <string name="add_error">Devi aggiungere almeno un errore per inviare il messaggio</string>
+    <string name="add_one_exercise">Devi aggiungere almeno un esercizio</string>
+    <string name="amrap">Amrap</string>
+    <string name="amrap_description">Quanti giri riuscirai a finire?</string>
+    <string name="back">Indetro</string>
+    <string name="bug">Riporta un errore</string>
+    <string name="bug_dialog">Quale errore hai trovato?</string>
+    <string name="cancel">Cancella</string>
+    <string name="chronometer">Cronometro</string>
+    <string name="chronometer_description">Allenati con il classico cronometro</string>
+    <string name="circuit_creator_error">Controlla i dati inseriti</string>
     <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Attiva"</string>
     <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> non funzionerà se non attivi Google Play Services."</string>
     <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Attiva Google Play Services"</string>
@@ -45,8 +61,41 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Apri sul telefono"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Accedi"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Accedi con Google"</string>
+    <string name="concentric">concentrica</string>
+    <string name="concentric_phase">Fase concentrica</string>
+    <string name="concentric_phase_description">Scandisci la fase concentrica ed eccentrica</string>
+    <string name="current_lap">Giro corrente</string>
+    <string name="current_round">Round corrente</string>
+    <string name="current_set">Set corrente</string>
+    <string name="delete">Elimina</string>
+    <string name="eccentric">eccentrica</string>
+    <string name="emom">Emom</string>
+    <string name="emom_description">Concludi ogni giro nel tempo indicato</string>
+    <string name="enter_error">Inserisci almeno un errore</string>
+    <string name="enter_exercise_name">Inserisci il nome dell\'esercizio</string>
+    <string name="every">ogni</string>
+    <string name="exercise">Esercizio</string>
+    <string name="exercise_name_error">Inserisci il nome dell\'esercizio</string>
+    <string name="exit">Esci</string>
+    <string name="finish">FINITO</string>
+    <string name="finished">Finito</string>
+    <string name="go_out">Uscire?</string>
+    <string name="hours">ore</string>
+    <string name="invalid_time">Tempo inserito non valido</string>
+    <string name="many_round_completed">Quanti round hai completato?</string>
+    <string name="mins">min</string>
+    <string name="minutes">minuti</string>
     <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"Torna indietro"</string>
     <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"Apri riquadro di navigazione"</string>
+    <string name="next_exercise">Prossimo esercizio</string>
+    <string name="not_able_to_recovery">Non potrai recuperare i dati del tuo allenamento</string>
+    <string name="not_yet">Non ancora</string>
+    <string name="ready">Pronto?</string>
+    <string name="received_bug">Grazie! Abbiamo ricevuto il tuo messaggio</string>
+    <string name="report_bug">Riporta un errore</string>
+    <string name="reps">reps</string>
+    <string name="rest">Riposo</string>
+    <string name="round_completed">Round completati</string>
     <string msgid="368094699078615544" name="s1">"Salva immagine"</string>
     <string msgid="4550830452390689489" name="s2">"Consentire ad AdMob di memorizzare l\'immagine nella galleria Immagini?"</string>
     <string msgid="2435407834265420668" name="s3">"Accetto"</string>
@@ -55,5 +104,28 @@
     <string msgid="5996672174517137271" name="s6">"Consentire ad AdMob di creare un evento di calendario?"</string>
     <string msgid="7163549807207034258" name="s7">"Annuncio di test"</string>
     <string msgid="730395136688082741" name="search_menu_title">"Cerca"</string>
+    <string name="secs">sec</string>
+    <string name="send">Invia</string>
+    <string name="sets">sets</string>
+    <string name="share">Condividi con i tuoi amici</string>
+    <string name="share_text">Ciao! Hai provato questo timer? è molto buono</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="subtitle_finish_activity">Torna alla homepage per iniziare un altro allenamento</string>
+    <string name="subtitle_help_activity">Assistente di allenamento e timer</string>
+    <string name="tabata">Tabata</string>
+    <string name="tabata_description">Inizia un allenamento ad alta intensità</string>
+    <string name="tap_to_start">Tocca per iniziare</string>
+    <string name="this_exercise">Questo esercizio</string>
+    <string name="timer">Timer</string>
+    <string name="timer_description">Imposta un timer e allenati</string>
+    <string name="total_time">Tempo totale</string>
+    <string name="version">Versione</string>
+    <string name="vote">Vota sul PlayStore</string>
+    <string name="well_done">Ben fatto</string>
+    <string name="work">Lavoro</string>
+    <string name="workout">Allenamento</string>
+    <string name="workout_completed">Allenamento completato</string>
+    <string name="workout_completed_in">Allenamento completato in</string>
+    <string name="workout_description">Carica il tuo circuito e inizia l\'allenamento</string>
+    <string name="your_workout">Il tuo allenamento</string>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyTraining</string>
+    <string name="app_name" translatable="false">MyTraining</string>
 
     <!-- Stringhe comuni -->
     <string name="exit">Exit</string>
@@ -67,7 +67,7 @@
     <string name="workout_completed_in">Workout completed in</string>
 
     <!-- Finish activity -->
-    <string name="well_done">Well Done</string>
+    <string name="well_done">Well done</string>
     <string name="subtitle_finish_activity">Return to homepage to start another training</string>
 
     <!-- Help activity -->
@@ -79,7 +79,7 @@
     <string name="add_error">You must add at least one error to send the message</string>
     <string name="enter_error">Please enter at least one error</string>
     <string name="received_bug">Thanks! We have received your report</string>
-    <string name="share_text">Hi! Have you tried this timer? it\'s really good\n</string>
+    <string name="share_text">Hi! Have you tried this timer? E\' ottimo!</string>
     <string name="version">Version</string>
 
     <!-- Concentric activity -->
@@ -98,9 +98,9 @@
     <string name="Lap">Lap</string>
 
     <!-- Stringhe statiche per tutte le lingue -->
-    <string name="toolbar_title">My Training</string>
-    <string name="time_00_00_00">00:00:00</string>
-    <string name="time_00_slash_00">00/00</string>
-    <string name="start">Start</string>
+    <string name="toolbar_title" translatable="false">My Training</string>
+    <string name="time_00_00_00" translatable="false">00:00:00</string>
+    <string name="time_00_slash_00" translatable="false">00/00</string>
+    <string name="start" translatable="false">Start</string>
 
 </resources>

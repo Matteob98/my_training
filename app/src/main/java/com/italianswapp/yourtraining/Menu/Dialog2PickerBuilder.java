@@ -22,7 +22,6 @@ public class Dialog2PickerBuilder {
     private AlertDialog.Builder builder;
     private final View dialogView;
 
-
     /**
      * Metodo privato
      * Costruttore del builder di una picker
