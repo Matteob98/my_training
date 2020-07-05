@@ -4,6 +4,7 @@ ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\Androi
 INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:2:1-74:12
 INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:2:1-74:12
 INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:2:1-74:12
+MERGED from [com.gordonwong:material-sheet-fab:1.2.1] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\9436f435ca6c833f21c75d145971b398\jetified-material-sheet-fab-1.2.1\AndroidManifest.xml:2:1-12:12
 MERGED from [androidx.navigation:navigation-ui:2.2.1] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\094ad74616708c5f5520c2fe634d9b1f\navigation-ui-2.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\b85b7e0481f3222852aee40ec4c0fa26\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.nex3z:toggle-button-group:0.2.3] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\7c01631dc2783f02bb6b55c1b12e1180\jetified-toggle-button-group-0.2.3\AndroidManifest.xml:2:1-16:12
@@ -16,6 +17,7 @@ MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\matte\.gradle\caches\tra
 MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\50f185d7e9bd37b6d01b14d383ccac39\jetified-circleimageview-3.1.0\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\3869b47be141af223e7a4ec7aa5e1ec2\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-ads:19.2.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\e7621954667ce92e888288e5f839f955\jetified-play-services-ads-19.2.0\AndroidManifest.xml:17:1-25:12
+MERGED from [com.github.asyl.animation:arcanimator:1.0.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\282f44898a8df4f69d27038ba55918c2\jetified-arcanimator-1.0.0\AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\a1fc0b2adf82a6164581ef54edf18c2a\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.browser:browser:1.0.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\be0ed6dae355adebfb0e21d1fd98f145\browser-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\92ce3a89a1e2e98c17f9b4d15e21ae72\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -94,6 +96,8 @@ INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\And
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:2:11-69
 application
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:6:5-72:19
+MERGED from [com.gordonwong:material-sheet-fab:1.2.1] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\9436f435ca6c833f21c75d145971b398\jetified-material-sheet-fab-1.2.1\AndroidManifest.xml:10:5-20
+MERGED from [com.gordonwong:material-sheet-fab:1.2.1] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\9436f435ca6c833f21c75d145971b398\jetified-material-sheet-fab-1.2.1\AndroidManifest.xml:10:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\b85b7e0481f3222852aee40ec4c0fa26\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\b85b7e0481f3222852aee40ec4c0fa26\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.nex3z:toggle-button-group:0.2.3] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\7c01631dc2783f02bb6b55c1b12e1180\jetified-toggle-button-group-0.2.3\AndroidManifest.xml:10:5-14:19
@@ -106,6 +110,8 @@ MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\matte\.gradle\caches\t
 MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\50f185d7e9bd37b6d01b14d383ccac39\jetified-circleimageview-3.1.0\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\3869b47be141af223e7a4ec7aa5e1ec2\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\3869b47be141af223e7a4ec7aa5e1ec2\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
+MERGED from [com.github.asyl.animation:arcanimator:1.0.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\282f44898a8df4f69d27038ba55918c2\jetified-arcanimator-1.0.0\AndroidManifest.xml:11:5-12:19
+MERGED from [com.github.asyl.animation:arcanimator:1.0.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\282f44898a8df4f69d27038ba55918c2\jetified-arcanimator-1.0.0\AndroidManifest.xml:11:5-12:19
 MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\6af98df3ae2e9eba5027061d10c6b472\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:28:5-53:19
 MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\6af98df3ae2e9eba5027061d10c6b472\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:28:5-53:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\4cf11f806248f69485acbfe366b0122b\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:26:5-34:19
@@ -274,6 +280,8 @@ uses-sdk
 INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml
+MERGED from [com.gordonwong:material-sheet-fab:1.2.1] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\9436f435ca6c833f21c75d145971b398\jetified-material-sheet-fab-1.2.1\AndroidManifest.xml:6:5-8:41
+MERGED from [com.gordonwong:material-sheet-fab:1.2.1] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\9436f435ca6c833f21c75d145971b398\jetified-material-sheet-fab-1.2.1\AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.navigation:navigation-ui:2.2.1] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\094ad74616708c5f5520c2fe634d9b1f\navigation-ui-2.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-ui:2.2.1] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\094ad74616708c5f5520c2fe634d9b1f\navigation-ui-2.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\b85b7e0481f3222852aee40ec4c0fa26\material-1.1.0\AndroidManifest.xml:20:5-44
@@ -298,6 +306,8 @@ MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\matte\.grad
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\3869b47be141af223e7a4ec7aa5e1ec2\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-ads:19.2.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\e7621954667ce92e888288e5f839f955\jetified-play-services-ads-19.2.0\AndroidManifest.xml:21:5-23:52
 MERGED from [com.google.android.gms:play-services-ads:19.2.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\e7621954667ce92e888288e5f839f955\jetified-play-services-ads-19.2.0\AndroidManifest.xml:21:5-23:52
+MERGED from [com.github.asyl.animation:arcanimator:1.0.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\282f44898a8df4f69d27038ba55918c2\jetified-arcanimator-1.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.asyl.animation:arcanimator:1.0.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\282f44898a8df4f69d27038ba55918c2\jetified-arcanimator-1.0.0\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\a1fc0b2adf82a6164581ef54edf18c2a\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\a1fc0b2adf82a6164581ef54edf18c2a\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.browser:browser:1.0.0] C:\Users\matte\.gradle\caches\transforms-2\files-2.1\be0ed6dae355adebfb0e21d1fd98f145\browser-1.0.0\AndroidManifest.xml:20:5-44

@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.gordonwong.materialsheetfab.MaterialSheetFab;
+import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
 import com.italianswapp.yourtraining.HelpActivity;
 import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseSettings;
@@ -32,6 +34,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
     private ArrayList<ExerciseSettings> exerciseList;
 
+    /*
+    Servono per il menu espandibile per l'aggiunta di esercizi/tabata ecc.
+     */
+    private MaterialSheetFab materialSheetFab;
+    private View sheetView, overlay;
+    private Fab fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +51,8 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mAddExerciseButton = findViewById(R.id.addExerciseCircuitCreator);
         mCreateCircuitButton = findViewById(R.id.createButtonCircuitCreator);
         mExerciseRecyclerView = findViewById(R.id.circuitCreatorRecyclerView);
+
+        fabMenuInitialize();
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
         setSupportActionBar(mToolbar);
@@ -89,6 +100,43 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Inizializza il comportamento del menu che si apre premendo sul FAB
+     */
+    private void fabMenuInitialize(){
+        fab = (Fab) findViewById(R.id.fab);
+        sheetView = findViewById(R.id.fab_sheet);
+        overlay = findViewById(R.id.overlay);
+        int sheetColor = getResources().getColor(R.color.backgroundColor);
+        int fabColor = getResources().getColor(R.color.colorAccent);
+
+        // Initialize material sheet FAB
+        materialSheetFab = new MaterialSheetFab<>(fab, sheetView, overlay,
+                sheetColor, fabColor);
+
+        materialSheetFab.setEventListener(new MaterialSheetFabEventListener() {
+            @Override
+            public void onShowSheet() {
+                // Called when the material sheet's "show" animation starts.
+            }
+
+            @Override
+            public void onSheetShown() {
+                // Called when the material sheet's "show" animation ends.
+            }
+
+            @Override
+            public void onHideSheet() {
+                // Called when the material sheet's "hide" animation starts.
+            }
+
+            public void onSheetHidden() {
+                // Called when the material sheet's "hide" animation ends.
+            }
+        });
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,28 +160,33 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if (materialSheetFab.isSheetVisible()) {
+            materialSheetFab.hideSheet();
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(getResources().getString(R.string.go_out));
+            builder.setTitle(getResources().getString(R.string.go_out));
 
-        builder.setMessage(getResources().getString(R.string.not_able_to_recovery));
+            builder.setMessage(getResources().getString(R.string.not_able_to_recovery));
 
-        builder.setPositiveButton(getResources().getString(R.string.exit), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Intent intent=new Intent(getApplicationContext(), MenuActivity.class);
-                //startActivity(intent);
-                finish();
-            }
-        });
+            builder.setPositiveButton(getResources().getString(R.string.exit), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //Intent intent=new Intent(getApplicationContext(), MenuActivity.class);
+                    //startActivity(intent);
+                    finish();
+                }
+            });
 
-        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
+            builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
 
-        builder.create().show();
+            builder.create().show();
+        }
+
 
     }
 }

@@ -44,7 +44,8 @@
         app:borderWidth="0dp"
         android:src="@drawable/ic_add_black"
         app:layout_constraintBottom_toTopOf="@+id/createButtonCircuitCreator"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createButtonCircuitCreator"
@@ -56,6 +57,171 @@
         app:borderWidth="0dp"
         android:src="@drawable/ic_start"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
+    <!-- Menu espandibile -->
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!-- Your FAB implementation -->
+        <com.italianswapp.yourtraining.Timer.Circuit.Fab
+            android:id="@+id/fab"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/colorAccent"
+            android:src="@drawable/ic_add_black"
+            app:borderWidth="0dp"
+            android:visibility="visible"/>
+
+        <!-- Overlay that dims the screen -->
+        <com.gordonwong.materialsheetfab.DimOverlayFrameLayout
+            android:id="@+id/overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Circular reveal container for the sheet -->
+        <io.codetail.widget.RevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end|bottom"
+            android:orientation="vertical">
+
+            <!-- Sheet that contains your items -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fab_sheet"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp">
+
+                <!-- Sheet items -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- Rest -->
+                    <LinearLayout
+                        android:id="@+id/newRestCircuitCreator"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/blue" />
+                        <TextView
+                            android:text="@string/rest"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"/>
+
+                    </LinearLayout>
+
+                    <!-- Superset -->
+                    <LinearLayout
+                        android:id="@+id/newSupersetCircuitCreator"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/yellow" />
+                        <TextView
+                            android:text="@string/Superset"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"/>
+
+                    </LinearLayout>
+
+                    <!-- Emom -->
+                    <LinearLayout
+                        android:id="@+id/newEmomCircuitCreator"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/green" />
+                        <TextView
+                            android:text="@string/emom"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"/>
+
+                    </LinearLayout>
+
+                    <!-- Tabata -->
+                    <LinearLayout
+                        android:id="@+id/newTabataCircuitCreator"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/pink" />
+                        <TextView
+                            android:id="@+id/fab_sheet_item_photo"
+                            android:text="@string/timer"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"/>
+
+                    </LinearLayout>
+
+                    <!-- Note -->
+                    <LinearLayout
+                        android:id="@+id/newExerciseCircuitCreator"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/colorAccent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_add_black"
+                            android:background="@null"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_exercise"
+                            android:layout_marginStart="4dp"
+                            style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </io.codetail.widget.RevealLinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

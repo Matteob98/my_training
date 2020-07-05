@@ -816,6 +816,7 @@ color abc_tint_switch_track
 color accent_material_dark
 color accent_material_light
 color backgroundColor
+color background_dim_overlay
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
@@ -1554,6 +1555,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable personal_trainer
+drawable sleep
 drawable tabata
 drawable test_custom_background
 drawable timer
@@ -1635,7 +1637,6 @@ id alpha
 id always
 id amrapCard
 id arrowButtonExerciseCard
-id arrowButtonRestCard
 id async
 id auto
 id barrier
@@ -1670,6 +1671,10 @@ id clip_horizontal
 id clip_vertical
 id closeButtonExerciseList
 id collapseActionView
+id colorLeftBarEmomCard
+id colorLeftBarRestCard
+id colorLeftBarSupersetCard
+id colorLeftBarTabataCard
 id confirm_button
 id container
 id content
@@ -1684,8 +1689,11 @@ id date_picker_actions
 id decor_content_parent
 id default_activity_button
 id deleteButtonCard
+id deleteEmomCard
 id deleteExerciseCard
 id deleteRestCard
+id deleteSupersetCard
+id deleteTabataCard
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1698,6 +1706,7 @@ id disableHome
 id dropdown_menu
 id edit_query
 id emomCard
+id emomCardView
 id end
 id end_padder
 id enterAlways
@@ -1709,8 +1718,10 @@ id exitButtonHelpActivity
 id exitUntilCollapsed
 id expand_activities_button
 id expandableViewExerciseCard
-id expandableViewRestCard
 id expanded_menu
+id fab
+id fab_sheet
+id fab_sheet_item_photo
 id fade
 id fill
 id fill_horizontal
@@ -1720,6 +1731,8 @@ id filled
 id filter_chip
 id finishTextView
 id finishTrainingToolbar
+id firstExerciseRepsSupersetCard
+id firstExerciseSupersetCard
 id firstPickerNumberPicker2
 id firstPickerNumberPicker3
 id firstTextNumberPicker2
@@ -1744,7 +1757,9 @@ id icon_group
 id icon_only
 id ifRoom
 id image
+id imageButton
 id imageView
+id imageView2
 id imageViewHelpActivity
 id info
 id invisible
@@ -1776,7 +1791,6 @@ id menuLinearLayout
 id message
 id middle
 id mini
-id minutesPickerRestCard
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -1810,6 +1824,11 @@ id nav_host_fragment_container
 id navigation_header_container
 id negativeCard
 id never
+id newEmomCircuitCreator
+id newExerciseCircuitCreator
+id newRestCircuitCreator
+id newSupersetCircuitCreator
+id newTabataCircuitCreator
 id noScroll
 id none
 id normal
@@ -1820,6 +1839,7 @@ id numberPicker1
 id off
 id on
 id outline
+id overlay
 id overlinePrimaryBottomTextEmomActivity
 id overlineSecondaryBottomTextEmomActivity
 id overlineTimerChronometerActivity
@@ -1836,11 +1856,15 @@ id primaryBottomTextEmomActivity
 id progress_circular
 id progress_horizontal
 id radio
+id recRestCard
+id recSupersetCard
+id recTabataCard
 id repetitionNumberSingleSelect
+id repsEmomCard
 id repsPickerExerciseCard
 id repsSecsSingleSelect
+id repsTabataCard
 id resetButtonChronometerActivity
-id restCard
 id restNoRestSingleSelect
 id restPickerExerciseCard
 id reviewButtonHelpActivity
@@ -1848,6 +1872,9 @@ id right
 id rightFloatingButtonCountDownActivity
 id right_icon
 id right_side
+id roundEmomCard
+id roundSupersetCard
+id roundTabataCard
 id rounded
 id save_non_transition_alpha
 id save_overlay_view
@@ -1868,12 +1895,13 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id secondExerciseRepsSupersetCard
+id secondExerciseSupersetCard
 id secondPickerNumberPicker2
 id secondPickerNumberPicker3
 id secondTextNumberPicker2
 id secondTextNumberPicker3
 id secondaryBottomTextEmomActivity
-id secondsPickerRestCard
 id select_dialog_listview
 id selected
 id shareButtonHelpActivity
@@ -1929,6 +1957,7 @@ id textView
 id textView10
 id textView11
 id textView12
+id textView14
 id textView2
 id textView3
 id textView5
@@ -1961,9 +1990,7 @@ id toolbarMainActivity
 id top
 id topBarExerciseCard
 id topBarHelpActivity
-id topBarRestCard
 id topPanel
-id topTextRestCard
 id totalTimeTextCard
 id touch_outside
 id transition_current_scene
@@ -1979,12 +2006,14 @@ id up
 id upperBarCountDownTimer
 id useLogo
 id versionTextViewHelpActivity
+id view
 id view_offset_helper
 id visible
 id visible_removing_fragment_view_tag
 id wide
 id withText
 id workDescription
+id workoutTitle
 id wrap
 id wrap_content
 integer abc_config_activityDefaultDur
@@ -2017,6 +2046,7 @@ interpolator btn_checkbox_unchecked_mtrl_animation_interpolator_1
 interpolator btn_radio_to_off_mtrl_animation_interpolator_0
 interpolator btn_radio_to_on_mtrl_animation_interpolator_0
 interpolator fast_out_slow_in
+interpolator msf_interpolator
 interpolator mtrl_fast_out_linear_in
 interpolator mtrl_fast_out_slow_in
 interpolator mtrl_linear
@@ -2074,6 +2104,8 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dim_overlay
+layout emom_card
 layout exercise_card
 layout exercise_list_dialog
 layout lap_card
@@ -2127,7 +2159,9 @@ layout rest_card
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout superset_card
 layout support_simple_spinner_dropdown_item
+layout tabata_card
 layout test_action_chip
 layout test_design_checkbox
 layout test_reflow_chipgroup
@@ -2156,6 +2190,7 @@ string Continue
 string Eccentric
 string For
 string Lap
+string Superset
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -2296,6 +2331,7 @@ string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string new_exercise
 string next_exercise
 string not_able_to_recovery
 string not_yet
