@@ -40,16 +40,40 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        mBugButton = findViewById(R.id.bugButtonHelpActivity);
-        mReviewButton = findViewById(R.id.reviewButtonHelpActivity);
-        mExitButton = findViewById(R.id.exitButtonHelpActivity);
-        mShareButton = findViewById(R.id.shareButtonHelpActivity);
-        mVersionTextView = findViewById(R.id.versionTextViewHelpActivity);
+        /*
+        Importa gli oggetti dall'xml
+         */
+        layoutSettings();
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
-
         mVersionTextView.setText(getResources().getString(R.string.version) + ": " + BuildConfig.VERSION_NAME);
 
+        /*
+        Gestisce il comportamento dello schermo quando si hanno schermi piccoli
+         */
+        smallScreenSettings();
+
+        /*
+        Connetto al database
+        Serve nel caso in cui l'utente voglia inviare un bug
+         */
+        myRef = FirebaseDatabase.getInstance().getReference();
+
+        /*
+        Imposta i comportamenti dei vari pulsanti
+         */
+        onClickBugButton();
+        onClickReviewButton();
+        onClickExitButton();
+        onClickShareButton();
+
+    }
+
+    /**
+     * Se ho uno schermo troppo piccolo per mostrare tutti i dati vengono nascosti i
+     * testi in basso
+     */
+    private void smallScreenSettings() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
@@ -65,13 +89,55 @@ public class HelpActivity extends AppCompatActivity {
             third.setVisibility(TextView.GONE);
             mVersionTextView.setVisibility(TextView.GONE);
         }
+    }
 
-        /*
-        Connetto al database
-        Serve nel caso in cui l'utente voglia inviare un bug
-         */
-        myRef = FirebaseDatabase.getInstance().getReference();
+    /**
+     * Imposta il comportamento del pulsante condividi
+     */
+    private void onClickShareButton() {
+        mShareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.setType("text/plain");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, PLAY_STORE_ADDRESS + '\n' + getResources().getString(R.string.share_text) );
+                startActivity(sendIntent);
+            }
+        });
+    }
 
+    /**
+     * Imposta il comportamento del pulsante esci
+     */
+    private void onClickExitButton() {
+        mExitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exit(0);
+            }
+        });
+    }
+
+    /**
+     * Imposta il comportamento del pulsante recensione
+     */
+    private void onClickReviewButton() {
+        mReviewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse(PLAY_STORE_ADDRESS));
+                startActivity(viewIntent);
+            }
+        });
+    }
+
+    /**
+     * Imposta il comportamento del pulsante per i bug
+     */
+    private void onClickBugButton() {
         mBugButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +153,7 @@ public class HelpActivity extends AppCompatActivity {
                 final TextInputLayout mBugTextInputLayout = dialogView.findViewById(R.id.bugTextInput);
                 builder.setTitle(getResources().getString(R.string.report_bug));
 
-                 // Set up the buttons
+                // Set up the buttons
                 builder.setPositiveButton(getResources().getString(R.string.send), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -124,33 +190,16 @@ public class HelpActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+    }
 
-        mReviewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent viewIntent =
-                        new Intent("android.intent.action.VIEW",
-                                Uri.parse(PLAY_STORE_ADDRESS));
-                startActivity(viewIntent);
-            }
-        });
-
-        mExitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                exit(0);
-            }
-        });
-
-        mShareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.setType("text/plain");
-                sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.share_text) + PLAY_STORE_ADDRESS);
-                startActivity(sendIntent);
-            }
-        });
+    /**
+     * Importa tutti gli oggetti dall'xml
+     */
+    private void layoutSettings() {
+        mBugButton = findViewById(R.id.bugButtonHelpActivity);
+        mReviewButton = findViewById(R.id.reviewButtonHelpActivity);
+        mExitButton = findViewById(R.id.exitButtonHelpActivity);
+        mShareButton = findViewById(R.id.shareButtonHelpActivity);
+        mVersionTextView = findViewById(R.id.versionTextViewHelpActivity);
     }
 }

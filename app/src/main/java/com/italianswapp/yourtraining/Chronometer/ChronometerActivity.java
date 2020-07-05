@@ -83,11 +83,6 @@ public class ChronometerActivity extends AppCompatActivity {
             timeHandler.postDelayed(this, 0);
         }
     };
-    /**
-     * Vero se l'utente vuole uscire
-     * Falso altrimenti
-     */
-    private boolean userWantsExit;
 
 
     @Override
@@ -95,40 +90,99 @@ public class ChronometerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer);
 
-        toolbar = findViewById(R.id.toolbarChronometerActivity);
-        startButton = findViewById(R.id.startButtonChronometerActivity);
-        resetButton = findViewById(R.id.resetButtonChronometerActivity);
-        lapButton = findViewById(R.id.lapButtonChronometerActivity);
-        textTime = findViewById(R.id.textChronometerActivity);
-        lapTimeText = findViewById(R.id.lapTimeTextChronometerActivity);
-        roundRecyclerView = findViewById(R.id.listRoundChronometerActivity);
+        /*
+        Importa gli oggetti dall'xml
+         */
+        layoutImports();
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark)); //Colora la barra delle notifiche
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //Schermo sempre acceso
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.toolbar_title)); //Gestisce l'eccezione
-        toolbar.setTitleTextColor(getResources().getColor(R.color.textColor));
+        /*
+        Setta la toolbar
+         */
+        toolbarSettings();
 
-        userWantsExit=false;
 
         /*
         Imposto il manager e l'adapter per la recycler view
          */
-        lapList = new ArrayList<>();
-        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        roundRecyclerView.setLayoutManager(linearLayoutManager);
-        roundRecyclerViewAdapter = new RoundRecyclerViewAdapter(lapList);
-        roundRecyclerView.setAdapter(roundRecyclerViewAdapter);
+        recyclerViewInitialize();
 
-        roundRecyclerViewAdapter.setOnItemClickListener(new RoundRecyclerViewAdapter.OnItemClickListener() {
+        /*
+        Imposta i comportamenti dei vari button
+         */
+        onClickStartButton();
+        onClickResetButton();
+        onClickLapButton();
 
+    }
+
+    /**
+     * Imposta il comportamento del lap button
+     */
+    private void onClickLapButton() {
+        lapButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDeleteClick(int position) {
-                removeItem(position);
+            public void onClick(View v) {
+
+                thisLap = updateTime;
+
+                /*
+                Salvo il lap se è diverso dall'ultimo (evita che se il cronometro è in pausa continua a salvare
+                lo stesso lap)
+                E se è diverso da 0
+                 */
+                if  (! (thisLap==lastLap || updateTime==0))
+                {
+                    long millsOfThisLap = updateTime - lastLap;
+
+                    lastLap = thisLap;
+
+                    long totalTime =  SystemClock.uptimeMillis() - startTime + timeSwapBuff;
+
+                    Collections.reverse(lapList);
+                    lapList.add(new Lap(lapList.size()+1, totalTime, millsOfThisLap));
+                    Collections.reverse(lapList);
+
+
+
+                    if(!isRunning)
+                        lapTimeText.setText(Utilities.getStringTimeFromMills(0));
+
+
+                    roundRecyclerView.setAdapter(roundRecyclerViewAdapter);
+                }
+
             }
         });
+    }
 
+    /**
+     * Imposta il comportamento del reset button
+     */
+    private void onClickResetButton() {
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isRunning) {
+                    timeHandler.removeCallbacks(updateTimerThread);
+                    startTime = 0L;
+                    timeInMilliseconds = 0L;
+                    timeSwapBuff = 0L;
+                    updateTime = 0L;
+                    lastLap=0L;
+                    thisLap=0;
+                    textTime.setText(Utilities.getStringTimeFromMills(0));
+                    lapTimeText.setText(Utilities.getStringTimeFromMills(0));
+                    lapList.clear();
+                    roundRecyclerView.setAdapter(roundRecyclerViewAdapter);
+                }
+            }
+        });
+    }
 
+    /**
+     * Imposta il comportamento dello start button
+     */
+    private void onClickStartButton() {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,59 +216,47 @@ public class ChronometerActivity extends AppCompatActivity {
 
             }
         });
+    }
 
-        resetButton.setOnClickListener(new View.OnClickListener() {
+    /**
+     * Si occupa di importare tutti gli oggetti dall'xml a partire dal findViewById
+     */
+    private void layoutImports() {
+        toolbar = findViewById(R.id.toolbarChronometerActivity);
+        startButton = findViewById(R.id.startButtonChronometerActivity);
+        resetButton = findViewById(R.id.resetButtonChronometerActivity);
+        lapButton = findViewById(R.id.lapButtonChronometerActivity);
+        textTime = findViewById(R.id.textChronometerActivity);
+        lapTimeText = findViewById(R.id.lapTimeTextChronometerActivity);
+        roundRecyclerView = findViewById(R.id.listRoundChronometerActivity);
+    }
+
+    /**
+     * Si occupa di settare le impostazioni per la toolbar
+     */
+    private void toolbarSettings() {
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark)); //Colora la barra delle notifiche
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //Schermo sempre acceso
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.toolbar_title)); //Gestisce l'eccezione
+        toolbar.setTitleTextColor(getResources().getColor(R.color.textColor));
+    }
+
+    /**
+     * Si occupa di inizializzare il manager e l'adapter della recycler view
+     */
+    private void recyclerViewInitialize() {
+        lapList = new ArrayList<>();
+        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        roundRecyclerView.setLayoutManager(linearLayoutManager);
+        roundRecyclerViewAdapter = new RoundRecyclerViewAdapter(lapList);
+        roundRecyclerView.setAdapter(roundRecyclerViewAdapter);
+
+        roundRecyclerViewAdapter.setOnItemClickListener(new RoundRecyclerViewAdapter.OnItemClickListener() {
+
             @Override
-            public void onClick(View v) {
-                if(!isRunning) {
-                    timeHandler.removeCallbacks(updateTimerThread);
-                    startTime = 0L;
-                    timeInMilliseconds = 0L;
-                    timeSwapBuff = 0L;
-                    updateTime = 0L;
-                    lastLap=0L;
-                    thisLap=0;
-                    textTime.setText(Utilities.getStringTimeFromMills(0));
-                    lapTimeText.setText(Utilities.getStringTimeFromMills(0));
-                    lapList.clear();
-                    roundRecyclerView.setAdapter(roundRecyclerViewAdapter);
-                }
-            }
-        });
-
-
-        lapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                thisLap = updateTime;
-
-                /*
-                Salvo il lap se è diverso dall'ultimo (evita che se il cronometro è in pausa continua a salvare
-                lo stesso lap)
-                E se è diverso da 0
-                 */
-                if  (! (thisLap==lastLap || updateTime==0))
-                {
-                    long millsOfThisLap = updateTime - lastLap;
-
-                    lastLap = thisLap;
-
-                    long totalTime =  SystemClock.uptimeMillis() - startTime + timeSwapBuff;
-
-                    Collections.reverse(lapList);
-                    lapList.add(new Lap(lapList.size()+1, totalTime, millsOfThisLap));
-                    Collections.reverse(lapList);
-
-
-
-                    if(!isRunning)
-                        lapTimeText.setText(Utilities.getStringTimeFromMills(0));
-
-
-                    roundRecyclerView.setAdapter(roundRecyclerViewAdapter);
-                }
-
+            public void onDeleteClick(int position) {
+                removeItem(position);
             }
         });
     }
@@ -320,40 +362,28 @@ public class ChronometerActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-            /*
-            Quando l'utente preme il tasto back gli viene mostrato il dialog
-            Se al dialog dice che vuole uscire viene impostato userWantsExit a true e viene richiamata questa funzione
-            Alla seconda chiamata non passa il primo if ed entra nell'else (da dove viene invocato il super di backPressed
-            */
-            if(!userWantsExit) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-                builder.setTitle(getResources().getString(R.string.go_out));
-                builder.setMessage(getResources().getString(R.string.not_able_to_recovery));
+        builder.setTitle(getResources().getString(R.string.go_out));
+        builder.setMessage(getResources().getString(R.string.not_able_to_recovery));
 
-                builder.setPositiveButton(getResources().getString(R.string.exit), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        userWantsExit=true;
-                        onBackPressed();
-                    }
-                });
-
-                builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        userWantsExit=false;
-                    }
-                });
-
-                builder.create().show();
-            }
-            else {
-
-                Intent intent=new Intent(this, MenuActivity.class);
+        builder.setPositiveButton(getResources().getString(R.string.exit), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent=new Intent(getApplicationContext(), MenuActivity.class);
                 startActivity(intent);
                 finish();
             }
+        });
+
+        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
 
     }
 }
