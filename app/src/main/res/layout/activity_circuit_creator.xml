@@ -114,12 +114,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <View
                             android:layout_width="5dp"
                             android:layout_height="match_parent"
-                            android:background="@color/blue" />
+                            android:background="@color/restColor" />
                         <TextView
                             android:text="@string/rest"
                             android:layout_height="wrap_content"
@@ -135,12 +137,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <View
                             android:layout_width="5dp"
                             android:layout_height="match_parent"
-                            android:background="@color/yellow" />
+                            android:background="@color/supersetColor" />
                         <TextView
                             android:text="@string/Superset"
                             android:layout_height="wrap_content"
@@ -156,12 +160,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <View
                             android:layout_width="5dp"
                             android:layout_height="match_parent"
-                            android:background="@color/green" />
+                            android:background="@color/emomColor" />
                         <TextView
                             android:text="@string/emom"
                             android:layout_height="wrap_content"
@@ -177,19 +183,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <View
-                            android:layout_width="5dp"
+                            android:layout_width="6dp"
                             android:layout_height="match_parent"
-                            android:background="@color/pink" />
+                            android:background="@color/tabataColor" />
+
                         <TextView
                             android:id="@+id/fab_sheet_item_photo"
-                            android:text="@string/timer"
-                            android:layout_height="wrap_content"
                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textAlignment="center"/>
+                            android:text="@string/tabata"
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -200,7 +209,9 @@
                         android:layout_height="50dp"
                         android:background="@color/colorAccent"
                         android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <ImageButton
                             android:layout_width="wrap_content"

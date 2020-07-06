@@ -10,7 +10,7 @@
         android:id="@+id/tabataCard"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:cardCornerRadius="16dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,9 +22,9 @@
 
             <View
                 android:id="@+id/colorLeftBarTabataCard"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
-                android:background="@color/pink"
+                android:background="@color/tabataColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +33,12 @@
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
+                android:gravity="end"
+                android:letterSpacing="0.03"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"
                 android:text="@string/tabata"
                 app:layout_constraintBottom_toBottomOf="@+id/deleteTabataCard"
                 app:layout_constraintStart_toEndOf="@id/colorLeftBarTabataCard"
@@ -44,27 +49,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:gravity="end"
+                android:letterSpacing="0.03"
+                android:textColor="#000000"
+                android:textSize="12sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/roboto"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
                 app:layout_constraintStart_toEndOf="@+id/textView14"
                 tools:text="x4" />
 
             <ImageButton
                 android:id="@+id/deleteTabataCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="11.5dp"
+                android:layout_height="15.5dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="12dp"
                 android:background="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_delete2_black" />
+                app:srcCompat="@drawable/bin" />
 
             <View
                 android:id="@+id/view"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_margin="10dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="4dp"
                 android:background="@color/lightGray"
                 app:layout_constraintStart_toEndOf="@+id/colorLeftBarTabataCard"
                 app:layout_constraintTop_toBottomOf="@+id/deleteTabataCard" />
@@ -76,6 +88,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="end"
+                android:letterSpacing="0.03"
+                android:textColor="#000000"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
                 app:layout_constraintTop_toBottomOf="@+id/view"
@@ -84,24 +101,27 @@
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="16.5dp"
                 android:layout_marginEnd="8dp"
+                android:background="@null"
                 app:layout_constraintBottom_toBottomOf="@+id/repsTabataCard"
                 app:layout_constraintEnd_toStartOf="@+id/recTabataCard"
                 app:layout_constraintTop_toTopOf="@+id/repsTabataCard"
-                app:srcCompat="@drawable/sleep"
-                android:background="@null"/>
+                app:srcCompat="@drawable/sleep" />
 
             <TextView
                 android:id="@+id/recTabataCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
-                tools:text="00:05"
-                style="@style/TextAppearance.AppCompat.Headline"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="0.03"
+                android:fontFamily="@font/roboto"
                 app:layout_constraintBottom_toBottomOf="@+id/imageButton"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageButton" />
+                app:layout_constraintTop_toTopOf="@+id/imageButton"
+                tools:text="00:05"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             tools:context="com.demotxt.droidsrce.homedashboard.Home"
             android:orientation="vertical"
             android:padding="12dp"
-            android:background="#fcfcfc"
+            android:background="@color/backgroundColor"
             android:gravity="center"
             android:id="@+id/ll">
 
@@ -35,14 +35,15 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
+                    android:id="@+id/circuitCard"
                     android:layout_width="340dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="16dp"
-                    android:id="@+id/circuitCard">
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="10dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -100,79 +101,91 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
                     android:id="@+id/chronometerCard"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="16dp">
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="10dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:src="@drawable/chronometer" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
                             android:layout_marginTop="10dp"
-                            android:text="@string/chronometer"/>
+                            android:text="@string/chronometer"
+                            android:textStyle="bold" />
+
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/lightGray"
-                            android:layout_margin="10dp"/>
+                            android:layout_margin="10dp"
+                            android:background="@color/lightGray" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/chronometer_description"
                             android:padding="5dp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:text="@string/chronometer_description"
+                            android:textColor="@android:color/darker_gray" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
+                    android:id="@+id/tabataCard"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
-                    android:id="@+id/tabataCard"
-                    app:cardCornerRadius="16dp">
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="10dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:src="@drawable/tabata" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
                             android:layout_marginTop="10dp"
-                            android:text="@string/tabata"/>
+                            android:text="@string/tabata"
+                            android:textStyle="bold" />
+
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/lightGray"
-                            android:layout_margin="10dp"/>
+                            android:layout_margin="10dp"
+                            android:background="@color/lightGray" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/tabata_description"
                             android:padding="5dp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:text="@string/tabata_description"
+                            android:textColor="@android:color/darker_gray" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -193,7 +206,7 @@
                     android:layout_margin="10dp"
                     android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardCornerRadius="16dp">
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -237,7 +250,7 @@
                     android:layout_margin="10dp"
                     android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardCornerRadius="16dp">
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -282,53 +295,59 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
+                    android:id="@+id/emomCard"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
-                    android:id="@+id/emomCard"
-                    app:cardCornerRadius="16dp">
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="10dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:src="@drawable/emom"/>
+                            android:src="@drawable/emom" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
                             android:layout_marginTop="10dp"
-                            android:text="@string/emom"/>
+                            android:text="@string/emom"
+                            android:textStyle="bold" />
+
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/lightGray"
-                            android:layout_margin="10dp"/>
+                            android:layout_margin="10dp"
+                            android:background="@color/lightGray" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/emom_description"
                             android:padding="5dp"
-                            android:textColor="@android:color/darker_gray"/>
+                            android:text="@string/emom_description"
+                            android:textColor="@android:color/darker_gray" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
+                    android:id="@+id/negativeCard"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
-                    android:id="@+id/negativeCard"
-                    app:cardCornerRadius="16dp">
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"

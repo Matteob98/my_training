@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#673AB7</color>
-    <color name="colorPrimaryDark">#512DA8</color>
+    <color name="colorPrimary">#3079d9</color>
+    <color name="colorPrimaryDark">#3730f2</color>
     <color name="colorPrimaryLight">#B39DDB</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#f2e96b</color>
     <color name="textColor">#FFFFFF</color>
-    <color name="backgroundColor">#fcfcfc</color>
+    <color name="backgroundColor">#eeeeee</color>
     <color name="lightGray">#ededed</color>
     <color name="purple">#E040FB</color>
     <color name="yellow">#ffb300</color>
@@ -20,6 +20,12 @@
     <color name="darkGray">#212121</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+
+    <!-- Colori per gli esercizi dei circuiti -->
+    <color name="emomColor">#39a78e</color>
+    <color name="restColor">#3079d9</color>
+    <color name="tabataColor">#6a5287</color>
+    <color name="supersetColor">#FFAB00</color>
 </resources>
 
 

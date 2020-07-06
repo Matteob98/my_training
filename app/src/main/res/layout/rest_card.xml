@@ -9,8 +9,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/tabataCard"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:cardCornerRadius="16dp"
+        android:layout_height="25dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,31 +22,18 @@
 
             <View
                 android:id="@+id/colorLeftBarRestCard"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="wrap_content"
-                android:background="@color/blue"
+                android:background="@color/restColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <ImageButton
-                android:id="@+id/deleteRestCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
-                android:background="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_delete2_black" />
-
-
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_height="16.5dp"
+                android:layout_marginStart="25dp"
                 android:background="@null"
                 app:layout_constraintBottom_toBottomOf="@+id/deleteRestCard"
                 app:layout_constraintStart_toEndOf="@+id/colorLeftBarRestCard"
@@ -55,15 +42,30 @@
 
             <TextView
                 android:id="@+id/recRestCard"
-                style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:letterSpacing="0.03"
+                android:gravity="end"
                 android:textStyle="bold"
+                android:fontFamily="@font/roboto"
                 app:layout_constraintBottom_toBottomOf="@+id/imageButton"
                 app:layout_constraintStart_toEndOf="@+id/imageButton"
                 app:layout_constraintTop_toTopOf="@+id/imageButton"
                 tools:text="00:05" />
+
+            <ImageButton
+                android:id="@+id/deleteRestCard"
+                android:layout_width="11.5dp"
+                android:layout_height="15.5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:background="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/bin"  />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
