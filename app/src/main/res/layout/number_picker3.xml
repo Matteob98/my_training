@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutNumberPicker3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,12 +19,13 @@
         <TextView
             android:id="@+id/titleNumberPicker3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
             tools:text="Tabata"
-            android:padding="16dp"
-            android:layout_marginStart="4dp"
-            android:textColor="#FFFFFF"
-            style="@style/TextAppearance.MdcTypographyStyles.Headline5" />
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal|center_vertical"
+            android:fontFamily="@font/roboto"/>
 
 
     </LinearLayout>
@@ -40,7 +41,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.05"
+            android:textColor="#757575"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto"
             tools:text="First"
             android:id="@+id/firstTextNumberPicker3"
             app:layout_constraintTop_toBottomOf="@+id/firstPickerNumberPicker3"
@@ -58,7 +63,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.05"
+            android:textColor="#757575"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto"
             tools:text="Second"
             android:id="@+id/secondTextNumberPicker3"
             app:layout_constraintTop_toBottomOf="@+id/secondPickerNumberPicker3"
@@ -76,7 +85,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.05"
+            android:textColor="#757575"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto"
             tools:text="Third"
             android:id="@+id/thirdTextNumberPicker3"
             app:layout_constraintTop_toBottomOf="@+id/thirdPickerNumberPicker3"

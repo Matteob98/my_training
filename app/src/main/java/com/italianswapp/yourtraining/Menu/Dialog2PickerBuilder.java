@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.italianswapp.yourtraining.R;
+
+import java.util.Objects;
 
 /**
  * Builder di dialog con due campi di selezione (picker)
@@ -165,7 +169,6 @@ public class Dialog2PickerBuilder {
      * Mostra la dialog creata dal builder
      */
     public void show() {
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        AlertDialog alertDialog = builder.create();alertDialog.show();
     }
 }
