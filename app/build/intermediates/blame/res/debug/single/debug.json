@@ -20,6 +20,10 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-large\\circle_progress_bar_ready.xml"
     },
     {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_reset_scuro.xml.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_reset_scuro.xml"
+    },
+    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_flag.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_flag.png"
     },
@@ -28,12 +32,12 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_add_scuro.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_forward_scuro.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_forward_scuro.png"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_bug.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_bug.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_forward_scuro.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_forward_scuro.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_start.png.flat",
@@ -60,20 +64,24 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\emom_card.xml"
     },
     {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_audio_on.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_audio_on.png"
+    },
+    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_add.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_audio_on.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_audio_on.png"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_start.xml.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_start.xml"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable_circle_progress_bar_rest.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable\\circle_progress_bar_rest.xml"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_start.xml.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_start.xml"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_personal_trainer.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\personal_trainer.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable_winner.png.flat",
@@ -90,6 +98,10 @@
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_delete2.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_delete2.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_cross_black.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_cross_black.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_concentrich_phase.png.flat",
@@ -128,12 +140,12 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_add.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_emom.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\emom.png"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_minus.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_minus.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_emom.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\emom.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto.xml.flat",
@@ -144,12 +156,16 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_help.png"
     },
     {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_finish.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_finish.png"
+    },
+    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_exit.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_exit.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_finish.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_finish.png"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_reset_scuro.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_reset_scuro.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_logo.png.flat",
@@ -160,12 +176,12 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\activity_finish.xml"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_add_scuro.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_add_scuro.png"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_timer.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_timer.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_add_scuro.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_add_scuro.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_timer.png.flat",
@@ -176,10 +192,6 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxxhdpi\\tabata.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_replay_scuro.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_replay_scuro.png"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\raw_half_sound.mp3.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\raw\\half_sound.mp3"
     },
@@ -188,16 +200,20 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_pause.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_arrow_down.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_arrow_down.png"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable_circle_progress_bar_work.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable\\circle_progress_bar_work.xml"
     },
     {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_arrow_down.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_arrow_down.png"
+    },
+    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_reset.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_reset.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_bin.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\bin.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_assignament_scuro.png.flat",
@@ -216,8 +232,8 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_star.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_replay_scuro.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_replay_scuro.png"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_bin.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\bin.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_amrap.png.flat",
@@ -236,16 +252,28 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_bug.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_rest_card.xml.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\rest_card.xml"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_amrap.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\amrap.png"
     },
     {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_rest_card.xml.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\rest_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_amrap.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\amrap.png"
+    },
+    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_close.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_close.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_emom.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\emom.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_reset_scuro.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_reset_scuro.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_emom.png.flat",
@@ -264,12 +292,12 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_forward10.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_add_black.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_add_black.png"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_timer.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_timer.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_add_black.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_add_black.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_chronometer.xml.flat",
@@ -364,6 +392,10 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_minus.xml"
     },
     {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_bin.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\bin.png"
+    },
+    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_arrow_down.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_arrow_down.xml"
     },
@@ -392,10 +424,6 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable\\circle_progress_bar_ready.xml"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_delete.xml.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_delete.xml"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_for_time.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\for_time.png"
     },
@@ -410,6 +438,10 @@
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_forward.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_forward.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_reset_scuro.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_reset_scuro.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_timer_scuro.png.flat",
@@ -452,12 +484,20 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxxhdpi\\chronometer.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_help.xml.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\activity_help.xml"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_personal_trainer.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\personal_trainer.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_replay_scuro.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_replay_scuro.png"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_bin.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\bin.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_cross_black.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_cross_black.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_help.xml.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\activity_help.xml"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_audio_on.png.flat",
@@ -482,6 +522,10 @@
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_chronometer.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\chronometer.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_bin.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxxhdpi\\bin.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_delete2.png.flat",
@@ -520,8 +564,16 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_share.xml"
     },
     {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_timer.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\timer.png"
+    },
+    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\menu_toolbar_menu.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\menu\\toolbar_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_cross_black.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_cross_black.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_start.png.flat",
@@ -692,10 +744,6 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_start.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_delete.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_delete.png"
-    },
-    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_minus_scuro.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_minus_scuro.xml"
     },
@@ -710,6 +758,10 @@
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_timer.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_timer.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_tabata.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\tabata.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_circuit_creator.xml.flat",
@@ -730,10 +782,6 @@
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_bug_dialog.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\bug_dialog.xml"
-    },
-    {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_delete.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xhdpi\\ic_delete.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable_circle_white.xml.flat",
@@ -776,12 +824,20 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_finish.png"
     },
     {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_reset_scuro.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_reset_scuro.png"
+    },
+    {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_delete2.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_delete2.xml"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_number_picker3.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\number_picker3.xml"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_cross_black.xml.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_cross_black.xml"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_concentrich_phase.png.flat",
@@ -848,12 +904,12 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\tabata_card.xml"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_black.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_add_black.png"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_sleep.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\sleep.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_delete.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_delete.png"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_add_black.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_add_black.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_tabata.png.flat",
@@ -884,8 +940,8 @@
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxxhdpi\\timer.png"
     },
     {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_delete.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_delete.png"
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_chronometer.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\chronometer.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_delete2_black.png.flat",
@@ -898,10 +954,6 @@
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_start.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_start.png"
-    },
-    {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_replay_scuro.png.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-xxhdpi\\ic_replay_scuro.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_reset.png.flat",
@@ -918,6 +970,14 @@
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_exercise_list_dialog.xml.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\layout\\exercise_list_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_cross_black.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\ic_cross_black.png"
+    },
+    {
+        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_concentrich_phase.png.flat",
+        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-mdpi\\concentrich_phase.png"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\layout_number_picker_dialog.xml.flat",
@@ -954,10 +1014,6 @@
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_share.png.flat",
         "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-hdpi\\ic_share.png"
-    },
-    {
-        "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_replay_scuro.xml.flat",
-        "source": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\src\\main\\res\\drawable-anydpi\\ic_replay_scuro.xml"
     },
     {
         "merged": "C:\\Users\\matte\\AndroidStudioProjects\\YourTraining\\app\\build\\intermediates\\res\\merged\\debug\\raw_tic.wav.flat",

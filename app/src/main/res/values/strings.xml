@@ -36,6 +36,11 @@
     <string name="For">for</string>
     <string name="invalid_time">Invalid time entered</string>
 
+    <!-- Chronometer activity -->
+    <string name="Start">Start</string>
+    <string name="Stop">Stop</string>
+    <string name="Resume">Resume</string>
+
     <!-- Amrap activity -->
     <string name="round_completed">Round completed</string>
     <string name="many_round_completed">How many rounds have you completed?</string>
@@ -79,7 +84,7 @@
     <string name="add_error">You must add at least one error to send the message</string>
     <string name="enter_error">Please enter at least one error</string>
     <string name="received_bug">Thanks! We have received your report</string>
-    <string name="share_text">Hi! Have you tried this timer? E\' ottimo!</string>
+    <string name="share_text">Hi! Have you tried this app? It is beautiful!</string>
     <string name="version">Version</string>
 
     <!-- Concentric activity -->
@@ -104,5 +109,7 @@
     <string name="start" translatable="false">Start</string>
     <string name="Superset">Superset</string>
     <string name="new_exercise">NEW EXERCISE</string>
+    <string name="lap_times">Lap times</string>
+    <string name="overal_time">Overal time</string>
 
 </resources>

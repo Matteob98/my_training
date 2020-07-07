@@ -900,6 +900,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color emomColor
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -996,6 +997,7 @@ color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
 color purple
 color red
+color restColor
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -1004,12 +1006,14 @@ color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
 color selector_text_circular
 color selector_text_simple
+color supersetColor
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color tabataColor
 color teal
 color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
@@ -1440,6 +1444,7 @@ drawable abc_vector_test
 drawable amrap
 drawable avd_hide_password
 drawable avd_show_password
+drawable bin
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1499,7 +1504,7 @@ drawable ic_calendar_black_24dp
 drawable ic_circle_48dp
 drawable ic_clear_black_24dp
 drawable ic_close
-drawable ic_delete
+drawable ic_cross_black
 drawable ic_delete2
 drawable ic_delete2_black
 drawable ic_edit_black_24dp
@@ -1524,8 +1529,8 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_pause
 drawable ic_replay
-drawable ic_replay_scuro
 drawable ic_reset
+drawable ic_reset_scuro
 drawable ic_share
 drawable ic_star
 drawable ic_start
@@ -1746,7 +1751,6 @@ id ghost_view_holder
 id gone
 id group_divider
 id groups
-id guideline
 id helpToolbar
 id hideable
 id home
@@ -1842,7 +1846,6 @@ id outline
 id overlay
 id overlinePrimaryBottomTextEmomActivity
 id overlineSecondaryBottomTextEmomActivity
-id overlineTimerChronometerActivity
 id packed
 id parallax
 id parent
@@ -1957,9 +1960,11 @@ id textView
 id textView10
 id textView11
 id textView12
+id textView13
 id textView14
 id textView2
 id textView3
+id textView4
 id textView5
 id textView6
 id textView7
@@ -2007,6 +2012,7 @@ id upperBarCountDownTimer
 id useLogo
 id versionTextViewHelpActivity
 id view
+id view2
 id view_offset_helper
 id visible
 id visible_removing_fragment_view_tag
@@ -2190,6 +2196,9 @@ string Continue
 string Eccentric
 string For
 string Lap
+string Resume
+string Start
+string Stop
 string Superset
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -2292,6 +2301,7 @@ string hide_bottom_view_on_scroll_behavior
 string hours
 string icon_content_description
 string invalid_time
+string lap_times
 string many_round_completed
 string mins
 string minutes
@@ -2335,6 +2345,7 @@ string new_exercise
 string next_exercise
 string not_able_to_recovery
 string not_yet
+string overal_time
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through

@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -193,12 +194,13 @@ public class ChronometerActivity extends AppCompatActivity {
                     isRunning=true;
 
                     resetButton.setEnabled(false);
-                    resetButton.setImageResource(R.drawable.ic_replay_scuro);
+                    resetButton.setImageResource(R.drawable.ic_reset);
 
                     lapButton.setEnabled(true);
                     lapButton.setImageResource(R.drawable.ic_timer);
 
                     startButton.setImageResource(R.drawable.ic_pause);
+                    startButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
                 }
                 else {
                     timeSwapBuff += timeInMilliseconds;
@@ -206,12 +208,13 @@ public class ChronometerActivity extends AppCompatActivity {
                     isRunning=false;
 
                     resetButton.setEnabled(true);
-                    resetButton.setImageResource(R.drawable.ic_replay);
+                    resetButton.setImageResource(R.drawable.ic_reset_scuro);
 
                     lapButton.setEnabled(false);
                     lapButton.setImageResource(R.drawable.ic_timer_scuro);
 
                     startButton.setImageResource(R.drawable.ic_start);
+                    startButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimaryDark)));
                 }
 
             }
@@ -238,7 +241,7 @@ public class ChronometerActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark)); //Colora la barra delle notifiche
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //Schermo sempre acceso
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.toolbar_title)); //Gestisce l'eccezione
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.chronometer)); //Gestisce l'eccezione
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColor));
     }
 
@@ -297,18 +300,8 @@ public class ChronometerActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
 
-        MenuItem mHelpButton = menu.findItem(R.id.helpToolbar);
         MenuItem mFinishButton = menu.findItem(R.id.finishTrainingToolbar);
         mFinishButton.setVisible(true);
-        mHelpButton.setVisible(true);
-
-        mHelpButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                goToHelpActivity();
-                return true;
-            }
-        });
 
         mFinishButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override

@@ -24,9 +24,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\matte\AppData\Local\Temp\baseline_timer_24.xml" />
-                                                <entry key="opacityPercent" value="60" />
-                                                <entry key="paddingPercent" value="10" />
+                                                <entry key="imagePath" value="C:\Users\matte\AppData\Local\Temp\baseline_replay_24.xml" />
+                                                <entry key="opacityPercent" value="80" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -38,7 +37,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/timer/baseline_timer_24.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/replay/baseline_replay_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -84,7 +83,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="imageAsset" value="C:\Users\matte\Downloads\res\drawable\baseline_flip_camera_android_24.xml" />
-                                      <entry key="outputName" value="ic_timer_scuro" />
+                                      <entry key="outputName" value="ic_reset_scuro" />
+                                      <entry key="theme" value="HOLO_DARK" />
                                       <entry key="themeColor" value="000000" />
                                     </map>
                                   </option>

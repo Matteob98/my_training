@@ -47,10 +47,10 @@ public class RoundRecyclerViewAdapter extends RecyclerView.Adapter<RoundRecycler
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull LapViewHolder lapViewHolder, int position) {
-        android.content.res.Resources res = lapViewHolder.lapNumberText.getResources();
-        lapViewHolder.lapNumberText.setText(res.getString(R.string.Lap) + " " + laps.get(position).getNumberLap());
-        lapViewHolder.totalTimeText.setText(res.getString(R.string.total_time) + " " + laps.get(position).getStringTotalTime());
-        lapViewHolder.lapTimeText.setText(laps.get(position).getStringLapTime());
+        //android.content.res.Resources res = lapViewHolder.lapNumberText.getResources();
+        lapViewHolder.lapNumberText.setText(""+laps.get(position).getNumberLap());
+        lapViewHolder.totalTimeText.setText(""+laps.get(position).getStringTotalTime());
+        lapViewHolder.lapTimeText.setText(""+laps.get(position).getStringLapTime());
     }
 
     /**

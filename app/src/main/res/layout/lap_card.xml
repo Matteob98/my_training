@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
@@ -9,69 +10,72 @@
         android:id="@+id/lap_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/backgroundColor">
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-            <LinearLayout
-                android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@null">
+
+            <TextView
+                android:id="@+id/lapNumberTextCard"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.05"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lapTimeTextCard"
+                app:layout_constraintEnd_toStartOf="@+id/lapTimeTextCard"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="01" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+            <TextView
+                android:id="@+id/totalTimeTextCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.05"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lapTimeTextCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lapTimeTextCard"
+                tools:text="01:12:04" />
 
-                    <TextView
-                        android:id="@+id/lapNumberTextCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
-                        tools:text="Lap n" />
-
-                    <TextView
-                        android:id="@+id/totalTimeTextCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        style="@style/TextAppearance.MdcTypographyStyles.Caption"
-                        tools:text="Trascorsi 00:00:00" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/lapTimeTextCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    style="@style/TextAppearance.MdcTypographyStyles.Headline6"
-                    tools:text="00:00:00" />
-
-                <ImageButton
-                    android:id="@+id/deleteButtonCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_delete"
-                    android:backgroundTint="@color/backgroundColor" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="200dp"
-                android:layout_height="1dp"
+            <TextView
+                android:id="@+id/lapTimeTextCard"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@color/lightGray"
-                android:layout_margin="10dp"/>
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.05"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"
+                android:layout_marginBottom="19.5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="00:03:24" />
 
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/deleteButtonCard"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:backgroundTint="@null"
+                android:src="@drawable/ic_cross_black"
+                android:tint="#595959"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lapTimeTextCard"
+                app:layout_constraintBottom_toBottomOf="@+id/lapTimeTextCard"/>
 
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

@@ -50,7 +50,7 @@ public class TimerActivity extends CountDownActivity {
         mLeftFloatingButton.setEnabled(false);
         mRightFloatingButton.setImageResource(R.drawable.ic_forward10_scuro);
         mRightFloatingButton.setEnabled(false);
-        mLeftFloatingButton.setImageResource(R.drawable.ic_replay_scuro);
+        mLeftFloatingButton.setImageResource(R.drawable.ic_reset_scuro);
 
     }
 
