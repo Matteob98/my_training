@@ -7,34 +7,36 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/linearLayoutNumberPicker2"
+    <View
+        android:id="@+id/colorViewNumberPicker2"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:id="@+id/titleNumberPicker2"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="15dp"
-            tools:text="Tabata"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"
-            android:gravity="center_vertical"
-            android:fontFamily="@font/roboto"/>
+    <TextView
+        android:id="@+id/titleNumberPicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toStartOf="@+id/colorViewNumberPicker2"
+        app:layout_constraintTop_toTopOf="@+id/colorViewNumberPicker2"
+        app:layout_constraintBottom_toBottomOf="@+id/colorViewNumberPicker2"
+        tools:text="Tabata" />
 
-    </LinearLayout>
 
     <NumberPicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/firstPickerNumberPicker2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutNumberPicker2"
+        app:layout_constraintTop_toBottomOf="@+id/colorViewNumberPicker2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/secondPickerNumberPicker2" />
 

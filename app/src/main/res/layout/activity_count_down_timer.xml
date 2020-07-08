@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:backgroundTint="@color/backgroundColor"
     tools:context=".Timer.CountDownTimers.EmomActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -18,69 +19,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/upperBarCountDownTimer"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/overlinePrimaryBottomTextEmomActivity"
+        style="@style/TextAppearance.MdcTypographyStyles.Overline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:baselineAligned="false"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="start"
+        android:text="@string/current_set"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarEmomActivity">
+        app:layout_constraintTop_toBottomOf="@id/toolbarEmomActivity" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="10dp">
+    <TextView
+        android:id="@+id/primaryBottomTextEmomActivity"
+        style="@style/TextAppearance.MdcTypographyStyles.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="@string/time_00_slash_00"
+        android:textColor="@color/colorPrimary"
 
-            <TextView
-                android:id="@+id/overlinePrimaryBottomTextEmomActivity"
-                style="@style/TextAppearance.MdcTypographyStyles.Overline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="@string/current_set"
-                android:textColor="#FFFFFF" />
+        app:layout_constraintStart_toStartOf="@id/overlinePrimaryBottomTextEmomActivity"
+        app:layout_constraintTop_toBottomOf="@id/overlinePrimaryBottomTextEmomActivity"/>
 
-            <TextView
-                android:id="@+id/primaryBottomTextEmomActivity"
-                style="@style/TextAppearance.MdcTypographyStyles.Headline5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="@string/time_00_slash_00"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/overlineSecondaryBottomTextEmomActivity"
+        style="@style/TextAppearance.MdcTypographyStyles.Overline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_lap"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/overlinePrimaryBottomTextEmomActivity"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:orientation="vertical"
-            android:padding="10dp">
+    <TextView
+        android:id="@+id/secondaryBottomTextEmomActivity"
+        style="@style/TextAppearance.MdcTypographyStyles.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time_00_slash_00"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBaseline_toBaselineOf="@+id/primaryBottomTextEmomActivity"
+        app:layout_constraintEnd_toEndOf="@id/overlineSecondaryBottomTextEmomActivity" />
 
-            <TextView
-                android:id="@+id/overlineSecondaryBottomTextEmomActivity"
-                style="@style/TextAppearance.MdcTypographyStyles.Overline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/current_lap"
-                android:textColor="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/secondaryBottomTextEmomActivity"
-                style="@style/TextAppearance.MdcTypographyStyles.Headline5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/time_00_slash_00"
-                android:textColor="#FFFFFF" />
-
-        </LinearLayout>
-    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/myProgress"
@@ -94,16 +78,15 @@
         android:indeterminate="false"
         android:progress="0"
         android:progressDrawable="@drawable/circle_progress_bar_work"
-        app:layout_constraintBottom_toTopOf="@+id/startButtonEmomActivity"
+        app:layout_constraintBottom_toTopOf="@+id/startButtonCountDownActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/upperBarCountDownTimer"
+        app:layout_constraintTop_toBottomOf="@id/toolbarEmomActivity"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/timeFromStart"
-        style="@style/TextAppearance.MdcTypographyStyles.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/myProgress"
@@ -112,7 +95,10 @@
         android:layout_marginBottom="12dp"
         android:gravity="center"
         android:text="@string/time_00_00_00"
-        android:textColor="@color/darkGray"
+        android:textSize="18sp"
+        android:textColor="#616161"
+        android:letterSpacing="0.05"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@id/textEmomActivity"
         app:layout_constraintLeft_toLeftOf="@id/myProgress"
         app:layout_constraintRight_toRightOf="@id/myProgress"
@@ -121,7 +107,6 @@
 
     <TextView
         android:id="@+id/textEmomActivity"
-        style="@style/TextAppearance.MdcTypographyStyles.Headline3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/myProgress"
@@ -132,6 +117,10 @@
         android:gravity="center"
         android:text="@string/time_00_00_00"
         android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:letterSpacing="0.05"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="@+id/myProgress"
         app:layout_constraintEnd_toEndOf="@+id/myProgress"
         app:layout_constraintStart_toStartOf="@+id/myProgress"
@@ -139,7 +128,6 @@
 
     <TextView
         android:id="@+id/workDescription"
-        style="@style/TextAppearance.MdcTypographyStyles.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/myProgress"
@@ -149,6 +137,8 @@
         android:gravity="center"
         android:text="@string/work"
         android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="@+id/myProgress"
         app:layout_constraintEnd_toEndOf="@+id/myProgress"
         app:layout_constraintStart_toStartOf="@+id/myProgress"
@@ -156,93 +146,55 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/rightFloatingButtonCountDownActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@id/myProgress"
         android:layout_alignBottom="@id/myProgress"
-        android:src="@drawable/ic_add"
-        android:visibility="invisible"
         android:background="@null"
-        android:tint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/startButtonEmomActivity"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_add"
+        android:tint="@color/black"
+        android:visibility="invisible"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/startButtonCountDownActivity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/startButtonEmomActivity"
-        app:layout_constraintTop_toTopOf="@+id/startButtonEmomActivity" />
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toEndOf="@+id/startButtonCountDownActivity"
+        app:layout_constraintTop_toTopOf="@+id/startButtonCountDownActivity" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/leftFloatingButtonCountDownActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/myProgress"
         android:layout_alignBottom="@id/myProgress"
+        android:background="@null"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_assignament"
+        android:tint="@color/black"
         android:visibility="invisible"
-        android:background="@null"
-        android:tint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/startButtonEmomActivity"
-        app:layout_constraintEnd_toStartOf="@+id/startButtonEmomActivity"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/startButtonCountDownActivity"
+        app:layout_constraintEnd_toStartOf="@+id/startButtonCountDownActivity"
+        app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/startButtonEmomActivity" />
+        app:layout_constraintTop_toTopOf="@+id/startButtonCountDownActivity" />
 
 
-    <RelativeLayout
-        android:id="@+id/timerRelativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/upperBarCountDownTimer">
-
-
-
-    </RelativeLayout>
-
-
-    <!--
-    <ImageButton
-        android:id="@+id/replayButtonEmomActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:src="@drawable/ic_replay"
-        android:visibility="invisible"
-        android:tint="@color/colorPrimary"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/startButtonEmomActivity"
-        app:layout_constraintEnd_toStartOf="@+id/startButtonEmomActivity"
-        app:layout_constraintTop_toTopOf="@+id/startButtonEmomActivity" />
-       -->
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/startButtonEmomActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:src="@drawable/ic_start"
-        app:backgroundTint="@color/colorPrimary"
+    <Button
+        android:id="@+id/startButtonCountDownActivity"
+        android:background="@drawable/ripple"
+        android:text="@string/start"
+        android:textColor="@color/white"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        android:layout_height="45dp"
+        android:layout_width="125dp" />
 
-
-    <!--
-    <ImageButton
-        android:id="@+id/forwardButtonEmomActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:src="@drawable/ic_forward10"
-        android:visibility="invisible"
-        android:tint="@color/colorPrimary"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/startButtonEmomActivity"
-        app:layout_constraintStart_toEndOf="@+id/startButtonEmomActivity"
-        app:layout_constraintTop_toTopOf="@+id/startButtonEmomActivity" />
-    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

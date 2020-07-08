@@ -20,7 +20,10 @@ public class TimerActivity extends CountDownActivity {
 
         mLeftFloatingButton.setVisibility(AppCompatButton.VISIBLE);
         mRightFloatingButton.setVisibility(AppCompatButton.VISIBLE);
-        mUpperBarCountDownTimer.setVisibility(AppCompatButton.GONE);
+        mOverlinePrimaryTextView.setVisibility(TextView.GONE);
+        mOverlineSecondaryTextView.setVisibility(TextView.GONE);
+        mPrimaryTextView.setVisibility(TextView.GONE);
+        mSecondaryTextView.setVisibility(TextView.GONE);
         mTimeFromStartTextView.setVisibility(TextView.INVISIBLE);
 
         timer = createTimer();

@@ -3,6 +3,7 @@ package com.italianswapp.yourtraining.Timer.CountDownTimers;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
@@ -10,16 +11,15 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -47,9 +47,8 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected Resources res;
 
     protected TextView mTimeTextView, mPrimaryTextView, mSecondaryTextView, mOverlinePrimaryTextView, mOverlineSecondaryTextView, mWorkDescriptionTextView, mTimeFromStartTextView;
-    protected FloatingActionButton mStartButton;
+    protected Button mStartButton;
     protected ImageButton  mRightFloatingButton, mLeftFloatingButton;
-    protected LinearLayout mUpperBarCountDownTimer;
     protected Toolbar mToolbar;
     protected ProgressBar mProgressBar;
 
@@ -203,11 +202,10 @@ public abstract class CountDownActivity extends AppCompatActivity {
         mOverlineSecondaryTextView = findViewById(R.id.overlineSecondaryBottomTextEmomActivity);
         mWorkDescriptionTextView = findViewById(R.id.workDescription);
         mTimeFromStartTextView = findViewById(R.id.timeFromStart);
-        mStartButton = findViewById(R.id.startButtonEmomActivity);
+        mStartButton = findViewById(R.id.startButtonCountDownActivity);
         mRightFloatingButton = findViewById(R.id.rightFloatingButtonCountDownActivity);
         mLeftFloatingButton = findViewById(R.id.leftFloatingButtonCountDownActivity);
         mToolbar = findViewById(R.id.toolbarEmomActivity);
-        mUpperBarCountDownTimer = findViewById(R.id.upperBarCountDownTimer);
         mProgressBar = findViewById(R.id.myProgress);
     }
 
@@ -291,7 +289,8 @@ public abstract class CountDownActivity extends AppCompatActivity {
             timer.cancel();
             isRunning=false;
             timeHandler.removeCallbacks(updateTimerThread);
-            mStartButton.setImageResource(R.drawable.ic_start);
+            mStartButton.setText(getResources().getString(R.string.start).toUpperCase());
+            mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
         }
         else if(isFirstStart) {
             //Se non è running ed è il first start
@@ -305,7 +304,10 @@ public abstract class CountDownActivity extends AppCompatActivity {
             timer.start();
             isRunning=true;
             timeHandler.postDelayed(updateTimerThread, 10);
-            mStartButton.setImageResource(R.drawable.ic_pause);
+            mStartButton.setText(getResources().getString(R.string.pause).toUpperCase());
+            mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
+
+            //mStartButton.setImageResource(R.drawable.ic_pause);
         }
     }
 
@@ -533,7 +535,6 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected void readyLayoutSettings() {
         mTimeTextView.setText(res.getString(R.string.ready));
         mWorkDescriptionTextView.setText(res.getString(R.string.tap_to_start));
-        mTimeFromStartTextView.setVisibility(TextView.INVISIBLE);
         remainingTime=READY_TIMER;
         currentDuration =READY_TIMER;
 
@@ -666,6 +667,8 @@ public abstract class CountDownActivity extends AppCompatActivity {
      */
     protected CountDownTimer readyTimer() {
         startButtonEnabled(false);
+        mStartButton.setText(getResources().getString(R.string.pause).toUpperCase());
+        mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
         mWorkDescriptionTextView.setText(res.getString(R.string.ready));
         /*
         Ritorna il timer

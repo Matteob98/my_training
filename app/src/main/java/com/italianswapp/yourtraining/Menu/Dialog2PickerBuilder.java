@@ -169,6 +169,7 @@ public class Dialog2PickerBuilder {
      * Mostra la dialog creata dal builder
      */
     public void show() {
-        AlertDialog alertDialog = builder.create();alertDialog.show();
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

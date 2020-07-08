@@ -111,5 +111,6 @@
     <string name="new_exercise">NEW EXERCISE</string>
     <string name="lap_times">Lap times</string>
     <string name="overal_time">Overal time</string>
+    <string name="pause">pause</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.italianswapp.yourtraining;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -12,7 +13,6 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -28,7 +28,7 @@ public class HelpActivity extends AppCompatActivity {
     private final String
             PLAY_STORE_ADDRESS ="https://play.google.com/store/apps/details?id=com.italianswapp.yourtraining";
 
-    private ImageButton mBugButton, mReviewButton, mExitButton, mShareButton;
+    private CardView mBugCard, mReviewCard, mExitCard, mShareCard;
     private TextView mVersionTextView;
 
     AlertDialog.Builder builder;
@@ -95,7 +95,7 @@ public class HelpActivity extends AppCompatActivity {
      * Imposta il comportamento del pulsante condividi
      */
     private void onClickShareButton() {
-        mShareButton.setOnClickListener(new View.OnClickListener() {
+        mShareCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sendIntent = new Intent();
@@ -111,7 +111,7 @@ public class HelpActivity extends AppCompatActivity {
      * Imposta il comportamento del pulsante esci
      */
     private void onClickExitButton() {
-        mExitButton.setOnClickListener(new View.OnClickListener() {
+        mExitCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 exit(0);
@@ -123,7 +123,7 @@ public class HelpActivity extends AppCompatActivity {
      * Imposta il comportamento del pulsante recensione
      */
     private void onClickReviewButton() {
-        mReviewButton.setOnClickListener(new View.OnClickListener() {
+        mReviewCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent viewIntent =
@@ -138,7 +138,7 @@ public class HelpActivity extends AppCompatActivity {
      * Imposta il comportamento del pulsante per i bug
      */
     private void onClickBugButton() {
-        mBugButton.setOnClickListener(new View.OnClickListener() {
+        mBugCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -196,10 +196,10 @@ public class HelpActivity extends AppCompatActivity {
      * Importa tutti gli oggetti dall'xml
      */
     private void layoutSettings() {
-        mBugButton = findViewById(R.id.bugButtonHelpActivity);
-        mReviewButton = findViewById(R.id.reviewButtonHelpActivity);
-        mExitButton = findViewById(R.id.exitButtonHelpActivity);
-        mShareButton = findViewById(R.id.shareButtonHelpActivity);
+        mBugCard = findViewById(R.id.bugCardHelpActivity);
+        mReviewCard = findViewById(R.id.reviewCardHelpActivity);
+        mExitCard = findViewById(R.id.exitCardHelpActivity);
+        mShareCard = findViewById(R.id.shareCardHelpActivity);
         mVersionTextView = findViewById(R.id.versionTextViewHelpActivity);
     }
 }

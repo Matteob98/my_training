@@ -1561,6 +1561,8 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable personal_trainer
 drawable picker_corner_background
+drawable ripple
+drawable rounded_shape
 drawable sleep
 drawable tabata
 drawable test_custom_background
@@ -1654,8 +1656,9 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
-id bugButtonHelpActivity
+id bugCardHelpActivity
 id bugEditText
+id bugImageHelpActivity
 id bugTextInput
 id buttonPanel
 id cancel_action
@@ -1681,6 +1684,8 @@ id colorLeftBarEmomCard
 id colorLeftBarRestCard
 id colorLeftBarSupersetCard
 id colorLeftBarTabataCard
+id colorViewNumberPicker2
+id colorViewNumberPicker3
 id confirm_button
 id container
 id content
@@ -1720,7 +1725,8 @@ id enterAlwaysCollapsed
 id exerciseCard
 id exerciseListView
 id exerciseNameExerciseCard
-id exitButtonHelpActivity
+id exitCardHelpActivity
+id exitImageHelpActivity
 id exitUntilCollapsed
 id expand_activities_button
 id expandableViewExerciseCard
@@ -1783,8 +1789,6 @@ id leftFloatingButtonCountDownActivity
 id light
 id line1
 id line3
-id linearLayoutNumberPicker2
-id linearLayoutNumberPicker3
 id listMode
 id listRoundChronometerActivity
 id list_item
@@ -1871,7 +1875,8 @@ id repsTabataCard
 id resetButtonChronometerActivity
 id restNoRestSingleSelect
 id restPickerExerciseCard
-id reviewButtonHelpActivity
+id reviewCardHelpActivity
+id reviewImageHelpActivity
 id right
 id rightFloatingButtonCountDownActivity
 id right_icon
@@ -1908,7 +1913,8 @@ id secondTextNumberPicker3
 id secondaryBottomTextEmomActivity
 id select_dialog_listview
 id selected
-id shareButtonHelpActivity
+id shareCardHelpActivity
+id shareImageHelpActivity
 id shortcut
 id showCustom
 id showHome
@@ -1931,7 +1937,7 @@ id src_over
 id standard
 id start
 id startButtonChronometerActivity
-id startButtonEmomActivity
+id startButtonCountDownActivity
 id status_bar_latest_event_content
 id stretch
 id submenuarrow
@@ -1981,7 +1987,6 @@ id thirdTextNumberPicker3
 id time
 id timeFromStart
 id timerCard
-id timerRelativeLayout
 id title
 id titleDividerNoCustom
 id titleExerciseList
@@ -1995,7 +2000,7 @@ id toolbarEmomActivity
 id toolbarMainActivity
 id top
 id topBarExerciseCard
-id topBarHelpActivity
+id topCardHelpActivity
 id topPanel
 id totalTimeTextCard
 id touch_outside
@@ -2009,7 +2014,6 @@ id unchecked
 id uniform
 id unlabeled
 id up
-id upperBarCountDownTimer
 id useLogo
 id versionTextViewHelpActivity
 id view
@@ -2352,6 +2356,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string pause
 string project_id
 string ready
 string received_bug

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -128,7 +129,8 @@ public class CircuitActivity extends CountDownActivity {
                 }
                 else if (currentSet < exercises.size()) {
                     // Se ci sono altri elementi
-                    mStartButton.setImageResource(R.drawable.ic_pause);
+                    mStartButton.setText(getResources().getString(R.string.pause).toUpperCase());
+                    mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
                     nextExercise();
                     startWork();
                 }
@@ -158,7 +160,8 @@ public class CircuitActivity extends CountDownActivity {
                 }
             }, 10);
 
-            mStartButton.setImageResource(R.drawable.ic_flag);
+            mStartButton.setText(res.getString(R.string.finish).toUpperCase());
+            mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.colorAccent)));
         }
         else {
             work = exercises.get(currentSet).getReps() * 1000;
@@ -187,8 +190,8 @@ public class CircuitActivity extends CountDownActivity {
             timer.start();
             isRunning = true;
             isWork=true;
-            mStartButton.setImageResource(R.drawable.ic_pause);
-
+            mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+            mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
         }
 
         workSound();
@@ -216,7 +219,8 @@ public class CircuitActivity extends CountDownActivity {
 
                 if (isRepsExercise && isWork) {
                         if (currentSet < exercises.size()) {
-                            mStartButton.setImageResource(R.drawable.ic_pause);
+                            mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                            mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                             if (exercises.get(currentSet).isHasRecs())
                                 startRest();
                             else{
@@ -238,13 +242,15 @@ public class CircuitActivity extends CountDownActivity {
                             timer = createTimer();
                             timer.start();
                             isRunning = true;
-                            mStartButton.setImageResource(R.drawable.ic_pause);
+                            mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                            mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                         }
                     }
                     else {
                         timer.cancel();
                         isRunning = false;
-                        mStartButton.setImageResource(R.drawable.ic_start);
+                        mStartButton.setText(res.getString(R.string.start).toUpperCase());
+                        mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.colorPrimary)));
                     }
                 }
             }
@@ -261,7 +267,8 @@ public class CircuitActivity extends CountDownActivity {
 
         if (isRepsExercise && isWork) {
             if (currentSet < exercises.size()) {
-                mStartButton.setImageResource(R.drawable.ic_pause);
+                mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 if (exercises.get(currentSet).isHasRecs())
                     startRest();
                 else {
@@ -283,7 +290,8 @@ public class CircuitActivity extends CountDownActivity {
             }
             else if (currentSet < exercises.size()) {
                 // Se ci sono altri elementi
-                mStartButton.setImageResource(R.drawable.ic_pause);
+                mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 nextExercise();
                 startWork();
             }
@@ -292,7 +300,8 @@ public class CircuitActivity extends CountDownActivity {
             //Se era un riposo
             if (currentSet < exercises.size()) {
                 // Se ci sono altri elementi
-                mStartButton.setImageResource(R.drawable.ic_pause);
+                mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 nextExercise();
                 startWork();
             }
