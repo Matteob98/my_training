@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -36,8 +37,7 @@ import java.util.Objects;
 public class ChronometerActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private FloatingActionButton startButton;
-    private ImageButton resetButton, lapButton;
+    private Button startButton, resetButton, lapButton;
     private TextView textTime, lapTimeText;
     private RecyclerView roundRecyclerView;
     private LinearLayoutManager linearLayoutManager;
@@ -193,13 +193,11 @@ public class ChronometerActivity extends AppCompatActivity {
                     timeHandler.postDelayed(updateTimerThread, 10);
                     isRunning=true;
 
-                    resetButton.setEnabled(false);
-                    resetButton.setImageResource(R.drawable.ic_reset);
 
-                    lapButton.setEnabled(true);
-                    lapButton.setImageResource(R.drawable.ic_timer);
+                    resetButton.setVisibility(Button.GONE);
+                    lapButton.setVisibility(Button.VISIBLE);
 
-                    startButton.setImageResource(R.drawable.ic_pause);
+                    startButton.setText(getResources().getString(R.string.pause));
                     startButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
                 }
                 else {
@@ -207,14 +205,11 @@ public class ChronometerActivity extends AppCompatActivity {
                     timeHandler.removeCallbacks(updateTimerThread);
                     isRunning=false;
 
-                    resetButton.setEnabled(true);
-                    resetButton.setImageResource(R.drawable.ic_reset_scuro);
+                    resetButton.setVisibility(Button.VISIBLE);
+                    lapButton.setVisibility(Button.GONE);
 
-                    lapButton.setEnabled(false);
-                    lapButton.setImageResource(R.drawable.ic_timer_scuro);
-
-                    startButton.setImageResource(R.drawable.ic_start);
-                    startButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimaryDark)));
+                    startButton.setText(getResources().getString(R.string.start));
+                    startButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
                 }
 
             }
@@ -346,11 +341,6 @@ public class ChronometerActivity extends AppCompatActivity {
                                 Utilities.getStringTimeNoHour(updateTime) + " " + getResources().getString(R.string.minutes)));
         startActivity(intent);
         finish();
-    }
-
-    private void goToHelpActivity() {
-        Intent intent=new Intent(this, HelpActivity.class);
-        startActivity(intent);
     }
 
     @Override

@@ -112,5 +112,6 @@
     <string name="lap_times">Lap times</string>
     <string name="overal_time">Overal time</string>
     <string name="pause">pause</string>
+    <string name="Reset">Reset</string>
 
 </resources>
