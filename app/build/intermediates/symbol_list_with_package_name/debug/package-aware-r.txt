@@ -1635,7 +1635,6 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
-id addExerciseCircuitCreator
 id adjust_height
 id adjust_width
 id alertTitle
@@ -1644,7 +1643,6 @@ id all
 id alpha
 id always
 id amrapCard
-id arrowButtonExerciseCard
 id async
 id auto
 id barrier
@@ -1681,6 +1679,7 @@ id clip_vertical
 id closeButtonExerciseList
 id collapseActionView
 id colorLeftBarEmomCard
+id colorLeftBarExerciseCard
 id colorLeftBarRestCard
 id colorLeftBarSupersetCard
 id colorLeftBarTabataCard
@@ -1729,7 +1728,6 @@ id exitCardHelpActivity
 id exitImageHelpActivity
 id exitUntilCollapsed
 id expand_activities_button
-id expandableViewExerciseCard
 id expanded_menu
 id fab
 id fab_sheet
@@ -1758,6 +1756,7 @@ id ghost_view_holder
 id gone
 id group_divider
 id groups
+id guideline
 id helpToolbar
 id hideable
 id home
@@ -1779,7 +1778,11 @@ id item_touch_helper_previous_elevation
 id iv_background
 id labeled
 id lapButtonChronometerActivity
+id lapEmomCard
+id lapExerciseCard
 id lapNumberTextCard
+id lapSupersetCard
+id lapTabataCard
 id lapTimeTextCard
 id lapTimeTextChronometerActivity
 id lap_card
@@ -1864,26 +1867,20 @@ id primaryBottomTextEmomActivity
 id progress_circular
 id progress_horizontal
 id radio
+id recExerciseCard
 id recRestCard
 id recSupersetCard
 id recTabataCard
-id repetitionNumberSingleSelect
 id repsEmomCard
-id repsPickerExerciseCard
-id repsSecsSingleSelect
+id repsExerciseCard
 id repsTabataCard
 id resetButtonChronometerActivity
-id restNoRestSingleSelect
-id restPickerExerciseCard
 id reviewCardHelpActivity
 id reviewImageHelpActivity
 id right
 id rightFloatingButtonCountDownActivity
 id right_icon
 id right_side
-id roundEmomCard
-id roundSupersetCard
-id roundTabataCard
 id rounded
 id save_non_transition_alpha
 id save_overlay_view
@@ -1942,6 +1939,7 @@ id status_bar_latest_event_content
 id stretch
 id submenuarrow
 id submit_area
+id supersetCard
 id tabMode
 id tabataCard
 id tag_accessibility_actions
@@ -1959,7 +1957,6 @@ id text2
 id textChronometerActivity
 id textEmomActivity
 id textEnd
-id textInputLayoutExerciseCard
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
@@ -1999,7 +1996,6 @@ id toolbarCircuitCreator
 id toolbarEmomActivity
 id toolbarMainActivity
 id top
-id topBarExerciseCard
 id topCardHelpActivity
 id topPanel
 id totalTimeTextCard
@@ -2198,9 +2194,11 @@ raw tic
 raw timer_sound
 string Concentric
 string Continue
+string Create
 string Eccentric
 string For
 string Lap
+string Reset
 string Resume
 string Start
 string Stop

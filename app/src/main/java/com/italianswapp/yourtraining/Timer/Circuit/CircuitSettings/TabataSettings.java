@@ -15,7 +15,7 @@ class TabataSettings extends ExerciseSettings {
      * @param repetition Il numero di ripetizioni
      */
     public TabataSettings(String name, int reps, long rec, int repetition) {
-        super(name, reps, rec, repetition, false, true);
+        super(name, reps, rec, repetition, false, true, CircuitType.TABATA);
         this.setType(CircuitType.TABATA);
     }
 

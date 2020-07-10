@@ -14,7 +14,7 @@ class EmomSettings extends ExerciseSettings {
      * @param repetition Il numero di ripetizioni
      */
     public EmomSettings(String name, int reps, int repetition) {
-        super(name, reps, 0, repetition, false, false);
+        super(name, reps, 0, repetition, false, false, CircuitType.EMOM);
         this.setType(CircuitType.EMOM);
     }
 

@@ -17,7 +17,7 @@ class RestSettings extends ExerciseSettings {
      * @param rec Il riposo
      */
     public RestSettings(long rec) {
-        super(REST_STRING, 0, rec, 0, false, true);
+        super(REST_STRING, 0, rec, 0, false, true, CircuitType.REST);
         this.setType(CircuitType.REST);
     }
 

@@ -1,250 +1,173 @@
 package com.italianswapp.yourtraining.Timer.Circuit;
 
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.NumberPicker;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputLayout;
+import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseSettings;
 import com.italianswapp.yourtraining.Utilities;
 import com.italianswapp.yourtraining.R;
-import com.nex3z.togglebuttongroup.SingleSelectToggleGroup;
-import com.nex3z.togglebuttongroup.ToggleButtonGroup;
 
-import java.util.Arrays;
 import java.util.List;
 
 
-public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<ExerciseCardRecyclerViewAdapter.ExerciseSettingsViewHolder> {
+public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private static final int EXERCISE = 0;
+    private static final int EMOM = 1;
+    private static final int REST = 2;
+    private static final int TABATA = 3;
 
     private final String[] TimeInStringForPicker = Utilities.TIME_IN_STRING;
 
-    List<ExerciseSettings> exercises;
+    List<? extends ExerciseSettings> exercises;
+
 
     @NonNull
     @Override
-    public ExerciseSettingsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.exercise_card, parent, false);
-        return new ExerciseSettingsViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull final ExerciseSettingsViewHolder exerciseSettingsViewHolder, int position) {
-
-        /*
-        Imposta il valore delle ripetizioni al valore salvato
-         */
-        exerciseSettingsViewHolder.mRepsPicker.setValue(exercises.get(position).getReps());
-        /*
-        Imposta il valore del recupero al valore salvato
-        Prende l'indice del valore in exercise all'interno dell'array TimeInStringForPicker
-         */
-        exerciseSettingsViewHolder.mRestPicker.setValue(
-                Arrays.asList(TimeInStringForPicker)
-                        .indexOf(
-                                Utilities.getStringTimeNoHour(
-                                        exercises.get(position).getRec())));
-
-        /*
-        Imposta il nome dell'esercizio nella text view in alto al valore salvato
-         */
-        exerciseSettingsViewHolder.exerciseName.setText(exercises.get(position).getName());
-
-        /*
-        Imposto i tre select al valore memorizzato
-         */
-        if (exercises.get(position).isReps())
-            exerciseSettingsViewHolder.mRepsSecsSelect.setCheckedAt(0, true);
-        else
-            exerciseSettingsViewHolder.mRepsSecsSelect.setCheckedAt(1, true);
-
-        if (exercises.get(position).isHasRecs())
-            exerciseSettingsViewHolder.mRestNoRestSelect.setCheckedAt(0, true);
-        else
-            exerciseSettingsViewHolder.mRestNoRestSelect.setCheckedAt(1, true);
-
-        int nr = exercises.get(position).getRepetition()-1;
-        if (nr < 0 )
-            nr = 0;
-        exerciseSettingsViewHolder.mRepetitionNumberSelect.setCheckedAt(nr, true);
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return exercises.size();
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v;
+        switch (viewType) {
+            case EXERCISE :
+                //Esercizio
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.exercise_card, parent, false);
+                return new ExerciseSettingsViewHolder(v);
+            case EMOM:
+                //Emom
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.emom_card, parent, false);
+                return new EmomSettingsViewHolder(v);
+            case REST:
+                //Rest
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rest_card, parent, false);
+                return new RestSettingsViewHolder(v);
+            case TABATA:
+                //Tabata
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.tabata_card, parent, false);
+                return new TabataSettingsViewHolder(v);
+            default:
+                try {
+                    throw new ExerciseTypeNotCorrectException();
+                } catch (ExerciseTypeNotCorrectException e) {
+                    e.printStackTrace();
+                }
+                return null; //viene lanciata l'eccezione quindi non viene ritornato mai null
+        }
     }
 
     /**
-     * Classe innestata per la gestione della card per la creazione di esercizi
+     * Si occupa di ricaricare il contenuto delle card ogni volta che il recycler view viene aggiornato
+     * @param holder
+     * @param position
      */
-    public class ExerciseSettingsViewHolder extends RecyclerView.ViewHolder {
-        CardView mCardView;
-        NumberPicker mRepsPicker, mRestPicker;
-        SingleSelectToggleGroup mRepsSecsSelect, mRestNoRestSelect, mRepetitionNumberSelect;
-        EditText exerciseName;
-        TextInputLayout mExerciseTextInputLayout;
-        Button deleteButton, arrowBtn;
-        ConstraintLayout expandableView;
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        /*
+        In base al tipo imposta un diverso tipo di exercise (esercizio, tabata, rest, emom, ...)
+         */
+        switch (holder.getItemViewType()) {
+            case EXERCISE:
+                /*
+                Esercizio:
+                    Nome
+                    Numero lap
+                    Numero ripetizioni (o secondi)
+                    Recupero
+                 */
+                ExerciseSettingsViewHolder exerciseSettingsViewHolder = (ExerciseSettingsViewHolder)holder;
+                exerciseSettingsViewHolder.mExerciseName.setText(exercises.get(position).getName());
+                exerciseSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
+                        exercises.get(position).getRepetition())));
 
-        public ExerciseSettingsViewHolder(@NonNull final View itemView) {
-            super(itemView);
+                exerciseSettingsViewHolder.mReps.setText(
+                        exercises.get(position).isReps() ?
+                                //Se è un esercizio a ripetizioni stampa x reps
+                            exercises.get(position).getReps() + " reps" :
+                                //Altrimenti stampa xx:yy
+                            Utilities.getStringTimeNoHour(
+                                exercises.get(position).getReps()));
 
-            mCardView = itemView.findViewById(R.id.exerciseCard);
-            mRepsPicker = itemView.findViewById(R.id.repsPickerExerciseCard);
-            mRestPicker = itemView.findViewById(R.id.restPickerExerciseCard);
-            mRepsSecsSelect = itemView.findViewById(R.id.repsSecsSingleSelect);
-            mRestNoRestSelect = itemView.findViewById(R.id.restNoRestSingleSelect);
-            mRepetitionNumberSelect = itemView.findViewById(R.id.repetitionNumberSingleSelect);
-            exerciseName = itemView.findViewById(R.id.exerciseNameExerciseCard);
-            deleteButton = itemView.findViewById(R.id.deleteExerciseCard);
-            expandableView = itemView.findViewById(R.id.expandableViewExerciseCard);
-            arrowBtn = itemView.findViewById(R.id.arrowButtonExerciseCard);
-            mExerciseTextInputLayout = itemView.findViewById(R.id.textInputLayoutExerciseCard);
+                exerciseSettingsViewHolder.mRec.setText(
+                        Utilities.getStringTimeNoHour(
+                            exercises.get(position).getRec()));
+                break;
+            case EMOM:
+                /*
+                EMOM:
+                    Numero lap
+                    Numero secondi per ogni lap
+                 */
+                EmomSettingsViewHolder emomSettingsViewHolder = (EmomSettingsViewHolder)holder;
+                emomSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
+                        exercises.get(position).getRepetition())));
 
-            mRepsPicker.setMinValue(1);
-            mRepsPicker.setMaxValue(120);
+                emomSettingsViewHolder.mReps.setText(
+                                Utilities.getStringTimeNoHour(
+                                        exercises.get(position).getReps()));
+                break;
+            case REST:
+                /*
+                Rest:
+                    Secondi di recupero
+                 */
+                RestSettingsViewHolder restSettingsViewHolder = (RestSettingsViewHolder)holder;
 
-            mRestPicker.setMinValue(0);
-            mRestPicker.setMaxValue(TimeInStringForPicker.length-1);
-            mRestPicker.setDisplayedValues(TimeInStringForPicker);
+                restSettingsViewHolder.mRec.setText(
+                        Utilities.getStringTimeNoHour(
+                                exercises.get(position).getReps()));
+                break;
+            case TABATA:
+                /*
+                Tabata:
+                    Numero lap
+                    Secondi ripetizioni
+                    Secondi recupero
+                 */
+                TabataSettingsViewHolder tabataSettingsViewHolder = (TabataSettingsViewHolder)holder;
+                tabataSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
+                        exercises.get(position).getRepetition())));
 
-            Utilities.changeDividerColor(mRepsPicker, Color.parseColor("#00ffffff"));
-            Utilities.changeDividerColor(mRestPicker, Color.parseColor("#00ffffff"));
+                tabataSettingsViewHolder.mReps.setText(
+                        Utilities.getStringTimeNoHour(
+                                exercises.get(position).getReps()));
 
-            arrowBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (expandableView.getVisibility()==View.GONE){
-                        TransitionManager.beginDelayedTransition(mCardView, new AutoTransition());
-                        expandableView.setVisibility(View.VISIBLE);
-                        arrowBtn.setBackgroundResource(R.drawable.ic_arrow_up);
-                    } else {
-                        TransitionManager.beginDelayedTransition(mCardView, new AutoTransition());
-                        expandableView.setVisibility(View.GONE);
-                        arrowBtn.setBackgroundResource(R.drawable.ic_arrow_down);
-                    }
+                tabataSettingsViewHolder.mRec.setText(
+                        Utilities.getStringTimeNoHour(
+                                exercises.get(position).getReps()));
+                break;
+            default:
+                try {
+                    throw new ExerciseTypeNotCorrectException();
+                } catch (ExerciseTypeNotCorrectException e) {
+                    e.printStackTrace();
                 }
-            });
+                break;
 
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        removeItem(position);
-                    }
-                }
-
-            });
-
-            mRepsPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-                @Override
-                public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                    exercises.get(getAdapterPosition()).setReps(newVal);
-                }
-            });
-
-            /*
-             Picker che imposta il recupero dell'esercizio
-            */
-            mRestPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-                @Override
-                public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                    exercises.get(getAdapterPosition()).setRec(Utilities.getMillsFromMinuteString(TimeInStringForPicker[newVal]));
-                }
-            });
-
-            /*
-                Edit text che gestisce il nome dell'esercizio
-            */
-            exerciseName.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    exercises.get(getAdapterPosition()).setName(exerciseName.getText().toString());
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    exercises.get(getAdapterPosition()).setName(exerciseName.getText().toString());
-                }
-            });
-
-            /*
-                Gestisce il click sul primo single select
-                Se 0 è un esercizio a ripetizioni
-                Se 1 è un esercizio a tempo
-             */
-            mRepsSecsSelect.setOnCheckedChangeListener(new ToggleButtonGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChange(int pos, boolean isChecked) {
-                    if(pos==0)
-                        exercises.get(getAdapterPosition()).setReps(true);
-                    else
-                        exercises.get(getAdapterPosition()).setReps(false);
-                }
-            });
-
-             /*
-                Gestisce il click sul secondo single select
-                Se 0 è un esercizio con riposo
-                Se 1 è un esercizio senza riposo
-             */
-            mRestNoRestSelect.setOnCheckedChangeListener(new ToggleButtonGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChange(int pos, boolean isChecked) {
-                    if(pos==0)
-                        exercises.get(getAdapterPosition()).setHasRecs(true);
-                    else
-                        exercises.get(getAdapterPosition()).setHasRecs(false);
-                }
-            });
-
-            /*
-                Gestisce il click sul terzo single select
-                Gestisce il numero di volte che va ripetuto un esercizio
-                pos contiene il numero di volte -1
-             */
-            mRepetitionNumberSelect.setOnCheckedChangeListener(new ToggleButtonGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChange(int pos, boolean isChecked) {
-                    exercises.get(getAdapterPosition()).setRepetition(pos+1);
-                }
-            });
-
-            exerciseName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if(!hasFocus) {
-                        if(exerciseName.getText().toString().isEmpty()) {
-                            mExerciseTextInputLayout.setErrorEnabled(true);
-                            mExerciseTextInputLayout.setError(v.getResources().getString(R.string.exercise_name_error));
-                        }
-                        else
-                            mExerciseTextInputLayout.setErrorEnabled(false);
-                    }
-                }
-            });
         }
+    }
 
+    /**
+     * Ritorna il tipo dell'esercizio di tipo intero
+     * La conversione viene fatta dal metodo statico getIntegerItemType della classe ExerciseSettings
+     * @param position posizione dell'elemento nella lista
+     * @return Il tipo intero dell'elemento
+     */
+    @Override
+    public int getItemViewType(int position) {
+        // Just as an example, return 0 or 2 depending on position
+        // Note that unlike in ListView adapters, types don't have to be contiguous
+        try {
+            return ExerciseSettings.getIntegerItemType(exercises.get(position).getType());
+        } catch (ExerciseTypeNotCorrectException e) {
+            e.printStackTrace();
+        }
+        return -1; //in realtà non viene mai ritornato perché o ritorna il valore o lancia l'eccezione
     }
 
     private void removeItem(int position) {
@@ -252,7 +175,221 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
         notifyItemRemoved(position);
     }
 
-    public ExerciseCardRecyclerViewAdapter(List<ExerciseSettings> exercises) {
+    public ExerciseCardRecyclerViewAdapter(List<? extends
+            ExerciseSettings> exercises) {
         this.exercises = exercises;
     }
+
+    @Override
+    public int getItemCount() {
+        return exercises.size();
+    }
+
+    /*
+    *  Classi innestate che gestiscono ognuna un tipo di esercizio diverso
+     */
+
+
+    /**
+     * Classe innestata per la gestione della card per la creazione di esercizi
+     */
+    public class ExerciseSettingsViewHolder extends RecyclerView.ViewHolder {
+        CardView mCardView;
+        TextView mExerciseName, mLap, mReps, mRec;
+        ImageButton mDeleteButton;
+
+        public ExerciseSettingsViewHolder(@NonNull final View itemView) {
+            super(itemView);
+
+            mCardView = itemView.findViewById(R.id.exerciseCard);
+            mExerciseName = itemView.findViewById(R.id.exerciseNameExerciseCard);
+            mLap = itemView.findViewById(R.id.lapExerciseCard);
+            mDeleteButton = itemView.findViewById(R.id.deleteExerciseCard);
+            mReps = itemView.findViewById(R.id.repsExerciseCard);
+            mRec = itemView.findViewById(R.id.recExerciseCard);
+
+            /*
+            Azione alla pressione del tasto delete
+             */
+
+            mDeleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        removeItem(position);
+                    }
+                }
+            });
+
+            mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO lancia il dialog dedicato
+                }
+            });
+        }
+
+    }
+
+    /**
+     * Classe innestata per la gestione della card per la creazione di riposi
+     */
+    public class RestSettingsViewHolder extends RecyclerView.ViewHolder {
+
+        CardView mCardView;
+        TextView  mRec;
+        ImageButton mDeleteButton;
+
+        public RestSettingsViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            mCardView = itemView.findViewById(R.id.tabataCard);
+            mDeleteButton = itemView.findViewById(R.id.deleteRestCard);
+            mRec = itemView.findViewById(R.id.recRestCard);
+
+            /*
+            Azione alla pressione del tasto delete
+             */
+
+            mDeleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        removeItem(position);
+                    }
+                }
+            });
+
+            mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO lancia il dialog dedicato
+                }
+            });
+        }
+    }
+
+    /**
+     * Classe innestata per la gestione della card per la creazione di Tabata
+     */
+    public class TabataSettingsViewHolder extends RecyclerView.ViewHolder {
+
+        CardView mCardView;
+        TextView mLap, mReps, mRec;
+        ImageButton mDeleteButton;
+
+        public TabataSettingsViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            mCardView = itemView.findViewById(R.id.tabataCard);
+            mLap = itemView.findViewById(R.id.lapTabataCard);
+            mDeleteButton = itemView.findViewById(R.id.deleteTabataCard);
+            mReps = itemView.findViewById(R.id.repsTabataCard);
+            mRec = itemView.findViewById(R.id.recTabataCard);
+
+            /*
+            Azione alla pressione del tasto delete
+             */
+
+            mDeleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        removeItem(position);
+                    }
+                }
+            });
+
+            mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO lancia il dialog dedicato
+                }
+            });
+
+        }
+    }
+
+    public class EmomSettingsViewHolder extends RecyclerView.ViewHolder{
+
+        CardView mCardView;
+        TextView mLap, mReps;
+        ImageButton mDeleteButton;
+
+        public EmomSettingsViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            mCardView = itemView.findViewById(R.id.emomCardView);
+            mLap = itemView.findViewById(R.id.lapEmomCard);
+            mDeleteButton = itemView.findViewById(R.id.deleteEmomCard);
+            mReps = itemView.findViewById(R.id.repsEmomCard);
+
+            /*
+            Azione alla pressione del tasto delete
+             */
+
+            mDeleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        removeItem(position);
+                    }
+                }
+            });
+
+            mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO lancia il dialog dedicato
+                }
+            });
+        }
+    }
+
+    public class SupersetSettingsViewHolder extends RecyclerView.ViewHolder {
+
+        CardView mCardView;
+        TextView mFirstExerciseName, mSecondExerciseName, mFirstExerciseReps,
+                mSecondExerciseReps, mLap, mRec;
+        ImageButton mDeleteButton;
+
+        public SupersetSettingsViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            mCardView = itemView.findViewById(R.id.supersetCard);
+            mLap = itemView.findViewById(R.id.lapSupersetCard);
+            mDeleteButton = itemView.findViewById(R.id.deleteSupersetCard);
+            mFirstExerciseName = itemView.findViewById(R.id.firstExerciseSupersetCard);
+            mFirstExerciseReps = itemView.findViewById(R.id.firstExerciseRepsSupersetCard);
+            mSecondExerciseName = itemView.findViewById(R.id.secondExerciseSupersetCard);
+            mSecondExerciseReps = itemView.findViewById(R.id.secondExerciseRepsSupersetCard);
+            mRec = itemView.findViewById(R.id.recSupersetCard);
+
+            /*
+            Azione alla pressione del tasto delete
+             */
+
+            mDeleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        removeItem(position);
+                    }
+                }
+            });
+
+            mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO lancia il dialog dedicato
+                }
+            });
+        }
+    }
+
 }

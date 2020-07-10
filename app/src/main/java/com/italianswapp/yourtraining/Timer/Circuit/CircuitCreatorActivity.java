@@ -7,9 +7,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
@@ -19,6 +23,7 @@ import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseSettings;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
@@ -26,7 +31,7 @@ import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.N
 public class CircuitCreatorActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private FloatingActionButton  mAddExerciseButton, mCreateCircuitButton;
+    private Button mCreateCircuitButton;
     private RecyclerView mExerciseRecyclerView;
 
     private LinearLayoutManager linearLayoutManager;
@@ -40,6 +45,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     private MaterialSheetFab materialSheetFab;
     private View sheetView, overlay;
     private Fab fab;
+    private LinearLayout mNewExercise, mNewTabata, mNewEmom, mNewSuperset, mNewRest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +54,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
         mToolbar = findViewById(R.id.toolbarCircuitCreator);
         mCreateCircuitButton = findViewById(R.id.createButtonCircuitCreator);
-        mAddExerciseButton = findViewById(R.id.addExerciseCircuitCreator);
-        mCreateCircuitButton = findViewById(R.id.createButtonCircuitCreator);
         mExerciseRecyclerView = findViewById(R.id.circuitCreatorRecyclerView);
-
-        fabMenuInitialize();
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
         setSupportActionBar(mToolbar);
@@ -68,17 +70,10 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         exerciseCardRecyclerViewAdapter = new ExerciseCardRecyclerViewAdapter(exerciseList);
         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
-        exerciseList.add(new ExerciseSettings(getResources().getString(R.string.exercise), 1, 10000, 1, true, true)); //1 ripetizione, 00:10 di recupero
+        exerciseList.add(new ExerciseSettings(getResources().getString(R.string.exercise), 1, 10000, 1, true, true, ExerciseSettings.CircuitType.EXERCISE)); //1 ripetizione, 00:10 di recupero
         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
-
-        mAddExerciseButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        exerciseList.add(new ExerciseSettings(getResources().getString(R.string.exercise), 1, 10000, 1, true, true)); //1 ripetizione, 00:10 di recupero
-                        mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
-                    }
-                });
+        fabMenuInitialize();
 
         mCreateCircuitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +130,88 @@ public class CircuitCreatorActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        Inizializza i comportamenti alla pressione delle opzioni del menu
+         */
+        mNewExercise = findViewById(R.id.newExerciseCircuitCreator);
+        mNewTabata = findViewById(R.id.newTabataCircuitCreator);
+        mNewEmom = findViewById(R.id.newEmomCircuitCreator);
+        mNewRest = findViewById(R.id.newRestCircuitCreator);
+        mNewSuperset = findViewById(R.id.newSupersetCircuitCreator);
+
+        /* -- */
+        mNewExercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exerciseList.add(new ExerciseSettings(getResources().getString(R.string.exercise),
+                        1,
+                        10000,
+                        1,
+                        true,
+                        true,
+                        ExerciseSettings.CircuitType.EXERCISE)); //1 ripetizione, 00:10 di recupero
+                mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+                materialSheetFab.hideSheet();
+            }
+        });
+
+        mNewTabata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exerciseList.add(new ExerciseSettings(getResources().getString(R.string.tabata),
+                        10000,
+                        10000,
+                        1,
+                        false,
+                        true,
+                        ExerciseSettings.CircuitType.TABATA));
+                mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+                materialSheetFab.hideSheet();
+            }
+        });
+
+        mNewEmom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exerciseList.add(new ExerciseSettings(getResources().getString(R.string.emom),
+                        10000,
+                        0,
+                        1,
+                        false,
+                        false,
+                        ExerciseSettings.CircuitType.EMOM));
+                mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+                materialSheetFab.hideSheet();
+            }
+        });
+
+        mNewRest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exerciseList.add(new ExerciseSettings(getResources().getString(R.string.rest),
+                        0,
+                        10000,
+                        1,
+                        false,
+                        true,
+                        ExerciseSettings.CircuitType.REST));
+                mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+                materialSheetFab.hideSheet();
+            }
+        });
+
+        mNewSuperset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                TODO implementa l'aggiunta del new superset (va prima modificata la classe ExerciseSetting)
+                 */
+                materialSheetFab.hideSheet();
+            }
+        });
+
+
+
     }
 
 
@@ -172,8 +249,6 @@ public class CircuitCreatorActivity extends AppCompatActivity {
             builder.setPositiveButton(getResources().getString(R.string.exit), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    //Intent intent=new Intent(getApplicationContext(), MenuActivity.class);
-                    //startActivity(intent);
                     finish();
                 }
             });

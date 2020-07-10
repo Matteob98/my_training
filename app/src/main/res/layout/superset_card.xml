@@ -7,10 +7,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/tabataCard"
+        android:id="@+id/supersetCard"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         app:cardCornerRadius="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +48,7 @@
                 app:layout_constraintTop_toTopOf="@+id/deleteSupersetCard" />
 
             <TextView
-                android:id="@+id/roundSupersetCard"
+                android:id="@+id/lapSupersetCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -159,11 +162,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imageButton"
                 tools:text="00:05" />
-
-
-
-
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

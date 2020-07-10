@@ -3,6 +3,8 @@ package com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
+
 /**
  * Classe che consente di gestire i dati delle card per la creazione di
  * esercizi all'interno del circuito
@@ -32,14 +34,14 @@ public class ExerciseSettings implements Parcelable {
      * @param isReps se vero è un esercizio a ripetizioni, altrimenti è un esercizio a tempo
      * @param hasRecs se vero dopo l'esercizio c'è recupero, altrimenti no
      */
-    public ExerciseSettings(String name, int reps, long rec, int repetition, boolean isReps, boolean hasRecs) {
+    public ExerciseSettings(String name, int reps, long rec, int repetition, boolean isReps, boolean hasRecs, CircuitType type) {
         this.name=name;
         this.reps = reps;
         this.rec = rec;
         this.repetition = repetition;
         this.isReps = isReps;
         this.hasRecs = hasRecs;
-        this.type= CircuitType.EXERCISE;
+        this.type= type;
     }
 
     protected ExerciseSettings(Parcel in) {
@@ -147,6 +149,31 @@ public class ExerciseSettings implements Parcelable {
      * @return Una copia ExerciseSettings
      */
     public static ExerciseSettings copyOf(ExerciseSettings e) {
-        return new ExerciseSettings(e.name, e.reps, e.rec, e.repetition, e.isReps, e.hasRecs);
+        return new ExerciseSettings(e.name, e.reps, e.rec, e.repetition, e.isReps, e.hasRecs, e.type);
+    }
+
+    /**
+     * Ritorna un intero in base al tipo di esercizio passato in input
+     * Exercise = 0
+     * Emom = 1
+     * Rest = 2
+     * Tabata = 3
+     * @param type Tipo dell'esercizio
+     * @return Un intero che rappresenta il tipo
+     * @throws ExerciseTypeNotCorrectException Se viene passato un tipo non gestito dalla funzione
+     */
+    public static int getIntegerItemType(ExerciseSettings.CircuitType type) throws ExerciseTypeNotCorrectException {
+        switch (type) {
+            case EXERCISE:
+                return 0;
+            case EMOM:
+                return 1;
+            case REST:
+                return 2;
+            case TABATA:
+                return 3;
+            default:
+                throw new ExerciseTypeNotCorrectException();
+        }
     }
 }

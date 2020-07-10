@@ -113,5 +113,6 @@
     <string name="overal_time">Overal time</string>
     <string name="pause">pause</string>
     <string name="Reset">Reset</string>
+    <string name="Create">Create</string>
 
 </resources>
