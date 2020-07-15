@@ -173,7 +173,8 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mNewEmom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseList.add(new ExerciseSettings(getResources().getString(R.string.emom),
+                exerciseList.add(new ExerciseSettings(
+                        getResources().getString(R.string.emom),
                         10000,
                         0,
                         1,
@@ -188,7 +189,8 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mNewRest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseList.add(new ExerciseSettings(getResources().getString(R.string.rest),
+                exerciseList.add(new ExerciseSettings(
+                        getResources().getString(R.string.rest),
                         0,
                         10000,
                         1,
@@ -203,9 +205,17 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mNewSuperset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                TODO implementa l'aggiunta del new superset (va prima modificata la classe ExerciseSetting)
-                 */
+                ExerciseSettings superset = new ExerciseSettings(
+                        getResources().getString(R.string.superset) + " 1",
+                        0,
+                        10000,
+                        1,
+                        false,
+                        true,
+                        ExerciseSettings.CircuitType.SUPERSET);
+                superset.setSupersetExercise(0,false,getResources().getString(R.string.superset) + " 1");
+                exerciseList.add(superset);
+                mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                 materialSheetFab.hideSheet();
             }
         });

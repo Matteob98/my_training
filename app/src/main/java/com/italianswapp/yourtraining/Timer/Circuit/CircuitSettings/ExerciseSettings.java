@@ -16,11 +16,14 @@ public class ExerciseSettings implements Parcelable {
     private boolean isReps, hasRecs;
     private String name;
 
+    private SupersetExercise supersetExercise;
+
     public enum CircuitType {
         EXERCISE,
         TABATA,
         REST,
-        EMOM
+        EMOM,
+        SUPERSET
     }
 
     private CircuitType type;
@@ -42,6 +45,11 @@ public class ExerciseSettings implements Parcelable {
         this.isReps = isReps;
         this.hasRecs = hasRecs;
         this.type= type;
+
+        /*
+        Se è un esercizio in superserie inizializza il secondo esercizio
+         */
+        supersetExercise = new SupersetExercise(0, false, "");
     }
 
     protected ExerciseSettings(Parcel in) {
@@ -122,6 +130,31 @@ public class ExerciseSettings implements Parcelable {
         this.type = type;
     }
 
+    /**
+     * Ritorna l'esercizio in superserie
+     * @return L'esercizio in superserie
+     * @throws ExerciseTypeNotCorrectException Se l'esercizio non è di tipo superserie
+     */
+    public SupersetExercise getSupersetExercise() throws ExerciseTypeNotCorrectException {
+        if (!this.type.equals(CircuitType.SUPERSET))
+            throw new ExerciseTypeNotCorrectException();
+        return supersetExercise;
+    }
+
+    /**
+     * Imposta l'esercizio in superserie
+     * Se l'esercizio non è una superserie lo imposta in questo metodo
+     * @param reps Numero o tempo di ripetizione
+     * @param isReps Se è un esercizio a ripetizioni
+     * @param name Nome dell'esercizio in superserie
+     */
+    public void setSupersetExercise(int reps, boolean isReps, String name) {
+        this.type=CircuitType.SUPERSET;
+        this.supersetExercise.setReps(reps);
+        this.supersetExercise.setIsReps(isReps);
+        this.supersetExercise.setName(name);
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -158,6 +191,7 @@ public class ExerciseSettings implements Parcelable {
      * Emom = 1
      * Rest = 2
      * Tabata = 3
+     * Superset = 4
      * @param type Tipo dell'esercizio
      * @return Un intero che rappresenta il tipo
      * @throws ExerciseTypeNotCorrectException Se viene passato un tipo non gestito dalla funzione
@@ -172,8 +206,57 @@ public class ExerciseSettings implements Parcelable {
                 return 2;
             case TABATA:
                 return 3;
+            case SUPERSET:
+                return 4;
             default:
                 throw new ExerciseTypeNotCorrectException();
+        }
+    }
+
+    /**
+     * Esercizio in superserie con l'esercizio principale
+     * Contiene solo il nome e il numero/tempo di ripetizioni
+     * Il recupero è sempre quello dell'esercizio principale
+     */
+    public class SupersetExercise {
+        private int reps;
+        private boolean isReps;
+        private String name;
+
+        /**
+         * Costruttore privato in modo che possa essere chiamato solo dalla classe madre
+         * @param reps
+         * @param isReps
+         * @param name
+         */
+        private SupersetExercise(int reps, boolean isReps, String name) {
+            this.reps = reps;
+            this.isReps = isReps;
+            this.name = name;
+        }
+
+        public int getReps() {
+            return reps;
+        }
+
+        public void setReps(int reps) {
+            this.reps = reps;
+        }
+
+        public boolean isReps() {
+            return isReps;
+        }
+
+        public void setIsReps(boolean reps) {
+            isReps = reps;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
     }
 }

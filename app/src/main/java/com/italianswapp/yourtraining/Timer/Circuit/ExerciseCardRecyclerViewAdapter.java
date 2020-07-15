@@ -24,6 +24,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     private static final int EMOM = 1;
     private static final int REST = 2;
     private static final int TABATA = 3;
+    private static final int SUPERSET = 4;
 
     private final String[] TimeInStringForPicker = Utilities.TIME_IN_STRING;
 
@@ -51,6 +52,10 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 //Tabata
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.tabata_card, parent, false);
                 return new TabataSettingsViewHolder(v);
+            case SUPERSET:
+                //Superset
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.superset_card, parent, false);
+                return new SupersetSettingsViewHolder(v);
             default:
                 try {
                     throw new ExerciseTypeNotCorrectException();
@@ -69,6 +74,10 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         /*
+        Prendo l'oggetto in posizione position
+         */
+        ExerciseSettings exerciseSettings = exercises.get(position);
+        /*
         In base al tipo imposta un diverso tipo di exercise (esercizio, tabata, rest, emom, ...)
          */
         switch (holder.getItemViewType()) {
@@ -80,22 +89,23 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                     Numero ripetizioni (o secondi)
                     Recupero
                  */
+
                 ExerciseSettingsViewHolder exerciseSettingsViewHolder = (ExerciseSettingsViewHolder)holder;
-                exerciseSettingsViewHolder.mExerciseName.setText(exercises.get(position).getName());
+                exerciseSettingsViewHolder.mExerciseName.setText(exerciseSettings.getName());
                 exerciseSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
-                        exercises.get(position).getRepetition())));
+                        exerciseSettings.getRepetition())));
 
                 exerciseSettingsViewHolder.mReps.setText(
-                        exercises.get(position).isReps() ?
+                        exerciseSettings.isReps() ?
                                 //Se è un esercizio a ripetizioni stampa x reps
-                            exercises.get(position).getReps() + " reps" :
+                                exerciseSettings.getReps() + " reps" :
                                 //Altrimenti stampa xx:yy
                             Utilities.getStringTimeNoHour(
-                                exercises.get(position).getReps()));
+                                    exerciseSettings.getReps()));
 
                 exerciseSettingsViewHolder.mRec.setText(
                         Utilities.getStringTimeNoHour(
-                            exercises.get(position).getRec()));
+                                exerciseSettings.getRec()));
                 break;
             case EMOM:
                 /*
@@ -103,13 +113,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                     Numero lap
                     Numero secondi per ogni lap
                  */
+
                 EmomSettingsViewHolder emomSettingsViewHolder = (EmomSettingsViewHolder)holder;
                 emomSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
-                        exercises.get(position).getRepetition())));
+                        exerciseSettings.getRepetition())));
 
                 emomSettingsViewHolder.mReps.setText(
                                 Utilities.getStringTimeNoHour(
-                                        exercises.get(position).getReps()));
+                                        exerciseSettings.getReps()));
                 break;
             case REST:
                 /*
@@ -120,7 +131,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
                 restSettingsViewHolder.mRec.setText(
                         Utilities.getStringTimeNoHour(
-                                exercises.get(position).getReps()));
+                                exerciseSettings.getReps()));
                 break;
             case TABATA:
                 /*
@@ -131,15 +142,66 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                  */
                 TabataSettingsViewHolder tabataSettingsViewHolder = (TabataSettingsViewHolder)holder;
                 tabataSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
-                        exercises.get(position).getRepetition())));
+                        exerciseSettings.getRepetition())));
 
                 tabataSettingsViewHolder.mReps.setText(
                         Utilities.getStringTimeNoHour(
-                                exercises.get(position).getReps()));
+                                exerciseSettings.getReps()));
 
                 tabataSettingsViewHolder.mRec.setText(
                         Utilities.getStringTimeNoHour(
-                                exercises.get(position).getReps()));
+                                exerciseSettings.getReps()));
+                break;
+            case SUPERSET:
+                /*
+                Primo esercizio:
+                    Nome
+                    Numero lap
+                    Numero ripetizioni (o secondi)
+                    Recupero
+                 Secondo esercizio:
+                    Nome
+                    Ripetizioni (o secondi)
+                 */
+                SupersetSettingsViewHolder supersetSettingsViewHolder = (SupersetSettingsViewHolder) holder;
+                /*
+                Primo esercizio
+                 */
+                supersetSettingsViewHolder.mFirstExerciseName.setText(exerciseSettings.getName());
+                supersetSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
+                        exerciseSettings.getRepetition())));
+
+                supersetSettingsViewHolder.mFirstExerciseReps.setText(
+                        exerciseSettings.isReps() ?
+                                //Se è un esercizio a ripetizioni stampa x reps
+                                exerciseSettings.getReps() + " reps" :
+                                //Altrimenti stampa xx:yy
+                                Utilities.getStringTimeNoHour(
+                                        exerciseSettings.getReps()));
+
+                supersetSettingsViewHolder.mRec.setText(
+                        Utilities.getStringTimeNoHour(
+                                exerciseSettings.getRec()));
+                /*
+                Secondo esercizio
+                 */
+                ExerciseSettings.SupersetExercise supersetExercise = null;
+                try {
+                    supersetExercise = exerciseSettings.getSupersetExercise();
+                } catch (ExerciseTypeNotCorrectException e) {
+                    e.printStackTrace();
+                }
+
+                supersetSettingsViewHolder.mSecondExerciseName.setText(supersetExercise.getName());
+
+                supersetSettingsViewHolder.mSecondExerciseReps.setText(
+                        supersetExercise.isReps() ?
+                                //Se è un esercizio a ripetizioni stampa x reps
+                                supersetExercise.getReps() + " reps" :
+                                //Altrimenti stampa xx:yy
+                                Utilities.getStringTimeNoHour(
+                                        supersetExercise.getReps()));
+
                 break;
             default:
                 try {

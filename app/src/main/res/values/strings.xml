@@ -114,5 +114,6 @@
     <string name="pause">pause</string>
     <string name="Reset">Reset</string>
     <string name="Create">Create</string>
+    <string name="superset">Superset</string>
 
 </resources>
