@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.NumberPicker;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.italianswapp.yourtraining.Builders.Dialog2PickerBuilder;
+import com.italianswapp.yourtraining.Builders.Dialog3PickerBuilder;
 import com.italianswapp.yourtraining.Timer.CountDownTimers.AmrapActivity;
 import com.italianswapp.yourtraining.Chronometer.ChronometerActivity;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitCreatorActivity;

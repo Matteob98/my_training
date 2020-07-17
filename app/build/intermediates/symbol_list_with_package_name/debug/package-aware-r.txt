@@ -842,6 +842,7 @@ color cardview_shadow_end_color
 color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
 color colorAccent
+color colorAccentDark
 color colorPrimary
 color colorPrimaryDark
 color colorPrimaryLight
@@ -1020,6 +1021,7 @@ color test_mtrl_calendar_day_selected
 color textColor
 color tooltip_background_dark
 color tooltip_background_light
+color transparent
 color white
 color yellow
 dimen abc_action_bar_content_inset_material
@@ -1441,6 +1443,9 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable accent_out_line
+drawable accent_toggle_left
+drawable accent_toggle_right
 drawable amrap
 drawable avd_hide_password
 drawable avd_show_password
@@ -1454,6 +1459,7 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable chronometer
+drawable circle_accent
 drawable circle_primary_color
 drawable circle_progress_bar_ready
 drawable circle_progress_bar_rest
@@ -1567,6 +1573,8 @@ drawable sleep
 drawable tabata
 drawable test_custom_background
 drawable timer
+drawable toggle_widget_background_left
+drawable toggle_widget_background_right
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable winner
@@ -1683,6 +1691,8 @@ id colorLeftBarExerciseCard
 id colorLeftBarRestCard
 id colorLeftBarSupersetCard
 id colorLeftBarTabataCard
+id colorViewExerciseDialog
+id colorViewNumberPicker1
 id colorViewNumberPicker2
 id colorViewNumberPicker3
 id confirm_button
@@ -1723,7 +1733,9 @@ id enterAlways
 id enterAlwaysCollapsed
 id exerciseCard
 id exerciseListView
+id exerciseNameEditTextExerciseDialog
 id exerciseNameExerciseCard
+id exerciseNameTextInputLayoutExerciseDialog
 id exitCardHelpActivity
 id exitImageHelpActivity
 id exitUntilCollapsed
@@ -1743,8 +1755,12 @@ id finishTextView
 id finishTrainingToolbar
 id firstExerciseRepsSupersetCard
 id firstExerciseSupersetCard
+id firstPickerExerciseDialog
+id firstPickerNumberPicker1
 id firstPickerNumberPicker2
 id firstPickerNumberPicker3
+id firstTextExerciseDialog
+id firstTextNumberPicker1
 id firstTextNumberPicker2
 id firstTextNumberPicker3
 id fitToContents
@@ -1767,7 +1783,6 @@ id icon_group
 id icon_only
 id ifRoom
 id image
-id imageButton
 id imageView
 id imageView2
 id imageViewHelpActivity
@@ -1867,12 +1882,14 @@ id primaryBottomTextEmomActivity
 id progress_circular
 id progress_horizontal
 id radio
+id radioGroupExerciseSettingsDialog
 id recExerciseCard
 id recRestCard
 id recSupersetCard
 id recTabataCard
 id repsEmomCard
 id repsExerciseCard
+id repsRadioButtonExerciseSettingsDialog
 id repsTabataCard
 id resetButtonChronometerActivity
 id reviewCardHelpActivity
@@ -1903,11 +1920,14 @@ id search_src_text
 id search_voice_btn
 id secondExerciseRepsSupersetCard
 id secondExerciseSupersetCard
+id secondPickerExerciseDialog
 id secondPickerNumberPicker2
 id secondPickerNumberPicker3
+id secondTextExerciseDialog
 id secondTextNumberPicker2
 id secondTextNumberPicker3
 id secondaryBottomTextEmomActivity
+id secsRadioButtonExerciseSettingsDialog
 id select_dialog_listview
 id selected
 id shareCardHelpActivity
@@ -1917,6 +1937,7 @@ id showCustom
 id showHome
 id showTitle
 id skipCollapsed
+id sleepImage
 id slide
 id smallLabel
 id snackbar_action
@@ -1979,7 +2000,9 @@ id text_input_start_icon
 id textinput_counter
 id textinput_error
 id textinput_helper_text
+id thirdPickerExerciseDialog
 id thirdPickerNumberPicker3
+id thirdTextExerciseDialog
 id thirdTextNumberPicker3
 id time
 id timeFromStart
@@ -1987,6 +2010,7 @@ id timerCard
 id title
 id titleDividerNoCustom
 id titleExerciseList
+id titleNumberPicker1
 id titleNumberPicker2
 id titleNumberPicker3
 id title_template
@@ -2115,6 +2139,7 @@ layout dim_overlay
 layout emom_card
 layout exercise_card
 layout exercise_list_dialog
+layout exercise_settings_dialog
 layout lap_card
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
@@ -2159,6 +2184,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout number_picker1
 layout number_picker2
 layout number_picker3
 layout number_picker_dialog
@@ -2379,6 +2405,7 @@ string start
 string status_bar_notification_info_overflow
 string subtitle_finish_activity
 string subtitle_help_activity
+string superset
 string tabata
 string tabata_description
 string tap_to_start
@@ -2913,6 +2940,7 @@ style ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox
 style ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense
 style ThemeOverlay_MaterialComponents_Toolbar_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Surface
+style Widget_App_Button_OutlinedButton_IconOnly
 style Widget_AppCompat_ActionBar
 style Widget_AppCompat_ActionBar_Solid
 style Widget_AppCompat_ActionBar_TabBar

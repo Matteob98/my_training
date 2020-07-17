@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/colorViewExerciseDialog"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/circle_accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <RadioGroup
+        android:checkedButton="@+id/secsRadioButtonExerciseSettingsDialog"
+        android:id="@+id/radioGroupExerciseSettingsDialog"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/accent_out_line"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/exerciseNameTextInputLayoutExerciseDialog"
+        app:layout_constraintBottom_toBottomOf="@+id/exerciseNameTextInputLayoutExerciseDialog">
+
+        <RadioButton
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="1dp"
+            android:id="@+id/repsRadioButtonExerciseSettingsDialog"
+            android:background="@drawable/toggle_widget_background_left"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/reps"
+            android:letterSpacing="0.05"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:lines="1"
+            />
+
+        <RadioButton
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:id="@+id/secsRadioButtonExerciseSettingsDialog"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_widget_background_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/secs"
+            android:letterSpacing="0.05"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:lines="1"/>
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/exerciseNameTextInputLayoutExerciseDialog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroupExerciseSettingsDialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/exerciseNameEditTextExerciseDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exercise"
+            android:maxLength="20" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <NumberPicker
+        android:id="@+id/firstPickerExerciseDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/secondPickerExerciseDialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseNameTextInputLayoutExerciseDialog" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05"
+        android:textColor="#757575"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/sets"
+        android:id="@+id/firstTextExerciseDialog"
+        app:layout_constraintTop_toBottomOf="@+id/firstPickerExerciseDialog"
+        app:layout_constraintStart_toStartOf="@+id/firstPickerExerciseDialog"
+        app:layout_constraintEnd_toEndOf="@+id/firstPickerExerciseDialog"/>
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/secondPickerExerciseDialog"
+        app:layout_constraintTop_toTopOf="@+id/firstPickerExerciseDialog"
+        app:layout_constraintStart_toEndOf="@+id/firstPickerExerciseDialog"
+        app:layout_constraintEnd_toStartOf="@+id/thirdPickerExerciseDialog" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05"
+        android:textColor="#757575"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/work"
+        android:id="@+id/secondTextExerciseDialog"
+        app:layout_constraintTop_toBottomOf="@+id/secondPickerExerciseDialog"
+        app:layout_constraintStart_toStartOf="@+id/secondPickerExerciseDialog"
+        app:layout_constraintEnd_toEndOf="@+id/secondPickerExerciseDialog"/>
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/thirdPickerExerciseDialog"
+        app:layout_constraintTop_toTopOf="@+id/secondPickerExerciseDialog"
+        app:layout_constraintStart_toEndOf="@+id/secondTextExerciseDialog"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05"
+        android:textColor="#757575"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/rest"
+        android:id="@+id/thirdTextExerciseDialog"
+        app:layout_constraintTop_toBottomOf="@+id/thirdPickerExerciseDialog"
+        app:layout_constraintStart_toStartOf="@+id/thirdPickerExerciseDialog"
+        app:layout_constraintEnd_toEndOf="@+id/thirdPickerExerciseDialog"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

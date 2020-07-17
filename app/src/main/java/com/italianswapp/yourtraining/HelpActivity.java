@@ -49,11 +49,6 @@ public class HelpActivity extends AppCompatActivity {
         mVersionTextView.setText(getResources().getString(R.string.version) + ": " + BuildConfig.VERSION_NAME);
 
         /*
-        Gestisce il comportamento dello schermo quando si hanno schermi piccoli
-         */
-        smallScreenSettings();
-
-        /*
         Connetto al database
         Serve nel caso in cui l'utente voglia inviare un bug
          */
@@ -67,28 +62,6 @@ public class HelpActivity extends AppCompatActivity {
         onClickExitButton();
         onClickShareButton();
 
-    }
-
-    /**
-     * Se ho uno schermo troppo piccolo per mostrare tutti i dati vengono nascosti i
-     * testi in basso
-     */
-    private void smallScreenSettings() {
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
-
-        if (height<480 || width < 800) {
-            TextView first = findViewById(R.id.textView5);
-            TextView second = findViewById(R.id.textView6);
-            TextView third = findViewById(R.id.textView7);
-
-            first.setVisibility(TextView.GONE);
-            second.setVisibility(TextView.GONE);
-            third.setVisibility(TextView.GONE);
-            mVersionTextView.setVisibility(TextView.GONE);
-        }
     }
 
     /**

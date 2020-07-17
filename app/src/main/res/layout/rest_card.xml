@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/sleepImage"
                 android:layout_width="wrap_content"
                 android:layout_height="16.5dp"
                 android:layout_marginStart="25dp"
@@ -54,9 +54,9 @@
                 android:gravity="end"
                 android:textStyle="bold"
                 android:fontFamily="@font/roboto"
-                app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-                app:layout_constraintStart_toEndOf="@+id/imageButton"
-                app:layout_constraintTop_toTopOf="@+id/imageButton"
+                app:layout_constraintBottom_toBottomOf="@+id/sleepImage"
+                app:layout_constraintStart_toEndOf="@+id/sleepImage"
+                app:layout_constraintTop_toTopOf="@+id/sleepImage"
                 tools:text="00:05" />
 
             <ImageButton

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,15 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     private final String[] TimeInStringForPicker = Utilities.TIME_IN_STRING;
 
     List<? extends ExerciseSettings> exercises;
+
+    private CircuitCreatorActivity circuitCreatorActivity;
+
+    private String workString, restString;
+    private int repetition;
+
+    public void setCircuitCreatorActivity(CircuitCreatorActivity circuitCreatorActivity){
+        this.circuitCreatorActivity = circuitCreatorActivity;
+    }
 
 
     @NonNull
@@ -103,9 +113,16 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                             Utilities.getStringTimeNoHour(
                                     exerciseSettings.getReps()));
 
-                exerciseSettingsViewHolder.mRec.setText(
-                        Utilities.getStringTimeNoHour(
-                                exerciseSettings.getRec()));
+                if(exerciseSettings.isHasRecs())
+                    exerciseSettingsViewHolder.mRec.setText(
+                            Utilities.getStringTimeNoHour(
+
+                                    exerciseSettings.getRec()));
+                else {
+                    exerciseSettingsViewHolder.mSleepImage.setVisibility(ImageView.INVISIBLE);
+                    exerciseSettingsViewHolder.mRec.setVisibility(TextView.INVISIBLE);
+                }
+
                 break;
             case EMOM:
                 /*
@@ -131,7 +148,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
                 restSettingsViewHolder.mRec.setText(
                         Utilities.getStringTimeNoHour(
-                                exerciseSettings.getReps()));
+                                exerciseSettings.getRec()));
                 break;
             case TABATA:
                 /*
@@ -150,7 +167,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
                 tabataSettingsViewHolder.mRec.setText(
                         Utilities.getStringTimeNoHour(
-                                exerciseSettings.getReps()));
+                                exerciseSettings.getRec()));
                 break;
             case SUPERSET:
                 /*
@@ -259,6 +276,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         CardView mCardView;
         TextView mExerciseName, mLap, mReps, mRec;
         ImageButton mDeleteButton;
+        ImageView mSleepImage;
 
         public ExerciseSettingsViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -269,6 +287,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mDeleteButton = itemView.findViewById(R.id.deleteExerciseCard);
             mReps = itemView.findViewById(R.id.repsExerciseCard);
             mRec = itemView.findViewById(R.id.recExerciseCard);
+            mSleepImage = itemView.findViewById(R.id.sleepImage);
 
             /*
             Azione alla pressione del tasto delete
@@ -287,7 +306,8 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO lancia il dialog dedicato
+                    int position = getAdapterPosition();
+                    circuitCreatorActivity.showExerciseDialog(position);
                 }
             });
         }
@@ -327,7 +347,8 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO lancia il dialog dedicato
+                    int position = getAdapterPosition();
+                    circuitCreatorActivity.showRestDialog(position);
                 }
             });
         }
@@ -368,12 +389,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO lancia il dialog dedicato
+                    int position = getAdapterPosition();
+                    circuitCreatorActivity.showTabataDialog(position);
                 }
             });
 
         }
     }
+
 
     public class EmomSettingsViewHolder extends RecyclerView.ViewHolder{
 
@@ -406,7 +429,8 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO lancia il dialog dedicato
+                    int position = getAdapterPosition();
+                    circuitCreatorActivity.showEmomDialog(position);
                 }
             });
         }
@@ -448,7 +472,8 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO lancia il dialog dedicato
+                    int position = getAdapterPosition();
+                    circuitCreatorActivity.showSupersetDialog(position);
                 }
             });
         }

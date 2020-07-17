@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#3730f2</color>
     <color name="colorPrimaryLight">#B39DDB</color>
     <color name="colorAccent">#f2e96b</color>
+    <color name="colorAccentDark">#FFEB3B</color>
     <color name="textColor">#FFFFFF</color>
     <color name="backgroundColor">#eeeeee</color>
     <color name="lightGray">#ededed</color>
@@ -20,6 +21,7 @@
     <color name="darkGray">#212121</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="transparent">#000000FF</color>
 
     <!-- Colori per gli esercizi dei circuiti -->
     <color name="emomColor">#39a78e</color>
