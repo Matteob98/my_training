@@ -59,9 +59,9 @@ public class AmrapActivity extends CountDownActivity {
         Disabilito tutto, sarà riabilitato dopo il ready con l'iniziatizes
          */
         mRightFloatingButton.setEnabled(false);
-        mRightFloatingButton.setImageResource(R.drawable.ic_add_black);
+        mRightFloatingButton.setImageResource(R.drawable.ic_add);
         mLeftFloatingButton.setEnabled(false);
-        mLeftFloatingButton.setImageResource(R.drawable.ic_minus_scuro);
+        mLeftFloatingButton.setImageResource(R.drawable.ic_minus);
 
         mSecondaryTextView.setVisibility(TextView.INVISIBLE);
         mOverlineSecondaryTextView.setVisibility(TextView.INVISIBLE);

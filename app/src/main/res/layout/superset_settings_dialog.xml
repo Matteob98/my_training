@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/coloredViewSupersetDialog"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/supersetColor"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/superset"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/swansea"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/coloredViewSupersetDialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/coloredViewSupersetDialog" />
+
+        <ImageButton
+            android:id="@+id/deleteImageButtonSupersetDialog"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:padding="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_cross_white"
+            app:layout_constraintBottom_toBottomOf="@+id/coloredViewSupersetDialog"
+            app:layout_constraintEnd_toEndOf="@+id/coloredViewSupersetDialog"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/firstRadioGroupSupersetSettingsDialog"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/superset_out_line"
+            android:checkedButton="@+id/firstSecsRadioButtonSupersetSettingsDialog"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/firstExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintStart_toStartOf="@+id/firstExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintTop_toBottomOf="@+id/firstExerciseNameTextInputLayoutSupersetDialog">
+
+            <RadioButton
+                android:id="@+id/firstRepsRadioButtonSupersetSettingsDialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_widget_background_left_superset"
+                android:button="@null"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:text="@string/reps"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/firstSecsRadioButtonSupersetSettingsDialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_widget_background_right_superset"
+                android:button="@null"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:text="@string/secs"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/firstExerciseNameTextInputLayoutSupersetDialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coloredViewSupersetDialog">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/firstExerciseNameEditTextSupersetDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/first_exercise"
+                android:maxLength="20" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/firstWorkPickerSupersetDialog"
+            app:layout_constraintStart_toStartOf="@+id/firstWorkPickerSupersetDialog"
+            app:layout_constraintTop_toBottomOf="@+id/firstWorkPickerSupersetDialog" />
+
+        <NumberPicker
+            android:id="@+id/setsPickerSupersetDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/firstWorkPickerSupersetDialog"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/firstWorkPickerSupersetDialog"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+        <TextView
+            android:id="@+id/setsTextExerciseDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/swansea"
+            android:gravity="center_horizontal"
+            android:elevation="15dp"
+            android:text="@string/sets"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView3"
+            app:layout_constraintEnd_toEndOf="@+id/cardView3"
+            app:layout_constraintStart_toStartOf="@+id/cardView3"
+            app:layout_constraintTop_toTopOf="@+id/cardView3" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/secondWorkPickerSupersetDialog"
+            app:layout_constraintStart_toStartOf="@+id/firstWorkPickerSupersetDialog"
+            app:layout_constraintTop_toBottomOf="@+id/firstRadioGroupSupersetSettingsDialog" />
+
+        <TextView
+            android:id="@+id/firstWorkTextSupersetDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="15dp"
+            android:fontFamily="@font/swansea"
+            android:gravity="center_horizontal"
+            android:text="@string/work"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+            app:layout_constraintEnd_toEndOf="@+id/cardView2"
+            app:layout_constraintStart_toStartOf="@+id/cardView2"
+            app:layout_constraintTop_toTopOf="@+id/cardView2" />
+
+        <NumberPicker
+            android:id="@+id/firstWorkPickerSupersetDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/firstExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintStart_toStartOf="@+id/firstExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView4"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView3"
+            app:layout_constraintEnd_toEndOf="@+id/secondWorkPickerSupersetDialog"
+            app:layout_constraintStart_toStartOf="@+id/secondWorkPickerSupersetDialog"
+            app:layout_constraintTop_toTopOf="@+id/cardView3" />
+
+        <NumberPicker
+            android:id="@+id/restPickerSupersetDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/secondWorkPickerSupersetDialog"
+            app:layout_constraintStart_toStartOf="@+id/secondWorkPickerSupersetDialog"
+            app:layout_constraintTop_toTopOf="@+id/setsPickerSupersetDialog" />
+
+        <TextView
+            android:id="@+id/restTextSupersetDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/swansea"
+            android:gravity="center_horizontal"
+            android:elevation="15dp"
+            android:text="@string/rest"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView4"
+            app:layout_constraintEnd_toEndOf="@+id/cardView4"
+            app:layout_constraintStart_toStartOf="@+id/cardView4"
+            app:layout_constraintTop_toTopOf="@+id/cardView4" />
+
+        <!-- Secondo esercizio -->
+
+        <RadioGroup
+            android:id="@+id/secondRadioGroupSupersetSettingsDialog"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/superset_out_line"
+            android:checkedButton="@+id/secondSecsRadioButtonSupersetSettingsDialog"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/firstRadioGroupSupersetSettingsDialog"
+            app:layout_constraintEnd_toEndOf="@+id/secondExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintStart_toStartOf="@+id/secondExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintTop_toTopOf="@+id/firstRadioGroupSupersetSettingsDialog">
+
+            <RadioButton
+                android:id="@+id/secondRepsRadioButtonSupersetSettingsDialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_widget_background_left_superset"
+                android:button="@null"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:text="@string/reps"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/secondSecsRadioButtonSupersetSettingsDialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_widget_background_right_superset"
+                android:button="@null"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:lines="1"
+                android:text="@string/secs"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/secondExerciseNameTextInputLayoutSupersetDialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/firstExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/secondExerciseNameEditTextSupersetDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/second_exercise"
+                android:maxLength="20" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <NumberPicker
+            android:id="@+id/secondWorkPickerSupersetDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/secondExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintStart_toStartOf="@+id/secondExerciseNameTextInputLayoutSupersetDialog"
+            app:layout_constraintTop_toTopOf="@+id/firstWorkPickerSupersetDialog" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.50121653"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/saveButtonSupersetDialog"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ripple_blue"
+            android:elevation="20dp"
+            android:fontFamily="@font/swansea_bold"
+            android:letterSpacing="0.05"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setsPickerSupersetDialog"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

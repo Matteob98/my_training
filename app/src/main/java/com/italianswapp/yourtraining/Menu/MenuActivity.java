@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -34,7 +35,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     private final static String MAIN_KEY = "main";
     private CardView circuitCard, chronometerCard, tabataCard,
             timerCard, amrapCard, emomCard, negativeCard;
-    private Toolbar toolbar;
+    private ImageButton mHelpButton;
 
     private final String[] TimeInStringForPicker =  Utilities.TIME_IN_STRING;
 
@@ -66,12 +67,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        toolbar = findViewById(R.id.toolbarMainActivity);
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.app_name));
-        toolbar.setTitleTextColor(getResources().getColor(R.color.textColor));
-
 
         circuitCard = findViewById(R.id.circuitCard);
         circuitCard.setOnClickListener(this);
@@ -93,6 +89,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         negativeCard = findViewById(R.id.negativeCard);
         negativeCard.setOnClickListener(this);
+
+        mHelpButton = findViewById(R.id.helpButtonActivityMain);
 
     }
 
@@ -511,39 +509,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /**
-     * Metodo che viene chiamato dall'activity del cronometro per far si che venga richiamato il cronometro in corso
-     * E non creato uno nuovo
-     * @param context Il contesto dove ci si trova
-     * @return L'activity Menu
-     */
-    public static Intent getMenuActivityFromChronometer(Context context) {
-        Intent intent = new Intent(context, MenuActivity.class);
-        intent.putExtra(MAIN_KEY, true);
 
-        return intent;
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        MenuItem mHelpButton = menu.findItem(R.id.helpToolbar);
-        mHelpButton.setVisible(true);
-        mHelpButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                goToHelpActivity();
-                return true;
-            }
-        });
-        return true;
-    }
-
-    private void goToHelpActivity() {
-        Intent intent=new Intent(this, HelpActivity.class);
+    public void helpClick(View view) {
+        Intent intent=new Intent(getApplicationContext(), HelpActivity.class);
         startActivity(intent);
     }
-
 }
 

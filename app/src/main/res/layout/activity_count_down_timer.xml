@@ -19,51 +19,103 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/primaryView"
+        android:layout_width="13dp"
+        android:layout_height="60dp"
+        android:visibility="visible"
+        android:background="@drawable/bottom_right_corner_accent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarEmomActivity" />
+
+
     <TextView
         android:id="@+id/overlinePrimaryBottomTextEmomActivity"
-        style="@style/TextAppearance.MdcTypographyStyles.Overline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/swansea"
         android:gravity="start"
         android:text="@string/current_set"
         android:textColor="@color/colorPrimary"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/primaryView"
         app:layout_constraintTop_toBottomOf="@id/toolbarEmomActivity" />
 
     <TextView
         android:id="@+id/primaryBottomTextEmomActivity"
-        style="@style/TextAppearance.MdcTypographyStyles.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
+        android:textSize="18sp"
         android:gravity="start"
         android:text="@string/time_00_slash_00"
         android:textColor="@color/colorPrimary"
-
         app:layout_constraintStart_toStartOf="@id/overlinePrimaryBottomTextEmomActivity"
         app:layout_constraintTop_toBottomOf="@id/overlinePrimaryBottomTextEmomActivity"/>
 
     <TextView
-        android:id="@+id/overlineSecondaryBottomTextEmomActivity"
-        style="@style/TextAppearance.MdcTypographyStyles.Overline"
+        android:id="@+id/primarySetsTextView"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
+        android:textSize="12sp"
+        android:layout_marginStart="8dp"
+        android:gravity="start"
+        tools:text="00/00"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBaseline_toBaselineOf="@+id/primaryBottomTextEmomActivity"
+        app:layout_constraintStart_toEndOf="@+id/primaryBottomTextEmomActivity" />
+
+    <View
+        android:id="@+id/secondaryView"
+        android:visibility="invisible"
+        android:layout_width="13dp"
+        android:layout_height="60dp"
+        android:background="@drawable/bottom_left_corner_accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarEmomActivity" />
+
+
+    <TextView
+        android:id="@+id/overlineSecondaryBottomTextEmomActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
+        android:textSize="12sp"
         android:text="@string/current_lap"
         android:textColor="@color/colorPrimary"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="3dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/overlinePrimaryBottomTextEmomActivity"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/secondaryView" />
 
     <TextView
         android:id="@+id/secondaryBottomTextEmomActivity"
-        style="@style/TextAppearance.MdcTypographyStyles.Headline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
+        android:textSize="18sp"
         android:text="@string/time_00_slash_00"
+        android:layout_marginEnd="3dp"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBaseline_toBaselineOf="@+id/primaryBottomTextEmomActivity"
-        app:layout_constraintEnd_toEndOf="@id/overlineSecondaryBottomTextEmomActivity" />
+        app:layout_constraintEnd_toStartOf="@id/secondaryView" />
+
+    <TextView
+        android:id="@+id/secondarySetsTextView"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
+        android:textSize="12sp"
+        android:layout_marginEnd="8dp"
+        android:gravity="start"
+        tools:text="00/00"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBaseline_toBaselineOf="@+id/primaryBottomTextEmomActivity"
+        app:layout_constraintEnd_toStartOf="@+id/secondaryBottomTextEmomActivity" />
 
 
     <ProgressBar
@@ -98,7 +150,7 @@
         android:textSize="18sp"
         android:textColor="#616161"
         android:letterSpacing="0.05"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/swansea"
         app:layout_constraintBottom_toTopOf="@id/textEmomActivity"
         app:layout_constraintLeft_toLeftOf="@id/myProgress"
         app:layout_constraintRight_toRightOf="@id/myProgress"
@@ -113,14 +165,12 @@
         android:layout_alignTop="@id/myProgress"
         android:layout_alignEnd="@id/myProgress"
         android:layout_alignBottom="@id/myProgress"
-        android:background="@android:color/transparent"
         android:gravity="center"
         android:text="@string/time_00_00_00"
         android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:letterSpacing="0.05"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/swansea_bold"
         app:layout_constraintBottom_toBottomOf="@+id/myProgress"
         app:layout_constraintEnd_toEndOf="@+id/myProgress"
         app:layout_constraintStart_toStartOf="@+id/myProgress"
@@ -138,7 +188,7 @@
         android:text="@string/work"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/swansea"
         app:layout_constraintBottom_toBottomOf="@+id/myProgress"
         app:layout_constraintEnd_toEndOf="@+id/myProgress"
         app:layout_constraintStart_toStartOf="@+id/myProgress"
@@ -157,6 +207,7 @@
         android:src="@drawable/ic_add"
         android:tint="@color/black"
         android:visibility="invisible"
+        app:borderWidth="0dp"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="@+id/startButtonCountDownActivity"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,6 +226,7 @@
         android:src="@drawable/ic_assignament"
         android:tint="@color/black"
         android:visibility="invisible"
+        app:borderWidth="0dp"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="@+id/startButtonCountDownActivity"
         app:layout_constraintEnd_toStartOf="@+id/startButtonCountDownActivity"
@@ -187,16 +239,43 @@
         android:id="@+id/startButtonCountDownActivity"
         android:layout_height="45dp"
         android:layout_width="125dp"
-        android:background="@drawable/ripple"
+        android:background="@drawable/ripple_blue"
         android:text="@string/start"
+        android:fontFamily="@font/swansea_bold"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:letterSpacing="0.05"
+        android:textSize="15sp"
+        android:elevation="20dp"
+        android:visibility="visible"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
          />
+
+    <ImageButton
+        android:id="@+id/repsButtonCountDownActivity"
+        android:layout_height="45dp"
+        android:layout_width="125dp"
+        android:visibility="invisible"
+        android:background="@drawable/ripple_blue"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_success"
+        android:text="@string/start"
+        android:fontFamily="@font/swansea_bold"
+        android:textColor="@color/white"
+        android:letterSpacing="0.05"
+        android:textSize="15sp"
+        android:elevation="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

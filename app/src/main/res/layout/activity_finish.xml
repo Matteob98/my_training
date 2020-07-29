@@ -7,16 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".FinishActivity"
     android:orientation="vertical"
+    android:background="@color/backgroundColor"
     android:gravity="center_horizontal">
 
     <TextView
         android:id="@+id/finishTextView"
-        style="@style/TextAppearance.MaterialComponents.Subtitle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:hint="Complimenti Matteo Battisti"
         android:textAlignment="center"
+        android:fontFamily="@font/swansea_bold"
+        android:textSize="12sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,22 +40,25 @@
 
     <TextView
         android:id="@+id/textView12"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/well_done"
+        android:fontFamily="@font/swansea_bold"
+        android:textSize="24sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView11"
-        style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="@string/subtitle_finish_activity"
+        android:fontFamily="@font/swansea"
+        android:textSize="12dp"
         app:layout_constraintBottom_toTopOf="@id/homeButtonFinishActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -62,9 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
         android:src="@drawable/ic_home"
-        android:tint="@color/white"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

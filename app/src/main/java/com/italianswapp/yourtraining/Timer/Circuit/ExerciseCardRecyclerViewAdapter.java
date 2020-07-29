@@ -31,10 +31,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
     List<? extends ExerciseSettings> exercises;
 
-    private CircuitCreatorActivity circuitCreatorActivity;
-
-    private String workString, restString;
-    private int repetition;
+    private CircuitCreatorActivity circuitCreatorActivity = null;
 
     public void setCircuitCreatorActivity(CircuitCreatorActivity circuitCreatorActivity){
         this.circuitCreatorActivity = circuitCreatorActivity;
@@ -68,7 +65,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 return new SupersetSettingsViewHolder(v);
             default:
                 try {
-                    throw new ExerciseTypeNotCorrectException();
+                    throw new ExerciseTypeNotCorrectException("Tipo non corretto in RecyclerView.ViewHolder onCreateViewHolder");
                 } catch (ExerciseTypeNotCorrectException e) {
                     e.printStackTrace();
                 }
@@ -222,7 +219,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 break;
             default:
                 try {
-                    throw new ExerciseTypeNotCorrectException();
+                    throw new ExerciseTypeNotCorrectException("Tipo non corretto in onBindViewHolder");
                 } catch (ExerciseTypeNotCorrectException e) {
                     e.printStackTrace();
                 }
@@ -254,8 +251,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         notifyItemRemoved(position);
     }
 
-    public ExerciseCardRecyclerViewAdapter(List<? extends
-            ExerciseSettings> exercises) {
+    public ExerciseCardRecyclerViewAdapter(List<? extends ExerciseSettings> exercises) {
         this.exercises = exercises;
     }
 
@@ -263,6 +259,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     public int getItemCount() {
         return exercises.size();
     }
+
 
     /*
     *  Classi innestate che gestiscono ognuna un tipo di esercizio diverso
@@ -307,11 +304,11 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    circuitCreatorActivity.showExerciseDialog(position);
+                    if(circuitCreatorActivity!=null)
+                        circuitCreatorActivity.showExerciseDialog(position);
                 }
             });
         }
-
     }
 
     /**
@@ -348,7 +345,8 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    circuitCreatorActivity.showRestDialog(position);
+                    if(circuitCreatorActivity!=null)
+                        circuitCreatorActivity.showRestDialog(position);
                 }
             });
         }
@@ -357,7 +355,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     /**
      * Classe innestata per la gestione della card per la creazione di Tabata
      */
-    public class TabataSettingsViewHolder extends RecyclerView.ViewHolder {
+    public class TabataSettingsViewHolder extends RecyclerView.ViewHolder{
 
         CardView mCardView;
         TextView mLap, mReps, mRec;
@@ -390,7 +388,8 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    circuitCreatorActivity.showTabataDialog(position);
+                    if(circuitCreatorActivity!=null)
+                        circuitCreatorActivity.showTabataDialog(position);
                 }
             });
 
@@ -430,13 +429,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    circuitCreatorActivity.showEmomDialog(position);
+                    if(circuitCreatorActivity!=null)
+                        circuitCreatorActivity.showEmomDialog(position);
                 }
             });
         }
     }
 
-    public class SupersetSettingsViewHolder extends RecyclerView.ViewHolder {
+    public class SupersetSettingsViewHolder extends RecyclerView.ViewHolder{
 
         CardView mCardView;
         TextView mFirstExerciseName, mSecondExerciseName, mFirstExerciseReps,
@@ -473,7 +473,8 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    circuitCreatorActivity.showSupersetDialog(position);
+                    if(circuitCreatorActivity!=null)
+                        circuitCreatorActivity.showSupersetDialog(position);
                 }
             });
         }

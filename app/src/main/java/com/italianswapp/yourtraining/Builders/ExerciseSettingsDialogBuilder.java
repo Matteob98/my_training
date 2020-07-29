@@ -7,7 +7,9 @@ import android.content.DialogInterface;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,6 +24,8 @@ public class ExerciseSettingsDialogBuilder {
     private static NumberPicker firstPicker, secondPicker, thirdPicker;
     private RadioGroup radioGroup;
     private RadioButton secsButton, repsButton;
+    private ImageButton deleteButton;
+    private Button saveButton;
 
     private AlertDialog.Builder builder;
     private final View dialogView;
@@ -54,6 +58,9 @@ public class ExerciseSettingsDialogBuilder {
         radioGroup = dialogView.findViewById(R.id.radioGroupExerciseSettingsDialog);
         secsButton = dialogView.findViewById(R.id.secsRadioButtonExerciseSettingsDialog);
         repsButton = dialogView.findViewById(R.id.repsRadioButtonExerciseSettingsDialog);
+
+        deleteButton = dialogView.findViewById(R.id.deleteImageButtonExerciseDialog);
+        saveButton = dialogView.findViewById(R.id.saveButtonExerciseDialog);
     }
 
     /**
@@ -100,6 +107,27 @@ public class ExerciseSettingsDialogBuilder {
     /**
      *
      * @param number
+     * @param value
+     * @return
+     */
+    public ExerciseSettingsDialogBuilder setPickerValue ( int number, int value) {
+        switch(number) {
+            case 1:
+                firstPicker.setValue(value);
+                break;
+            case 2:
+                secondPicker.setValue(value);
+                break;
+            case 3:
+                thirdPicker.setValue(value);
+                break;
+        }
+        return this;
+    }
+
+    /**
+     *
+     * @param number
      * @param min
      * @param max
      * @param values
@@ -124,6 +152,7 @@ public class ExerciseSettingsDialogBuilder {
         return this;
     }
 
+
     /**
      *
      * @param number 1 = reps, 2 = secs
@@ -144,6 +173,27 @@ public class ExerciseSettingsDialogBuilder {
 
     /**
      *
+     * @param number
+     * @return
+     */
+    public ExerciseSettingsDialogBuilder setRadioButtonSelected(int number) {
+        switch (number) {
+            case 1:
+                repsButton.callOnClick();
+                repsButton.setChecked(true);
+                secsButton.setChecked(false);
+                break;
+            case 2:
+                secsButton.callOnClick();
+                secsButton.setChecked(true);
+                repsButton.setChecked(false);
+                break;
+        }
+        return this;
+    }
+
+    /**
+     *
      * @param textWatcher
      * @return
      */
@@ -152,36 +202,40 @@ public class ExerciseSettingsDialogBuilder {
         return this;
     }
 
-    /**
-     *
-     * @param text
-     * @param onClickListener
-     * @return
-     */
-    public ExerciseSettingsDialogBuilder setPositiveButton (String text, DialogInterface.OnClickListener onClickListener ) {
-        builder.setPositiveButton( text, onClickListener );
+    public ExerciseSettingsDialogBuilder setTitleValue(String title) {
+        titleTextView.setText(title);
         return this;
     }
 
     /**
      *
-     * @param text
      * @param onClickListener
      * @return
      */
-    public ExerciseSettingsDialogBuilder setNegativeButton ( String text, DialogInterface.OnClickListener onClickListener ) {
-        builder.setNegativeButton( text, onClickListener );
+    public ExerciseSettingsDialogBuilder setPositiveButton (View.OnClickListener onClickListener ) {
+        //Todo il pulsante save dopo aver salvato dovrebbe chiudere il dialog
+        saveButton.setOnClickListener(onClickListener);
         return this;
     }
 
-    /*
-
+    /**
+     *
      */
     public void show() {
-        AlertDialog alertDialog = builder.create();
+        final AlertDialog alertDialog = builder.create();
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
         alertDialog.show();
     }
 
+    /**
+     *
+     * @return
+     */
     public static NumberPicker getSecondPicker() {
         return secondPicker;
     }

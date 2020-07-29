@@ -9,13 +9,14 @@
         android:id="@+id/bugTextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp" >
+        android:layout_margin="16dp">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/bugEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/bug_dialog" />
+            android:hint="@string/bug_dialog"
+            android:fontFamily="@font/swansea"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -33,26 +33,13 @@
 
 
     <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/firstPickerNumberPicker2"
-        app:layout_constraintTop_toBottomOf="@+id/colorViewNumberPicker2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/secondPickerNumberPicker2" />
-
-    <TextView
-        android:id="@+id/firstTextNumberPicker2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:letterSpacing="0.05"
-        android:textColor="#757575"
-        android:textSize="12sp"
-        android:fontFamily="@font/roboto"
-        tools:text="First"
-        app:layout_constraintTop_toBottomOf="@+id/firstPickerNumberPicker2"
-        app:layout_constraintStart_toStartOf="@+id/firstPickerNumberPicker2"
-        app:layout_constraintEnd_toEndOf="@+id/firstPickerNumberPicker2"/>
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/secondPickerNumberPicker2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -62,19 +49,56 @@
         app:layout_constraintStart_toEndOf="@+id/firstPickerNumberPicker2"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorViewNumberPicker2">
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/firstTextNumberPicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="15dp"
+        android:fontFamily="@font/swansea"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.05"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/firstPickerNumberPicker2"
+        app:layout_constraintStart_toStartOf="@+id/firstPickerNumberPicker2"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        tools:text="First" />
+
     <TextView
         android:id="@+id/secondTextNumberPicker2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="15dp"
+        android:fontFamily="@font/swansea"
         android:gravity="center_horizontal"
         android:letterSpacing="0.05"
-        android:textColor="#757575"
-        android:textSize="12sp"
-        android:fontFamily="@font/roboto"
-        tools:text="Second"
-        app:layout_constraintTop_toBottomOf="@+id/secondPickerNumberPicker2"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textAllCaps="true"
+        app:layout_constraintBaseline_toBaselineOf="@+id/firstTextNumberPicker2"
+        app:layout_constraintEnd_toEndOf="@+id/secondPickerNumberPicker2"
         app:layout_constraintStart_toStartOf="@+id/secondPickerNumberPicker2"
-        app:layout_constraintEnd_toEndOf="@+id/secondPickerNumberPicker2"/>
+        tools:text="Second" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,13 @@
 package com.italianswapp.yourtraining.Timer.Circuit;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -22,6 +24,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
 import com.italianswapp.yourtraining.Builders.ExerciseSettingsDialogBuilder;
+import com.italianswapp.yourtraining.Builders.SupersetSettingsDialogBuilder;
+import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
 import com.italianswapp.yourtraining.HelpActivity;
 import com.italianswapp.yourtraining.Builders.Dialog1PickerBuilder;
 import com.italianswapp.yourtraining.Builders.Dialog2PickerBuilder;
@@ -29,10 +33,8 @@ import com.italianswapp.yourtraining.Builders.Dialog3PickerBuilder;
 import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseSettings;
 import com.italianswapp.yourtraining.Utilities;
-
 import java.util.ArrayList;
 import java.util.Objects;
-
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class CircuitCreatorActivity extends AppCompatActivity {
@@ -64,6 +66,14 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     int workInteger;
     boolean isReps;
     int repetition;
+
+    /*
+    Secondo esercizio del superset
+     */
+    private String secondWorkString, secondExerciseName;
+    private int secondWorkInteger;
+    private boolean secondIsReps;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +121,24 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                     Snackbar.make(v, getResources().getString(R.string.add_one_exercise), Snackbar.LENGTH_SHORT).show();
             }
         });
+
+        /*
+        Cancella card con swipe
+         */
+        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                exerciseList.remove(position);
+                exerciseCardRecyclerViewAdapter.notifyDataSetChanged();
+            }
+        });
+        helper.attachToRecyclerView(mExerciseRecyclerView);
 
     }
 
@@ -232,7 +260,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         false,
                         true,
                         ExerciseSettings.CircuitType.SUPERSET);
-                superset.setSupersetExercise(0,false,getResources().getString(R.string.superset) + " 1");
+                superset.setSupersetExercise(0,false,getResources().getString(R.string.superset) + " 2");
                 exerciseList.add(superset);
                 mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                 materialSheetFab.hideSheet();
@@ -246,13 +274,20 @@ public class CircuitCreatorActivity extends AppCompatActivity {
      * @param position Posizione del tabata nella lista degli esercizi
      */
     public void showTabataDialog(final int position) {
+
         Resources res = getResources();
-        workString=TimeInStringForPicker[0];
-        restString=TimeInStringForPickerWithZero[0];
-        repetition = 1;
+        ExerciseSettings exercise = exerciseList.get(position);
+        workString = exercise.getReps()!=0 ?
+                Utilities.getStringTimeFromMillsWithoutHours(exercise.getReps()) :
+                TimeInStringForPicker[0];
+        restString= exercise.getRec()!=0 ?
+                Utilities.getStringTimeFromMillsWithoutHours((int)exercise.getRec()):
+                TimeInStringForPickerWithZero[0];
+        repetition = exercise.getRepetition();
+
 
         Dialog3PickerBuilder.newBuilder(this, this)
-                .setText(0, res.getString(R.string.tabata))
+                .setText(0,res.getString(R.string.tabata))
                 .setText(1, res.getString(R.string.sets))
                 .setText(2, res.getString(R.string.work))
                 .setText(3, res.getString(R.string.rest))
@@ -262,18 +297,36 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         repetition = newVal;
                     }
                 })
+                .setPickerValue(1,
+                        exercise.getRepetition()!=0 ?
+                                exercise.getRepetition() :
+                                1)
                 .setPicker(2, 0, TimeInStringForPicker.length - 1, TimeInStringForPicker, new NumberPicker.OnValueChangeListener() {
                     @Override
                     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                         workString = TimeInStringForPicker[newVal];
                     }
                 })
+                .setPickerValue(2,
+                        exercise.getReps()!=0 ?
+                                java.util.Arrays.asList(TimeInStringForPicker).
+                                        indexOf(
+                                                Utilities.getStringTimeFromMillsWithoutHours(
+                                                        exercise.getReps()))
+                                : 0)
                 .setPicker(3, 0, TimeInStringForPickerWithZero.length - 1, TimeInStringForPickerWithZero, new NumberPicker.OnValueChangeListener() {
                     @Override
                     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                         restString=TimeInStringForPickerWithZero[newVal];
                     }
                 })
+                .setPickerValue(3,
+                        exercise.getRec()!=0 ?
+                                java.util.Arrays.asList(TimeInStringForPickerWithZero).
+                                        indexOf(
+                                                Utilities.getStringTimeFromMillsWithoutHours(
+                                                        (int)exercise.getRec()))
+                                : 0)
                 .setPositiveButton(res.getString(R.string.Continue),  new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -300,13 +353,32 @@ public class CircuitCreatorActivity extends AppCompatActivity {
      * @param position
      */
     public void showExerciseDialog(final int position) {
+
         Resources res = getResources();
-        workString=TimeInStringForPicker[0];
-        workInteger = 1;
-        isReps=false;
-        restString=TimeInStringForPickerWithZero[0];
-        repetition=1;
-        exerciseName = res.getString(R.string.exercise);
+        ExerciseSettings exercise = exerciseList.get(position);
+        if (exercise.getReps()!=0) {
+            if (exercise.isReps()) {
+                workInteger = exercise.getReps();
+                workString= TimeInStringForPicker[0];
+            }
+            else {
+                workString = Utilities.getStringTimeNoHour(exercise.getReps());
+                workInteger = 1;
+            }
+        }
+        else {
+            workString= TimeInStringForPicker[0];
+            workInteger = 1;
+        }
+
+        isReps= exercise.isReps();
+        restString= exercise.isHasRecs() ?
+                Utilities.getStringTimeFromMillsWithoutHours((int)exercise.getRec()) :
+                Utilities.getStringTimeFromMillsWithoutHours(0);
+        repetition=exercise.getRepetition();
+        exerciseName = !exercise.getName().equals("") ?
+                exercise.getName() :
+                res.getString(R.string.exercise);
 
         ExerciseSettingsDialogBuilder.newBuilder(this, this)
                 .setPicker(1, 1, 100, new NumberPicker.OnValueChangeListener() {
@@ -315,6 +387,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         repetition = newVal;
                     }
                 })
+                .setPickerValue(1, exercise.getRepetition())
                 .setPicker(2, 0, TimeInStringForPicker.length - 1, TimeInStringForPicker, new NumberPicker.OnValueChangeListener() {
                     @Override
                     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -327,6 +400,11 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         restString = TimeInStringForPickerWithZero[newVal];
                     }
                 })
+                .setPickerValue(3,
+                        java.util.Arrays.asList(TimeInStringForPickerWithZero).
+                                indexOf(
+                                        Utilities.getStringTimeFromMillsWithoutHours(
+                                                (int)exercise.getRec())))
                 .setRadioButtonClick(1, new View.OnClickListener() {
                     /*
                     reps
@@ -339,7 +417,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         secondPicker.setValue(0);
                         secondPicker.setMinValue(0);
                         secondPicker.setMaxValue(arr.length-1);
-                        workInteger=Integer.parseInt(arr[0]);
+                        //workInteger=Integer.parseInt(arr[0]);
                         isReps=true;
                         secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                             @Override
@@ -360,7 +438,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         secondPicker.setMaxValue(TimeInStringForPicker.length - 1);
                         secondPicker.setDisplayedValues(TimeInStringForPicker);
                         secondPicker.setValue(0);
-                        workString = TimeInStringForPicker[0];
+                        //workString = TimeInStringForPicker[0];
                         isReps=false;
                         secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                             @Override
@@ -370,6 +448,14 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         });
                     }
                 })
+                .setRadioButtonSelected(exercise.isReps() ? 1 : 2)
+                .setPickerValue(2,
+                        exercise.isReps() ?
+                                exercise.getReps() -1 :
+                                java.util.Arrays.asList(TimeInStringForPicker).
+                                        indexOf(Utilities.
+                                                getStringTimeFromMillsWithoutHours(exercise
+                                                        .getReps())))
                 .setTitleOnTextChange(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -386,9 +472,10 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
                     }
                 })
-                .setPositiveButton(res.getString(R.string.Continue), new DialogInterface.OnClickListener() {
+                .setTitleValue(exerciseName)
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(View v) {
                         ExerciseSettings exerciseSettings = exerciseList.get(position);
                         //Sets
                         exerciseSettings.setRepetition(repetition);
@@ -413,12 +500,6 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                     }
                 })
-                .setNegativeButton(res.getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
                 .show();
 
 
@@ -429,8 +510,12 @@ public class CircuitCreatorActivity extends AppCompatActivity {
      * @param position
      */
     public void showRestDialog(final int position) {
+
         Resources res = getResources();
-        restString = TimeInStringForPickerWithZero[0];
+        ExerciseSettings exercise = exerciseList.get(position);
+        restString = exercise.getRec()!=0 ?
+                Utilities.getStringTimeFromMillsWithoutHours((int)exercise.getRec()):
+                TimeInStringForPickerWithZero[0];
 
         Dialog1PickerBuilder.newBuilder(this, this)
                 .setText(0, res.getString(R.string.rest))
@@ -440,6 +525,12 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         restString = TimeInStringForPickerWithZero[newVal];
                     }
                 })
+                .setPickerValue(exercise.getRec()!=0 ?
+                        java.util.Arrays.asList(TimeInStringForPickerWithZero).
+                                indexOf(
+                                        Utilities.getStringTimeFromMillsWithoutHours(
+                                                (int)exercise.getRec()))
+                        : 0)
                 .setPositiveButton(res.getString(R.string.Continue), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -462,9 +553,14 @@ public class CircuitCreatorActivity extends AppCompatActivity {
      * @param position
      */
     public void showEmomDialog(final int position) {
+
         Resources res = getResources();
-        workString=TimeInStringForPicker[0];
-        repetition = 1;
+        ExerciseSettings exercise = exerciseList.get(position);
+        workString=exercise.getReps()!=0 ?
+                Utilities.getStringTimeFromMillsWithoutHours(exercise.getReps()):
+                TimeInStringForPicker[0];
+        repetition = exercise.getRepetition();
+
 
         Dialog2PickerBuilder.newBuilder(this, this)
                 .setText(0, res.getString(R.string.emom))
@@ -476,12 +572,21 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         workString = TimeInStringForPicker[newVal];
                     }
                 })
+                .setPickerValue(1, exercise.getReps()!=0 ?
+                        java.util.Arrays.asList(TimeInStringForPicker).
+                                indexOf(
+                                        Utilities.getStringTimeFromMillsWithoutHours(
+                                                exercise.getReps()))
+                        : 0)
                 .setPicker(2, 1, 100, new NumberPicker.OnValueChangeListener() {
                     @Override
                     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                         repetition = newVal;
                     }
                 })
+                .setPickerValue(2, exercise.getRepetition()!=0 ?
+                        exercise.getRepetition()
+                        : 1)
                 .setPositiveButton(res.getString(R.string.Continue), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -505,8 +610,255 @@ public class CircuitCreatorActivity extends AppCompatActivity {
      *
      * @param position
      */
-    public void showSupersetDialog(int position) {
-        //todo implementare questo
+    public void showSupersetDialog(final int position) throws ExerciseTypeNotCorrectException {
+
+        Resources res = getResources();
+        ExerciseSettings exercise = exerciseList.get(position);
+        /*
+        Primo esercizio
+         */
+        if (exercise.getReps()!=0) {
+            if (exercise.isReps()) {
+                workInteger = exercise.getReps();
+                workString= TimeInStringForPicker[0];
+            }
+            else {
+                workString = Utilities.getStringTimeNoHour(exercise.getReps());
+                workInteger = 1;
+            }
+        }
+        else {
+            workString= TimeInStringForPicker[0];
+            workInteger = 1;
+        }
+
+        isReps= exercise.isReps();
+        restString= exercise.isHasRecs() ?
+                Utilities.getStringTimeFromMillsWithoutHours((int)exercise.getRec()) :
+                Utilities.getStringTimeFromMillsWithoutHours(0);
+        repetition=exercise.getRepetition();
+        exerciseName = !exercise.getName().equals("") ?
+                exercise.getName() :
+                res.getString(R.string.exercise) + "1";
+
+        /*
+        Secondo esercizio
+         */
+        if (exercise.getSupersetExercise().getReps()!=0) {
+            if (exercise.getSupersetExercise().isReps()) {
+                secondWorkInteger = exercise.getSupersetExercise().getReps();
+                secondWorkString= TimeInStringForPicker[0];
+            }
+            else {
+                secondWorkString = Utilities.getStringTimeNoHour(exercise.getSupersetExercise().getReps());
+                secondWorkInteger = 1;
+            }
+        }
+        else {
+            secondWorkString= TimeInStringForPicker[0];
+            secondWorkInteger = 1;
+        }
+
+        secondIsReps = exercise.getSupersetExercise().isReps();
+        secondExerciseName = !exercise.getSupersetExercise().getName().equals("") ?
+                exercise.getSupersetExercise().getName() :
+                res.getString(R.string.exercise);
+
+        /*
+        todo ho inizializzato le variabili ai valori già salvati, ora vanno richiamati nel dialog builder
+         */
+
+        SupersetSettingsDialogBuilder.newBuilder(this, this)
+                .setPicker(1,1, 1, 100, new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                        repetition = newVal;
+                    }
+                })
+                .setPicker(1,2, 0, TimeInStringForPicker.length - 1, TimeInStringForPicker, new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                        workString = TimeInStringForPicker[newVal];
+                    }
+                })
+                .setPicker(1,3, 0, TimeInStringForPickerWithZero.length - 1, TimeInStringForPickerWithZero, new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                        restString = TimeInStringForPickerWithZero[newVal];
+                    }
+                })
+                .setPicker(2,2, 0, TimeInStringForPicker.length - 1, TimeInStringForPicker, new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                        secondWorkString = TimeInStringForPicker[newVal];
+                    }
+                })
+                .setRadioButtonClick(1,1, new View.OnClickListener() {
+                    /*
+                    reps
+                     */
+                    @Override
+                    public void onClick(View v) {
+                        NumberPicker secondPicker = SupersetSettingsDialogBuilder.getSecondPicker(1);
+                        String[] arr = new String[100]; for (int i=0; i<100; i++) arr[i]=String.valueOf(i+1);
+                        secondPicker.setDisplayedValues(arr);
+                        secondPicker.setValue(0);
+                        secondPicker.setMinValue(0);
+                        secondPicker.setMaxValue(arr.length-1);
+                        workInteger=Integer.parseInt(arr[0]);
+                        isReps=true;
+                        secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                            @Override
+                            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                                workInteger = newVal+1;
+                            }
+                        });
+                    }
+                })
+                .setRadioButtonClick(2,1, new View.OnClickListener() {
+                    /*
+                    reps
+                     */
+                    @Override
+                    public void onClick(View v) {
+                        NumberPicker secondPicker = SupersetSettingsDialogBuilder.getSecondPicker(2);
+                        String[] arr = new String[100]; for (int i=0; i<100; i++) arr[i]=String.valueOf(i+1);
+                        secondPicker.setDisplayedValues(arr);
+                        secondPicker.setValue(0);
+                        secondPicker.setMinValue(0);
+                        secondPicker.setMaxValue(arr.length-1);
+                        secondWorkInteger=Integer.parseInt(arr[0]);
+                        secondIsReps=true;
+                        secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                            @Override
+                            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                                secondWorkInteger = newVal+1;
+                            }
+                        });
+                    }
+                })
+                .setRadioButtonClick(1,2, new View.OnClickListener() {
+                    /*
+                    secs
+                     */
+                    @Override
+                    public void onClick(View v) {
+                        NumberPicker secondPicker = SupersetSettingsDialogBuilder.getSecondPicker(1);
+                        secondPicker.setMinValue(0);
+                        secondPicker.setMaxValue(TimeInStringForPicker.length - 1);
+                        secondPicker.setDisplayedValues(TimeInStringForPicker);
+                        secondPicker.setValue(0);
+                        workString = TimeInStringForPicker[0];
+                        isReps=false;
+                        secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                            @Override
+                            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                                workString = TimeInStringForPicker[newVal];
+                            }
+                        });
+                    }
+                })
+                .setRadioButtonClick(2,2, new View.OnClickListener() {
+                    /*
+                    secs
+                     */
+                    @Override
+                    public void onClick(View v) {
+                        NumberPicker secondPicker = SupersetSettingsDialogBuilder.getSecondPicker(2);
+                        secondPicker.setMinValue(0);
+                        secondPicker.setMaxValue(TimeInStringForPicker.length - 1);
+                        secondPicker.setDisplayedValues(TimeInStringForPicker);
+                        secondPicker.setValue(0);
+                        secondWorkString = TimeInStringForPicker[0];
+                        secondIsReps=false;
+                        secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                            @Override
+                            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                                secondWorkString = TimeInStringForPicker[newVal];
+                            }
+                        });
+                    }
+                })
+                .setTitleOnTextChange(1, new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        exerciseName = String.valueOf(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                })
+                .setTitleOnTextChange(2, new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        secondExerciseName = String.valueOf(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                })
+                .setPositiveButton(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ExerciseSettings exerciseSettings = exerciseList.get(position);
+
+                        /*
+                        Primo esercizio
+                         */
+
+                        //Sets
+                        exerciseSettings.setRepetition(repetition);
+                        //Reps
+                        if(isReps)
+                            exerciseSettings.setReps(workInteger);
+                        else
+                            exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
+                        exerciseSettings.setReps(isReps);
+                        //Recupero
+                        if((int)Utilities.getMillsFromMinuteString(restString)==0)
+                            exerciseSettings.setHasRecs(false);
+                        else {
+                            exerciseSettings.setRec((int)Utilities.getMillsFromMinuteString(restString));
+                            exerciseSettings.setHasRecs(true);
+                        }
+                        //Nome
+                        exerciseSettings.setName(
+                                exerciseName.length()==0 ?
+                                        getResources().getString(R.string.exercise) + " 1" :
+                                        exerciseName);
+
+                        /*
+                        Secondo esercizio
+                         */
+
+                        //Sets
+                        exerciseSettings.setSupersetExercise(
+                                secondIsReps ? secondWorkInteger : (int)Utilities.getMillsFromMinuteString(secondWorkString),
+                                secondIsReps,
+                                secondExerciseName.length()==0 ?
+                                        getResources().getString(R.string.exercise) + " 2":
+                                        secondExerciseName
+                        );
+
+                        mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+                    }
+
+                })
+                .show();
     }
 
     /**

@@ -3,8 +3,8 @@
     <color name="colorPrimary">#3079d9</color>
     <color name="colorPrimaryDark">#3730f2</color>
     <color name="colorPrimaryLight">#B39DDB</color>
-    <color name="colorAccent">#f2e96b</color>
-    <color name="colorAccentDark">#FFEB3B</color>
+    <color name="colorAccent">#FFEB3B</color>
+    <color name="colorAccentDark">#FDD835</color>
     <color name="textColor">#FFFFFF</color>
     <color name="backgroundColor">#eeeeee</color>
     <color name="lightGray">#ededed</color>
@@ -29,7 +29,10 @@
     <color name="tabataColor">#6a5287</color>
     <color name="supersetColor">#FFAB00</color>
 
-    <!-- Colori usati nei testi -->
+    <!-- Colori per le ombre -->
+    <color name="bluShadow">#203079d9</color>
+    <color name="redShadow">#20f44336</color>
+    <color name="accentShadow">#20f2e96b</color>
 
 </resources>
 

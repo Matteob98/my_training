@@ -11,9 +11,9 @@ import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
  */
 public class ExerciseSettings implements Parcelable {
 
-    private int reps, repetition;
+    private int reps, repetition, numberSets, totalSets;
     private long rec;
-    private boolean isReps, hasRecs;
+    private boolean isReps, hasRecs, hasSets;
     private String name;
 
     private SupersetExercise supersetExercise;
@@ -45,6 +45,9 @@ public class ExerciseSettings implements Parcelable {
         this.isReps = isReps;
         this.hasRecs = hasRecs;
         this.type= type;
+        numberSets=0;
+        totalSets=0;
+        hasSets=false;
 
         /*
         Se è un esercizio in superserie inizializza il secondo esercizio
@@ -60,6 +63,10 @@ public class ExerciseSettings implements Parcelable {
         hasRecs = in.readByte() != 0;
         name = in.readString();
         type = CircuitType.valueOf(in.readString());
+        supersetExercise = new SupersetExercise(
+                in.readInt(),
+                in.readByte() != 0,
+                in.readString());
     }
 
     public static final Creator<ExerciseSettings> CREATOR = new Creator<ExerciseSettings>() {
@@ -73,6 +80,30 @@ public class ExerciseSettings implements Parcelable {
             return new ExerciseSettings[size];
         }
     };
+
+    public int getNumberSets() {
+        return numberSets;
+    }
+
+    public void setNumberSets(int numberSets) {
+        this.numberSets = numberSets;
+    }
+
+    public int getTotalSets() {
+        return totalSets;
+    }
+
+    public void setTotalSets(int totalSets) {
+        this.totalSets = totalSets;
+    }
+
+    public boolean isHasSets() {
+        return hasSets;
+    }
+
+    public void setHasSets(boolean hasSets) {
+        this.hasSets = hasSets;
+    }
 
     public String getName() {
         return name;
@@ -136,8 +167,11 @@ public class ExerciseSettings implements Parcelable {
      * @throws ExerciseTypeNotCorrectException Se l'esercizio non è di tipo superserie
      */
     public SupersetExercise getSupersetExercise() throws ExerciseTypeNotCorrectException {
-        if (!this.type.equals(CircuitType.SUPERSET))
-            throw new ExerciseTypeNotCorrectException();
+        if (! (this.type.equals(CircuitType.SUPERSET))) {
+            //Non lancia questa eccezione
+            throw new ExerciseTypeNotCorrectException("Tipo non corretto");
+        }
+
         return supersetExercise;
     }
 
@@ -150,9 +184,9 @@ public class ExerciseSettings implements Parcelable {
      */
     public void setSupersetExercise(int reps, boolean isReps, String name) {
         this.type=CircuitType.SUPERSET;
-        this.supersetExercise.setReps(reps);
-        this.supersetExercise.setIsReps(isReps);
-        this.supersetExercise.setName(name);
+        supersetExercise.setReps(reps);
+        supersetExercise.setIsReps(isReps);
+        supersetExercise.setName(name);
     }
 
     @Override
@@ -174,6 +208,9 @@ public class ExerciseSettings implements Parcelable {
         dest.writeByte((byte) (hasRecs ? 1 : 0));
         dest.writeString(name);
         dest.writeString(type.name());
+        dest.writeInt(supersetExercise.getReps());
+        dest.writeByte((byte) (supersetExercise.isReps() ? 1: 0));
+        dest.writeString(supersetExercise.getName());
     }
 
     /**
@@ -209,7 +246,7 @@ public class ExerciseSettings implements Parcelable {
             case SUPERSET:
                 return 4;
             default:
-                throw new ExerciseTypeNotCorrectException();
+                throw new ExerciseTypeNotCorrectException("Tipo non corretto in getIntegerItemType");
         }
     }
 
@@ -218,45 +255,45 @@ public class ExerciseSettings implements Parcelable {
      * Contiene solo il nome e il numero/tempo di ripetizioni
      * Il recupero è sempre quello dell'esercizio principale
      */
-    public class SupersetExercise {
-        private int reps;
-        private boolean isReps;
-        private String name;
+    public static class SupersetExercise {
+        private int supersetReps;
+        private boolean supersetIsReps;
+        private String supersetName;
 
         /**
          * Costruttore privato in modo che possa essere chiamato solo dalla classe madre
-         * @param reps
-         * @param isReps
-         * @param name
+         * @param supersetReps
+         * @param supersetIsReps
+         * @param supersetName
          */
-        private SupersetExercise(int reps, boolean isReps, String name) {
-            this.reps = reps;
-            this.isReps = isReps;
-            this.name = name;
+        public SupersetExercise(int supersetReps, boolean supersetIsReps, String supersetName) {
+            this.supersetReps = supersetReps;
+            this.supersetIsReps = supersetIsReps;
+            this.supersetName = supersetName;
         }
 
         public int getReps() {
-            return reps;
+            return supersetReps;
         }
 
-        public void setReps(int reps) {
-            this.reps = reps;
+        public void setReps(int supersetReps) {
+            this.supersetReps = supersetReps;
         }
 
         public boolean isReps() {
-            return isReps;
+            return supersetIsReps;
         }
 
-        public void setIsReps(boolean reps) {
-            isReps = reps;
+        public void setIsReps(boolean supersetIsReps) {
+            this.supersetIsReps = supersetIsReps;
         }
 
         public String getName() {
-            return name;
+            return supersetName;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setName(String supersetName) {
+            this.supersetName = supersetName;
         }
     }
 }

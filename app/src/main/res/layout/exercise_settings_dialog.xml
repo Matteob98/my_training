@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,14 +8,38 @@
     android:orientation="vertical">
 
     <View
-        android:id="@+id/colorViewExerciseDialog"
-        android:layout_width="45dp"
+        android:id="@+id/coloredViewExerciseDialog"
+        android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/circle_accent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorAccent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exercise"
+        android:layout_marginStart="18dp"
+        android:fontFamily="@font/swansea"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/coloredViewExerciseDialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/coloredViewExerciseDialog" />
+
+    <ImageButton
+        android:id="@+id/deleteImageButtonExerciseDialog"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_cross_white"
+        android:tint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/coloredViewExerciseDialog"
+        app:layout_constraintEnd_toEndOf="@+id/coloredViewExerciseDialog"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:checkedButton="@+id/secsRadioButtonExerciseSettingsDialog"
@@ -33,7 +58,7 @@
             android:layout_marginBottom="1dp"
             android:layout_marginStart="1dp"
             android:id="@+id/repsRadioButtonExerciseSettingsDialog"
-            android:background="@drawable/toggle_widget_background_left"
+            android:background="@drawable/toggle_widget_background_left_accent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -57,7 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/toggle_widget_background_right"
+            android:background="@drawable/toggle_widget_background_right_accent"
             android:button="@null"
             android:gravity="center"
             android:text="@string/secs"
@@ -75,11 +100,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/radioGroupExerciseSettingsDialog"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/coloredViewExerciseDialog">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/exerciseNameEditTextExerciseDialog"
@@ -94,24 +119,27 @@
         android:id="@+id/firstPickerExerciseDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toStartOf="@+id/secondPickerExerciseDialog"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exerciseNameTextInputLayoutExerciseDialog" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
+        android:id="@+id/setsTextExerciseDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
         android:gravity="center_horizontal"
         android:letterSpacing="0.05"
-        android:textColor="#757575"
-        android:textSize="12sp"
-        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:elevation="15dp"
+        android:textAllCaps="true"
         android:text="@string/sets"
-        android:id="@+id/firstTextExerciseDialog"
-        app:layout_constraintTop_toBottomOf="@+id/firstPickerExerciseDialog"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/firstPickerExerciseDialog"
         app:layout_constraintStart_toStartOf="@+id/firstPickerExerciseDialog"
-        app:layout_constraintEnd_toEndOf="@+id/firstPickerExerciseDialog"/>
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -122,18 +150,20 @@
         app:layout_constraintEnd_toStartOf="@+id/thirdPickerExerciseDialog" />
 
     <TextView
+        android:id="@+id/secondTextExerciseDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
         android:gravity="center_horizontal"
         android:letterSpacing="0.05"
-        android:textColor="#757575"
-        android:textSize="12sp"
-        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:elevation="15dp"
+        android:textAllCaps="true"
         android:text="@string/work"
-        android:id="@+id/secondTextExerciseDialog"
-        app:layout_constraintTop_toBottomOf="@+id/secondPickerExerciseDialog"
-        app:layout_constraintStart_toStartOf="@+id/secondPickerExerciseDialog"
-        app:layout_constraintEnd_toEndOf="@+id/secondPickerExerciseDialog"/>
+        app:layout_constraintBaseline_toBaselineOf="@+id/setsTextExerciseDialog"
+        app:layout_constraintEnd_toEndOf="@+id/secondPickerExerciseDialog"
+        app:layout_constraintStart_toStartOf="@+id/secondPickerExerciseDialog" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -144,19 +174,56 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
+        android:id="@+id/thirdTextExerciseDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
         android:gravity="center_horizontal"
         android:letterSpacing="0.05"
-        android:textColor="#757575"
-        android:textSize="12sp"
-        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:elevation="15dp"
+        android:textAllCaps="true"
         android:text="@string/rest"
-        android:id="@+id/thirdTextExerciseDialog"
-        app:layout_constraintTop_toBottomOf="@+id/thirdPickerExerciseDialog"
-        app:layout_constraintStart_toStartOf="@+id/thirdPickerExerciseDialog"
-        app:layout_constraintEnd_toEndOf="@+id/thirdPickerExerciseDialog"/>
+        app:layout_constraintBaseline_toBaselineOf="@+id/secondTextExerciseDialog"
+        app:layout_constraintEnd_toEndOf="@+id/thirdPickerExerciseDialog"
+        app:layout_constraintStart_toStartOf="@+id/thirdPickerExerciseDialog" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseNameTextInputLayoutExerciseDialog">
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/saveButtonExerciseDialog"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/ripple_blue"
+        android:elevation="20dp"
+        android:fontFamily="@font/swansea_bold"
+        android:letterSpacing="0.05"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondPickerExerciseDialog"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 

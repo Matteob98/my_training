@@ -218,4 +218,35 @@ public class Utilities
         }
     }
 
+    /**
+     *
+     * @param mills
+     * @return
+     */
+    public static String getStringTimeFromMillsWithoutHours(int mills) {
+        int secs = (int) (mills/1000);
+        int mins = secs / 60;
+        mins %= 60;
+        secs %= 60;
+        int decaseconds = (int) ( (mills /10) % 100 );
+
+        String dsec;
+        if(decaseconds<10)
+            dsec="0"+decaseconds;
+        else
+            dsec=""+decaseconds;
+        String ss;
+        if(secs<10)
+            ss="0"+secs;
+        else
+            ss=""+secs;
+
+        String mm;
+        if(mins<10)
+            mm="0"+mins;
+        else
+            mm=""+mins;
+
+        return  mm + ":" + ss;
+    }
 }

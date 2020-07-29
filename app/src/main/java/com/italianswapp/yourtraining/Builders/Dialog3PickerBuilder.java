@@ -128,6 +128,27 @@ public class Dialog3PickerBuilder
     }
 
     /**
+     *
+     * @param number
+     * @param value
+     * @return
+     */
+    public Dialog3PickerBuilder setPickerValue ( int number, int value) {
+        switch(number) {
+            case 1:
+                firstPicker.setValue(value);
+                break;
+            case 2:
+                secondPicker.setValue(value);
+                break;
+            case 3:
+                thirdPicker.setValue(value);
+                break;
+        }
+        return this;
+    }
+
+    /**
      * Setta le impostazioni di un picker
      * Il picker mostrerà le stringhe passate come parametro values
      * Il picker è indicato dal numero passato come primo parametro

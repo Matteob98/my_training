@@ -115,5 +115,8 @@
     <string name="Reset">Reset</string>
     <string name="Create">Create</string>
     <string name="superset">Superset</string>
+    <string name="first_exercise">First exercise</string>
+    <string name="second_exercise">Second exercise</string>
+    <string name="save">save</string>
 
 </resources>

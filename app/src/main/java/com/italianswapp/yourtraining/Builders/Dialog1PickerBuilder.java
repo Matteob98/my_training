@@ -98,6 +98,16 @@ public class Dialog1PickerBuilder {
 
     /**
      *
+     * @param value
+     * @return
+     */
+    public Dialog1PickerBuilder setPickerValue(int value) {
+        firstPicker.setValue(value);
+        return this;
+    }
+
+    /**
+     *
      * @param min
      * @param max
      * @param values

@@ -117,6 +117,24 @@ public class Dialog2PickerBuilder {
     }
 
     /**
+     *
+     * @param number
+     * @param value
+     * @return
+     */
+    public Dialog2PickerBuilder setPickerValue ( int number, int value) {
+        switch(number) {
+            case 1:
+                firstPicker.setValue(value);
+                break;
+            case 2:
+                secondPicker.setValue(value);
+                break;
+        }
+        return this;
+    }
+
+    /**
      * Setta le impostazioni di un picker
      * Il picker mostrerà le stringhe passate come parametro values
      * Il picker è indicato dal numero passato come primo parametro

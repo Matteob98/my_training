@@ -198,6 +198,7 @@ public class ChronometerActivity extends AppCompatActivity {
                     lapButton.setVisibility(Button.VISIBLE);
 
                     startButton.setText(getResources().getString(R.string.pause));
+                    //startButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
                     startButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
                 }
                 else {
@@ -209,6 +210,7 @@ public class ChronometerActivity extends AppCompatActivity {
                     lapButton.setVisibility(Button.GONE);
 
                     startButton.setText(getResources().getString(R.string.start));
+                    //startButton.setBackground(getResources().getDrawable(R.drawable.ripple_blue));
                     startButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
                 }
 
