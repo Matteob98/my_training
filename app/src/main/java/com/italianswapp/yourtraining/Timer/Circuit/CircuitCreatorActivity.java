@@ -254,13 +254,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ExerciseSettings superset = new ExerciseSettings(
                         getResources().getString(R.string.superset) + " 1",
-                        0,
+                        1,
                         10000,
                         1,
-                        false,
+                        true,
                         true,
                         ExerciseSettings.CircuitType.SUPERSET);
-                superset.setSupersetExercise(0,false,getResources().getString(R.string.superset) + " 2");
+                superset.setSupersetExercise(1,true,getResources().getString(R.string.superset) + " 2");
                 exerciseList.add(superset);
                 mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                 materialSheetFab.hideSheet();
@@ -327,21 +327,14 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                                                 Utilities.getStringTimeFromMillsWithoutHours(
                                                         (int)exercise.getRec()))
                                 : 0)
-                .setPositiveButton(res.getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(View v) {
                         ExerciseSettings exerciseSettings = exerciseList.get(position);
                         exerciseSettings.setRepetition(repetition);
                         exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
                         exerciseSettings.setRec(Utilities.getMillsFromMinuteString(restString));
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
-
-                    }
-                })
-                .setNegativeButton(res.getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
                     }
                 })
                 .setDialogColor(R.color.tabataColor)
@@ -417,7 +410,6 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         secondPicker.setValue(0);
                         secondPicker.setMinValue(0);
                         secondPicker.setMaxValue(arr.length-1);
-                        //workInteger=Integer.parseInt(arr[0]);
                         isReps=true;
                         secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                             @Override
@@ -438,7 +430,6 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         secondPicker.setMaxValue(TimeInStringForPicker.length - 1);
                         secondPicker.setDisplayedValues(TimeInStringForPicker);
                         secondPicker.setValue(0);
-                        //workString = TimeInStringForPicker[0];
                         isReps=false;
                         secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                             @Override
@@ -498,6 +489,11 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         exerciseSettings.setName(exerciseName);
 
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+
+                        /*
+                        Alla fine chiude il dialog
+                         */
+                        ExerciseSettingsDialogBuilder.getBuilder().dismiss();
                     }
                 })
                 .show();
@@ -531,18 +527,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                                         Utilities.getStringTimeFromMillsWithoutHours(
                                                 (int)exercise.getRec()))
                         : 0)
-                .setPositiveButton(res.getString(R.string.Continue), new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(View v) {
                         ExerciseSettings exerciseSettings = exerciseList.get(position);
                         exerciseSettings.setRec((int)Utilities.getMillsFromMinuteString(restString));
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
-                    }
-                })
-                .setNegativeButton(res.getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                        Dialog1PickerBuilder.getAlertDialog().dismiss();
                     }
                 })
                 .show();
@@ -587,19 +578,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                 .setPickerValue(2, exercise.getRepetition()!=0 ?
                         exercise.getRepetition()
                         : 1)
-                .setPositiveButton(res.getString(R.string.Continue), new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(View v) {
                         ExerciseSettings exerciseSettings = exerciseList.get(position);
                         exerciseSettings.setRepetition(repetition);
                         exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
-                    }
-                })
-                .setNegativeButton(res.getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
                     }
                 })
                 .setDialogColor(R.color.emomColor)
@@ -633,10 +618,6 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         }
 
         isReps= exercise.isReps();
-        restString= exercise.isHasRecs() ?
-                Utilities.getStringTimeFromMillsWithoutHours((int)exercise.getRec()) :
-                Utilities.getStringTimeFromMillsWithoutHours(0);
-        repetition=exercise.getRepetition();
         exerciseName = !exercise.getName().equals("") ?
                 exercise.getName() :
                 res.getString(R.string.exercise) + "1";
@@ -665,8 +646,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                 res.getString(R.string.exercise);
 
         /*
-        todo ho inizializzato le variabili ai valori già salvati, ora vanno richiamati nel dialog builder
+        Generali
          */
+        restString= exercise.isHasRecs() ?
+                Utilities.getStringTimeFromMillsWithoutHours((int)exercise.getRec()) :
+                Utilities.getStringTimeFromMillsWithoutHours(0);
+        repetition=exercise.getRepetition();
+
 
         SupersetSettingsDialogBuilder.newBuilder(this, this)
                 .setPicker(1,1, 1, 100, new NumberPicker.OnValueChangeListener() {
@@ -675,6 +661,10 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         repetition = newVal;
                     }
                 })
+                .setPickerValue(1,1,
+                        exercise.getRepetition()!=0 ?
+                                exercise.getRepetition() :
+                                1)
                 .setPicker(1,2, 0, TimeInStringForPicker.length - 1, TimeInStringForPicker, new NumberPicker.OnValueChangeListener() {
                     @Override
                     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -687,6 +677,11 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         restString = TimeInStringForPickerWithZero[newVal];
                     }
                 })
+                .setPickerValue(1,3,
+                        java.util.
+                                Arrays.asList(TimeInStringForPickerWithZero).indexOf(
+                                        Utilities.getStringTimeFromMillsWithoutHours(
+                                                (int)exercise.getRec())))
                 .setPicker(2,2, 0, TimeInStringForPicker.length - 1, TimeInStringForPicker, new NumberPicker.OnValueChangeListener() {
                     @Override
                     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -779,6 +774,21 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         });
                     }
                 })
+                .setRadioButtonSelected(1, isReps ? 1 : 2)
+                .setRadioButtonSelected(2, secondIsReps ? 1 : 2)
+                .setPickerValue(1, 2,
+                        isReps ?
+                                exercise.getReps() -1 :
+                                java.util.Arrays.asList(TimeInStringForPicker).
+                                        indexOf(
+                                                Utilities.getStringTimeFromMillsWithoutHours(
+                                                        exercise.getReps())))
+                .setPickerValue(2, 2,
+                        secondIsReps ?
+                                exercise.getSupersetExercise().getReps() -1:
+                                java.util.Arrays.asList(TimeInStringForPicker).
+                                        indexOf(Utilities.getStringTimeFromMillsWithoutHours(
+                                                exercise.getSupersetExercise().getReps())))
                 .setTitleOnTextChange(1, new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -795,6 +805,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
                     }
                 })
+                .setTitleValue(1, exerciseName)
                 .setTitleOnTextChange(2, new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -811,6 +822,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
                     }
                 })
+                .setTitleValue(2, secondExerciseName)
                 .setPositiveButton(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -855,6 +867,8 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         );
 
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+
+                        SupersetSettingsDialogBuilder.getBuilder().dismiss();
                     }
 
                 })

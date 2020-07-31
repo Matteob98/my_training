@@ -1,9 +1,8 @@
 package com.italianswapp.yourtraining.Builders;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,8 +38,11 @@ public class SupersetSettingsDialogBuilder {
     private RadioGroup secondRadioGroup;
     private RadioButton secondSecsButton, secondRepsButton;
 
-    private AlertDialog.Builder builder;
+
+    private static Dialog builder;
+
     private final View dialogView;
+    //private static AlertDialog alertDialog;
 
     /**
      *
@@ -48,10 +50,11 @@ public class SupersetSettingsDialogBuilder {
      * @param activity
      */
     private SupersetSettingsDialogBuilder(Context context, Activity activity) {
-        builder = new AlertDialog.Builder(context);
+        builder = new Dialog(activity, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
         LayoutInflater inflater = activity.getLayoutInflater();
         dialogView = inflater.inflate(R.layout.superset_settings_dialog, null);
-        builder.setView(dialogView);
+        builder.setContentView(dialogView);
+        builder.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
         setupDialog();
     }
 
@@ -140,6 +143,36 @@ public class SupersetSettingsDialogBuilder {
         return this;
     }
 
+    /**
+     *
+     * @param exerciseNumber
+     * @param number
+     * @param value
+     * @return
+     */
+    public SupersetSettingsDialogBuilder setPickerValue (int exerciseNumber, int number, int value) {
+        switch ((exerciseNumber)) {
+            case 1:
+                switch (number) {
+                    case 1:
+                        firstFirstPicker.setValue(value);
+                        break;
+                    case 2:
+                        firstSecondPicker.setValue(value);
+                        break;
+                    case 3:
+                        firstThirdPicker.setValue(value);
+                        break;
+                }
+                break;
+            case 2:
+                secondSecondPicker.setValue(value);
+                break;
+        }
+
+        return this;
+    }
+
 
     /**
      *
@@ -212,6 +245,47 @@ public class SupersetSettingsDialogBuilder {
 
     /**
      *
+     * @param exerciseNumber
+     * @param number
+     * @return
+     */
+    public SupersetSettingsDialogBuilder setRadioButtonSelected (int exerciseNumber, int number) {
+        switch (exerciseNumber) {
+            case 1:
+                switch (number) {
+                    case 1:
+                        firstRepsButton.callOnClick();
+                        firstRepsButton.setChecked(true);
+                        firstSecsButton.setChecked(false);
+                        break;
+                    case 2:
+                        firstSecsButton.callOnClick();
+                        firstSecsButton.setChecked(true);
+                        firstRepsButton.setChecked(false);
+                        break;
+                }
+                break;
+            case 2:
+                switch (number) {
+                    case 1:
+                        secondRepsButton.callOnClick();
+                        secondRepsButton.setChecked(true);
+                        secondSecsButton.setChecked(false);
+                        break;
+                    case 2:
+                        secondSecsButton.callOnClick();
+                        secondSecsButton.setChecked(true);
+                        secondRepsButton.setChecked(false);
+                        break;
+                }
+                break;
+        }
+
+        return this;
+    }
+
+    /**
+     *
      * @param exerciseName
      * @param textWatcher
      * @return
@@ -231,11 +305,29 @@ public class SupersetSettingsDialogBuilder {
 
     /**
      *
+     * @param exerciseName
+     * @param title
+     * @return
+     */
+    public SupersetSettingsDialogBuilder setTitleValue ( int exerciseName, String title) {
+        switch (exerciseName) {
+            case 1:
+                firstTitleTextView.setText(title);
+                break;
+            case 2:
+                secondTitleTextView.setText(title);
+                break;
+        }
+
+        return this;
+    }
+
+    /**
+     *
      * @param onClickListener
      * @return
      */
     public SupersetSettingsDialogBuilder setPositiveButton (android.view.View.OnClickListener onClickListener ) {
-        //Todo il pulsante save dopo aver salvato dovrebbe chiudere il dialog
         saveButton.setOnClickListener(onClickListener);
         return this;
     }
@@ -244,15 +336,16 @@ public class SupersetSettingsDialogBuilder {
      *
      */
     public void show() {
-        final AlertDialog alertDialog = builder.create();
+
+        //alertDialog = builder.create();
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alertDialog.dismiss();
+                builder.dismiss();
             }
         });
-
-        alertDialog.show();
+        builder.show();
+        //alertDialog.show();
     }
 
     /**
@@ -272,4 +365,17 @@ public class SupersetSettingsDialogBuilder {
 
     }
 
+    /*
+     *
+     * @return
+
+    public static AlertDialog getAlertDialog() {
+        return alertDialog;
+    }
+
+     */
+
+    public static Dialog getBuilder() {
+        return builder;
+    }
 }

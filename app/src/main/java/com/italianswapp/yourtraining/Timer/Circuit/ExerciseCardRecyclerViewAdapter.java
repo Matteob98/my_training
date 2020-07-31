@@ -473,8 +473,13 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if(circuitCreatorActivity!=null)
-                        circuitCreatorActivity.showSupersetDialog(position);
+                    if(circuitCreatorActivity!=null) {
+                        try {
+                            circuitCreatorActivity.showSupersetDialog(position);
+                        } catch (ExerciseTypeNotCorrectException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             });
         }

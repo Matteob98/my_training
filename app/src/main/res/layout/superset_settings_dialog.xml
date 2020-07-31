@@ -15,11 +15,11 @@
         <View
             android:id="@+id/coloredViewSupersetDialog"
             android:layout_width="0dp"
-            android:layout_height="45dp"
+            android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/supersetColor"
+            android:background="@color/colorPrimary"
             />
 
         <TextView
@@ -124,7 +124,7 @@
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:backgroundTint="@color/white"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="10dp"
             app:layout_constraintEnd_toEndOf="@+id/firstWorkPickerSupersetDialog"
@@ -135,7 +135,7 @@
             android:id="@+id/setsPickerSupersetDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="@+id/firstWorkPickerSupersetDialog"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/firstWorkPickerSupersetDialog"
@@ -189,7 +189,7 @@
             android:id="@+id/firstWorkPickerSupersetDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="@+id/firstExerciseNameTextInputLayoutSupersetDialog"
             app:layout_constraintStart_toStartOf="@+id/firstExerciseNameTextInputLayoutSupersetDialog"
             app:layout_constraintTop_toBottomOf="@+id/cardView2" />

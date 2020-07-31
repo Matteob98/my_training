@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import com.italianswapp.yourtraining.R;
@@ -15,12 +19,16 @@ import com.italianswapp.yourtraining.R;
  */
 public class Dialog3PickerBuilder
 {
+
     private TextView firstTextView, secondTextView, thirdTextView, titleTextView;
     private NumberPicker firstPicker, secondPicker, thirdPicker;
     private View colorView;
+    private ImageButton deleteButton;
+    private static Button saveButton;
 
     private AlertDialog.Builder builder;
     private final View dialogView;
+    private static AlertDialog alertDialog;
 
     /**
      * Metodo privato
@@ -54,6 +62,9 @@ public class Dialog3PickerBuilder
         thirdPicker = dialogView.findViewById(R.id.thirdPickerNumberPicker3);
 
         colorView = dialogView.findViewById(R.id.colorViewNumberPicker3);
+
+        deleteButton = dialogView.findViewById(R.id.deleteImageButtonNumberPicker3);
+        saveButton = dialogView.findViewById(R.id.saveButtonNumberPicker3);
     }
 
     /**
@@ -181,23 +192,11 @@ public class Dialog3PickerBuilder
 
     /**
      * Imposta il button positivo del dialog
-     * @param text Il testo del button
      * @param onClickListener Il comportamento alla pressione
      * @return il Builder
      */
-    public Dialog3PickerBuilder setPositiveButton (String text, DialogInterface.OnClickListener onClickListener ) {
-        builder.setPositiveButton( text, onClickListener );
-        return this;
-    }
-
-    /**
-     * Imposta il button negativo del dialog
-     * @param text Il testo del button
-     * @param onClickListener Il comportamento alla pressione
-     * @return il Builder
-     */
-    public Dialog3PickerBuilder setNegativeButton ( String text, DialogInterface.OnClickListener onClickListener ) {
-        builder.setNegativeButton( text, onClickListener );
+    public Dialog3PickerBuilder setPositiveButton (View.OnClickListener onClickListener ) {
+        saveButton.setOnClickListener(onClickListener);
         return this;
     }
 
@@ -222,12 +221,31 @@ public class Dialog3PickerBuilder
         return this;
     }
 
+    public static void setSaveButtonClickable( boolean clickable) {
+        saveButton.setClickable(clickable);
+    }
+
     /**
      * Mostra la dialog creata dal builder
      */
     public void show() {
-        AlertDialog alertDialog = builder.create();
+        alertDialog = builder.create();
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
         alertDialog.show();
     }
 
+    /**
+     *
+     * @return
+     */
+    public static AlertDialog getAlertDialog() {
+        return alertDialog;
+    }
 }

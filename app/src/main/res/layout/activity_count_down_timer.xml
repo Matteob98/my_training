@@ -23,7 +23,7 @@
         android:id="@+id/primaryView"
         android:layout_width="13dp"
         android:layout_height="60dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:background="@drawable/bottom_right_corner_accent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarEmomActivity" />
@@ -123,6 +123,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"

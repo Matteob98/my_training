@@ -10,11 +10,11 @@
     <View
         android:id="@+id/coloredViewExerciseDialog"
         android:layout_width="0dp"
-        android:layout_height="45dp"
+        android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         />
 
     <TextView
@@ -23,8 +23,8 @@
         android:text="@string/exercise"
         android:layout_marginStart="18dp"
         android:fontFamily="@font/swansea"
-        android:textSize="20sp"
-        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/coloredViewExerciseDialog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/coloredViewExerciseDialog" />
@@ -36,7 +36,6 @@
         android:layout_marginEnd="20dp"
         android:background="@color/transparent"
         android:src="@drawable/ic_cross_white"
-        android:tint="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/coloredViewExerciseDialog"
         app:layout_constraintEnd_toEndOf="@+id/coloredViewExerciseDialog"
         app:layout_constraintTop_toTopOf="parent" />
@@ -119,10 +118,10 @@
         android:id="@+id/firstPickerExerciseDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/secondPickerExerciseDialog"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/exerciseNameTextInputLayoutExerciseDialog" />
 
     <TextView
         android:id="@+id/setsTextExerciseDialog"
@@ -193,12 +192,14 @@
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/white"
         app:cardCornerRadius="8dp"
         app:cardElevation="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/firstPickerExerciseDialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -223,9 +224,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secondPickerExerciseDialog"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

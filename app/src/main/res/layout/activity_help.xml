@@ -263,14 +263,16 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/swansea"
         android:letterSpacing="0.08"
         android:lineSpacingExtra="5sp"
-        android:fontFamily="@font/swansea"
         android:text="Development italianappsw@gmail.com"
         android:textColor="#757575"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/versionTextViewHelpActivity" />
+        app:layout_constraintStart_toStartOf="@+id/versionTextViewHelpActivity"
+        app:layout_constraintTop_toBottomOf="@+id/exitCardHelpActivity"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView6"

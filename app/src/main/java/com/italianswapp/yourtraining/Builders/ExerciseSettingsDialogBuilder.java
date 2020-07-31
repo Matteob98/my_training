@@ -2,6 +2,7 @@ package com.italianswapp.yourtraining.Builders;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.TextWatcher;
@@ -26,8 +27,10 @@ public class ExerciseSettingsDialogBuilder {
     private RadioButton secsButton, repsButton;
     private ImageButton deleteButton;
     private Button saveButton;
+    private static AlertDialog alertDialog;
 
-    private AlertDialog.Builder builder;
+    //private AlertDialog.Builder builder;
+    private static Dialog builder;
     private final View dialogView;
 
     /**
@@ -36,12 +39,18 @@ public class ExerciseSettingsDialogBuilder {
      * @param activity
      */
     private ExerciseSettingsDialogBuilder(Context context, Activity activity) {
-        builder = new AlertDialog.Builder(context);
+        //builder = new AlertDialog.Builder(context);
+        builder = new Dialog(activity, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
         LayoutInflater inflater = activity.getLayoutInflater();
         dialogView = inflater.inflate(R.layout.exercise_settings_dialog, null);
-        builder.setView(dialogView);
-
+        builder.setContentView(dialogView);
+        builder.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
         setupDialog();
+        /*
+        builder.setView(dialogView);
+        setupDialog();
+
+         */
     }
 
     /**
@@ -209,11 +218,18 @@ public class ExerciseSettingsDialogBuilder {
 
     /**
      *
+     * @return
+     */
+    public static Dialog getBuilder() {
+        return builder;
+    }
+
+    /**
+     *
      * @param onClickListener
      * @return
      */
     public ExerciseSettingsDialogBuilder setPositiveButton (View.OnClickListener onClickListener ) {
-        //Todo il pulsante save dopo aver salvato dovrebbe chiudere il dialog
         saveButton.setOnClickListener(onClickListener);
         return this;
     }
@@ -222,14 +238,15 @@ public class ExerciseSettingsDialogBuilder {
      *
      */
     public void show() {
-        final AlertDialog alertDialog = builder.create();
+        //alertDialog = builder.create();
+        //alertDialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alertDialog.dismiss();
+                builder.dismiss();
             }
         });
-        alertDialog.show();
+        builder.show();
     }
 
     /**

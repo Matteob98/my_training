@@ -37,6 +37,10 @@ import java.util.Objects;
 
 public class CircuitActivity extends CountDownActivity {
 
+    /*
+    todo Left Button non mostra lista
+     */
+
     private final static String CIRCUIT_KEY="circuitKey";
 
     private View mPrimaryView, mSecondaryView;
@@ -122,9 +126,6 @@ public class CircuitActivity extends CountDownActivity {
         Saranno riabilitati dopo il ready
          */
         mRightFloatingButton.setEnabled(false);
-        //mRightFloatingButton.setImageResource(R.drawable.ic_forward_scuro);
-        //mLeftFloatingButton.setEnabled(false);
-        //mLeftFloatingButton.setImageResource(R.drawable.ic_assignament_scuro);
         mPrimaryTextView.setVisibility(TextView.INVISIBLE);
         mSecondaryTextView.setVisibility(TextView.INVISIBLE);
     }
@@ -139,7 +140,6 @@ public class CircuitActivity extends CountDownActivity {
                 else {
                     //String oldName = e.getName();
                     for (int i = 0; i < e.getRepetition(); i++) {
-                        //e.setName(oldName + " " + (i+1) + "/" + e.getRepetition());
                         e.setHasSets(true);
                         e.setNumberSets(i+1);
                         e.setTotalSets(e.getRepetition());
@@ -177,11 +177,9 @@ public class CircuitActivity extends CountDownActivity {
                     exercises.add(supersetExercise);
                 }
                 else {
-                   // String firstOldName = e.getName();
                     String secondOldName = supersetExercise.getName();
 
                     for (int i=0; i<e.getRepetition(); i++) {
-                        //e.setName(firstOldName + " " + (i+1) + "/" + e.getRepetition());
                         e.setHasSets(true);
                         e.setNumberSets(i+1);
                         e.setTotalSets(e.getRepetition());
@@ -208,7 +206,12 @@ public class CircuitActivity extends CountDownActivity {
 
         mPrimaryView.setBackground(getLeftColoredView(exercises.get(0)));
 
-        mSecondaryView.setBackground(getRightColoredView(exercises.get(1)));
+        if(exercises.size()>1)
+            mSecondaryView.setBackground(getRightColoredView(exercises.get(1)));
+        else {
+            mSecondaryTextView.setText(getResources().getString(R.string.finish));
+            mSecondaryView.setBackground(res.getDrawable(R.drawable.bottom_left_corner_rest, null));
+        }
 
     }
 
@@ -243,7 +246,6 @@ public class CircuitActivity extends CountDownActivity {
                 else if (currentSet < exercises.size()) {
                     // Se ci sono altri elementi
                     mStartButton.setText(getResources().getString(R.string.pause).toUpperCase());
-                    //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
                     mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
                     nextExercise();
                     startWork();
@@ -264,11 +266,11 @@ public class CircuitActivity extends CountDownActivity {
         mPrimarySets.setVisibility(TextView.GONE);
         mSecondarySets.setVisibility(TextView.GONE);
 
-
         ExerciseSettings exercise = exercises.get(currentSet);
         isRepsExercise=exercise.isReps();
 
         if (isRepsExercise) {
+            workLayoutSettings();
             mRepsButton.setVisibility(ImageButton.VISIBLE);
             mStartButton.setVisibility(Button.INVISIBLE);
             work =exercise.getReps();
@@ -281,9 +283,6 @@ public class CircuitActivity extends CountDownActivity {
                 }
             }, 10);
 
-            //mStartButton.setText(res.getString(R.string.finish).toUpperCase());
-            //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_accent));
-            //mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.colorAccent)));
         }
         else {
             mStartButton.setVisibility(Button.VISIBLE);
@@ -336,9 +335,7 @@ public class CircuitActivity extends CountDownActivity {
              */
             mSecondaryTextView.setText(getResources().getString(R.string.finish));
             mSecondaryView.setBackground(res.getDrawable(R.drawable.bottom_left_corner_rest, null));
-            //mSecondaryView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            //mSecondaryView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
-            //mSecondaryTextView.setTextColor(ResourcesCompat.getColor(res, R.color.colorPrimary, null));
+
         }
         rest = exercise.getRec();
         isWork=true;
@@ -360,7 +357,6 @@ public class CircuitActivity extends CountDownActivity {
             isRunning = true;
             isWork=true;
             mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-            //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
             mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
         }
 
@@ -375,8 +371,7 @@ public class CircuitActivity extends CountDownActivity {
     protected void startButtonCreator() {
         mStartButton.setOnClickListener(this.clickableTimer());
         mRepsButton.setOnClickListener(this.clickableTimer());
-        //mProgressBar.setOnClickListener(this.clickableTimer());
-        //mTimeTextView.setOnClickListener(this.clickableTimer());
+
     }
 
     /**
@@ -389,8 +384,8 @@ public class CircuitActivity extends CountDownActivity {
             public void onClick(View v) {
                 if (isRepsExercise && isWork) {
                         if (currentSet < exercises.size()) {
+
                             mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                            //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
                             mRepsButton.setVisibility(ImageButton.INVISIBLE);
                             mStartButton.setVisibility(Button.VISIBLE);
                             mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
@@ -416,7 +411,6 @@ public class CircuitActivity extends CountDownActivity {
                             timer.start();
                             isRunning = true;
                             mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                            //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
                             mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                         }
                     }
@@ -424,7 +418,6 @@ public class CircuitActivity extends CountDownActivity {
                         timer.cancel();
                         isRunning = false;
                         mStartButton.setText(res.getString(R.string.start).toUpperCase());
-                        //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_blue));
                         mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.colorPrimary)));
                     }
                 }
@@ -443,7 +436,6 @@ public class CircuitActivity extends CountDownActivity {
         if (isRepsExercise && isWork) {
             if (currentSet < exercises.size()) {
                 mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
                 mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 if (exercises.get(currentSet).isHasRecs())
                     startRest();
@@ -467,7 +459,6 @@ public class CircuitActivity extends CountDownActivity {
             else if (currentSet < exercises.size()) {
                 // Se ci sono altri elementi
                 mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
                 mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 nextExercise();
                 startWork();
@@ -478,7 +469,6 @@ public class CircuitActivity extends CountDownActivity {
             if (currentSet < exercises.size()) {
                 // Se ci sono altri elementi
                 mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
                 mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 nextExercise();
                 startWork();
@@ -502,8 +492,8 @@ public class CircuitActivity extends CountDownActivity {
         Gestisco la recyclerView
          */
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(dialogView.getContext(), LinearLayoutManager.VERTICAL, false);
-        RecyclerView mExerciseRecyclerView = dialogView.findViewById(R.id.recyclerViewExerciseListDialog);;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        RecyclerView mExerciseRecyclerView = dialogView.findViewById(R.id.recyclerViewExerciseListDialog);
         mExerciseRecyclerView.setLayoutManager(linearLayoutManager);
         ExerciseCardRecyclerViewAdapter exerciseCardRecyclerViewAdapter = new ExerciseCardRecyclerViewAdapter(exerciseSettings);
         exerciseCardRecyclerViewAdapter.setCircuitCreatorActivity(null);
@@ -518,7 +508,6 @@ public class CircuitActivity extends CountDownActivity {
         });
 
         final AlertDialog alertDialog = builder.create();
-        exerciseCardRecyclerViewAdapter.notifyDataSetChanged();
         alertDialog.show();
 
 
@@ -592,40 +581,6 @@ public class CircuitActivity extends CountDownActivity {
         }
         return drawable;
     }
-
-    /**
-     *
-     * @param exercise
-     * @return
-     */
-    private int getExerciseColor(ExerciseSettings exercise) {
-        int textColor = 0;
-        switch (exercise.getType()) {
-            case EXERCISE:
-                textColor = ResourcesCompat.getColor(res, R.color.colorAccent, null);
-                break;
-            case REST:
-                textColor = ResourcesCompat.getColor(res, R.color.restColor, null);
-                break;
-            case SUPERSET:
-                textColor = ResourcesCompat.getColor(res, R.color.supersetColor, null);
-                break;
-            case TABATA:
-                textColor = ResourcesCompat.getColor(res, R.color.tabataColor, null);
-                break;
-            case EMOM:
-                textColor = ResourcesCompat.getColor(res, R.color.emomColor, null);
-                break;
-            default:
-                try {
-                    throw new ExerciseTypeNotCorrectException("Tipo non corretto in getExerciseColor");
-                } catch (ExerciseTypeNotCorrectException e) {
-                    e.printStackTrace();
-                }
-        }
-        return textColor;
-    }
-
 
     public static Intent getCircuitActivity(Context context, ArrayList<ExerciseSettings> exercises) {
         Intent intent = new Intent(context, CircuitActivity.class);

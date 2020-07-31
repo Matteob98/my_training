@@ -1,19 +1,12 @@
 package com.italianswapp.yourtraining.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.italianswapp.yourtraining.Builders.Dialog2PickerBuilder;
 import com.italianswapp.yourtraining.Builders.Dialog3PickerBuilder;
@@ -28,14 +21,11 @@ import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.Timer.CountDownTimers.TabataActivity;
 import com.italianswapp.yourtraining.Timer.TimerActivity;
 
-import java.util.Objects;
-
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener, NumberPicker.OnValueChangeListener{
 
     private final static String MAIN_KEY = "main";
     private CardView circuitCard, chronometerCard, tabataCard,
             timerCard, amrapCard, emomCard, negativeCard;
-    private ImageButton mHelpButton;
 
     private final String[] TimeInStringForPicker =  Utilities.TIME_IN_STRING;
 
@@ -90,8 +80,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         negativeCard = findViewById(R.id.negativeCard);
         negativeCard.setOnClickListener(this);
 
-        mHelpButton = findViewById(R.id.helpButtonActivityMain);
-
     }
 
     @Override
@@ -142,17 +130,11 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 .setPicker(1, 1, 100, this)
                 .setPicker(2, 1, 120, this)
                 .setPicker(3, 1, 120, this)
-                .setPositiveButton(getResources().getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public void onClick(View v) {
+                        Dialog3PickerBuilder.getAlertDialog().dismiss();
                         callSecondNegativePicker();
-                    }
-                })
-                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
                     }
                 })
                 .show();
@@ -169,10 +151,9 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 .setText(2, getResources().getString(R.string.rest))
                 .setPicker(1, 1, 100, this)
                 .setPicker(2, 0, TimeInStringForPicker.length - 1,TimeInStringForPicker, this)
-                .setPositiveButton(getResources().getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public void onClick(View v) {
                         Intent intent = NegativePhaseActivity.getInstance(getApplicationContext(),
                                 repetitionNegativePhase,
                                 positiveText*1000,
@@ -180,15 +161,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                                 setsText,
                                 Utilities.getMillsFromMinuteString(recNegative));
 
+                        Dialog2PickerBuilder.getAlertDialog().dismiss();
                         startActivity(intent);
-                        ///finish();
-                    }
-                })
-                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        callFirstNegativePicker();
                     }
                 })
                 .show();
@@ -208,15 +182,15 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 .setPicker(1, 0, 23, this)
                 .setPicker(2, 0, 59, this)
                 .setPicker(3, 0, 59, this)
-                .setPositiveButton(getResources().getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(View v) {
                         if (hoursTimer + minsTimer + secsTimer != 0) {
-                            dialog.dismiss();
 
                             //Fa partire l'activity Timer passando il valore selezionato in millisecondi
                             amrapDuration = (((((hoursTimer * 60) + minsTimer)) * 60) + secsTimer) * 1000;
 
+                            Dialog3PickerBuilder.getAlertDialog().dismiss();
                             callSecondArmapPicker();
                         }
                         else
@@ -225,13 +199,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                                     Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
                 .show();
+        Dialog3PickerBuilder.setSaveButtonClickable(false); //Finchè non viene mosso il selettore non viene abilitato il pulsante salva
 
     }
 
@@ -246,25 +215,17 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 .setText(2, getResources().getString(R.string.rest))
                 .setPicker(1, 1, 20, this)
                 .setPicker(2, 0, TimeInStringForPicker.length - 1,TimeInStringForPicker, this)
-                .setPositiveButton(getResources().getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public void onClick(View v) {
 
                         Intent intent = AmrapActivity.getInstance(getApplicationContext(),
                                 amrapDuration,
                                 roundOfTabataText,
                                 Utilities.getMillsFromMinuteString(restBetweenSetsString));
 
+                        Dialog2PickerBuilder.getAlertDialog().dismiss();
                         startActivity(intent);
-                        //finish();
-                    }
-                })
-                .setNegativeButton(getResources().getString(R.string.back), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        callFirstTabataPicker();
                     }
                 })
                 .show();
@@ -287,17 +248,11 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 .setPicker(1, 1, 100, this)
                 .setPicker(2, 0, TimeInStringForPicker.length - 1,TimeInStringForPicker, this)
                 .setPicker(3, 0, TimeInStringForPicker.length - 1,TimeInStringForPicker, this)
-                .setPositiveButton(getResources().getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public void onClick(View v) {
+                        Dialog3PickerBuilder.getAlertDialog().dismiss();
                         callSecondTabataPicker();
-                    }
-                })
-                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
                     }
                 })
                 .show();
@@ -314,11 +269,9 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 .setText(2, getResources().getString(R.string.rest))
                 .setPicker(1, 1, 20, this)
                 .setPicker(2, 0, TimeInStringForPicker.length - 1,TimeInStringForPicker, this)
-                .setPositiveButton(getResources().getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-
+                    public void onClick(View v) {
                         //Fa partire l'activity tabata passando il valore selezionato
                         Intent intent = TabataActivity.getInstance(getApplicationContext(),
                                 Utilities.getMillsFromMinuteString(workString),
@@ -327,15 +280,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                                 roundOfTabataText,
                                 Utilities.getMillsFromMinuteString(restBetweenSetsString));
 
+                        Dialog2PickerBuilder.getAlertDialog().dismiss();
                         startActivity(intent);
-                        //finish();
-                    }
-                })
-                .setNegativeButton(getResources().getString(R.string.back), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        callFirstTabataPicker();
                     }
                 })
                 .show();
@@ -347,7 +293,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     private void startChronometherActivity() {
         Intent intent= ChronometerActivity.getChronometerActivity(getApplicationContext());
         startActivity(intent);
-        //finish();
     }
 
     /**
@@ -364,23 +309,16 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 .setText(2, getResources().getString(R.string.For))
                 .setPicker(1, 0, TimeInStringForPicker.length - 1, TimeInStringForPicker,  this)
                 .setPicker(2, 1, 100 , this)
-                .setPositiveButton(getResources().getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-
+                    public void onClick(View v) {
                         //Fa partire l'activity emom passando il valore selezionato in millisecondi
                         Intent intent = EmomActivity.getInstance(getApplicationContext(),
                                 Utilities.getMillsFromMinuteString(everyString)
                                 , forText );
+
+                        Dialog2PickerBuilder.getAlertDialog().dismiss();
                         startActivity(intent);
-                        //finish();
-                    }
-                })
-                .setNegativeButton(getResources().getString(R.string.back), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
                     }
                 })
                 .show();
@@ -404,17 +342,16 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 .setPicker(1, 0, 23, this)
                 .setPicker(2, 0, 59, this)
                 .setPicker(3, 0, 59, this)
-                .setPositiveButton(getResources().getString(R.string.Continue),  new DialogInterface.OnClickListener() {
+                .setPositiveButton(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(View v) {
                         if (hoursTimer + minsTimer + secsTimer != 0) {
-                            dialog.dismiss();
 
                             //Fa partire l'activity Timer passando il valore selezionato in millisecondi
                             long mills = (((((hoursTimer * 60) + minsTimer)) * 60) + secsTimer) * 1000;
                             Intent intent = TimerActivity.getIntentInstance(getApplicationContext(), mills);
+                            Dialog3PickerBuilder.getAlertDialog().dismiss();
                             startActivity(intent);
-                            //finish();
                         }
                         else
                             Snackbar.make(findViewById(R.id.menuLinearLayout),
@@ -422,13 +359,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                                     Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
                 .show();
+        Dialog3PickerBuilder.setSaveButtonClickable(false); //Finchè non viene mosso il selettore non viene abilitato il pulsante salva
     }
 
     @Override
@@ -441,6 +373,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                         setsText = newVal;
                         break;
                     case 3:
+                        //timer e amrap
                         hoursTimer = newVal;
                         break;
                     case 4:
@@ -507,6 +440,15 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
         }
+
+        /*
+        Se è il primo dialog di timer o amrap e la somma tra ore minuti e secondi è 0, disabilita il pulsante salva
+         */
+        if ( (id == R.id.firstPickerNumberPicker3 || id == R.id.secondPickerNumberPicker3 || id == R.id.thirdPickerNumberPicker3) && (flag == 3))
+            if (hoursTimer + minsTimer + secsTimer == 0)
+                Dialog3PickerBuilder.setSaveButtonClickable(false);
+            else
+                Dialog3PickerBuilder.setSaveButtonClickable(true);
     }
 
 

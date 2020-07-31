@@ -524,9 +524,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
      * Imposta i colori dell'activity quando si è in riposo
      */
     protected void restLayoutSettings() {
-        //mTimeTextView.setTextColor(res.getColor(R.color.colorAccent));
         mWorkDescriptionTextView.setText(res.getString(R.string.rest));
-        //mWorkDescriptionTextView.setTextColor(res.getColor(R.color.colorAccent));
         Drawable drawable = res.getDrawable(R.drawable.circle_progress_bar_rest);
         mProgressBar.setProgressDrawable(drawable);
     }
@@ -536,11 +534,9 @@ public abstract class CountDownActivity extends AppCompatActivity {
      */
     protected void readyLayoutSettings() {
         mTimeTextView.setText(Utilities.getStringTimeFromMillsWithoutHours(3000));
-        mTimeTextView.setText(res.getString(R.string.tap_to_start));
+        mWorkDescriptionTextView.setText(res.getString(R.string.ready));
         remainingTime=READY_TIMER;
         currentDuration =READY_TIMER;
-        //mTimeTextView.setTextColor(res.getColor(R.color.colorAccent));
-        //mWorkDescriptionTextView.setTextColor(res.getColor(R.color.colorAccent));
 
         Drawable drawable = res.getDrawable(R.drawable.circle_progress_bar_ready);
         mProgressBar.setProgressDrawable(drawable);
@@ -669,7 +665,6 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected CountDownTimer readyTimer() {
         startButtonEnabled(false);
         mStartButton.setText(getResources().getString(R.string.pause).toUpperCase());
-        //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
         mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
         mWorkDescriptionTextView.setText(res.getString(R.string.ready));
         progressBarHandler.post(progressBarRun);

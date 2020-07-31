@@ -2,10 +2,16 @@ package com.italianswapp.yourtraining.Builders;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -19,9 +25,14 @@ public class Dialog1PickerBuilder {
     private TextView firstTextView, titleTextView;
     private NumberPicker firstPicker;
     private View colorView;
+    private ImageButton deleteButton;
+    private Button saveButton;
 
     private AlertDialog.Builder builder;
     private final View dialogView;
+    private static AlertDialog alertDialog;
+
+    private boolean canExitFromTheDialog;
 
     /**
      * Metodo privato
@@ -49,6 +60,9 @@ public class Dialog1PickerBuilder {
 
         firstPicker = dialogView.findViewById(R.id.firstPickerNumberPicker1);
         colorView = dialogView.findViewById(R.id.colorViewNumberPicker1);
+
+        deleteButton = dialogView.findViewById(R.id.deleteImageButtonNumberPicker1);
+        saveButton = dialogView.findViewById(R.id.saveButtonNumberPicker1);
 
     }
 
@@ -124,23 +138,30 @@ public class Dialog1PickerBuilder {
 
     /**
      *
-     * @param text
      * @param onClickListener
      * @return
      */
-    public Dialog1PickerBuilder setPositiveButton (String text, DialogInterface.OnClickListener onClickListener ) {
-        builder.setPositiveButton( text, onClickListener );
+    public Dialog1PickerBuilder setPositiveButton (View.OnClickListener onClickListener ) {
+        saveButton.setOnClickListener(onClickListener);
         return this;
     }
 
     /**
      *
-     * @param text
-     * @param onClickListener
      * @return
      */
-    public Dialog1PickerBuilder setNegativeButton ( String text, DialogInterface.OnClickListener onClickListener ) {
-        builder.setNegativeButton( text, onClickListener );
+    public Dialog1PickerBuilder negativeButtonDisabled() {
+        deleteButton.setVisibility(ImageButton.GONE);
+        return this;
+    }
+
+    /**
+     *
+     * @param exit
+     * @return
+     */
+    public Dialog1PickerBuilder setCanExitFromTheDialog(boolean exit) {
+        canExitFromTheDialog =exit;
         return this;
     }
 
@@ -148,7 +169,20 @@ public class Dialog1PickerBuilder {
      * Mostra la dialog creata dal builder
      */
     public void show() {
-        AlertDialog alertDialog = builder.create();
+
+        alertDialog = builder.create();
+        if(!canExitFromTheDialog)
+            alertDialog.setCancelable(false);
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.setCanceledOnTouchOutside(canExitFromTheDialog);
         alertDialog.show();
     }
 
@@ -170,5 +204,13 @@ public class Dialog1PickerBuilder {
     public Dialog1PickerBuilder setTextColor(int color) {
         titleTextView.setTextColor(color);
         return this;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static AlertDialog getAlertDialog() {
+        return alertDialog;
     }
 }
