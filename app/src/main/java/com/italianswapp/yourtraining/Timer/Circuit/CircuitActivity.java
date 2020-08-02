@@ -3,6 +3,7 @@ package com.italianswapp.yourtraining.Timer.Circuit;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,33 +14,22 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
 import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseSettings;
 import com.italianswapp.yourtraining.Timer.CountDownTimers.CountDownActivity;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class CircuitActivity extends CountDownActivity {
-
-    /*
-    todo Left Button non mostra lista
-     */
 
     private final static String CIRCUIT_KEY="circuitKey";
 
@@ -93,7 +83,7 @@ public class CircuitActivity extends CountDownActivity {
 
         initializesFloatingButton();
 
-        initializesTimer();
+        //initializesTimer();
 
 
     }
@@ -112,6 +102,9 @@ public class CircuitActivity extends CountDownActivity {
                 rightButtonClick();
             }
         });
+        mRightFloatingButton.setImageResource(R.drawable.ic_forward);
+
+
 
         mLeftFloatingButton.setVisibility(FloatingActionButton.VISIBLE);
         mLeftFloatingButton.setOnClickListener(new View.OnClickListener() {
@@ -120,14 +113,14 @@ public class CircuitActivity extends CountDownActivity {
                 callExerciseListDialog();
             }
         });
+        mLeftFloatingButton.setImageResource(R.drawable.ic_assignament);
 
         /*
         Rendo momentaneamente non visibili e disabilitati
         Saranno riabilitati dopo il ready
          */
         mRightFloatingButton.setEnabled(false);
-        mPrimaryTextView.setVisibility(TextView.INVISIBLE);
-        mSecondaryTextView.setVisibility(TextView.INVISIBLE);
+
     }
 
     private void initializesExerciseList( ArrayList<ExerciseSettings> exerciseSettings) throws ExerciseTypeNotCorrectException {
@@ -136,9 +129,8 @@ public class CircuitActivity extends CountDownActivity {
 
             if (e.getType() != ExerciseSettings.CircuitType.SUPERSET) {
                 if(e.getRepetition()==1)
-                    exercises.add(e);
+                    exercises.add(ExerciseSettings.copyOf(e));
                 else {
-                    //String oldName = e.getName();
                     for (int i = 0; i < e.getRepetition(); i++) {
                         e.setHasSets(true);
                         e.setNumberSets(i+1);
@@ -167,14 +159,14 @@ public class CircuitActivity extends CountDownActivity {
                         e.getType());
 
                 /*
-                Il primo esercizio non ha superserie, altrimenti non sarebbe in superserie
+                Il primo esercizio non ha recupero, altrimenti non sarebbe in superserie
                  */
                 e.setRec(0);
                 e.setHasRecs(false);
 
                 if(e.getRepetition()==1) {
-                    exercises.add(e);/*rec =0 */
-                    exercises.add(supersetExercise);
+                    exercises.add(ExerciseSettings.copyOf(e));/*rec =0 */
+                    exercises.add(ExerciseSettings.copyOf(supersetExercise));
                 }
                 else {
                     String secondOldName = supersetExercise.getName();
@@ -206,8 +198,34 @@ public class CircuitActivity extends CountDownActivity {
 
         mPrimaryView.setBackground(getLeftColoredView(exercises.get(0)));
 
-        if(exercises.size()>1)
+        /*
+        Imposto il nome dell'esercizio
+         */
+        mPrimaryTextView.setText(exercises.get(0).getName());
+
+        /*
+        Se è un esercizio con più ripetizioni le visualizzo
+         */
+        if(exercises.get(0).isHasSets()) {
+            mPrimarySets.setVisibility(TextView.VISIBLE);
+            mPrimarySets.setText(exercises.get(0).getNumberSets() + "/" + exercises.get(0).getTotalSets());
+        }
+
+        if(exercises.size()>1) {
             mSecondaryView.setBackground(getRightColoredView(exercises.get(1)));
+            /*
+            Imposto il nome dell'esercizio
+             */
+            mSecondaryTextView.setText(exercises.get(1).getName());
+
+            /*
+            Se è un esercizio con più ripetizioni le visualizzo
+             */
+            if(exercises.get(1).isHasSets()) {
+                mSecondarySets.setVisibility(TextView.VISIBLE);
+                mSecondarySets.setText(exercises.get(1).getNumberSets() + "/" + exercises.get(1).getTotalSets());
+            }
+        }
         else {
             mSecondaryTextView.setText(getResources().getString(R.string.finish));
             mSecondaryView.setBackground(res.getDrawable(R.drawable.bottom_left_corner_rest, null));
@@ -236,14 +254,13 @@ public class CircuitActivity extends CountDownActivity {
 
             @Override
             public void onFinish() {
-                if (currentSet >= exercises.size())
-                    // Se ho finito il circuito
-                    finishCountDown();
-
-                else if(isWork && exercises.get(currentSet).isHasRecs()) {
+                if(isWork && exercises.get(currentSet-1).isHasRecs()) {
                     startRest();
                 }
-                else if (currentSet < exercises.size()) {
+                else if (currentSet >= exercises.size())
+                    // Se ho finito il circuito
+                    finishCountDown();
+                else {
                     // Se ci sono altri elementi
                     mStartButton.setText(getResources().getString(R.string.pause).toUpperCase());
                     mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
@@ -263,6 +280,9 @@ public class CircuitActivity extends CountDownActivity {
      */
     @SuppressLint("SetTextI18n")
     private void nextExercise() {
+        /*
+        Qui non si mette il -1 su currentSet perché sto usando effettivamente il currentSet che mi serve
+         */
         mPrimarySets.setVisibility(TextView.GONE);
         mSecondarySets.setVisibility(TextView.GONE);
 
@@ -311,7 +331,7 @@ public class CircuitActivity extends CountDownActivity {
         }
 
         if (currentSet < exercises.size() - 1) {
-            ExerciseSettings nextExercise = exercises.get(currentSet + 1);
+            ExerciseSettings nextExercise = exercises.get(currentSet+1);
             /*
             Imposto il nome dell'esercizio
              */
@@ -347,6 +367,10 @@ public class CircuitActivity extends CountDownActivity {
 
     @Override
     protected void startWork() {
+        if (exercises.get(currentSet-1).getType().equals(ExerciseSettings.CircuitType.REST)) {
+            startRest();
+            return;
+        }
         progressBarHandler.post(progressBarRun);
 
         if (! isRepsExercise) {
@@ -389,7 +413,7 @@ public class CircuitActivity extends CountDownActivity {
                             mRepsButton.setVisibility(ImageButton.INVISIBLE);
                             mStartButton.setVisibility(Button.VISIBLE);
                             mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
-                            if (exercises.get(currentSet).isHasRecs())
+                            if (exercises.get(currentSet-1).isHasRecs())
                                 startRest();
                             else{
                                 // Se ci sono altri elementi
@@ -410,6 +434,8 @@ public class CircuitActivity extends CountDownActivity {
                             timer = createTimer();
                             timer.start();
                             isRunning = true;
+                            mRepsButton.setVisibility(ImageButton.INVISIBLE);
+                            mStartButton.setVisibility(Button.VISIBLE);
                             mStartButton.setText(res.getString(R.string.pause).toUpperCase());
                             mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                         }
@@ -417,6 +443,8 @@ public class CircuitActivity extends CountDownActivity {
                     else {
                         timer.cancel();
                         isRunning = false;
+                        mRepsButton.setVisibility(ImageButton.INVISIBLE);
+                        mStartButton.setVisibility(Button.VISIBLE);
                         mStartButton.setText(res.getString(R.string.start).toUpperCase());
                         mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.colorPrimary)));
                     }
@@ -431,14 +459,20 @@ public class CircuitActivity extends CountDownActivity {
      */
     private void rightButtonClick() {
         if(!isRepsExercise || !isWork)
+            //Se è un riposo
             timer.cancel(); //Annullo il timer
+        if(( !isRepsExercise) && (currentSet==0 || isFirstStart))
+            return;
 
-        if (isRepsExercise && isWork) {
+        else if (isRepsExercise && isWork) {
             if (currentSet < exercises.size()) {
-                mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
-                if (exercises.get(currentSet).isHasRecs())
+                if (exercises.get(currentSet-1).isHasRecs()) {
+                    mRepsButton.setVisibility(ImageButton.INVISIBLE);
+                    mStartButton.setVisibility(Button.VISIBLE);
+                    mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                    mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                     startRest();
+                }
                 else {
                     // Se ci sono altri elementi
                     nextExercise();
@@ -453,13 +487,17 @@ public class CircuitActivity extends CountDownActivity {
                 // Se ho finito il circuito
                 finishCountDown();
 
-            else if(exercises.get(currentSet).isHasRecs()) {
+            else if(exercises.get(currentSet-1).isHasRecs()) {
+                mRepsButton.setVisibility(ImageButton.INVISIBLE);
+                mStartButton.setVisibility(Button.VISIBLE);
+                mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 startRest();
             }
             else if (currentSet < exercises.size()) {
                 // Se ci sono altri elementi
-                mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
+                //mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                //mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 nextExercise();
                 startWork();
             }
@@ -479,38 +517,30 @@ public class CircuitActivity extends CountDownActivity {
     }
 
     protected void callExerciseListDialog() {
-        /*
-        Gonfio il builder del Dialog
-         */
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.exercise_list_dialog, null);
-        builder.setView(dialogView);
 
+        //Carico dialog e animazioni
+        final Dialog dialog = new Dialog(CircuitActivity.this, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
+        dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
+        dialog.setContentView(R.layout.exercise_list_dialog);
 
-        /*
-        Gestisco la recyclerView
-         */
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        RecyclerView mExerciseRecyclerView = dialogView.findViewById(R.id.recyclerViewExerciseListDialog);
-        mExerciseRecyclerView.setLayoutManager(linearLayoutManager);
-        ExerciseCardRecyclerViewAdapter exerciseCardRecyclerViewAdapter = new ExerciseCardRecyclerViewAdapter(exerciseSettings);
-        exerciseCardRecyclerViewAdapter.setCircuitCreatorActivity(null);
-        mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
-
-
-        builder.setPositiveButton(res.getString(R.string.Continue), new DialogInterface.OnClickListener() {
+        //Setto il pulsante per uscire
+        ImageButton mDeleteButton = dialog.findViewById(R.id.deleteImageButtonExerciseListDialog);
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View v) {
                 dialog.dismiss();
             }
         });
 
-        final AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        //Carico i dati nella recycler View
+        RecyclerView recyclerView = dialog.findViewById(R.id.recyclerViewExerciseListDialog);
+        ExerciseCardRecyclerViewAdapter mAdapter = new ExerciseCardRecyclerViewAdapter(exerciseSettings);
+        mAdapter.setCircuitCreatorActivity(null);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
 
+        dialog.show();
 
     }
 

@@ -113,6 +113,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="C:\Users\matte\Downloads\LOGO ARROTONDATO 1.jpg" />
+                                                <entry key="scalingPercent" value="81" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -168,7 +170,9 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\matte\Downloads\DUDI.png" />
+                                                <entry key="imagePath" value="C:\Users\matte\Downloads\LOGO ARROTONDATO 1.jpg" />
+                                                <entry key="paddingPercent" value="-5" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -201,9 +205,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="backgroundColor" value="7e5fc2" />
                                       <entry key="cropped" value="true" />
-                                      <entry key="imageAsset" value="C:\Users\matte\Downloads\DUDI.png" />
+                                      <entry key="imageAsset" value="C:\Users\matte\Downloads\LOGO ARROTONDATO 1.jpg" />
                                       <entry key="outputName" value="ic_logo" />
                                     </map>
                                   </option>
@@ -333,7 +336,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

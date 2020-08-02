@@ -3,6 +3,7 @@ package com.italianswapp.yourtraining.Timer.Circuit;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,8 +27,6 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     private static final int REST = 2;
     private static final int TABATA = 3;
     private static final int SUPERSET = 4;
-
-    private final String[] TimeInStringForPicker = Utilities.TIME_IN_STRING;
 
     List<? extends ExerciseSettings> exercises;
 
@@ -236,8 +235,6 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
      */
     @Override
     public int getItemViewType(int position) {
-        // Just as an example, return 0 or 2 depending on position
-        // Note that unlike in ListView adapters, types don't have to be contiguous
         try {
             return ExerciseSettings.getIntegerItemType(exercises.get(position).getType());
         } catch (ExerciseTypeNotCorrectException e) {
@@ -287,6 +284,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mSleepImage = itemView.findViewById(R.id.sleepImage);
 
             /*
+            Disattivo azioni se mi trovo nell exercise list dialog
+             */
+            if (circuitCreatorActivity==null) {
+                mCardView.setClickable(false);
+                mDeleteButton.setVisibility(Button.INVISIBLE);
+            }
+
+            /*
             Azione alla pressione del tasto delete
              */
 
@@ -326,6 +331,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mCardView = itemView.findViewById(R.id.tabataCard);
             mDeleteButton = itemView.findViewById(R.id.deleteRestCard);
             mRec = itemView.findViewById(R.id.recRestCard);
+
+            /*
+            Disattivo azioni se mi trovo nell exercise list dialog
+             */
+            if (circuitCreatorActivity==null) {
+                mCardView.setClickable(false);
+                mDeleteButton.setVisibility(Button.INVISIBLE);
+            }
 
             /*
             Azione alla pressione del tasto delete
@@ -371,6 +384,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mRec = itemView.findViewById(R.id.recTabataCard);
 
             /*
+            Disattivo azioni se mi trovo nell exercise list dialog
+             */
+            if (circuitCreatorActivity==null) {
+                mCardView.setClickable(false);
+                mDeleteButton.setVisibility(Button.INVISIBLE);
+            }
+
+            /*
             Azione alla pressione del tasto delete
              */
 
@@ -410,6 +431,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mLap = itemView.findViewById(R.id.lapEmomCard);
             mDeleteButton = itemView.findViewById(R.id.deleteEmomCard);
             mReps = itemView.findViewById(R.id.repsEmomCard);
+
+            /*
+            Disattivo azioni se mi trovo nell exercise list dialog
+             */
+            if (circuitCreatorActivity==null) {
+                mCardView.setClickable(false);
+                mDeleteButton.setVisibility(Button.INVISIBLE);
+            }
 
             /*
             Azione alla pressione del tasto delete
@@ -454,6 +483,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             mSecondExerciseName = itemView.findViewById(R.id.secondExerciseSupersetCard);
             mSecondExerciseReps = itemView.findViewById(R.id.secondExerciseRepsSupersetCard);
             mRec = itemView.findViewById(R.id.recSupersetCard);
+
+            /*
+            Disattivo azioni se mi trovo nell exercise list dialog
+             */
+            if (circuitCreatorActivity==null) {
+                mCardView.setClickable(false);
+                mDeleteButton.setVisibility(Button.INVISIBLE);
+            }
 
             /*
             Azione alla pressione del tasto delete

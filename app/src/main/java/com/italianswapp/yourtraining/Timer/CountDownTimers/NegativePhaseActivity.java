@@ -37,6 +37,7 @@ public class NegativePhaseActivity extends CountDownActivity {
          */
         mPrimaryTextView.setVisibility(TextView.INVISIBLE);
         mSecondaryTextView.setVisibility(TextView.INVISIBLE);
+        mOverlineSecondaryTextView.setText(getResources().getString(R.string.current_repetition));
     }
 
     @Override
@@ -69,6 +70,7 @@ public class NegativePhaseActivity extends CountDownActivity {
                     tickNegativePhase=work;
                     isPositive=true;
                     currentRepetition++;
+                    mSecondaryTextView.setText(setSetsText(repetition, currentRepetition));
                     startWork();
                     mWorkDescriptionTextView.setText(res.getString(R.string.Concentric));
 
@@ -101,6 +103,7 @@ public class NegativePhaseActivity extends CountDownActivity {
         currentRepetition=1;
 
         mPrimaryTextView.setText(setSetsText(setsNumber, currentSet));
+        mSecondaryTextView.setText(setSetsText(repetition, currentRepetition));
 
         mPrimaryTextView.setVisibility(TextView.VISIBLE);
         mSecondaryTextView.setVisibility(TextView.VISIBLE);
@@ -133,7 +136,7 @@ public class NegativePhaseActivity extends CountDownActivity {
         currentDuration = negative;
         timer = createTimer();
         timer.start();
-        mTimeTextView.setTextColor(Color.RED);
+        mTimeTextView.setTextColor(getResources().getColor(R.color.red));
         isRunning = true;
         isWork=true;
         isPositive=false;

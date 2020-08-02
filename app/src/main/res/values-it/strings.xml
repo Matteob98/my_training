@@ -8,7 +8,7 @@
     <string name="mins">min</string>
     <string name="reps">reps</string>
     <string name="secs">sec</string>
-    <string name="sets">sets</string>
+    <string name="sets">serie</string>
     <string name="back">Indetro</string>
     <string name="Continue">continua</string>
     <string name="delete">Elimina</string>
@@ -65,8 +65,8 @@
     <string name="received_bug">Grazie! Abbiamo ricevuto il tuo messaggio</string>
     <string name="share_text">Ciao! Hai provato questo timer? è molto buono</string>
     <string name="version">Versione</string>
-    <string name="concentric">concentrica</string>
-    <string name="eccentric">eccentrica</string>
+    <string name="concentric">conc</string>
+    <string name="eccentric">ecc</string>
     <string name="Concentric">Concentrica</string>
     <string name="Eccentric">Eccentrica</string>
     <string name="bug_dialog">Quale errore hai trovato?</string>

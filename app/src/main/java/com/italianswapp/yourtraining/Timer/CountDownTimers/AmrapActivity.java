@@ -65,6 +65,27 @@ public class AmrapActivity extends CountDownActivity {
     private String getRoundString() { return res.getString(R.string.round_completed) + " "+ roundAmrap; }
 
     /**
+     * Metodo sovrascritto per poter mostrare la scritta "Round completati"
+     */
+    @Override
+    protected void startWork() {
+        remainingTime =work;
+        currentDuration = work;
+        timer = createTimer();
+        timer.start();
+        isRunning = true;
+        isWork=true;
+        //mPrimaryTextView.setText(setSetsText(setsNumber, currentSet));
+        mPrimaryTextView.setText(getRoundString());
+        progressBarHandler.post(progressBarRun);
+        workLayoutSettings();
+
+        workSound();
+        tick1000=true; tick2000=true; tick3000=true; tickHalf=true;
+    }
+
+
+    /**
      * Si occupa di gestire il cambiamento di round amrap
      * Aggiunge la variazione passata in input (se negativa sottrae)
      * E produce, se ifSound, un tic
@@ -145,12 +166,13 @@ public class AmrapActivity extends CountDownActivity {
 
         Dialog1PickerBuilder.newBuilder(this, this)
                 .setText(0, res.getString(R.string.many_round_completed))
-                .setPicker(1, maxRound, new NumberPicker.OnValueChangeListener() {
+                .setPicker(0, maxRound, new NumberPicker.OnValueChangeListener() {
                     @Override
                     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                         roundAmrap=newVal;
                     }
                 })
+                .setPickerValue(roundAmrap)
                 .setPositiveButton(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

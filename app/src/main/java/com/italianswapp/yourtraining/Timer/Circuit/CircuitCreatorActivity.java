@@ -335,6 +335,8 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
                         exerciseSettings.setRec(Utilities.getMillsFromMinuteString(restString));
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+
+                        Dialog3PickerBuilder.getAlertDialog().dismiss();
                     }
                 })
                 .setDialogColor(R.color.tabataColor)
@@ -532,6 +534,8 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         ExerciseSettings exerciseSettings = exerciseList.get(position);
                         exerciseSettings.setRec((int)Utilities.getMillsFromMinuteString(restString));
+                        exerciseSettings.setReps(false);
+                        exerciseSettings.setReps(0);
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                         Dialog1PickerBuilder.getAlertDialog().dismiss();
                     }
@@ -585,6 +589,8 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         exerciseSettings.setRepetition(repetition);
                         exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
+
+                        Dialog2PickerBuilder.getAlertDialog().dismiss();
                     }
                 })
                 .setDialogColor(R.color.emomColor)
@@ -661,10 +667,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         repetition = newVal;
                     }
                 })
-                .setPickerValue(1,1,
-                        exercise.getRepetition()!=0 ?
-                                exercise.getRepetition() :
-                                1)
+                .setPickerValue(1,1, exercise.getRepetition())
                 .setPicker(1,2, 0, TimeInStringForPicker.length - 1, TimeInStringForPicker, new NumberPicker.OnValueChangeListener() {
                     @Override
                     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -700,7 +703,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         secondPicker.setValue(0);
                         secondPicker.setMinValue(0);
                         secondPicker.setMaxValue(arr.length-1);
-                        workInteger=Integer.parseInt(arr[0]);
+                        //workInteger=Integer.parseInt(arr[0]);
                         isReps=true;
                         secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                             @Override
@@ -722,7 +725,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         secondPicker.setValue(0);
                         secondPicker.setMinValue(0);
                         secondPicker.setMaxValue(arr.length-1);
-                        secondWorkInteger=Integer.parseInt(arr[0]);
+                        //secondWorkInteger=Integer.parseInt(arr[0]);
                         secondIsReps=true;
                         secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                             @Override
@@ -743,7 +746,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         secondPicker.setMaxValue(TimeInStringForPicker.length - 1);
                         secondPicker.setDisplayedValues(TimeInStringForPicker);
                         secondPicker.setValue(0);
-                        workString = TimeInStringForPicker[0];
+                        //workString = TimeInStringForPicker[0];
                         isReps=false;
                         secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                             @Override
@@ -764,7 +767,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         secondPicker.setMaxValue(TimeInStringForPicker.length - 1);
                         secondPicker.setDisplayedValues(TimeInStringForPicker);
                         secondPicker.setValue(0);
-                        secondWorkString = TimeInStringForPicker[0];
+                        //secondWorkString = TimeInStringForPicker[0];
                         secondIsReps=false;
                         secondPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                             @Override

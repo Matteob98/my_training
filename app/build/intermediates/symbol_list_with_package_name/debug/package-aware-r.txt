@@ -1746,6 +1746,7 @@ id deleteButtonCard
 id deleteEmomCard
 id deleteExerciseCard
 id deleteImageButtonExerciseDialog
+id deleteImageButtonExerciseListDialog
 id deleteImageButtonNumberPicker1
 id deleteImageButtonNumberPicker2
 id deleteImageButtonNumberPicker3
@@ -2054,6 +2055,7 @@ id textView11
 id textView12
 id textView13
 id textView14
+id textView15
 id textView2
 id textView3
 id textView4
@@ -2082,6 +2084,7 @@ id titleNumberPicker2
 id titleNumberPicker3
 id title_template
 id toggle_button_container
+id toolbarActivityMain
 id toolbarChronometerActivity
 id toolbarCircuitCreator
 id toolbarEmomActivity
@@ -2364,6 +2367,7 @@ string concentric
 string concentric_phase
 string concentric_phase_description
 string current_lap
+string current_repetition
 string current_round
 string current_set
 string default_web_client_id

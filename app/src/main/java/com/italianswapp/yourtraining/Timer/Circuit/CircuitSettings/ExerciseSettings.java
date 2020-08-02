@@ -219,7 +219,12 @@ public class ExerciseSettings implements Parcelable {
      * @return Una copia ExerciseSettings
      */
     public static ExerciseSettings copyOf(ExerciseSettings e) {
-        return new ExerciseSettings(e.name, e.reps, e.rec, e.repetition, e.isReps, e.hasRecs, e.type);
+        ExerciseSettings copy = new ExerciseSettings(e.name, e.reps, e.rec, e.repetition, e.isReps, e.hasRecs, e.type);
+        copy.setNumberSets(e.getNumberSets());
+        copy.setTotalSets(e.getTotalSets());
+        copy.setHasSets(e.isHasSets());
+
+        return copy;
     }
 
     /**

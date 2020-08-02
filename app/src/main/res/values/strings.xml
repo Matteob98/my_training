@@ -88,8 +88,8 @@
     <string name="version">Version</string>
 
     <!-- Concentric activity -->
-    <string name="concentric">concentric</string>
-    <string name="eccentric">eccentric</string>
+    <string name="concentric">conc</string>
+    <string name="eccentric">ecc</string>
     <string name="Concentric">Concentric</string>
     <string name="Eccentric">Eccentric</string>
 
@@ -118,5 +118,6 @@
     <string name="first_exercise">First exercise</string>
     <string name="second_exercise">Second exercise</string>
     <string name="save">save</string>
+    <string name="current_repetition">Current repetition</string>
 
 </resources>
