@@ -72,7 +72,7 @@
     <string name="workout_completed_in">Workout completed in</string>
 
     <!-- Finish activity -->
-    <string name="well_done">Well done</string>
+    <string name="well_done">Well done!</string>
     <string name="subtitle_finish_activity">Return to homepage to start another training</string>
 
     <!-- Help activity -->

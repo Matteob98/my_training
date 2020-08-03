@@ -6,7 +6,7 @@
     <string name="minutes">minuti</string>
     <string name="hours">ore</string>
     <string name="mins">min</string>
-    <string name="reps">reps</string>
+    <string name="reps">rip</string>
     <string name="secs">sec</string>
     <string name="sets">serie</string>
     <string name="back">Indetro</string>
@@ -53,7 +53,7 @@
     <string name="finished">Finito</string>
     <string name="workout_completed">Allenamento completato</string>
     <string name="workout_completed_in">Allenamento completato in</string>
-    <string name="well_done">Ben fatto</string>
+    <string name="well_done">Ben fatto!</string>
     <string name="subtitle_finish_activity">Torna alla homepage per iniziare un altro allenamento</string>
     <string name="subtitle_help_activity">Assistente di allenamento e timer</string>
     <string name="bug">Riporta un errore</string>
@@ -63,7 +63,7 @@
     <string name="add_error">Devi aggiungere almeno un errore per inviare il messaggio</string>
     <string name="enter_error">Inserisci almeno un errore</string>
     <string name="received_bug">Grazie! Abbiamo ricevuto il tuo messaggio</string>
-    <string name="share_text">Ciao! Hai provato questo timer? è molto buono</string>
+    <string name="share_text">Ciao! Hai provato quest\'applicazione? è molto bella!</string>
     <string name="version">Versione</string>
     <string name="concentric">conc</string>
     <string name="eccentric">ecc</string>
@@ -72,4 +72,21 @@
     <string name="bug_dialog">Quale errore hai trovato?</string>
     <string name="your_workout">Il tuo allenamento</string>
     <string name="Lap">Giro</string>
+    <string name="for_time">A Tempo</string>
+    <string name="for_time_description">Finisci l\'allenamento il più velocemente possibile</string>
+    <string name="Start">Start</string>
+    <string name="Stop">Stop</string>
+    <string name="Resume">Resume</string>
+    <string name="Superset">Superserie</string>
+    <string name="new_exercise">NUOVO ESERCIZIO</string>
+    <string name="lap_times">Tempo giro</string>
+    <string name="overal_time">Tempo totale</string>
+    <string name="pause">pausa</string>
+    <string name="Reset">Reset</string>
+    <string name="Create">Crea</string>
+    <string name="superset">Superserie</string>
+    <string name="first_exercise">Primo esercizio</string>
+    <string name="second_exercise">Secondo esercizio</string>
+    <string name="save">salva</string>
+    <string name="current_repetition">Ripetizione attuale</string>
 </resources>

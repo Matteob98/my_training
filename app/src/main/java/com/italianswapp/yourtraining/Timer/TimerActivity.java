@@ -51,9 +51,9 @@ public class TimerActivity extends CountDownActivity {
         Saranno riabilitati dopo il ready
          */
         mLeftFloatingButton.setEnabled(false);
-        mRightFloatingButton.setImageResource(R.drawable.ic_forward10_scuro);
+        mRightFloatingButton.setImageResource(R.drawable.ic_forward10);
         mRightFloatingButton.setEnabled(false);
-        mLeftFloatingButton.setImageResource(R.drawable.ic_reset_scuro);
+        mLeftFloatingButton.setImageResource(R.drawable.ic_replay);
 
     }
 

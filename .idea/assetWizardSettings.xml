@@ -170,7 +170,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\matte\Downloads\LOGO ARROTONDATO 1.jpg" />
+                                                <entry key="imagePath" value="C:\Users\matte\Downloads\Logo.png" />
                                                 <entry key="paddingPercent" value="-5" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
@@ -206,7 +206,7 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="cropped" value="true" />
-                                      <entry key="imageAsset" value="C:\Users\matte\Downloads\LOGO ARROTONDATO 1.jpg" />
+                                      <entry key="imageAsset" value="C:\Users\matte\Downloads\Logo.png" />
                                       <entry key="outputName" value="ic_logo" />
                                     </map>
                                   </option>

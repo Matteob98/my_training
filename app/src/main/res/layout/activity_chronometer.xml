@@ -84,7 +84,7 @@
         android:fontFamily="@font/swansea"
         android:gravity="center_horizontal"
         android:letterSpacing="0.05"
-        android:text="Overal time"
+        android:text="@string/overal_time"
         android:textColor="#757575"
         android:textSize="12sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView4"

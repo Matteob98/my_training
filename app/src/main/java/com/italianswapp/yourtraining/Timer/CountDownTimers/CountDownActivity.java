@@ -241,7 +241,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
             }
         });
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(TEST_ADS);
+        mInterstitialAd.setAdUnitId(ADS_CODE);
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
     }
