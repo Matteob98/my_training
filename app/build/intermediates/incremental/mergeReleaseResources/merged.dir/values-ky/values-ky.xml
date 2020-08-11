@@ -47,6 +47,13 @@
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Google менен кирүү"</string>
     <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"Жогору чабыттоо"</string>
     <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"Чабыттоо суурмасын ачуу"</string>
+    <string msgid="368094699078615544" name="s1">"Сүрөттү сактоо"</string>
+    <string msgid="4550830452390689489" name="s2">"Жарнамадан Сүрөт галереясына сүрөт сакталсынбы?"</string>
+    <string msgid="2435407834265420668" name="s3">"Кабыл алуу"</string>
+    <string msgid="9167523597401839819" name="s4">"Баш тартуу"</string>
+    <string msgid="1566682516266724847" name="s5">"Жылнаама окуясын түзүү"</string>
+    <string msgid="5996672174517137271" name="s6">"Жарнамада жылнаама окуясы түзүлсүнбү?"</string>
+    <string msgid="7163549807207034258" name="s7">"Жарнаманы сынап көрүңүз"</string>
     <string msgid="730395136688082741" name="search_menu_title">"Издөө"</string>
-    <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

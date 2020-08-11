@@ -69,6 +69,8 @@
     <attr format="reference" name="content"/>
     <attr format="reference" name="coordinatorLayoutStyle"/>
     <attr format="reference" name="drawerArrowStyle"/>
+    <attr format="reference" name="drawerLayoutStyle"/>
+    <attr format="dimension" name="elevation"/>
     <attr format="color" name="elevationOverlayColor"/>
     <attr format="boolean" name="elevationOverlayEnabled"/>
     <attr name="emptyVisibility">
@@ -259,15 +261,20 @@
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
     <color name="abc_search_url_text_selected">@android:color/black</color>
+    <color name="accentShadow">#20f2e96b</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <color name="backgroundColor">#fcfcfc</color>
+    <color name="androidx_core_ripple_material_light">#1f000000</color>
+    <color name="androidx_core_secondary_text_default_material_light">#8a000000</color>
+    <color name="backgroundColor">#eeeeee</color>
+    <color name="background_dim_overlay">#44000000</color>
     <color name="background_floating_material_dark">@color/material_grey_800</color>
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
     <color name="black">#000000</color>
     <color name="blackOverlay">#66000000</color>
+    <color name="bluShadow">#203079d9</color>
     <color name="blue">#2196F3</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -275,15 +282,20 @@
     <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark</color>
     <color name="bright_foreground_material_dark">@android:color/white</color>
     <color name="bright_foreground_material_light">@android:color/black</color>
+    <color name="browser_actions_bg_grey">#F5F5F5</color>
+    <color name="browser_actions_divider_color">#1E000000</color>
+    <color name="browser_actions_text_color">#DE000000</color>
+    <color name="browser_actions_title_color">#646464</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
     <color name="cardview_dark_background">#FF424242</color>
     <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="colorPrimary">#673AB7</color>
-    <color name="colorPrimaryDark">#512DA8</color>
+    <color name="colorAccent">#FFEB3B</color>
+    <color name="colorAccentDark">#FDD835</color>
+    <color name="colorPrimary">#3079d9</color>
+    <color name="colorPrimaryDark">#3730f2</color>
     <color name="colorPrimaryLight">#B39DDB</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
@@ -334,6 +346,7 @@
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
+    <color name="emomColor">#39a78e</color>
     <color name="error_color_material_dark">#ff7043</color>
     <color name="error_color_material_light">#ff5722</color>
     <color name="foreground_material_dark">@android:color/white</color>
@@ -377,20 +390,25 @@
     <color name="primary_text_disabled_material_light">#39000000</color>
     <color name="purple">#E040FB</color>
     <color name="red">#F44336</color>
+    <color name="redShadow">#20f44336</color>
+    <color name="restColor">#3079d9</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="supersetColor">#FFAB00</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
+    <color name="tabataColor">#6a5287</color>
     <color name="teal">#009688</color>
     <color name="textColor">#FFFFFF</color>
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6FFFFFF</color>
+    <color name="transparent">#000000FF</color>
     <color name="white">#FFFFFF</color>
     <color name="yellow">#ffb300</color>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
@@ -473,6 +491,8 @@
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
     <dimen name="action_bar_size">16dp</dimen>
     <dimen name="appcompat_dialog_background_inset">16dp</dimen>
+    <dimen name="browser_actions_context_menu_max_width">500dp</dimen>
+    <dimen name="browser_actions_context_menu_min_padding">20dp</dimen>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
@@ -483,6 +503,7 @@
     <dimen name="compat_control_corner_material">2dp</dimen>
     <dimen name="compat_notification_large_icon_max_height">320dp</dimen>
     <dimen name="compat_notification_large_icon_max_width">320dp</dimen>
+    <dimen name="def_drawer_elevation">10dp</dimen>
     <dimen name="default_dimension">100dp</dimen>
     <dimen name="design_appbar_elevation">4dp</dimen>
     <dimen name="design_bottom_navigation_active_item_max_width">168dp</dimen>
@@ -829,10 +850,22 @@
     <integer name="mtrl_tab_indicator_anim_duration_ms">250</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <item name="msf_interpolator" type="interpolator">@android:interpolator/decelerate_cubic</item>
     <plurals description="Plural form content description for number of new notifications [CHAR_LIMIT=NONE]" name="mtrl_badge_content_description">
     <item quantity="one"><ns1:g id="count">%d</ns1:g> new notification</item>
     <item quantity="other"><ns1:g id="count">%d</ns1:g> new notifications</item>
   </plurals>
+    <string name="Concentric">Concentric</string>
+    <string name="Continue">continue</string>
+    <string name="Create">Create</string>
+    <string name="Eccentric">Eccentric</string>
+    <string name="For">for</string>
+    <string name="Lap">Lap</string>
+    <string name="Reset">Reset</string>
+    <string name="Resume">Resume</string>
+    <string name="Start">Start</string>
+    <string name="Stop">Stop</string>
+    <string name="Superset">Superset</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
@@ -860,13 +893,24 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="app_name">MyTraining</string>
+    <string name="add_error">You must add at least one error to send the message</string>
+    <string name="add_one_exercise">You must add at least one exercise</string>
+    <string name="amrap">Amrap</string>
+    <string name="amrap_description">How many round can you finish?</string>
+    <string name="app_name" translatable="false">MyTraining</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="back">Back</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+    <string name="bug">Report a bug</string>
+    <string name="bug_dialog">What error did you find?</string>
+    <string name="cancel">Cancel</string>
     <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
     <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="chip_text">Chip text</string>
+    <string name="chronometer">Chronometer</string>
+    <string name="chronometer_description">Train with the classic stopwatch</string>
+    <string name="circuit_creator_error">Please check the data entered</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable</string>
     <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t work unless you enable Google Play services.</string>
@@ -886,20 +930,49 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="concentric">conc</string>
+    <string name="concentric_phase">Concentric phase</string>
+    <string name="concentric_phase_description">Scan concentric and eccentric phase</string>
+    <string name="current_lap">Current lap</string>
+    <string name="current_repetition">Current repetition</string>
+    <string name="current_round">Current Round</string>
+    <string name="current_set">Current set</string>
     <string name="default_web_client_id" translatable="false">108255456361-rq4fvbnjs586gmql6j6ek9sklhhoqq7j.apps.googleusercontent.com</string>
+    <string name="delete">Delete</string>
     <string name="desc_toggle_button">Toggle button</string>
+    <string name="eccentric">ecc</string>
+    <string name="emom">Emom</string>
+    <string name="emom_description">Every Minute on the Minute</string>
+    <string name="enter_error">Please enter at least one error</string>
+    <string name="enter_exercise_name">Enter the name of the exercise</string>
     <string name="error_icon_content_description">Error</string>
+    <string name="every">every</string>
+    <string name="exercise">Exercise</string>
+    <string name="exercise_name_error">Please enter the exercise name</string>
+    <string name="exit">Exit</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="finish">FINISH</string>
+    <string name="finished">Finished</string>
     <string name="firebase_database_url" translatable="false">https://my-training-c61fa.firebaseio.com</string>
+    <string name="first_exercise">First exercise</string>
+    <string name="for_time">For Time</string>
+    <string name="for_time_description">Finish the workout as quickly as you can</string>
     <string name="gcm_defaultSenderId" translatable="false">108255456361</string>
+    <string name="go_out">Go out?</string>
     <string name="google_api_key" translatable="false">AIzaSyDBb5cYYgZmkt8dmrt_1kVu2gYCinMZeEo</string>
     <string name="google_app_id" translatable="false">1:108255456361:android:242da4ed3939bf2d1986f8</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDBb5cYYgZmkt8dmrt_1kVu2gYCinMZeEo</string>
     <string name="google_storage_bucket" translatable="false">my-training-c61fa.appspot.com</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
+    <string name="hours">hours</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
+    <string name="invalid_time">Invalid time entered</string>
+    <string name="lap_times">Lap times</string>
+    <string name="many_round_completed">How many rounds have you completed?</string>
+    <string name="mins">mins</string>
+    <string name="minutes">minutes</string>
     <string description="Content description for new notification (no number count) [CHAR_LIMIT=NONE]" name="mtrl_badge_numberless_content_description">New notification</string>
     <string description="Content description for a close icon that lets the user remove content from the screen" name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
     <string name="mtrl_exceed_max_badge_number_suffix" translatable="false"><ns1:g example="999" id="maximum number">%1$d</ns1:g><ns1:g example="+" id="suffix">%2$s</ns1:g></string>
@@ -936,14 +1009,63 @@
     <string description="a11y string to indicate this button switches the user to choosing a year [CHAR_LIMIT=NONE]" name="mtrl_picker_toggle_to_year_selection">Tap to switch to selecting a year</string>
     <string name="nav_app_bar_navigate_up_description">Navigate up</string>
     <string name="nav_app_bar_open_drawer_description">Open navigation drawer</string>
+    <string name="new_exercise">NEW EXERCISE</string>
+    <string name="next_exercise">Next exercise</string>
+    <string name="not_able_to_recovery">You will not be able to recover your training data</string>
+    <string name="not_yet">Not yet</string>
+    <string name="overal_time">Overal time</string>
     <string name="password_toggle_content_description">Show password</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+    <string name="pause">pause</string>
     <string name="project_id" translatable="false">my-training-c61fa</string>
+    <string name="ready">Ready?</string>
+    <string name="received_bug">Thanks! We have received your report</string>
+    <string name="report_bug">Report a bug</string>
+    <string name="reps">reps</string>
+    <string name="rest">Rest</string>
+    <string name="round_completed">Round completed</string>
+    <string name="s1">Save image</string>
+    <string name="s2">"Allow Ad to store image in Picture gallery?"</string>
+    <string name="s3">Accept</string>
+    <string name="s4">Decline</string>
+    <string name="s5">Create calendar event</string>
+    <string name="s6">Allow Ad to create a calendar event?</string>
+    <string name="s7">Test Ad</string>
+    <string name="save">save</string>
     <string name="search_menu_title">Search</string>
+    <string name="second_exercise">Second exercise</string>
+    <string name="secs">secs</string>
+    <string name="send">Send</string>
+    <string name="sets">sets</string>
+    <string name="share">Share with your friends</string>
+    <string name="share_text">Hi! Have you tried this app? It is beautiful!</string>
+    <string name="start" translatable="false">Start</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="subtitle_finish_activity">Return to homepage to start another training</string>
+    <string name="subtitle_help_activity">Workout manager and training timer</string>
+    <string name="superset">Superset</string>
+    <string name="tabata">Tabata</string>
+    <string name="tabata_description">Start an high-intensity interval training</string>
+    <string name="tap_to_start">Tap to start</string>
+    <string name="this_exercise">This exercise</string>
+    <string name="time_00_00_00" translatable="false">00:00:00</string>
+    <string name="time_00_slash_00" translatable="false">00/00</string>
+    <string name="timer">Timer</string>
+    <string name="timer_description">Set a timer and train</string>
+    <string name="toolbar_title" translatable="false">My Training</string>
+    <string name="total_time">Total time</string>
+    <string name="version">Version</string>
+    <string name="vote">Vote on PlayStore</string>
+    <string name="well_done">Well done!</string>
+    <string name="work">Work</string>
+    <string name="workout">Workout</string>
+    <string name="workout_completed">Workout completed</string>
+    <string name="workout_completed_in">Workout completed in</string>
+    <string name="workout_description">Load your circuit and start training</string>
+    <string name="your_workout">Your workout</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -3490,6 +3612,14 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
+    <style name="Theme.IAPTheme" parent="android:Theme">
+<item name="android:windowIsTranslucent">true</item>
+<item name="android:windowBackground">@android:color/transparent</item>
+<item name="android:windowContentOverlay">@null</item>
+<item name="android:windowNoTitle">true</item>
+<item name="android:windowIsFloating">true</item>
+<item name="android:backgroundDimEnabled">false</item>
+</style>
     <style name="Theme.MaterialComponents" parent="Base.Theme.MaterialComponents"/>
     <style name="Theme.MaterialComponents.BottomSheetDialog" parent="Theme.MaterialComponents.Dialog">
     <item name="android:windowBackground">@android:color/transparent</item>
@@ -3749,6 +3879,15 @@
     <item name="colorControlNormal">@color/material_on_surface_emphasis_medium</item>
     <item name="actionMenuTextColor">@color/material_on_surface_emphasis_medium</item>
   </style>
+    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid">
@@ -4644,6 +4783,13 @@
         <attr format="string" name="dataPattern"/>
         <attr format="string" name="targetPackage"/>
     </declare-styleable>
+    <declare-styleable name="AdsAttrs">
+<attr format="string" name="adSize"/>
+
+<attr format="string" name="adSizes"/>
+
+<attr format="string" name="adUnitId"/>
+</declare-styleable>
     <declare-styleable name="AlertDialog">
         <attr name="android:layout"/>
         <attr format="reference" name="buttonPanelSideLayout"/>
@@ -5891,6 +6037,10 @@
         <!-- The thickness (stroke size) for the bar paint -->
         <attr format="dimension" name="thickness"/>
     </declare-styleable>
+    <declare-styleable name="DrawerLayout">
+        <!-- The height difference between the drawer and the base surface. Only takes effect on API 21 and above -->
+        <attr name="elevation"/>
+    </declare-styleable>
     <declare-styleable name="ExtendedFloatingActionButton">
     <!-- Elevation for the ExtendedFloatingActionButton. -->
     <attr name="elevation"/>
@@ -6527,6 +6677,8 @@
     </declare-styleable>
     <declare-styleable name="NavDeepLink">
         <attr format="string" name="uri"/>
+        <attr format="string" name="action"/>
+        <attr format="string" name="mimeType"/>
         <attr name="android:autoVerify"/>
     </declare-styleable>
     <declare-styleable name="NavGraphNavigator">

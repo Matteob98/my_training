@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.italianswapp.yourtraining"
     android:targetSandboxVersion="2"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="2.0" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -14,8 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -25,6 +24,10 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8919261416525349~1732676159" />
+
         <activity
             android:name="com.italianswapp.yourtraining.HelpActivity"
             android:screenOrientation="portrait" />
@@ -32,31 +35,31 @@
             android:name="com.italianswapp.yourtraining.FinishActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.CircuitActivity"
+            android:name="com.italianswapp.yourtraining.Timer.Circuit.CircuitActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.CircuitCreatorActivity"
+            android:name="com.italianswapp.yourtraining.Timer.Circuit.CircuitCreatorActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.TimerActivity"
+            android:name="com.italianswapp.yourtraining.Timer.TimerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.ChronometerActivity"
+            android:name="com.italianswapp.yourtraining.Chronometer.ChronometerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.TabataActivity"
+            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.TabataActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.AmrapActivity"
+            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.AmrapActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.NegativePhaseActivity"
+            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.NegativePhaseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.EmomActivity"
+            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.EmomActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.MainActivity"
+            android:name="com.italianswapp.yourtraining.Menu.MenuActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -80,7 +83,7 @@
                 android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
-                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
@@ -88,15 +91,6 @@
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
             android:enabled="true"
             android:exported="false" >
-        </receiver>
-        <receiver
-            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="android.permission.INSTALL_PACKAGES" >
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
         </receiver>
 
         <service
@@ -109,15 +103,6 @@
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <receiver
-            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            </intent-filter>
-        </receiver>
-
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
@@ -126,6 +111,17 @@
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
             android:authorities="com.italianswapp.yourtraining.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <provider
+            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
+            android:authorities="com.italianswapp.yourtraining.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
