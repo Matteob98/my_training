@@ -21,16 +21,16 @@
     <string name="chronometer">Chronometer</string>
     <string name="chronometer_description">Train with the classic stopwatch</string>
     <string name="tabata">Tabata</string>
-    <string name="tabata_description" >Start an high-intensity interval training</string>
-    <string name="amrap" >Amrap</string>
+    <string name="tabata_description">Start an high-intensity interval training</string>
+    <string name="amrap">Amrap</string>
     <string name="amrap_description">How many round can you finish?</string>
-    <string name="timer" >Timer</string>
-    <string name="timer_description" >Set a timer and train</string>
+    <string name="timer">Timer</string>
+    <string name="timer_description">Set a timer and train</string>
     <string name="emom">Emom</string>
     <string name="emom_description">Every Minute on the Minute</string>
     <string name="concentric_phase">Concentric phase</string>
     <string name="concentric_phase_description">Scan concentric and eccentric phase</string>
-    <string name="for_time" >For Time</string>
+    <string name="for_time">For Time</string>
     <string name="for_time_description">Finish the workout as quickly as you can</string>
     <string name="every">every</string>
     <string name="For">for</string>
@@ -119,5 +119,9 @@
     <string name="second_exercise">Second exercise</string>
     <string name="save">save</string>
     <string name="current_repetition">Current repetition</string>
+    <string name="help">help</string>
+    <string name="workouts">workouts</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

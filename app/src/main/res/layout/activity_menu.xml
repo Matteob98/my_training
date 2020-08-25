@@ -37,6 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbarActivityMain" />
 
+    <!--
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -470,9 +471,32 @@
                 android:onClick="helpClick"
                 android:src="@drawable/info_icon" />
 
+
+
         </LinearLayout>
 
     </ScrollView>
+    -->
+
+    <FrameLayout
+        android:id="@+id/frameLayoutMenuActivity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationMenu"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarActivityMain"/>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#fff"
+        app:menu="@menu/bottom_navigator_menu"/>
 
 
 

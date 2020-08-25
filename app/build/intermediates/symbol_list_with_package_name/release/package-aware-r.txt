@@ -1458,6 +1458,7 @@ drawable amrap
 drawable avd_hide_password
 drawable avd_show_password
 drawable bin
+drawable bin3x
 drawable blue_gradient
 drawable bottom_left_corner_accent
 drawable bottom_left_corner_emom

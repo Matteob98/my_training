@@ -1687,6 +1687,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id bottomNavigationMenu
 id browser_actions_header_text
 id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
@@ -1813,6 +1814,7 @@ id fitToContents
 id fixed
 id forever
 id fragment_container_view_tag
+id frameLayoutMenuActivity
 id ghost_view
 id ghost_view_holder
 id gone
@@ -1821,6 +1823,7 @@ id groups
 id guideline
 id guideline2
 id helpButtonActivityMain
+id helpItem
 id helpToolbar
 id hideable
 id home
@@ -2077,6 +2080,7 @@ id thirdTextNumberPicker3
 id time
 id timeFromStart
 id timerCard
+id timerItem
 id title
 id titleDividerNoCustom
 id titleExerciseListDialog
@@ -2115,6 +2119,7 @@ id wide
 id withText
 id workDescription
 id workoutTitle
+id workouts
 id wrap
 id wrap_content
 integer abc_config_activityDefaultDur
@@ -2210,6 +2215,9 @@ layout emom_card
 layout exercise_card
 layout exercise_list_dialog
 layout exercise_settings_dialog
+layout fragment_help
+layout fragment_timer
+layout fragment_workouts
 layout lap_card
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
@@ -2280,6 +2288,7 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout toggle_button
 layout toggle_button_group
+menu bottom_navigator_menu
 menu toolbar_menu
 mipmap ic_logo
 plurals mtrl_badge_content_description
@@ -2399,6 +2408,8 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string hello_blank_fragment
+string help
 string hide_bottom_view_on_scroll_behavior
 string hours
 string icon_content_description
@@ -2499,6 +2510,7 @@ string workout
 string workout_completed
 string workout_completed_in
 string workout_description
+string workouts
 string your_workout
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
