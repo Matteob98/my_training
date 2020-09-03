@@ -13,7 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
-import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseSettings;
+import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.Exercise;
 import com.italianswapp.yourtraining.Utilities;
 import com.italianswapp.yourtraining.R;
 
@@ -28,7 +28,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     private static final int TABATA = 3;
     private static final int SUPERSET = 4;
 
-    List<? extends ExerciseSettings> exercises;
+    List<? extends Exercise> exercises;
 
     private CircuitCreatorActivity circuitCreatorActivity = null;
 
@@ -82,7 +82,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         /*
         Prendo l'oggetto in posizione position
          */
-        ExerciseSettings exerciseSettings = exercises.get(position);
+        Exercise exercise = exercises.get(position);
         /*
         In base al tipo imposta un diverso tipo di exercise (esercizio, tabata, rest, emom, ...)
          */
@@ -97,23 +97,23 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                  */
 
                 ExerciseSettingsViewHolder exerciseSettingsViewHolder = (ExerciseSettingsViewHolder)holder;
-                exerciseSettingsViewHolder.mExerciseName.setText(exerciseSettings.getName());
+                exerciseSettingsViewHolder.mExerciseName.setText(exercise.getName());
                 exerciseSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
-                        exerciseSettings.getRepetition())));
+                        exercise.getRepetition())));
 
                 exerciseSettingsViewHolder.mReps.setText(
-                        exerciseSettings.isReps() ?
+                        exercise.isReps() ?
                                 //Se è un esercizio a ripetizioni stampa x reps
-                                exerciseSettings.getReps() + " reps" :
+                                exercise.getReps() + " reps" :
                                 //Altrimenti stampa xx:yy
                             Utilities.getStringTimeNoHour(
-                                    exerciseSettings.getReps()));
+                                    exercise.getReps()));
 
-                if(exerciseSettings.isHasRecs())
+                if(exercise.isHasRecs())
                     exerciseSettingsViewHolder.mRec.setText(
                             Utilities.getStringTimeNoHour(
 
-                                    exerciseSettings.getRec()));
+                                    exercise.getRec()));
                 else {
                     exerciseSettingsViewHolder.mSleepImage.setVisibility(ImageView.INVISIBLE);
                     exerciseSettingsViewHolder.mRec.setVisibility(TextView.INVISIBLE);
@@ -129,11 +129,11 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
                 EmomSettingsViewHolder emomSettingsViewHolder = (EmomSettingsViewHolder)holder;
                 emomSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
-                        exerciseSettings.getRepetition())));
+                        exercise.getRepetition())));
 
                 emomSettingsViewHolder.mReps.setText(
                                 Utilities.getStringTimeNoHour(
-                                        exerciseSettings.getReps()));
+                                        exercise.getReps()));
                 break;
             case REST:
                 /*
@@ -144,7 +144,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
                 restSettingsViewHolder.mRec.setText(
                         Utilities.getStringTimeNoHour(
-                                exerciseSettings.getRec()));
+                                exercise.getRec()));
                 break;
             case TABATA:
                 /*
@@ -155,15 +155,15 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                  */
                 TabataSettingsViewHolder tabataSettingsViewHolder = (TabataSettingsViewHolder)holder;
                 tabataSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
-                        exerciseSettings.getRepetition())));
+                        exercise.getRepetition())));
 
                 tabataSettingsViewHolder.mReps.setText(
                         Utilities.getStringTimeNoHour(
-                                exerciseSettings.getReps()));
+                                exercise.getReps()));
 
                 tabataSettingsViewHolder.mRec.setText(
                         Utilities.getStringTimeNoHour(
-                                exerciseSettings.getRec()));
+                                exercise.getRec()));
                 break;
             case SUPERSET:
                 /*
@@ -180,27 +180,27 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
                 /*
                 Primo esercizio
                  */
-                supersetSettingsViewHolder.mFirstExerciseName.setText(exerciseSettings.getName());
+                supersetSettingsViewHolder.mFirstExerciseName.setText(exercise.getName());
                 supersetSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
-                        exerciseSettings.getRepetition())));
+                        exercise.getRepetition())));
 
                 supersetSettingsViewHolder.mFirstExerciseReps.setText(
-                        exerciseSettings.isReps() ?
+                        exercise.isReps() ?
                                 //Se è un esercizio a ripetizioni stampa x reps
-                                exerciseSettings.getReps() + " reps" :
+                                exercise.getReps() + " reps" :
                                 //Altrimenti stampa xx:yy
                                 Utilities.getStringTimeNoHour(
-                                        exerciseSettings.getReps()));
+                                        exercise.getReps()));
 
                 supersetSettingsViewHolder.mRec.setText(
                         Utilities.getStringTimeNoHour(
-                                exerciseSettings.getRec()));
+                                exercise.getRec()));
                 /*
                 Secondo esercizio
                  */
-                ExerciseSettings.SupersetExercise supersetExercise = null;
+                Exercise.SupersetExercise supersetExercise = null;
                 try {
-                    supersetExercise = exerciseSettings.getSupersetExercise();
+                    supersetExercise = exercise.getSupersetExercise();
                 } catch (ExerciseTypeNotCorrectException e) {
                     e.printStackTrace();
                 }
@@ -229,14 +229,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
     /**
      * Ritorna il tipo dell'esercizio di tipo intero
-     * La conversione viene fatta dal metodo statico getIntegerItemType della classe ExerciseSettings
+     * La conversione viene fatta dal metodo statico getIntegerItemType della classe Exercise
      * @param position posizione dell'elemento nella lista
      * @return Il tipo intero dell'elemento
      */
     @Override
     public int getItemViewType(int position) {
         try {
-            return ExerciseSettings.getIntegerItemType(exercises.get(position).getType());
+            return Exercise.getIntegerItemType(exercises.get(position).getType());
         } catch (ExerciseTypeNotCorrectException e) {
             e.printStackTrace();
         }
@@ -248,7 +248,7 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         notifyItemRemoved(position);
     }
 
-    public ExerciseCardRecyclerViewAdapter(List<? extends ExerciseSettings> exercises) {
+    public ExerciseCardRecyclerViewAdapter(List<? extends Exercise> exercises) {
         this.exercises = exercises;
     }
 

@@ -1,18 +1,14 @@
 package com.italianswapp.yourtraining.Timer.Circuit;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -23,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
 import com.italianswapp.yourtraining.R;
-import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseSettings;
+import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.Exercise;
 import com.italianswapp.yourtraining.Timer.CountDownTimers.CountDownActivity;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -40,12 +36,12 @@ public class CircuitActivity extends CountDownActivity {
     Lista di esercizi che mi viene passata
      */
 
-    ArrayList<ExerciseSettings> exerciseSettings;
+    ArrayList<Exercise> exerciseSettings;
 
     /*
     Lista degli esercizi del circuito elaborata
      */
-    private ArrayList<ExerciseSettings> exercises;
+    private ArrayList<Exercise> exercises;
     /**
      * Vero se quello corrente è un esercizio a ripetizioni
      * Falso altrimenti
@@ -122,19 +118,19 @@ public class CircuitActivity extends CountDownActivity {
 
     }
 
-    private void initializesExerciseList( ArrayList<ExerciseSettings> exerciseSettings) throws ExerciseTypeNotCorrectException {
-        for ( ExerciseSettings e : Objects.requireNonNull(exerciseSettings)) {
+    private void initializesExerciseList( ArrayList<Exercise> exerciseSettings) throws ExerciseTypeNotCorrectException {
+        for ( Exercise e : Objects.requireNonNull(exerciseSettings)) {
             e.setName(e.getName().substring(0, 1).toUpperCase() + e.getName().substring(1));
 
-            if (e.getType() != ExerciseSettings.CircuitType.SUPERSET) {
+            if (e.getType() != Exercise.CircuitType.SUPERSET) {
                 if(e.getRepetition()==1)
-                    exercises.add(ExerciseSettings.copyOf(e));
+                    exercises.add(Exercise.copyOf(e));
                 else {
                     for (int i = 0; i < e.getRepetition(); i++) {
                         e.setHasSets(true);
                         e.setNumberSets(i+1);
                         e.setTotalSets(e.getRepetition());
-                        exercises.add(ExerciseSettings.copyOf(e)); //Altrimenti aggiungerei il riferimento allo stesso oggetto
+                        exercises.add(Exercise.copyOf(e)); //Altrimenti aggiungerei il riferimento allo stesso oggetto
                     }
                 }
             }
@@ -142,13 +138,13 @@ public class CircuitActivity extends CountDownActivity {
                 /*
                 Mi prendo l'esercizio in superset
                  */
-                ExerciseSettings supersetExercise = null;
-                ExerciseSettings.SupersetExercise supersetExercisePassed = null;
+                Exercise supersetExercise = null;
+                Exercise.SupersetExercise supersetExercisePassed = null;
                 supersetExercisePassed = e.getSupersetExercise();
 
                 Log.d("EccPass", "Ho passato l'eccezione");
 
-                supersetExercise = new ExerciseSettings(
+                supersetExercise = new Exercise(
                         supersetExercisePassed.getName(),
                         supersetExercisePassed.getReps(),
                         e.getRec(), //il recupero è quello del primo esercizio
@@ -164,8 +160,8 @@ public class CircuitActivity extends CountDownActivity {
                 e.setHasRecs(false);
 
                 if(e.getRepetition()==1) {
-                    exercises.add(ExerciseSettings.copyOf(e));/*rec =0 */
-                    exercises.add(ExerciseSettings.copyOf(supersetExercise));
+                    exercises.add(Exercise.copyOf(e));/*rec =0 */
+                    exercises.add(Exercise.copyOf(supersetExercise));
                 }
                 else {
                     String secondOldName = supersetExercise.getName();
@@ -176,8 +172,8 @@ public class CircuitActivity extends CountDownActivity {
                         e.setTotalSets(e.getRepetition());
                         supersetExercise.setName(secondOldName);
 
-                        exercises.add(ExerciseSettings.copyOf(e)); //Altrimenti aggiungerei il riferimento allo stesso oggetto
-                        exercises.add(ExerciseSettings.copyOf(supersetExercise));
+                        exercises.add(Exercise.copyOf(e)); //Altrimenti aggiungerei il riferimento allo stesso oggetto
+                        exercises.add(Exercise.copyOf(supersetExercise));
                     }
                 }
             }
@@ -285,7 +281,7 @@ public class CircuitActivity extends CountDownActivity {
         mPrimarySets.setVisibility(TextView.GONE);
         mSecondarySets.setVisibility(TextView.GONE);
 
-        ExerciseSettings exercise = exercises.get(currentSet);
+        Exercise exercise = exercises.get(currentSet);
         isRepsExercise=exercise.isReps();
 
         if (isRepsExercise) {
@@ -330,7 +326,7 @@ public class CircuitActivity extends CountDownActivity {
         }
 
         if (currentSet < exercises.size() - 1) {
-            ExerciseSettings nextExercise = exercises.get(currentSet+1);
+            Exercise nextExercise = exercises.get(currentSet+1);
             /*
             Imposto il nome dell'esercizio
              */
@@ -366,7 +362,7 @@ public class CircuitActivity extends CountDownActivity {
 
     @Override
     protected void startWork() {
-        if (exercises.get(currentSet-1).getType().equals(ExerciseSettings.CircuitType.REST)) {
+        if (exercises.get(currentSet-1).getType().equals(Exercise.CircuitType.REST)) {
             startRest();
             return;
         }
@@ -548,7 +544,7 @@ public class CircuitActivity extends CountDownActivity {
      * @param exercise
      * @return
      */
-    private Drawable getLeftColoredView(ExerciseSettings exercise) {
+    private Drawable getLeftColoredView(Exercise exercise) {
         Drawable drawable;
         switch (exercise.getType()) {
             case EXERCISE:
@@ -582,7 +578,7 @@ public class CircuitActivity extends CountDownActivity {
      * @param exercise
      * @return
      */
-    private Drawable getRightColoredView(ExerciseSettings exercise) {
+    private Drawable getRightColoredView(Exercise exercise) {
         Drawable drawable;
         switch (exercise.getType()) {
             case EXERCISE:
@@ -611,7 +607,7 @@ public class CircuitActivity extends CountDownActivity {
         return drawable;
     }
 
-    public static Intent getCircuitActivity(Context context, ArrayList<ExerciseSettings> exercises) {
+    public static Intent getCircuitActivity(Context context, ArrayList<Exercise> exercises) {
         Intent intent = new Intent(context, CircuitActivity.class);
         intent.putExtra(CIRCUIT_KEY, exercises);
 

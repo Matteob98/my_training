@@ -3,13 +3,17 @@ package com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
 
 /**
  * Classe che consente di gestire i dati delle card per la creazione di
  * esercizi all'interno del circuito
  */
-public class ExerciseSettings implements Parcelable {
+public class Exercise implements Parcelable {
+
+    //todo Si può creare un builder per gli esercizi in modo da semplificare la creazione e non usare costruttori infiniti
 
     private int reps, repetition, numberSets, totalSets;
     private long rec;
@@ -37,7 +41,7 @@ public class ExerciseSettings implements Parcelable {
      * @param isReps se vero è un esercizio a ripetizioni, altrimenti è un esercizio a tempo
      * @param hasRecs se vero dopo l'esercizio c'è recupero, altrimenti no
      */
-    public ExerciseSettings(String name, int reps, long rec, int repetition, boolean isReps, boolean hasRecs, CircuitType type) {
+    public Exercise(String name, int reps, long rec, int repetition, boolean isReps, boolean hasRecs, CircuitType type) {
         this.name=name;
         this.reps = reps;
         this.rec = rec;
@@ -55,7 +59,28 @@ public class ExerciseSettings implements Parcelable {
         supersetExercise = new SupersetExercise(0, false, "");
     }
 
-    protected ExerciseSettings(Parcel in) {
+    /**
+     * Crea un Esercizio a partire dalla stringa generata dal toString
+     * @param str stringa generata dal toString
+     */
+    public Exercise(String str) {
+        //TODO per leggere dai file di testo
+        String[] values = str.split("\n");
+        reps = Integer.parseInt(values[0]);
+        repetition = Integer.parseInt(values[1]);
+        rec = Long.parseLong(values[2]);
+        isReps = values[3].equals("1");
+        hasRecs = values[4].equals("1");
+        name = values[5];
+        type = CircuitType.valueOf(values[6]);
+        supersetExercise = new SupersetExercise(
+                Integer.parseInt(values[7]),
+                values[8].equals("1"),
+                values[9]);
+
+    }
+
+    protected Exercise(Parcel in) {
         reps = in.readInt();
         repetition = in.readInt();
         rec = in.readLong();
@@ -69,15 +94,15 @@ public class ExerciseSettings implements Parcelable {
                 in.readString());
     }
 
-    public static final Creator<ExerciseSettings> CREATOR = new Creator<ExerciseSettings>() {
+    public static final Creator<Exercise> CREATOR = new Creator<Exercise>() {
         @Override
-        public ExerciseSettings createFromParcel(Parcel in) {
-            return new ExerciseSettings(in);
+        public Exercise createFromParcel(Parcel in) {
+            return new Exercise(in);
         }
 
         @Override
-        public ExerciseSettings[] newArray(int size) {
-            return new ExerciseSettings[size];
+        public Exercise[] newArray(int size) {
+            return new Exercise[size];
         }
     };
 
@@ -211,15 +236,36 @@ public class ExerciseSettings implements Parcelable {
         dest.writeInt(supersetExercise.getReps());
         dest.writeByte((byte) (supersetExercise.isReps() ? 1: 0));
         dest.writeString(supersetExercise.getName());
+
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+
+        //Todo metodo implementato per poter scrivere l'esercizio su un file di testo per la moodalità proposedWorkouts
+        String str = "";
+        str = reps + "\n" +
+                repetition + "\n" +
+                rec + "\n" +
+                (isReps ? "1" : "0") + "\n" +
+                (hasRecs ? 1 : 0) + "\n" +
+                name + "\n" +
+                type.name() + "\n" +
+                supersetExercise.getReps() + "\n" +
+                (supersetExercise.isReps() ? 1: 0) + "\n" +
+                supersetExercise.getName();
+        return str;
+
     }
 
     /**
      * Ritorna una copia dell'esercizio passato in input
      * @param e esercizio da copiare
-     * @return Una copia ExerciseSettings
+     * @return Una copia Exercise
      */
-    public static ExerciseSettings copyOf(ExerciseSettings e) {
-        ExerciseSettings copy = new ExerciseSettings(e.name, e.reps, e.rec, e.repetition, e.isReps, e.hasRecs, e.type);
+    public static Exercise copyOf(Exercise e) {
+        Exercise copy = new Exercise(e.name, e.reps, e.rec, e.repetition, e.isReps, e.hasRecs, e.type);
         copy.setNumberSets(e.getNumberSets());
         copy.setTotalSets(e.getTotalSets());
         copy.setHasSets(e.isHasSets());
@@ -238,7 +284,7 @@ public class ExerciseSettings implements Parcelable {
      * @return Un intero che rappresenta il tipo
      * @throws ExerciseTypeNotCorrectException Se viene passato un tipo non gestito dalla funzione
      */
-    public static int getIntegerItemType(ExerciseSettings.CircuitType type) throws ExerciseTypeNotCorrectException {
+    public static int getIntegerItemType(Exercise.CircuitType type) throws ExerciseTypeNotCorrectException {
         switch (type) {
             case EXERCISE:
                 return 0;

@@ -1553,6 +1553,7 @@ drawable ic_reset_scuro
 drawable ic_share
 drawable ic_star
 drawable ic_success
+drawable ic_timer
 drawable info_icon
 drawable logo_white
 drawable mtrl_dialog_background
@@ -1686,6 +1687,7 @@ id auto
 id barrier
 id beginning
 id blocking
+id bodybuildingButton
 id bottom
 id bottomNavigationMenu
 id browser_actions_header_text
@@ -1698,6 +1700,7 @@ id bugEditText
 id bugImageHelpActivity
 id bugTextInput
 id buttonPanel
+id calisthenicsButton
 id cancel_action
 id cancel_button
 id cardView
@@ -1737,6 +1740,7 @@ id content
 id contentPanel
 id coordinator
 id createButtonCircuitCreator
+id crossfitButton
 id custom
 id customPanel
 id cut
@@ -1822,7 +1826,6 @@ id group_divider
 id groups
 id guideline
 id guideline2
-id helpButtonActivityMain
 id helpItem
 id helpToolbar
 id hideable
@@ -2191,6 +2194,7 @@ layout activity_count_down_timer
 layout activity_finish
 layout activity_help
 layout activity_menu
+layout activity_proposed_workouts
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout bug_dialog

@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -31,8 +30,9 @@ import com.italianswapp.yourtraining.Builders.Dialog1PickerBuilder;
 import com.italianswapp.yourtraining.Builders.Dialog2PickerBuilder;
 import com.italianswapp.yourtraining.Builders.Dialog3PickerBuilder;
 import com.italianswapp.yourtraining.R;
-import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseSettings;
+import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.Exercise;
 import com.italianswapp.yourtraining.Utilities;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
@@ -46,7 +46,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private ExerciseCardRecyclerViewAdapter exerciseCardRecyclerViewAdapter;
 
-    private ArrayList<ExerciseSettings> exerciseList;
+    private ArrayList<Exercise> exerciseList;
 
     /*
     Servono per il menu espandibile per l'aggiunta di esercizi/tabata ecc.
@@ -99,7 +99,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         exerciseCardRecyclerViewAdapter.setCircuitCreatorActivity(this);
         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
-        exerciseList.add(new ExerciseSettings(getResources().getString(R.string.exercise), 1, 10000, 1, true, true, ExerciseSettings.CircuitType.EXERCISE)); //1 ripetizione, 00:10 di recupero
+        exerciseList.add(new Exercise(getResources().getString(R.string.exercise), 1, 10000, 1, true, true, Exercise.CircuitType.EXERCISE)); //1 ripetizione, 00:10 di recupero
         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
         fabMenuInitialize();
@@ -107,13 +107,34 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mCreateCircuitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (exerciseList.size()>0) {
-                    for (ExerciseSettings e : exerciseList)
-                        if(e.getName().equals(NULL) || e.getName().length()==0) {
-                            Snackbar.make(v,getResources().getString(R.string.circuit_creator_error), Snackbar.LENGTH_LONG).show();
-                            return;
-                        }
 
+                if (exerciseList.size()>0) {
+                    //todo Levare i commenti per salvare gli esercizi in formato testo
+                    //String workoutString = "";
+                    for (Exercise e : exerciseList) {
+                        if (e.getName().equals(NULL) || e.getName().length() == 0) {
+                            Snackbar.make(v, getResources().getString(R.string.circuit_creator_error), Snackbar.LENGTH_LONG).show();
+                            return;
+                        } else {
+                            //workoutString += e.toString() + "\n" + "<exercise>" + "\n";
+                        }
+                    }
+                    /*
+                    workoutString += "<workout>";
+
+
+                    try {
+                        FileWriter fileout = new FileWriter("newExercise.txt");
+                        fileout.write(workoutString);
+                        fileout.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    Log.d("workout", workoutString);
+
+                    */
                     Intent intent = CircuitActivity.getCircuitActivity(getApplicationContext(), exerciseList);
                     startActivity(intent);
                 }
@@ -190,13 +211,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mNewExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseList.add(new ExerciseSettings(getResources().getString(R.string.exercise),
+                exerciseList.add(new Exercise(getResources().getString(R.string.exercise),
                         1,
                         10000,
                         1,
                         true,
                         true,
-                        ExerciseSettings.CircuitType.EXERCISE)); //1 ripetizione, 00:10 di recupero
+                        Exercise.CircuitType.EXERCISE)); //1 ripetizione, 00:10 di recupero
                 mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                 materialSheetFab.hideSheet();
             }
@@ -205,13 +226,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mNewTabata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseList.add(new ExerciseSettings(getResources().getString(R.string.tabata),
+                exerciseList.add(new Exercise(getResources().getString(R.string.tabata),
                         10000,
                         10000,
                         1,
                         false,
                         true,
-                        ExerciseSettings.CircuitType.TABATA));
+                        Exercise.CircuitType.TABATA));
                 mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                 materialSheetFab.hideSheet();
             }
@@ -220,14 +241,14 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mNewEmom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseList.add(new ExerciseSettings(
+                exerciseList.add(new Exercise(
                         getResources().getString(R.string.emom),
                         10000,
                         0,
                         1,
                         false,
                         false,
-                        ExerciseSettings.CircuitType.EMOM));
+                        Exercise.CircuitType.EMOM));
                 mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                 materialSheetFab.hideSheet();
             }
@@ -236,14 +257,14 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mNewRest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                exerciseList.add(new ExerciseSettings(
+                exerciseList.add(new Exercise(
                         getResources().getString(R.string.rest),
                         0,
                         10000,
                         1,
                         false,
                         true,
-                        ExerciseSettings.CircuitType.REST));
+                        Exercise.CircuitType.REST));
                 mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                 materialSheetFab.hideSheet();
             }
@@ -252,14 +273,14 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mNewSuperset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExerciseSettings superset = new ExerciseSettings(
+                Exercise superset = new Exercise(
                         getResources().getString(R.string.superset) + " 1",
                         1,
                         10000,
                         1,
                         true,
                         true,
-                        ExerciseSettings.CircuitType.SUPERSET);
+                        Exercise.CircuitType.SUPERSET);
                 superset.setSupersetExercise(1,true,getResources().getString(R.string.superset) + " 2");
                 exerciseList.add(superset);
                 mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
@@ -276,7 +297,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     public void showTabataDialog(final int position) {
 
         Resources res = getResources();
-        ExerciseSettings exercise = exerciseList.get(position);
+        Exercise exercise = exerciseList.get(position);
         workString = exercise.getReps()!=0 ?
                 Utilities.getStringTimeFromMillsWithoutHours(exercise.getReps()) :
                 TimeInStringForPicker[0];
@@ -330,10 +351,10 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                 .setPositiveButton(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ExerciseSettings exerciseSettings = exerciseList.get(position);
-                        exerciseSettings.setRepetition(repetition);
-                        exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
-                        exerciseSettings.setRec(Utilities.getMillsFromMinuteString(restString));
+                        Exercise exercise = exerciseList.get(position);
+                        exercise.setRepetition(repetition);
+                        exercise.setReps((int)Utilities.getMillsFromMinuteString(workString));
+                        exercise.setRec(Utilities.getMillsFromMinuteString(restString));
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
                         Dialog3PickerBuilder.getAlertDialog().dismiss();
@@ -350,7 +371,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     public void showExerciseDialog(final int position) {
 
         Resources res = getResources();
-        ExerciseSettings exercise = exerciseList.get(position);
+        Exercise exercise = exerciseList.get(position);
         if (exercise.getReps()!=0) {
             if (exercise.isReps()) {
                 workInteger = exercise.getReps();
@@ -469,26 +490,26 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                 .setPositiveButton(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ExerciseSettings exerciseSettings = exerciseList.get(position);
+                        Exercise exercise = exerciseList.get(position);
                         //Sets
-                        exerciseSettings.setRepetition(repetition);
+                        exercise.setRepetition(repetition);
                         //Reps
                         if(isReps)
-                            exerciseSettings.setReps(workInteger);
+                            exercise.setReps(workInteger);
                         else
-                            exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
-                        exerciseSettings.setReps(isReps);
+                            exercise.setReps((int)Utilities.getMillsFromMinuteString(workString));
+                        exercise.setReps(isReps);
                         //Recupero
                         if((int)Utilities.getMillsFromMinuteString(restString)==0)
-                            exerciseSettings.setHasRecs(false);
+                            exercise.setHasRecs(false);
                         else {
-                            exerciseSettings.setRec((int)Utilities.getMillsFromMinuteString(restString));
-                            exerciseSettings.setHasRecs(true);
+                            exercise.setRec((int)Utilities.getMillsFromMinuteString(restString));
+                            exercise.setHasRecs(true);
                         }
                         //Nome
                         if(exerciseName.length()==0)
                             exerciseName=getResources().getString(R.string.exercise);
-                        exerciseSettings.setName(exerciseName);
+                        exercise.setName(exerciseName);
 
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
@@ -510,7 +531,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     public void showRestDialog(final int position) {
 
         Resources res = getResources();
-        ExerciseSettings exercise = exerciseList.get(position);
+        Exercise exercise = exerciseList.get(position);
         restString = exercise.getRec()!=0 ?
                 Utilities.getStringTimeFromMillsWithoutHours((int)exercise.getRec()):
                 TimeInStringForPickerWithZero[0];
@@ -532,10 +553,10 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                 .setPositiveButton(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ExerciseSettings exerciseSettings = exerciseList.get(position);
-                        exerciseSettings.setRec((int)Utilities.getMillsFromMinuteString(restString));
-                        exerciseSettings.setReps(false);
-                        exerciseSettings.setReps(0);
+                        Exercise exercise = exerciseList.get(position);
+                        exercise.setRec((int)Utilities.getMillsFromMinuteString(restString));
+                        exercise.setReps(false);
+                        exercise.setReps(0);
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
                         Dialog1PickerBuilder.getAlertDialog().dismiss();
                     }
@@ -550,7 +571,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     public void showEmomDialog(final int position) {
 
         Resources res = getResources();
-        ExerciseSettings exercise = exerciseList.get(position);
+        Exercise exercise = exerciseList.get(position);
         workString=exercise.getReps()!=0 ?
                 Utilities.getStringTimeFromMillsWithoutHours(exercise.getReps()):
                 TimeInStringForPicker[0];
@@ -585,9 +606,9 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                 .setPositiveButton(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ExerciseSettings exerciseSettings = exerciseList.get(position);
-                        exerciseSettings.setRepetition(repetition);
-                        exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
+                        Exercise exercise = exerciseList.get(position);
+                        exercise.setRepetition(repetition);
+                        exercise.setReps((int)Utilities.getMillsFromMinuteString(workString));
                         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
                         Dialog2PickerBuilder.getAlertDialog().dismiss();
@@ -604,7 +625,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     public void showSupersetDialog(final int position) throws ExerciseTypeNotCorrectException {
 
         Resources res = getResources();
-        ExerciseSettings exercise = exerciseList.get(position);
+        Exercise exercise = exerciseList.get(position);
         /*
         Primo esercizio
          */
@@ -829,29 +850,29 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                 .setPositiveButton(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ExerciseSettings exerciseSettings = exerciseList.get(position);
+                        Exercise exercise = exerciseList.get(position);
 
                         /*
                         Primo esercizio
                          */
 
                         //Sets
-                        exerciseSettings.setRepetition(repetition);
+                        exercise.setRepetition(repetition);
                         //Reps
                         if(isReps)
-                            exerciseSettings.setReps(workInteger);
+                            exercise.setReps(workInteger);
                         else
-                            exerciseSettings.setReps((int)Utilities.getMillsFromMinuteString(workString));
-                        exerciseSettings.setReps(isReps);
+                            exercise.setReps((int)Utilities.getMillsFromMinuteString(workString));
+                        exercise.setReps(isReps);
                         //Recupero
                         if((int)Utilities.getMillsFromMinuteString(restString)==0)
-                            exerciseSettings.setHasRecs(false);
+                            exercise.setHasRecs(false);
                         else {
-                            exerciseSettings.setRec((int)Utilities.getMillsFromMinuteString(restString));
-                            exerciseSettings.setHasRecs(true);
+                            exercise.setRec((int)Utilities.getMillsFromMinuteString(restString));
+                            exercise.setHasRecs(true);
                         }
                         //Nome
-                        exerciseSettings.setName(
+                        exercise.setName(
                                 exerciseName.length()==0 ?
                                         getResources().getString(R.string.exercise) + " 1" :
                                         exerciseName);
@@ -861,7 +882,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                          */
 
                         //Sets
-                        exerciseSettings.setSupersetExercise(
+                        exercise.setSupersetExercise(
                                 secondIsReps ? secondWorkInteger : (int)Utilities.getMillsFromMinuteString(secondWorkString),
                                 secondIsReps,
                                 secondExerciseName.length()==0 ?

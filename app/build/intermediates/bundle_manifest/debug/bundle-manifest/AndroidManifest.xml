@@ -25,6 +25,8 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        <activity android:name="com.italianswapp.yourtraining.ProposedWorkoutsActivity" />
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8919261416525349~1732676159" />

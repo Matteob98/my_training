@@ -121,7 +121,5 @@
     <string name="current_repetition">Current repetition</string>
     <string name="help">help</string>
     <string name="workouts">workouts</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
