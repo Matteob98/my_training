@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ProposedWorkoutsActivity"></activity>
+        <activity android:name=".WorkoutProposed.ProposedWorkoutsActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

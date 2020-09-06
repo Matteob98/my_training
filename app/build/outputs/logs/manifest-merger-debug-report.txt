@@ -164,10 +164,10 @@ MERGED from [com.google.android.gms:play-services-ads-base:19.3.0] C:\Users\matt
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:7:9-35
 	android:theme
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:12:9-65
-activity#com.italianswapp.yourtraining.ProposedWorkoutsActivity
-ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:13:9-71
+activity#com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity
+ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:13:9-87
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:13:19-59
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:13:19-75
 meta-data#com.google.android.gms.ads.APPLICATION_ID
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:15:9-17:70
 	android:value

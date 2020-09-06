@@ -2,7 +2,12 @@ package com.italianswapp.yourtraining;
 
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.widget.NumberPicker;
+
+import androidx.core.content.res.ResourcesCompat;
+
+import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.Exercise;
 
 public class Utilities
 {
@@ -250,5 +255,41 @@ public class Utilities
             mm=""+mins;
 
         return  mm + ":" + ss;
+    }
+
+    /**
+     * Prende il tipo di un esercizio e ne ritorna il colore
+     * Es. EXERCISE -> Color accent
+     * @param res La resource
+     * @param circuitType Il tipo dell'esercizio
+     * @return Il colore
+     */
+    public static Drawable getColorOfExercise(Resources res, Exercise.CircuitType circuitType) {
+        Drawable drawable;
+        switch (circuitType) {
+            case EXERCISE:
+                drawable = res.getDrawable(R.color.colorAccent);
+                break;
+            case REST:
+                drawable = res.getDrawable(R.color.restColor);
+                break;
+            case SUPERSET:
+                drawable = res.getDrawable(R.color.supersetColor);
+                break;
+            case TABATA:
+                drawable = res.getDrawable(R.color.tabataColor);
+                break;
+            case EMOM:
+                drawable = res.getDrawable(R.color.emomColor);
+                break;
+            default:
+                try {
+                    throw new ExerciseTypeNotCorrectException("Tipo non corretto in getExerciseColor");
+                } catch (ExerciseTypeNotCorrectException e) {
+                    e.printStackTrace();
+                }
+                return null;
+        }
+        return drawable;
     }
 }

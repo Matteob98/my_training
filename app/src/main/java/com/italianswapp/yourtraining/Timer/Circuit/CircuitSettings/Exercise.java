@@ -13,8 +13,6 @@ import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
  */
 public class Exercise implements Parcelable {
 
-    //todo Si può creare un builder per gli esercizi in modo da semplificare la creazione e non usare costruttori infiniti
-
     private int reps, repetition, numberSets, totalSets;
     private long rec;
     private boolean isReps, hasRecs, hasSets;
@@ -32,6 +30,18 @@ public class Exercise implements Parcelable {
 
     private CircuitType type;
 
+    public Exercise() {
+        reps = 1;
+        repetition = 1;
+        numberSets = 1;
+        totalSets = 1;
+        rec = 0;
+        isReps = false;
+        hasRecs = false;
+        hasSets = false;
+        name = "";
+
+    }
 
     /**
      * Costruttore della classe
@@ -59,26 +69,6 @@ public class Exercise implements Parcelable {
         supersetExercise = new SupersetExercise(0, false, "");
     }
 
-    /**
-     * Crea un Esercizio a partire dalla stringa generata dal toString
-     * @param str stringa generata dal toString
-     */
-    public Exercise(String str) {
-        //TODO per leggere dai file di testo
-        String[] values = str.split("\n");
-        reps = Integer.parseInt(values[0]);
-        repetition = Integer.parseInt(values[1]);
-        rec = Long.parseLong(values[2]);
-        isReps = values[3].equals("1");
-        hasRecs = values[4].equals("1");
-        name = values[5];
-        type = CircuitType.valueOf(values[6]);
-        supersetExercise = new SupersetExercise(
-                Integer.parseInt(values[7]),
-                values[8].equals("1"),
-                values[9]);
-
-    }
 
     protected Exercise(Parcel in) {
         reps = in.readInt();
@@ -239,25 +229,6 @@ public class Exercise implements Parcelable {
 
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-
-        //Todo metodo implementato per poter scrivere l'esercizio su un file di testo per la moodalità proposedWorkouts
-        String str = "";
-        str = reps + "\n" +
-                repetition + "\n" +
-                rec + "\n" +
-                (isReps ? "1" : "0") + "\n" +
-                (hasRecs ? 1 : 0) + "\n" +
-                name + "\n" +
-                type.name() + "\n" +
-                supersetExercise.getReps() + "\n" +
-                (supersetExercise.isReps() ? 1: 0) + "\n" +
-                supersetExercise.getName();
-        return str;
-
-    }
 
     /**
      * Ritorna una copia dell'esercizio passato in input

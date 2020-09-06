@@ -22,8 +22,8 @@ import java.lang.*;
 
 import static java.lang.System.exit;
 
+//Todo devo decidere cosa fare fra HelpActivity e Fragment, entrambe attualmente vengono usate, vedere FindUsage
 public class HelpActivity extends AppCompatActivity {
-
     private DatabaseReference myRef;
     private final String
             PLAY_STORE_ADDRESS ="https://play.google.com/store/apps/details?id=com.italianswapp.yourtraining";

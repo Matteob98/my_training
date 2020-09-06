@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProposedWorkoutsActivity">
+    tools:context=".WorkoutProposed.ProposedWorkoutsActivity">
 
 
     <TextView
@@ -33,9 +33,12 @@
         android:layout_height="5dp"
         android:layout_marginTop="10dp"
         android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/workoutProposedListRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="20dp"

@@ -19,11 +19,10 @@ public class Workout {
         ADVANCED
     }
 
+    private String title;
     private WorkoutCategory category;
     private  WorkoutLevel level;
     private ArrayList<Exercise> exerciseList;
-
-    //Todo implementare la classe. Rappresenta un allenamento (composto da più esercizi)
 
     public Workout () {}
 
@@ -49,5 +48,13 @@ public class Workout {
 
     public void setLevel(WorkoutLevel level) {
         this.level = level;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

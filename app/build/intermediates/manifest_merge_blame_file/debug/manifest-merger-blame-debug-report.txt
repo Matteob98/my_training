@@ -43,9 +43,9 @@
 26        android:testOnly="true"
 27        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
 27-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:12:9-65
-28        <activity android:name="com.italianswapp.yourtraining.ProposedWorkoutsActivity" />
-28-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:13:9-71
-28-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:13:19-59
+28        <activity android:name="com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity" />
+28-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:13:9-87
+28-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:13:19-75
 29
 30        <meta-data
 30-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:15:9-17:70

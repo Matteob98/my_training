@@ -1700,7 +1700,6 @@ id bugEditText
 id bugImageHelpActivity
 id bugTextInput
 id buttonPanel
-id calisthenicsButton
 id cancel_action
 id cancel_button
 id cardView
@@ -1723,6 +1722,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id collapseActionView
+id colorBarExerciseSummary
 id colorLeftBarEmomCard
 id colorLeftBarExerciseCard
 id colorLeftBarRestCard
@@ -1734,13 +1734,13 @@ id colorViewNumberPicker2
 id colorViewNumberPicker3
 id coloredViewExerciseDialog
 id coloredViewSupersetDialog
+id coloredViewWorkoutSummary
 id confirm_button
 id container
 id content
 id contentPanel
 id coordinator
 id createButtonCircuitCreator
-id crossfitButton
 id custom
 id customPanel
 id cut
@@ -1780,7 +1780,12 @@ id enterAlwaysCollapsed
 id exerciseCard
 id exerciseNameEditTextExerciseDialog
 id exerciseNameExerciseCard
+id exerciseNameExerciseSummary
 id exerciseNameTextInputLayoutExerciseDialog
+id exerciseRepsExerciseSummary
+id exerciseSetsExerciseSummary
+id exerciseSummaryRecyclerView
+id exercise_summary_card
 id exitCardHelpActivity
 id exitImageHelpActivity
 id exitUntilCollapsed
@@ -1819,6 +1824,8 @@ id fixed
 id forever
 id fragment_container_view_tag
 id frameLayoutMenuActivity
+id freeBodyButton
+id functionalTrainingButton
 id ghost_view
 id ghost_view_holder
 id gone
@@ -1919,6 +1926,7 @@ id notification_main_column_container
 id numberPicker1
 id off
 id on
+id operatorExerciseSummary
 id outline
 id overlay
 id overlinePrimaryBottomTextEmomActivity
@@ -2033,6 +2041,7 @@ id startButtonChronometerActivity
 id startButtonCountDownActivity
 id status_bar_latest_event_content
 id stretch
+id stretchingButton
 id submenuarrow
 id submit_area
 id supersetCard
@@ -2063,6 +2072,8 @@ id textView12
 id textView13
 id textView14
 id textView15
+id textView16
+id textView17
 id textView2
 id textView3
 id textView4
@@ -2090,6 +2101,7 @@ id titleExerciseListDialog
 id titleNumberPicker1
 id titleNumberPicker2
 id titleNumberPicker3
+id titleWorkoutSummary
 id title_template
 id toggle_button_container
 id toolbarActivityMain
@@ -2115,13 +2127,16 @@ id useLogo
 id versionTextViewHelpActivity
 id view
 id view2
+id view3
 id view_offset_helper
 id visible
 id visible_removing_fragment_view_tag
 id wide
 id withText
 id workDescription
+id workoutProposedListRecyclerView
 id workoutTitle
+id workout_summary_card
 id workouts
 id wrap
 id wrap_content
@@ -2219,6 +2234,7 @@ layout emom_card
 layout exercise_card
 layout exercise_list_dialog
 layout exercise_settings_dialog
+layout exercise_summary_card
 layout fragment_help
 layout fragment_timer
 layout fragment_workouts
@@ -2292,6 +2308,7 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout toggle_button
 layout toggle_button_group
+layout workout_summary_card
 menu bottom_navigator_menu
 menu toolbar_menu
 mipmap ic_logo
@@ -2412,7 +2429,6 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
-string hello_blank_fragment
 string help
 string hide_bottom_view_on_scroll_behavior
 string hours

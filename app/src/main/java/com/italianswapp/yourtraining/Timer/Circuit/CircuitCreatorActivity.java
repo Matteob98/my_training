@@ -109,32 +109,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (exerciseList.size()>0) {
-                    //todo Levare i commenti per salvare gli esercizi in formato testo
-                    //String workoutString = "";
                     for (Exercise e : exerciseList) {
                         if (e.getName().equals(NULL) || e.getName().length() == 0) {
                             Snackbar.make(v, getResources().getString(R.string.circuit_creator_error), Snackbar.LENGTH_LONG).show();
                             return;
-                        } else {
-                            //workoutString += e.toString() + "\n" + "<exercise>" + "\n";
                         }
                     }
-                    /*
-                    workoutString += "<workout>";
 
-
-                    try {
-                        FileWriter fileout = new FileWriter("newExercise.txt");
-                        fileout.write(workoutString);
-                        fileout.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-
-                    Log.d("workout", workoutString);
-
-                    */
                     Intent intent = CircuitActivity.getCircuitActivity(getApplicationContext(), exerciseList);
                     startActivity(intent);
                 }

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.italianswapp.yourtraining.ProposedWorkoutsActivity;
+import com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity;
 import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.Workout;
 
