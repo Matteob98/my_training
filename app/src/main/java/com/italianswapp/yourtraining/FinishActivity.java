@@ -16,6 +16,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FinishActivity extends AppCompatActivity {
 
+    /*
+    todo sono qui il 18/98
+    Aggiunto il pulsante per salvare
+    Ora deve aprire una dialog in cui inserire il nome dell'allenamento, le sensazioni e la difficoltà, per poi salvare
+     */
     private final static String FINISH = "finish";
 
     private FloatingActionButton mHomeButton;

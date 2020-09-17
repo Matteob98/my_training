@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/helpItem"
+        android:id="@+id/savedItem"
         android:title="@string/help"
         android:orderInCategory="1"
         android:icon="@drawable/info_icon" />
@@ -13,7 +13,7 @@
         android:orderInCategory="2"
         android:icon="@drawable/ic_timer"/>
     <item
-        android:id="@+id/workouts"
+        android:id="@+id/proposedItem"
         android:title="@string/workouts"
         android:orderInCategory="3"
         android:icon="@drawable/ic_assignament"/>

@@ -26,8 +26,6 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        <activity android:name="com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity" />
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8919261416525349~1732676159" />
@@ -70,6 +68,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
         </activity>
 
         <meta-data
@@ -115,6 +118,7 @@
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
             android:authorities="com.italianswapp.yourtraining.firebaseinitprovider"
+            android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
@@ -128,6 +132,11 @@
             android:authorities="com.italianswapp.yourtraining.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
+
+        <service
+            android:name="com.google.android.gms.ads.AdService"
+            android:enabled="true"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.version"

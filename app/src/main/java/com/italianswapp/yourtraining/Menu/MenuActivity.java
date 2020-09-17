@@ -38,14 +38,14 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
         Fragment selectedFragment = null;
 
         switch (id){
-            case R.id.helpItem:
-                selectedFragment = new HelpFragment();
+            case R.id.savedItem:
+                selectedFragment = new WorkoutSavedFragment();
                 break;
             case R.id.timerItem:
                 selectedFragment = new TimerFragment();
                 break;
-            case R.id.workouts:
-                selectedFragment = new WorkoutsFragment();
+            case R.id.proposedItem:
+                selectedFragment = new WorkoutsProposedFragment();
                 break;
             default:
                 return false;

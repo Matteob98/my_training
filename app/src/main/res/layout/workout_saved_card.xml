@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/workoutSavedCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="1dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@null">
+
+            <ImageView
+                android:id="@+id/imageWorkoutSavedCard"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:src="@drawable/personal_trainer"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/titleTextWorkoutSavedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Allenamento petto"
+                app:layout_constraintStart_toEndOf="@id/imageWorkoutSavedCard"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="20dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dateWorkoutSavedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="17/09/2020  18:16"
+                app:layout_constraintStart_toStartOf="@id/titleTextWorkoutSavedCard"
+                app:layout_constraintTop_toBottomOf="@id/titleTextWorkoutSavedCard"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/timeWorkoutSavedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="02:10:25"
+                app:layout_constraintStart_toStartOf="@id/titleTextWorkoutSavedCard"
+                app:layout_constraintTop_toBottomOf="@id/dateWorkoutSavedCard"
+                android:layout_marginTop="5dp" />
+
+            <ImageView
+                android:id="@+id/sensationWorkoutSavedCard"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                tools:src="@drawable/ic_smile"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/titleTextWorkoutSavedCard"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                android:id="@+id/levelWorkoutSavedCard"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                tools:src="@drawable/ic_level"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/sensationWorkoutSavedCard"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

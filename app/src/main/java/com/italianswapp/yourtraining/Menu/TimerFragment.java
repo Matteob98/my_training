@@ -9,11 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.italianswapp.yourtraining.Builders.Dialog2PickerBuilder;
-import com.italianswapp.yourtraining.Builders.Dialog3PickerBuilder;
+import com.italianswapp.yourtraining.DialogBuilders.Dialog2PickerBuilder;
+import com.italianswapp.yourtraining.DialogBuilders.Dialog3PickerBuilder;
 import com.italianswapp.yourtraining.Chronometer.ChronometerActivity;
 import com.italianswapp.yourtraining.HelpActivity;
 import com.italianswapp.yourtraining.R;
@@ -31,6 +32,8 @@ public class TimerFragment extends Fragment implements View.OnClickListener, Num
 
     private CardView circuitCard, chronometerCard, tabataCard,
             timerCard, amrapCard, emomCard, negativeCard;
+
+    private ImageButton helpButton;
 
     private final String[] TimeInStringForPicker =  Utilities.TIME_IN_STRING;
 
@@ -86,6 +89,14 @@ public class TimerFragment extends Fragment implements View.OnClickListener, Num
 
         negativeCard = view.findViewById(R.id.negativeCard);
         negativeCard.setOnClickListener(this);
+
+        helpButton = view.findViewById(R.id.helpButtonActivityMain);
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpClick(v);
+            }
+        });
 
         return view;
     }

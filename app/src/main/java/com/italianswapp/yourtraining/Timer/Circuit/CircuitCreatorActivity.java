@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,25 +20,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.Toast;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
-import com.italianswapp.yourtraining.Builders.ExerciseSettingsDialogBuilder;
-import com.italianswapp.yourtraining.Builders.SupersetSettingsDialogBuilder;
+import com.italianswapp.yourtraining.DialogBuilders.ExerciseSettingsDialogBuilder;
+import com.italianswapp.yourtraining.DialogBuilders.SupersetSettingsDialogBuilder;
 import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
 import com.italianswapp.yourtraining.HelpActivity;
-import com.italianswapp.yourtraining.Builders.Dialog1PickerBuilder;
-import com.italianswapp.yourtraining.Builders.Dialog2PickerBuilder;
-import com.italianswapp.yourtraining.Builders.Dialog3PickerBuilder;
+import com.italianswapp.yourtraining.DialogBuilders.Dialog1PickerBuilder;
+import com.italianswapp.yourtraining.DialogBuilders.Dialog2PickerBuilder;
+import com.italianswapp.yourtraining.DialogBuilders.Dialog3PickerBuilder;
 import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.Exercise;
 import com.italianswapp.yourtraining.Utilities;
+import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
 
 import java.util.ArrayList;
 import java.util.Objects;
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class CircuitCreatorActivity extends AppCompatActivity {
+
+    private static final String CREATOR_KEY="creatorKey";
 
     private Toolbar mToolbar;
     private Button mCreateCircuitButton;
@@ -90,16 +96,32 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         mToolbar.setTitleTextColor(getResources().getColor(R.color.textColor));
 
         /*
-        Imposto il manager e l'adapter per la recycler view
-         */
-        exerciseList = new ArrayList<>();
+        *
+        *    Qui inizializzo l'exerciseList se l'activity è stata chiamata per caricare uno degli allenamenti
+        *
+        */
+
+        Toast.makeText(getApplicationContext(), getIntent().getStringExtra("Prova"), Toast.LENGTH_SHORT).show();
+        Workout workout = getIntent().getParcelableExtra(CREATOR_KEY);
+        if ( workout == null) {
+            exerciseList = new ArrayList<>();
+            exerciseList.add(new Exercise(getResources().getString(R.string.exercise), 1, 10000, 1, true, true, Exercise.CircuitType.EXERCISE)); //1 ripetizione, 00:10 di recupero
+        }
+        else
+            exerciseList = workout.getExerciseList();
+
+        /*
+        *
+        *   Imposto il manager e l'adapter per la recycler view
+        *
+        */
+
         linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         mExerciseRecyclerView.setLayoutManager(linearLayoutManager);
         exerciseCardRecyclerViewAdapter = new ExerciseCardRecyclerViewAdapter(exerciseList);
         exerciseCardRecyclerViewAdapter.setCircuitCreatorActivity(this);
         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
-        exerciseList.add(new Exercise(getResources().getString(R.string.exercise), 1, 10000, 1, true, true, Exercise.CircuitType.EXERCISE)); //1 ripetizione, 00:10 di recupero
         mExerciseRecyclerView.setAdapter(exerciseCardRecyclerViewAdapter);
 
         fabMenuInitialize();
@@ -116,7 +138,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
                         }
                     }
 
-                    Intent intent = CircuitActivity.getCircuitActivity(getApplicationContext(), exerciseList);
+                    Intent intent = CircuitActivity.getInstance(getApplicationContext(), exerciseList);
                     startActivity(intent);
                 }
                 else
@@ -946,4 +968,12 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     public Activity getActivity() {
         return this;
     }
+
+    public static Intent getInstance(Context context, Workout workout) {
+        Intent intent = new Intent(context, CircuitCreatorActivity.class);
+        intent.putExtra(CREATOR_KEY, workout);
+        intent.putExtra("Prova", "Test");
+        return intent;
+    }
+
 }

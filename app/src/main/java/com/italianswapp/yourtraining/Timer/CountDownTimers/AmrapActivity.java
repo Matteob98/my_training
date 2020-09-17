@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.italianswapp.yourtraining.Builders.Dialog1PickerBuilder;
+import com.italianswapp.yourtraining.DialogBuilders.Dialog1PickerBuilder;
 import com.italianswapp.yourtraining.R;
 
 public class AmrapActivity extends CountDownActivity {

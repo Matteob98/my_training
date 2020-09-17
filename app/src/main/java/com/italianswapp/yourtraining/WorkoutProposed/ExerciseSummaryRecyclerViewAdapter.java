@@ -63,7 +63,7 @@ public class ExerciseSummaryRecyclerViewAdapter extends RecyclerView.Adapter<Exe
         Se non è REST imposto normalmente le serie, altrimenti se è rest oscuro sia sets che operator
          */
         if (exercise.getType()!= Exercise.CircuitType.REST)
-            holder.mSets.setText(exercise.getTotalSets());
+            holder.mSets.setText(String.valueOf(exercise.getTotalSets()));
         else {
             holder.mSets.setText("");
             holder.mOperator.setText("");
@@ -150,7 +150,7 @@ public class ExerciseSummaryRecyclerViewAdapter extends RecyclerView.Adapter<Exe
 
     @Override
     public int getItemCount() {
-        return 0;
+        return exerciseList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -29,6 +29,10 @@ public class RoundRecyclerViewAdapter extends RecyclerView.Adapter<RoundRecycler
         mListener = listener;
     }
 
+    public RoundRecyclerViewAdapter(List<Lap> laps) {
+        this.laps = laps;
+    }
+
     /**
      * Viene richiamato quando l'adapter deve essere creato
      */
@@ -98,7 +102,4 @@ public class RoundRecyclerViewAdapter extends RecyclerView.Adapter<RoundRecycler
         }
     }
 
-    public RoundRecyclerViewAdapter(List<Lap> laps) {
-        this.laps = laps;
-    }
 }

@@ -426,7 +426,7 @@
 
             </LinearLayout>
 
-            <!--
+
             <ImageButton
                 android:id="@+id/helpButtonActivityMain"
                 android:layout_width="30dp"
@@ -436,7 +436,6 @@
                 android:onClick="helpClick"
                 android:src="@drawable/info_icon" />
 
-            -->
 
 
         </LinearLayout>

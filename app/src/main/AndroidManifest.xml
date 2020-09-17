@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".WorkoutProposed.ProposedWorkoutsActivity"></activity>
+
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -65,6 +65,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".WorkoutProposed.ProposedWorkoutsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
         </activity>
 
         <meta-data

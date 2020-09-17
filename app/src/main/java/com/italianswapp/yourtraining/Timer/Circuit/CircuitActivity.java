@@ -607,7 +607,7 @@ public class CircuitActivity extends CountDownActivity {
         return drawable;
     }
 
-    public static Intent getCircuitActivity(Context context, ArrayList<Exercise> exercises) {
+    public static Intent getInstance(Context context, ArrayList<Exercise> exercises) {
         Intent intent = new Intent(context, CircuitActivity.class);
         intent.putExtra(CIRCUIT_KEY, exercises);
 

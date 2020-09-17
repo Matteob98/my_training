@@ -40,6 +40,7 @@ public class Exercise implements Parcelable {
         hasRecs = false;
         hasSets = false;
         name = "";
+        type = CircuitType.EXERCISE;
 
     }
 

@@ -22,7 +22,7 @@ import java.lang.*;
 
 import static java.lang.System.exit;
 
-//Todo devo decidere cosa fare fra HelpActivity e Fragment, entrambe attualmente vengono usate, vedere FindUsage
+//todo al 17/09 helpFragment non viene più usato, controllare se viene usato. sennò cancellarlo
 public class HelpActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private final String
