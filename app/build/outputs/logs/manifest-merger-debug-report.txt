@@ -83,7 +83,7 @@ INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\And
 INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:2:1-82:12
 INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:2:1-82:12
 	package
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:4:5-44
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:4:5-45
 		INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -174,94 +174,94 @@ ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\Androi
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:17:13-67
 	android:name
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:16:13-69
-activity#com.italianswapp.yourtraining.HelpActivity
+activity#com.italianswapp.yourtraining3.HelpActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:19:9-22:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:21:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:22:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:20:13-41
-activity#com.italianswapp.yourtraining.FinishActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:20:13-71
+activity#com.italianswapp.yourtraining3.FinishActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:23:9-26:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:25:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:26:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:24:13-43
-activity#com.italianswapp.yourtraining.Timer.Circuit.CircuitActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:24:13-73
+activity#com.italianswapp.yourtraining3.Timer.Circuit.CircuitActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:27:9-30:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:29:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:30:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:28:13-58
-activity#com.italianswapp.yourtraining.Timer.Circuit.CircuitCreatorActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:28:13-88
+activity#com.italianswapp.yourtraining3.Timer.Circuit.CircuitCreatorActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:31:9-34:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:33:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:34:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:32:13-65
-activity#com.italianswapp.yourtraining.Timer.TimerActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:32:13-95
+activity#com.italianswapp.yourtraining3.Timer.TimerActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:35:9-38:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:37:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:38:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:36:13-48
-activity#com.italianswapp.yourtraining.Chronometer.ChronometerActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:36:13-78
+activity#com.italianswapp.yourtraining3.Chronometer.ChronometerActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:39:9-42:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:41:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:42:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:40:13-60
-activity#com.italianswapp.yourtraining.Timer.CountDownTimers.TabataActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:40:13-90
+activity#com.italianswapp.yourtraining3.Timer.CountDownTimers.TabataActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:43:9-46:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:45:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:46:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:44:13-65
-activity#com.italianswapp.yourtraining.Timer.CountDownTimers.AmrapActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:44:13-95
+activity#com.italianswapp.yourtraining3.Timer.CountDownTimers.AmrapActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:47:9-50:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:49:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:50:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:48:13-64
-activity#com.italianswapp.yourtraining.Timer.CountDownTimers.NegativePhaseActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:48:13-94
+activity#com.italianswapp.yourtraining3.Timer.CountDownTimers.NegativePhaseActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:51:9-54:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:53:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:54:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:52:13-72
-activity#com.italianswapp.yourtraining.Timer.CountDownTimers.EmomActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:52:13-102
+activity#com.italianswapp.yourtraining3.Timer.CountDownTimers.EmomActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:55:9-58:56
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:57:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:58:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:56:13-63
-activity#com.italianswapp.yourtraining.Menu.MenuActivity
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:56:13-93
+activity#com.italianswapp.yourtraining3.Menu.MenuActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:59:9-68:20
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:61:13-49
 	tools:ignore
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:62:13-53
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:60:13-46
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:60:13-76
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:63:13-67:29
 action#android.intent.action.MAIN
@@ -272,7 +272,7 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:66:17-77
 	android:name
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:66:27-74
-activity#com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity
+activity#com.italianswapp.yourtraining3.WorkoutProposed.ProposedWorkoutsActivity
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:70:9-75:20
 	android:screenOrientation
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:72:13-49
@@ -281,7 +281,7 @@ ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\Androi
 	android:theme
 		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:74:13-78
 	android:name
-		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:71:13-69
+		ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:71:13-99
 meta-data#preloaded_fonts
 ADDED from C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:77:9-79:57
 	android:resource

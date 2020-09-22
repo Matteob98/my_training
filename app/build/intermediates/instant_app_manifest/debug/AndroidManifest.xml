@@ -31,37 +31,37 @@
             android:value="ca-app-pub-8919261416525349~1732676159" />
 
         <activity
-            android:name="com.italianswapp.yourtraining.HelpActivity"
+            android:name="com.italianswapp.yourtraining3.HelpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.FinishActivity"
+            android:name="com.italianswapp.yourtraining3.FinishActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Timer.Circuit.CircuitActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.Circuit.CircuitActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Timer.Circuit.CircuitCreatorActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.Circuit.CircuitCreatorActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Timer.TimerActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.TimerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Chronometer.ChronometerActivity"
+            android:name="com.italianswapp.yourtraining3.Chronometer.ChronometerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.TabataActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.TabataActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.AmrapActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.AmrapActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.NegativePhaseActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.NegativePhaseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.EmomActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.EmomActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.italianswapp.yourtraining.Menu.MenuActivity"
+            android:name="com.italianswapp.yourtraining3.Menu.MenuActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,7 +70,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity"
+            android:name="com.italianswapp.yourtraining3.WorkoutProposed.ProposedWorkoutsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
         </activity>

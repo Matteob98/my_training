@@ -52,68 +52,68 @@
 31
 32        <activity
 32-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:19:9-22:56
-33            android:name="com.italianswapp.yourtraining.HelpActivity"
-33-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:20:13-41
+33            android:name="com.italianswapp.yourtraining3.HelpActivity"
+33-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:20:13-71
 34            android:screenOrientation="portrait" />
 34-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:21:13-49
 35        <activity
 35-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:23:9-26:56
-36            android:name="com.italianswapp.yourtraining.FinishActivity"
-36-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:24:13-43
+36            android:name="com.italianswapp.yourtraining3.FinishActivity"
+36-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:24:13-73
 37            android:screenOrientation="portrait" />
 37-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:25:13-49
 38        <activity
 38-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:27:9-30:56
-39            android:name="com.italianswapp.yourtraining.Timer.Circuit.CircuitActivity"
-39-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:28:13-58
+39            android:name="com.italianswapp.yourtraining3.Timer.Circuit.CircuitActivity"
+39-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:28:13-88
 40            android:screenOrientation="portrait" />
 40-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:29:13-49
 41        <activity
 41-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:31:9-34:56
-42            android:name="com.italianswapp.yourtraining.Timer.Circuit.CircuitCreatorActivity"
-42-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:32:13-65
+42            android:name="com.italianswapp.yourtraining3.Timer.Circuit.CircuitCreatorActivity"
+42-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:32:13-95
 43            android:screenOrientation="portrait" />
 43-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:33:13-49
 44        <activity
 44-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:35:9-38:56
-45            android:name="com.italianswapp.yourtraining.Timer.TimerActivity"
-45-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:36:13-48
+45            android:name="com.italianswapp.yourtraining3.Timer.TimerActivity"
+45-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:36:13-78
 46            android:screenOrientation="portrait" />
 46-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:37:13-49
 47        <activity
 47-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:39:9-42:56
-48            android:name="com.italianswapp.yourtraining.Chronometer.ChronometerActivity"
-48-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:40:13-60
+48            android:name="com.italianswapp.yourtraining3.Chronometer.ChronometerActivity"
+48-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:40:13-90
 49            android:screenOrientation="portrait" />
 49-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:41:13-49
 50        <activity
 50-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:43:9-46:56
-51            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.TabataActivity"
-51-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:44:13-65
+51            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.TabataActivity"
+51-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:44:13-95
 52            android:screenOrientation="portrait" />
 52-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:45:13-49
 53        <activity
 53-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:47:9-50:56
-54            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.AmrapActivity"
-54-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:48:13-64
+54            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.AmrapActivity"
+54-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:48:13-94
 55            android:screenOrientation="portrait" />
 55-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:49:13-49
 56        <activity
 56-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:51:9-54:56
-57            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.NegativePhaseActivity"
-57-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:52:13-72
+57            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.NegativePhaseActivity"
+57-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:52:13-102
 58            android:screenOrientation="portrait" />
 58-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:53:13-49
 59        <activity
 59-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:55:9-58:56
-60            android:name="com.italianswapp.yourtraining.Timer.CountDownTimers.EmomActivity"
-60-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:56:13-63
+60            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.EmomActivity"
+60-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:56:13-93
 61            android:screenOrientation="portrait" />
 61-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:57:13-49
 62        <activity
 62-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:59:9-68:20
-63            android:name="com.italianswapp.yourtraining.Menu.MenuActivity"
-63-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:60:13-46
+63            android:name="com.italianswapp.yourtraining3.Menu.MenuActivity"
+63-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:60:13-76
 64            android:screenOrientation="portrait" >
 64-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:61:13-49
 65            <intent-filter>
@@ -129,8 +129,8 @@
 70        </activity>
 71        <activity
 71-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:70:9-75:20
-72            android:name="com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity"
-72-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:71:13-69
+72            android:name="com.italianswapp.yourtraining3.WorkoutProposed.ProposedWorkoutsActivity"
+72-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:71:13-99
 73            android:screenOrientation="portrait"
 73-->C:\Users\matte\AndroidStudioProjects\YourTraining\app\src\main\AndroidManifest.xml:72:13-49
 74            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >

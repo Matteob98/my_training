@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:fontFamily="@font/swansea_bold"
-        android:hint="Complimenti Matteo Battisti"
+        tools:text="Complimenti Matteo Battisti"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="12sp"

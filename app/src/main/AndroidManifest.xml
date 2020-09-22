@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.italianswapp.yourtraining">
+    package="com.italianswapp.yourtraining3">
 
     <application
         android:allowBackup="true"
@@ -17,47 +17,47 @@
             android:value="ca-app-pub-8919261416525349~1732676159" />
 
         <activity
-            android:name=".HelpActivity"
+            android:name="com.italianswapp.yourtraining3.HelpActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".FinishActivity"
+            android:name="com.italianswapp.yourtraining3.FinishActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Timer.Circuit.CircuitActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.Circuit.CircuitActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Timer.Circuit.CircuitCreatorActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.Circuit.CircuitCreatorActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Timer.TimerActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.TimerActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Chronometer.ChronometerActivity"
+            android:name="com.italianswapp.yourtraining3.Chronometer.ChronometerActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Timer.CountDownTimers.TabataActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.TabataActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Timer.CountDownTimers.AmrapActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.AmrapActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Timer.CountDownTimers.NegativePhaseActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.NegativePhaseActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Timer.CountDownTimers.EmomActivity"
+            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.EmomActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Menu.MenuActivity"
+            android:name="com.italianswapp.yourtraining3.Menu.MenuActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -68,7 +68,7 @@
         </activity>
 
         <activity
-            android:name=".WorkoutProposed.ProposedWorkoutsActivity"
+            android:name="com.italianswapp.yourtraining3.WorkoutProposed.ProposedWorkoutsActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
