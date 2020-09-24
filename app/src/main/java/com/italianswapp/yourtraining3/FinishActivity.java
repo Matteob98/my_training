@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +30,7 @@ public class FinishActivity extends AppCompatActivity {
     private final static String TEXT_FINISH = "text_finish";
     private final static String WORKOUT_FINISH = "workout_finish";
     private static final String WORKOUT_TYPE = "workout_type";
+    private static final String WORKOUT_DURATION = "workout_duration";
 
     private FloatingActionButton mHomeButton, mSaveButton;
     private TextView mFinishTextView;
@@ -38,6 +41,7 @@ public class FinishActivity extends AppCompatActivity {
      */
 
     private String workoutName;
+    private String workoutDuration;
     private WorkoutSaved.WorkoutSensation workoutSensation;
     private WorkoutSaved.WorkoutType workoutType;
     private Workout.WorkoutLevel workoutLevel;
@@ -73,6 +77,7 @@ public class FinishActivity extends AppCompatActivity {
         workout = getIntent().getParcelableExtra(WORKOUT_FINISH);
         workoutType = WorkoutSaved.WorkoutType.valueOf(
                 getIntent().getStringExtra(WORKOUT_TYPE));
+        workoutDuration = getIntent().getStringExtra(WORKOUT_DURATION);
 
         mFinishTextView.setText(text);
 
@@ -98,9 +103,22 @@ public class FinishActivity extends AppCompatActivity {
         Imposto il cambiamento del nome dell'allenamento
          */
         final EditText mTitle = dialogView.findViewById(R.id.workoutTitleSaveWorkoutDialog);
-        mTitle.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        /*
+        Ogni volta che cambia il testo modifico workoutName
+         */
+        mTitle.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 workoutName = mTitle.getText().toString();
             }
         });
@@ -184,7 +202,6 @@ public class FinishActivity extends AppCompatActivity {
         alertDialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
-        alertDialog.dismiss();
     }
 
     /**
@@ -238,14 +255,6 @@ public class FinishActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() { goToHome();}
 
-    public static Intent getInstance (Context context, String text, Workout workout, WorkoutSaved.WorkoutType workoutType) {
-        Intent intent = new Intent(context, FinishActivity.class);
-        intent.putExtra(TEXT_FINISH,text);
-        intent.putExtra(WORKOUT_FINISH, workout);
-        intent.putExtra(WORKOUT_TYPE, workoutType.name());
-        return intent;
-    }
-
     public void save() {
 
         /*
@@ -254,16 +263,16 @@ public class FinishActivity extends AppCompatActivity {
 
         if (workoutName.equals("")) {
             Calendar calendar = Calendar.getInstance();
-            workout.setTitle(getResources().getString(R.string.workout) + " " +
+            workoutName = getResources().getString(R.string.workout) + " " +
                     calendar.get(Calendar.DAY_OF_MONTH) + "/" +
                     calendar.get(Calendar.MONTH) + "/" +
-                    calendar.get(Calendar.YEAR) + "/");
+                    calendar.get(Calendar.YEAR);
         }
 
         WorkoutSaved workoutSaved = new WorkoutSaved();
         workoutSaved.setDate(Calendar.getInstance().getTime());
         workoutSaved.setSensation(workoutSensation);
-        workoutSaved.setTime(text);
+        workoutSaved.setTime(workoutDuration);
         workoutSaved.setType(workoutType);
         workout.setLevel(workoutLevel);
         workout.setTitle(workoutName);
@@ -276,5 +285,23 @@ public class FinishActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Test", Toast.LENGTH_SHORT).show();
         alertDialog.dismiss();
         goToHome();
+    }
+
+    /**
+     * Ritorna un istanza di finish activity
+     * @param context Il contesto
+     * @param text Il testo che deve apparire in alto in finish activity
+     * @param workout L'allenamento appena finito
+     * @param workoutType Il tipo di allenamento
+     * @param workoutDuration Una stringa contenente la durata dell'allenamento
+     * @return
+     */
+    public static Intent getInstance (Context context, String text, Workout workout, WorkoutSaved.WorkoutType workoutType, String workoutDuration) {
+        Intent intent = new Intent(context, FinishActivity.class);
+        intent.putExtra(TEXT_FINISH,text);
+        intent.putExtra(WORKOUT_FINISH, workout);
+        intent.putExtra(WORKOUT_TYPE, workoutType.name());
+        intent.putExtra(WORKOUT_DURATION, workoutDuration);
+        return intent;
     }
 }

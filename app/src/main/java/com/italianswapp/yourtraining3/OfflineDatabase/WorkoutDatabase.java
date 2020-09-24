@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-//todo ad ogni aggiornamento deve essere modificata la version altrimenti non aggiorna le modifiche
+//todo ad ogni aggiornamento deve essere modificata la version altrimenti si perdono tutti i dati
 @Database(entities = {WorkoutSaved.class}, version = 1)
 @TypeConverters({WorkoutDatabaseConverter.class})
 public abstract class WorkoutDatabase extends RoomDatabase {

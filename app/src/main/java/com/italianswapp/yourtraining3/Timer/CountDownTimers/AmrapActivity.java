@@ -15,7 +15,7 @@ import com.italianswapp.yourtraining3.DialogBuilders.Dialog1PickerBuilder;
 import com.italianswapp.yourtraining3.OfflineDatabase.WorkoutSaved;
 import com.italianswapp.yourtraining3.R;
 import com.italianswapp.yourtraining3.Timer.Circuit.CircuitSettings.ExerciseBuilder;
-import com.italianswapp.yourtraining3.Utilities;
+import com.italianswapp.yourtraining3.Utilities.Utilities;
 import com.italianswapp.yourtraining3.WorkoutProposed.Workout.Workout;
 import com.italianswapp.yourtraining3.WorkoutProposed.Workout.WorkoutBuilder;
 
@@ -200,10 +200,11 @@ public class AmrapActivity extends CountDownActivity {
                 .setPositiveButton(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        finishCountDown(roundAmrap + res.getString(R.string.round_completed) +
-                                (Utilities.getHoursFromMills(updateTime) >0 ?
+                        workoutDuration = (Utilities.getHoursFromMills(updateTime) >0 ?
                                 Utilities.getStringTimeFromMills(updateTime) + " " + res.getString(R.string.hours) :
-                                Utilities.getStringTimeNoHour(updateTime) + " " + res.getString(R.string.minutes)));
+                                Utilities.getStringTimeNoHour(updateTime) + " " + res.getString(R.string.minutes));
+
+                        finishCountDown(roundAmrap + " " + res.getString(R.string.round_completed) + " " + workoutDuration);
                         Dialog1PickerBuilder.getAlertDialog().dismiss();
                     }
                 })

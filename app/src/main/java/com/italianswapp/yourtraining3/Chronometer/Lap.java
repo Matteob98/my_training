@@ -1,6 +1,6 @@
 package com.italianswapp.yourtraining3.Chronometer;
 
-import com.italianswapp.yourtraining3.Utilities;
+import com.italianswapp.yourtraining3.Utilities.Utilities;
 
 /**
  * Lap del cronometro

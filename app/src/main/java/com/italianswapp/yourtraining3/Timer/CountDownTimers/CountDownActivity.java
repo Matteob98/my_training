@@ -31,7 +31,7 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.italianswapp.yourtraining3.FinishActivity;
 import com.italianswapp.yourtraining3.OfflineDatabase.WorkoutSaved;
-import com.italianswapp.yourtraining3.Utilities;
+import com.italianswapp.yourtraining3.Utilities.Utilities;
 import com.italianswapp.yourtraining3.R;
 import com.italianswapp.yourtraining3.WorkoutProposed.Workout.Workout;
 
@@ -59,7 +59,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
     /*
     isWork indica se si sta facendo un esercizio, se è false si sta facendo un riposo
      */
-    protected boolean isFirstStart, isRunning, isWork;
+    protected boolean isRunning, isWork;
     protected final static long interval=10L;
     /*
     work -> millisecondi di lavoro
@@ -92,6 +92,12 @@ public abstract class CountDownActivity extends AppCompatActivity {
     private boolean ifSound;
 
     protected boolean isTablet;
+
+    /**
+     * Stringa del tipo hh:mm:ss che indica la durata dell'allenamento prima di essere passata a
+     * finishActivity
+     */
+    protected String workoutDuration;
 
     /*
     Si occupano dei suoni durante il timer
@@ -163,9 +169,9 @@ public abstract class CountDownActivity extends AppCompatActivity {
         loadAds();
 
         /*
-        Il timer è inizializzato con la scritta ready ed un conto alla rovescia a partire da 3
+        Inizializza il timer
          */
-        readyLayoutSettings();
+        initializesTimer();
 
     }
 
@@ -174,7 +180,6 @@ public abstract class CountDownActivity extends AppCompatActivity {
      */
     private void variableInitialize() {
         ifSound=true;
-        isFirstStart=true;
         isRunning=false;
         isWork=false;
         work=0;
@@ -296,12 +301,6 @@ public abstract class CountDownActivity extends AppCompatActivity {
             //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_blue));
             mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
         }
-        else if(isFirstStart) {
-            //Se non è running ed è il first start
-            timer = readyTimer();
-            timer.start();
-
-        }
         else {
             //E' running
             timer = createTimer();
@@ -322,7 +321,6 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected void startChronometer() {
         startTime = SystemClock.uptimeMillis();
         timeHandler.postDelayed(updateTimerThread, 10);
-        isFirstStart=false;
     }
 
     /**
@@ -344,7 +342,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
         /*
         Se il timer dura più di 5 secondi, gli ultimi 3 secondi lancia un suono
          */
-        if (currentDuration >= 5000 || isFirstStart)
+        if (currentDuration >= 5000)
             if(millisUntilFinished<=1000 && tick1000) {
                 tick1000=false;
                 tickSecondSound();
@@ -443,10 +441,10 @@ public abstract class CountDownActivity extends AppCompatActivity {
      * Passa all'activity finish un testo standard
      */
     protected void finishCountDown() {
-        finishCountDown(res.getString(R.string.workout_completed_in) + " " +
-                (Utilities.getHoursFromMills(updateTime) >0 ?
-                        Utilities.getStringTimeFromMills(updateTime) + " " + res.getString(R.string.hours) :
-                        Utilities.getStringTimeNoHour(updateTime) + " " + res.getString(R.string.minutes)));
+        workoutDuration = (Utilities.getHoursFromMills(updateTime) >0 ?
+                Utilities.getStringTimeFromMills(updateTime) + " " + res.getString(R.string.hours) :
+                Utilities.getStringTimeNoHour(updateTime) + " " + res.getString(R.string.minutes));
+        finishCountDown(res.getString(R.string.workout_completed_in) + " " + workoutDuration);
 
     }
 
@@ -478,6 +476,12 @@ public abstract class CountDownActivity extends AppCompatActivity {
         timeHandler.removeCallbacks(updateTimerThread);
 
         /*
+        Se deve suonare suona
+         */
+        if(ifSound)
+            MediaPlayer.create(this, R.raw.timer_sound).start();
+
+        /*
         Se l'ad è stato caricato lo mostro prima di passare alla finishActivity
          */
         if (mInterstitialAd.isLoaded()) {
@@ -504,12 +508,8 @@ public abstract class CountDownActivity extends AppCompatActivity {
     private void openFinishActivity(String text) {
         workout = getWorkout();
         workoutType = getWorkoutType();
-        Intent intent= FinishActivity.getInstance(getApplicationContext(), text , workout, workoutType) ;
-        /*
-        Se deve suonare suona
-         */
-        if(ifSound)
-            MediaPlayer.create(this, R.raw.timer_sound).start();
+        Intent intent= FinishActivity.getInstance(getApplicationContext(), text , workout, workoutType, workoutDuration) ;
+
         startActivity(intent);
         finish();
     }
@@ -532,19 +532,6 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected void restLayoutSettings() {
         mWorkDescriptionTextView.setText(res.getString(R.string.rest));
         Drawable drawable = res.getDrawable(R.drawable.circle_progress_bar_rest);
-        mProgressBar.setProgressDrawable(drawable);
-    }
-
-    /**
-     * Imposta il colore della text view e della progress bar quando sono in ready
-     */
-    protected void readyLayoutSettings() {
-        mTimeTextView.setText(Utilities.getStringTimeFromMillsWithoutHours(3000));
-        mWorkDescriptionTextView.setText(res.getString(R.string.ready));
-        remainingTime=READY_TIMER;
-        currentDuration =READY_TIMER;
-
-        Drawable drawable = res.getDrawable(R.drawable.circle_progress_bar_ready);
         mProgressBar.setProgressDrawable(drawable);
     }
 
@@ -662,35 +649,6 @@ public abstract class CountDownActivity extends AppCompatActivity {
      */
     protected void setIfSound(boolean ifSound) {
         this.ifSound = ifSound;
-    }
-
-    /**
-     * Crea un timer che dura 3 secondi per permettere all'utente di prepararsi prima di iniziare un allenamento
-     * @return Il timer creato
-     */
-    protected CountDownTimer readyTimer() {
-        startButtonEnabled(false);
-        mStartButton.setText(getResources().getString(R.string.pause).toUpperCase());
-        mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
-        mWorkDescriptionTextView.setText(res.getString(R.string.ready));
-        progressBarHandler.post(progressBarRun);
-        /*
-        Ritorna il timer
-         */
-        return new CountDownTimer(remainingTime, interval) {
-            @Override
-            public void onTick(long millisUntilFinished) { tickManagement(millisUntilFinished); }
-
-            @Override
-            public void onFinish() {
-                mTimeFromStartTextView.setVisibility(TextView.VISIBLE);
-                startChronometer();
-                startButtonEnabled(true);
-                isFirstStart=false;
-                initializesTimer();
-                startWork();
-            }
-        };
     }
 
     /**

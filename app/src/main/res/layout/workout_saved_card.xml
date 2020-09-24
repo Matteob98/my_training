@@ -23,6 +23,7 @@
                 android:id="@+id/imageWorkoutSavedCard"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -33,19 +34,26 @@
 
             <TextView
                 android:id="@+id/titleTextWorkoutSavedCard"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Allenamento petto"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:textAlignment="textStart"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                app:layout_constraintEnd_toStartOf="@+id/sensationWorkoutSavedCard"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/imageWorkoutSavedCard"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="20dp"
-                android:textSize="20sp" />
+                tools:text="Allenamento petto e spalle" />
 
             <TextView
                 android:id="@+id/dateWorkoutSavedCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="17/09/2020  18:16"
+                android:maxLines="1"
                 app:layout_constraintStart_toStartOf="@id/titleTextWorkoutSavedCard"
                 app:layout_constraintTop_toBottomOf="@id/titleTextWorkoutSavedCard"
                 android:layout_marginTop="5dp" />
@@ -55,27 +63,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="02:10:25"
+                android:maxLines="1"
                 app:layout_constraintStart_toStartOf="@id/titleTextWorkoutSavedCard"
                 app:layout_constraintTop_toBottomOf="@id/dateWorkoutSavedCard"
                 android:layout_marginTop="5dp" />
 
             <ImageView
                 android:id="@+id/sensationWorkoutSavedCard"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                tools:src="@drawable/ic_smile"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/titleTextWorkoutSavedCard"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/levelWorkoutSavedCard"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                tools:src="@drawable/ic_smile" />
 
             <ImageView
                 android:id="@+id/levelWorkoutSavedCard"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 tools:src="@drawable/ic_level"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/sensationWorkoutSavedCard"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
 

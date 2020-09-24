@@ -442,19 +442,14 @@ public class CircuitActivity extends CountDownActivity {
                 }
                 else {
                     if (!isRunning) {
-                        if (isFirstStart) {
-                            timer = readyTimer();
-                            timer.start();
-                        }
-                        else {
-                            timer = createTimer();
-                            timer.start();
-                            isRunning = true;
-                            mRepsButton.setVisibility(ImageButton.INVISIBLE);
-                            mStartButton.setVisibility(Button.VISIBLE);
-                            mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                            mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
-                        }
+                        timer = createTimer();
+                        timer.start();
+                        isRunning = true;
+                        mRepsButton.setVisibility(ImageButton.INVISIBLE);
+                        mStartButton.setVisibility(Button.VISIBLE);
+                        mStartButton.setText(res.getString(R.string.pause).toUpperCase());
+                        mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
+
                     }
                     else {
                         timer.cancel();
@@ -477,7 +472,7 @@ public class CircuitActivity extends CountDownActivity {
         if(!isRepsExercise || !isWork)
             //Se è un riposo
             timer.cancel(); //Annullo il timer
-        if(( !isRepsExercise) && (currentSet==0 || isFirstStart))
+        if(( !isRepsExercise) && (currentSet==0))
             return;
 
         else if (isRepsExercise && isWork) {

@@ -121,7 +121,11 @@ public class TabataActivity extends CountDownActivity {
 
     @Override
     protected Workout getWorkout() {
-        return WorkoutBuilder
+        /*
+        Viene ritornato un workout contenente un primo esercizio, ed un secondo
+        che contiene il recupero tra le serie (non bastavano i campi del primo esercizio)
+         */
+        Workout workout =  WorkoutBuilder
                 .newBuilder()
                 .addExercise(ExerciseBuilder
                         .newBuilder()
@@ -130,8 +134,15 @@ public class TabataActivity extends CountDownActivity {
                         .setRec(rest)
                         .setHasRecs(rest>0)
                         .setNumberSets(setsNumber)
+                        .setRepetition(round)
+                        .build())
+                .addExercise(ExerciseBuilder
+                        .newBuilder()
+                        .setRec(restBetweenRound)
                         .build())
                 .build();
+
+        return workout;
     }
 
     public static Intent getInstance(Context context, long work, long rest,int sets, int round, long restBetweenSets)

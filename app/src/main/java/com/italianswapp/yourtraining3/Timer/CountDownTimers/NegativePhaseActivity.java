@@ -130,6 +130,7 @@ public class NegativePhaseActivity extends CountDownActivity {
                         .setIsReps(false)
                         .setRepetition((int) negative)
                         .setTotalSets(setsNumber)
+                        .setNumberSets(repetition)
                         .setRec(rest)
                         .setHasRecs(rest>0)
                         .build())

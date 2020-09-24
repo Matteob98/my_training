@@ -24,7 +24,7 @@ import com.italianswapp.yourtraining3.Timer.CountDownTimers.EmomActivity;
 import com.italianswapp.yourtraining3.Timer.CountDownTimers.NegativePhaseActivity;
 import com.italianswapp.yourtraining3.Timer.CountDownTimers.TabataActivity;
 import com.italianswapp.yourtraining3.Timer.TimerActivity;
-import com.italianswapp.yourtraining3.Utilities;
+import com.italianswapp.yourtraining3.Utilities.Utilities;
 
 public class TimerFragment extends Fragment implements View.OnClickListener, NumberPicker.OnValueChangeListener{
 

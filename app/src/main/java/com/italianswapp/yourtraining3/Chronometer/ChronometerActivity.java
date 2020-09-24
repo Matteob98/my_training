@@ -25,7 +25,7 @@ import com.italianswapp.yourtraining3.FinishActivity;
 import com.italianswapp.yourtraining3.Menu.MenuActivity;
 import com.italianswapp.yourtraining3.OfflineDatabase.WorkoutSaved;
 import com.italianswapp.yourtraining3.Timer.Circuit.CircuitSettings.ExerciseBuilder;
-import com.italianswapp.yourtraining3.Utilities;
+import com.italianswapp.yourtraining3.Utilities.Utilities;
 import com.italianswapp.yourtraining3.R;
 import com.italianswapp.yourtraining3.WorkoutProposed.Workout.Workout;
 import com.italianswapp.yourtraining3.WorkoutProposed.Workout.WorkoutBuilder;
@@ -337,10 +337,14 @@ public class ChronometerActivity extends AppCompatActivity {
     private void finishTraining() {
         MediaPlayer.create(this, R.raw.timer_sound).start();
 
+        String workoutTime = (Utilities.getHoursFromMills(updateTime) >0 ?
+                Utilities.getStringTimeFromMills(updateTime) :
+                Utilities.getStringTimeNoHour(updateTime));
         String text = getResources().getString(R.string.workout_completed_in) + " " +
                 (Utilities.getHoursFromMills(updateTime) >0 ?
-                        Utilities.getStringTimeFromMills(updateTime) + " " + getResources().getString(R.string.hours) :
-                        Utilities.getStringTimeNoHour(updateTime) + " " + getResources().getString(R.string.minutes));
+                Utilities.getStringTimeFromMills(updateTime) + " " + getResources().getString(R.string.hours) :
+                Utilities.getStringTimeNoHour(updateTime) + " " + getResources().getString(R.string.minutes));
+
 
         /*
         Cronometro contiene un allenamento vuoto perché non si può ripetere lo stesso allenamento,
@@ -353,7 +357,7 @@ public class ChronometerActivity extends AppCompatActivity {
                         .build())
                 .build();
 
-        Intent intent= FinishActivity.getInstance(this, text, workout, WorkoutSaved.WorkoutType.CHRONOMETER);
+        Intent intent= FinishActivity.getInstance(this, text, workout, WorkoutSaved.WorkoutType.CHRONOMETER, workoutTime);
         startActivity(intent);
         finish();
     }

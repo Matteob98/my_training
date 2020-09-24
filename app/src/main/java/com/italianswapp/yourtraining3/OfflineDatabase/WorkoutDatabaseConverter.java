@@ -44,32 +44,18 @@ public class WorkoutDatabaseConverter {
         return sensation.name();
     }
 
-    /*
-
     @TypeConverter
-    public static Workout workoutFromParcel(Parcel workoutParcel) {
-        return Workout.CREATOR.createFromParcel(workoutParcel);
-    }
-
-    @TypeConverter
-    public static Parcel parcelFromWorkout(Workout workout) {
-        Parcel parcel = Parcel.obtain();
-        workout.writeToParcel(parcel, 0);
-        return parcel;
-    }
-
-     */
-
-    @TypeConverter
-    public static Workout workoutFromString(String workout) {
-        if (workout == null)
+    public static Workout workoutFromString(String workoutString) {
+        if (workoutString == null)
             return new Workout();
-        return gson.fromJson(workout, Workout.class);
+        Workout workout  =  gson.fromJson(workoutString, Workout.class);
+        return workout;
     }
 
     @TypeConverter
     public static String workoutToString(Workout workout) {
-        return gson.toJson(workout);
+        String json = gson.toJson(workout);
+        return json;
     }
 
 

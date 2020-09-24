@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.italianswapp.yourtraining3.ExerciseTypeNotCorrectException;
 import com.italianswapp.yourtraining3.Timer.Circuit.CircuitSettings.Exercise;
-import com.italianswapp.yourtraining3.Utilities;
+import com.italianswapp.yourtraining3.Utilities.Utilities;
 import com.italianswapp.yourtraining3.R;
 
 import java.util.List;

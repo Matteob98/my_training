@@ -34,7 +34,7 @@ import com.italianswapp.yourtraining3.DialogBuilders.Dialog3PickerBuilder;
 import com.italianswapp.yourtraining3.OfflineDatabase.WorkoutSaved;
 import com.italianswapp.yourtraining3.R;
 import com.italianswapp.yourtraining3.Timer.Circuit.CircuitSettings.Exercise;
-import com.italianswapp.yourtraining3.Utilities;
+import com.italianswapp.yourtraining3.Utilities.Utilities;
 import com.italianswapp.yourtraining3.WorkoutProposed.Workout.Workout;
 
 import java.util.ArrayList;
