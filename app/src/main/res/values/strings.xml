@@ -130,5 +130,10 @@
     <string name="From">From</string>
     <string name="To">To</string>
     <string name="start_date">01/01/2000</string>
+    <string name="ready_activity_text">The circuit will \nstarts in:</string>
+    <string name="saved">saved</string>
+    <string name="Home">Home</string>
+    <string name="Saved">Saved</string>
+    <string name="Workouts">Workouts</string>
 
 </resources>

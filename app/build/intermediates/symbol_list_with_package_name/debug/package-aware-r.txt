@@ -1582,6 +1582,8 @@ drawable emom
 drawable for_time
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable heart
+drawable home_white
 drawable ic_add
 drawable ic_add_black
 drawable ic_assignament
@@ -1591,6 +1593,8 @@ drawable ic_audio_on
 drawable ic_bug
 drawable ic_circle_48dp
 drawable ic_cross_black
+drawable ic_cross_blue
+drawable ic_cross_button_white
 drawable ic_cross_white
 drawable ic_exit
 drawable ic_finish
@@ -1676,6 +1680,7 @@ drawable toggle_widget_background_right_superset
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable winner
+drawable workout
 font aqum
 font roboto
 font swansea
@@ -1778,6 +1783,7 @@ id bugEditText
 id bugImageHelpActivity
 id bugTextInput
 id buttonPanel
+id buttonReadyActivity
 id cancel_action
 id cancel_button
 id cardView
@@ -1821,6 +1827,7 @@ id container
 id content
 id contentPanel
 id coordinator
+id countdownTextViewReadyActivity
 id createButtonCircuitCreator
 id custom
 id customPanel
@@ -2189,6 +2196,7 @@ id textView16
 id textView17
 id textView18
 id textView2
+id textView20
 id textView3
 id textView4
 id textView5
@@ -2336,6 +2344,7 @@ layout activity_finish
 layout activity_help
 layout activity_menu
 layout activity_proposed_workouts
+layout activity_ready_timer
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout bug_dialog
@@ -2363,7 +2372,6 @@ layout exercise_list_dialog
 layout exercise_settings_dialog
 layout exercise_summary_card
 layout filter_workout_saved
-layout fragment_help
 layout fragment_timer
 layout fragment_workouts_proposed
 layout fragment_workouts_saved
@@ -2460,16 +2468,19 @@ string Create
 string Eccentric
 string For
 string From
+string Home
 string Lap
 string Reset
 string Reset_Filter
 string Resume
+string Saved
 string Simple
 string Start
 string Stop
 string Superset
 string Title
 string To
+string Workouts
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -2631,6 +2642,7 @@ string path_password_strike_through
 string pause
 string project_id
 string ready
+string ready_activity_text
 string received_bug
 string report_bug
 string reps
@@ -2644,6 +2656,7 @@ string s5
 string s6
 string s7
 string save
+string saved
 string search_menu_title
 string second_exercise
 string secs

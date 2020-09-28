@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.italianswapp.yourtraining3">
+    package="com.italianswapp.yourtraining">
 
     <application
         android:allowBackup="true"
@@ -10,54 +10,54 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
+        <activity android:name=".ReadyTimerActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8919261416525349~1732676159" />
 
         <activity
-            android:name="com.italianswapp.yourtraining3.HelpActivity"
+            android:name=".HelpActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.FinishActivity"
+            android:name=".FinishActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Timer.Circuit.CircuitActivity"
+            android:name=".Timer.Circuit.CircuitActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Timer.Circuit.CircuitCreatorActivity"
+            android:name=".Timer.Circuit.CircuitCreatorActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Timer.TimerActivity"
+            android:name=".Timer.TimerActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Chronometer.ChronometerActivity"
+            android:name=".Chronometer.ChronometerActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.TabataActivity"
+            android:name=".Timer.CountDownTimers.TabataActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.AmrapActivity"
+            android:name=".Timer.CountDownTimers.AmrapActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.NegativePhaseActivity"
+            android:name=".Timer.CountDownTimers.NegativePhaseActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Timer.CountDownTimers.EmomActivity"
+            android:name=".Timer.CountDownTimers.EmomActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.italianswapp.yourtraining3.Menu.MenuActivity"
+            android:name=".Menu.MenuActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -66,13 +66,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.italianswapp.yourtraining3.WorkoutProposed.ProposedWorkoutsActivity"
+            android:name=".WorkoutProposed.ProposedWorkoutsActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
-        </activity>
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            tools:ignore="LockedOrientationActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

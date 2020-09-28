@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/savedItem"
-        android:title="@string/help"
+        android:title="@string/Saved"
         android:orderInCategory="1"
-        android:icon="@drawable/info_icon" />
+        android:icon="@drawable/heart" />
 
     <item
         android:id="@+id/timerItem"
-        android:title="@string/timer"
+        android:title="@string/Home"
         android:orderInCategory="2"
-        android:icon="@drawable/ic_timer"/>
+        android:icon="@drawable/home_white"/>
     <item
         android:id="@+id/proposedItem"
-        android:title="@string/workouts"
+        android:title="@string/Workouts"
         android:orderInCategory="3"
-        android:icon="@drawable/ic_assignament"/>
+        android:icon="@drawable/workout"/>
 
 </menu>
