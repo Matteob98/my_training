@@ -1,4 +1,4 @@
-package com.italianswapp.yourtraining.WorkoutProposed;
+package com.italianswapp.yourtraining.WorkoutProposed.WorkoutProposedRecyclerView;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
@@ -67,8 +68,9 @@ public class ExerciseSummaryRecyclerViewAdapter extends RecyclerView.Adapter<Exe
         else {
             holder.mSets.setText("");
             holder.mOperator.setText("");
+            holder.mCardSets.setVisibility(View.INVISIBLE);
         }
-        holder.mColoredView.setBackground(Utilities.getColorOfExercise(context.getResources(), exercise.getType()));
+        holder.mColoredCardView.setCardBackgroundColor(Utilities.getColorOfExercise(context, exercise.getType()));
     }
 
     /**
@@ -155,13 +157,14 @@ public class ExerciseSummaryRecyclerViewAdapter extends RecyclerView.Adapter<Exe
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private View mColoredView;
+        private CardView mColoredCardView, mCardSets;
         private TextView mName, mReps, mOperator, mSets;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mColoredView = itemView.findViewById(R.id.colorBarExerciseSummary);
+            mColoredCardView = itemView.findViewById(R.id.colorCardExerciseSummary);
+            mCardSets = itemView.findViewById(R.id.cardSetsExerciseSummary);
             mName = itemView.findViewById(R.id.exerciseNameExerciseSummary);
             mReps = itemView.findViewById(R.id.exerciseRepsExerciseSummary);
             mOperator = itemView.findViewById(R.id.operatorExerciseSummary);

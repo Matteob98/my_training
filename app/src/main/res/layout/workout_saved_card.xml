@@ -9,84 +9,113 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/workoutSavedCard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@android:color/transparent"
+        android:layout_height="75dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginBottom="12dp"
         app:cardElevation="1dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@null">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageWorkoutSavedCard"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="fitXY"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:padding="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:src="@drawable/personal_trainer"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                tools:src="@drawable/tabata" />
 
             <TextView
                 android:id="@+id/titleTextWorkoutSavedCard"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="5dp"
-                android:textAlignment="textStart"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/swansea_bold"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:letterSpacing="0.04"
                 android:maxLines="1"
-                app:layout_constraintEnd_toStartOf="@+id/sensationWorkoutSavedCard"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/imageWorkoutSavedCard"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Allenamento petto e spalle" />
 
-            <TextView
-                android:id="@+id/dateWorkoutSavedCard"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSetsExerciseSummary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="17/09/2020  18:16"
-                android:maxLines="1"
-                app:layout_constraintStart_toStartOf="@id/titleTextWorkoutSavedCard"
-                app:layout_constraintTop_toBottomOf="@id/titleTextWorkoutSavedCard"
-                android:layout_marginTop="5dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="7dp"
+                android:backgroundTint="#cbcbcb"
+                app:layout_constraintStart_toEndOf="@+id/imageWorkoutSavedCard"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextWorkoutSavedCard" >
+
+                <TextView
+                    android:id="@+id/dateWorkoutSavedCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/swansea_bold"
+                    tools:text="17/09/2020  18:16"
+                    android:textSize="12sp"
+                    android:textColor="#5b5b5b"
+                    android:letterSpacing="0.04"
+                    android:maxLines="1"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="9dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"/>
+
+            </androidx.cardview.widget.CardView>
+
 
             <TextView
                 android:id="@+id/timeWorkoutSavedCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="02:10:25"
-                android:maxLines="1"
-                app:layout_constraintStart_toStartOf="@id/titleTextWorkoutSavedCard"
-                app:layout_constraintTop_toBottomOf="@id/dateWorkoutSavedCard"
-                android:layout_marginTop="5dp" />
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/swansea"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageWorkoutSavedCard"
+                app:layout_constraintTop_toBottomOf="@id/cardSetsExerciseSummary"
+                tools:text="02:10:25" />
+            
+            <ImageView
+                android:id="@+id/blueFlagWorkoutSavedCard"
+                android:layout_width="45dp"
+                android:layout_height="22dp"
+                android:layout_marginBottom="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/blue_flag"/>
 
             <ImageView
                 android:id="@+id/sensationWorkoutSavedCard"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/levelWorkoutSavedCard"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_smile" />
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/blueFlagWorkoutSavedCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:src="@drawable/easy" />
 
             <ImageView
                 android:id="@+id/levelWorkoutSavedCard"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                tools:src="@drawable/ic_level"
-                android:layout_marginEnd="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/titleTextWorkoutSavedCard"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/titleTextWorkoutSavedCard"
+                tools:src="@drawable/advanced" />
 
 
 

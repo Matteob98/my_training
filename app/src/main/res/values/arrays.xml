@@ -8,11 +8,9 @@
         <item>Rest</item>
         <item>No</item>
     </string-array>
-    <string-array name="repetitionNumber">
-        <item>X1</item>
-        <item>X2</item>
-        <item>X3</item>
-        <item>X4</item>
-        <item>X5</item>
+    <string-array name="levelFilter">
+        <item>BEGINNER</item>
+        <item>INTERMEDIATE</item>
+        <item>ADVANCED</item>
     </string-array>
 </resources>

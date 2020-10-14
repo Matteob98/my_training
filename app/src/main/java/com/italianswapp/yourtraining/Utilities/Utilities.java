@@ -1,5 +1,6 @@
 package com.italianswapp.yourtraining.Utilities;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -263,37 +264,30 @@ public class Utilities
     /**
      * Prende il tipo di un esercizio e ne ritorna il colore
      * Es. EXERCISE -> Color accent
-     * @param res La resource
+     * @param context il contesto
      * @param circuitType Il tipo dell'esercizio
      * @return Il colore
      */
-    public static Drawable getColorOfExercise(Resources res, Exercise.CircuitType circuitType) {
-        Drawable drawable;
+    public static int getColorOfExercise(Context context, Exercise.CircuitType circuitType) {
         switch (circuitType) {
             case EXERCISE:
-                drawable = res.getDrawable(R.color.colorAccent);
-                break;
+                return context.getResources().getColor(R.color.colorAccent);
             case REST:
-                drawable = res.getDrawable(R.color.restColor);
-                break;
+                return context.getResources().getColor(R.color.restColor);
             case SUPERSET:
-                drawable = res.getDrawable(R.color.supersetColor);
-                break;
+                return context.getResources().getColor(R.color.supersetColor);
             case TABATA:
-                drawable = res.getDrawable(R.color.tabataColor);
-                break;
+                return context.getResources().getColor(R.color.tabataColor);
             case EMOM:
-                drawable = res.getDrawable(R.color.emomColor);
-                break;
+                return context.getResources().getColor(R.color.emomColor);
             default:
                 try {
                     throw new ExerciseTypeNotCorrectException("Tipo non corretto in getExerciseColor");
                 } catch (ExerciseTypeNotCorrectException e) {
                     e.printStackTrace();
                 }
-                return null;
+                return -1;
         }
-        return drawable;
     }
 
     /**

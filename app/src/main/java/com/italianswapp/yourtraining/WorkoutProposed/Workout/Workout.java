@@ -38,6 +38,7 @@ public class Workout implements Parcelable {
     private  WorkoutLevel level;
     private ArrayList<Exercise> exerciseList;
     private ArrayList<MuscleGroup> muscleGroupList;
+    private boolean isPremium;
 
     public Workout () {
         title = "";
@@ -45,6 +46,15 @@ public class Workout implements Parcelable {
         level = WorkoutLevel.BEGINNER;
         exerciseList = new ArrayList<>();
         muscleGroupList = new ArrayList<>();
+        isPremium = false;
+    }
+
+    public boolean isPremium() {
+        return isPremium;
+    }
+
+    public void setPremium(boolean premium) {
+        isPremium = premium;
     }
 
     public WorkoutCategory getCategory() {
@@ -128,7 +138,9 @@ public class Workout implements Parcelable {
         dest.writeString(category.name());
         dest.writeString(level.name());
         dest.writeStringList(muscleGroupNameList);
+        dest.writeInt(isPremium ? 1 : 0);
         dest.writeTypedList(exerciseList);
+
     }
 
     /**
@@ -147,6 +159,7 @@ public class Workout implements Parcelable {
         level = WorkoutLevel.valueOf(in.readString());
         ArrayList<String> muscleGroupNameList = new ArrayList<String>();
         in.readStringList(muscleGroupNameList);
+        isPremium = in.readInt() == 1;
         exerciseList = in.createTypedArrayList(Exercise.CREATOR);
 
         muscleGroupList = new ArrayList<>();

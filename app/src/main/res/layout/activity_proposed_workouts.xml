@@ -5,124 +5,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".WorkoutProposed.ProposedWorkoutsActivity">
 
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Livello"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarProposedWorkouts"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <HorizontalScrollView
-        android:layout_width="0dp"
+    
+    <ImageButton
+        android:id="@+id/backButtonProposedWorkouts"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="@+id/textView16"
-        app:layout_constraintBottom_toBottomOf="@+id/textView16"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="10dp">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/levelChipGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            app:singleLine="true">
-
-
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/beginnerChipProposedWorkout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:text="Beginner" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/intermediateChipProposedWorkout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:text="Intermediate" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/advancedChipProposedWorkout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:text="Advanced" />
-
-        </com.google.android.material.chip.ChipGroup>
-    </HorizontalScrollView>
+        android:background="@null"
+        android:src="@drawable/ic_arrow_back"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintTop_toTopOf="@id/toolbarProposedWorkouts"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarProposedWorkouts"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/titleProposedWorkouts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Muscoli
-"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        android:fontFamily="@font/swansea"
+        android:textSize="24sp"
+        tools:text="Bodybuilding"
+        android:textColor="@color/white"
+        android:layout_marginStart="14dp"
+        app:layout_constraintStart_toEndOf="@id/backButtonProposedWorkouts"
+        app:layout_constraintTop_toTopOf="@id/toolbarProposedWorkouts"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarProposedWorkouts" />
 
-
-    <HorizontalScrollView
-        android:layout_width="0dp"
+    <ImageButton
+        android:id="@+id/helpButtonProposedWorkout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="@+id/textView17"
-        app:layout_constraintBottom_toBottomOf="@+id/textView17"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="10dp">
+        android:background="@null"
+        android:src="@drawable/ic_help"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/toolbarProposedWorkouts"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarProposedWorkouts" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/muscleGroupChipGroup"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/levelCardProposedWorkouts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="10dp"
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarProposedWorkouts" >
+        
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:singleLine="true" />
+            android:orientation="horizontal"
+            android:background="@null">
 
-    </HorizontalScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Difficulty"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:letterSpacing="0.04"
+                android:fontFamily="@font/swansea"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginStart="10dp"/>
+            
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/dropdown_arrow"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
+            
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-
-    <View
-        android:id="@+id/view3"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/muscleCardProposedWorkouts"
         android:layout_width="wrap_content"
-        android:layout_height="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="10dp"
+        android:focusable="true"
+        app:layout_constraintStart_toEndOf="@+id/levelCardProposedWorkouts"
+        app:layout_constraintTop_toTopOf="@+id/levelCardProposedWorkouts"
+        app:layout_constraintBottom_toBottomOf="@+id/levelCardProposedWorkouts">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@null">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Muscles"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:letterSpacing="0.04"
+                android:fontFamily="@font/swansea"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginStart="10dp"/>
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/dropdown_arrow"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filterRecyclerviewProposedWorkouts"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:scrollbarSize="0dp"
+        android:scrollbars="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/levelCardProposedWorkouts"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/workoutProposedListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/swipeTextView"/>
-
-    <TextView
-        android:id="@+id/swipeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Swipe to start >>"
-        android:layout_marginBottom="20dp"
-        android:textSize="30sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/filterRecyclerviewProposedWorkouts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

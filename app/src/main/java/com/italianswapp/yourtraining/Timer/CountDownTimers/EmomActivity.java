@@ -23,11 +23,6 @@ public class EmomActivity extends CountDownActivity {
         timer = createTimer();
 
         startButtonCreator();
-
-        /*
-        Metto tutto invisible, saranno rese nuovamente visibili dopo il ready
-         */
-        mPrimaryTextView.setVisibility(TextView.INVISIBLE);
     }
 
     @Override

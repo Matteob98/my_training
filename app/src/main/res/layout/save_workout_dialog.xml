@@ -13,110 +13,122 @@
         android:layout_height="match_parent"
         app:cardCornerRadius="20dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/titleLayoutSaveWorkoutDialog"
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/workoutTitleSaveWorkoutDialog"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp">
+                android:hint="@string/Title"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="24sp"
+                android:textColor="#616161"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/workoutTitleSaveWorkoutDialog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Titolo dell'allenamento"
-                    android:maxLength="30" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <ImageButton
-                    android:id="@+id/easySensationButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@null"
-                    tools:src="@drawable/ic_smile_green" />
-
-                <ImageButton
-                    android:id="@+id/normalSensationButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@null"
-                    tools:src="@drawable/ic_smile" />
-
-                <ImageButton
-                    android:id="@+id/difficultSensationButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@null"
-                    tools:src="@drawable/ic_smile" />
+            <TextView
+                android:id="@+id/levelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Difficulty"
+                android:textSize="18sp"
+                android:textColor="#616161"
+                android:fontFamily="@font/swansea"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workoutTitleSaveWorkoutDialog" />
 
 
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/levelImageButtonSaveWorkoutDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/beginner_switch"
+                android:background="@null"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/levelTextView"
+                app:layout_constraintBottom_toBottomOf="@+id/levelTextView" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:padding="10dp">
+            <TextView
+                android:id="@+id/sensationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Sensation"
+                android:textSize="18sp"
+                android:textColor="#616161"
+                android:fontFamily="@font/swansea"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/levelTextView" />
 
-                <ImageButton
-                    android:id="@+id/beginnerLevelButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@null"
-                    tools:src="@drawable/ic_level_filled"/>
-
-                <ImageButton
-                    android:id="@+id/intermediateLevelButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@null"
-                    tools:src="@drawable/ic_level_empty" />
-
-                <ImageButton
-                    android:id="@+id/advancedLevelButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@null"
-                    tools:src="@drawable/ic_level_empty" />
+            <ImageButton
+                android:id="@+id/sensationImageButtonSaveWorkoutDialog"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/easy"
+                android:background="@null"
+                app:layout_constraintStart_toStartOf="@+id/levelImageButtonSaveWorkoutDialog"
+                app:layout_constraintEnd_toEndOf="@+id/levelImageButtonSaveWorkoutDialog"
+                app:layout_constraintTop_toTopOf="@+id/sensationTextView"
+                app:layout_constraintBottom_toBottomOf="@+id/sensationTextView" />
 
 
-            </LinearLayout>
+            <Button
+                android:id="@+id/exitButtonSaveWorkoutDialog"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="@string/exit"
+                android:background="@drawable/ripple_blue"
+                android:backgroundTint="@color/red"
+                android:textColor="@color/white"
+                android:elevation="20dp"
+                android:fontFamily="@font/swansea_bold"
+                android:letterSpacing="0.05"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textSize="15sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/saveButtonSaveWorkoutDialog"
+                app:layout_constraintEnd_toStartOf="@+id/guideline" />
 
             <Button
                 android:id="@+id/saveButtonSaveWorkoutDialog"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="30dp"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/ripple_blue"
                 android:elevation="20dp"
                 android:fontFamily="@font/swansea_bold"
                 android:letterSpacing="0.05"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:text="@string/save"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/sensationTextView"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        </LinearLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.cardview.widget.CardView>

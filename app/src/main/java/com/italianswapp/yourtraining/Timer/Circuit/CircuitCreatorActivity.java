@@ -43,6 +43,8 @@ import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.N
 
 public class CircuitCreatorActivity extends AppCompatActivity {
 
+    //todo Circuiti nel circuit creator
+
     private static final String CREATOR_KEY="creatorKey";
 
     private Toolbar mToolbar;
@@ -84,10 +86,6 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*
-        Todo mostrare immagine quando la recycler view è vuota
-         */
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circuit_creator);

@@ -1,4 +1,4 @@
-package com.italianswapp.yourtraining;
+package com.italianswapp.yourtraining.Timer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +9,11 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.italianswapp.yourtraining.Timer.Circuit.CircuitCreatorActivity;
-import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
-
-import java.util.concurrent.TimeUnit;
+import com.italianswapp.yourtraining.R;
 
 /**
  * Questa activity viene chiamata sempre dall'activity del timer che sta per partire,
@@ -31,38 +29,43 @@ public class ReadyTimerActivity extends AppCompatActivity {
     /**
      * Il pulsante se premuto fa finire questa activity e l'activity padre
      */
-    private ImageButton mButton;
+    private ImageButton mExitButton;
+
+    /**
+     * Pulsante per saltare i 3 secondi prima dell'allenamento
+     */
+    private Button mSkipButton;
 
     private static final long READY_TIMER_DURATION = 3000l;
     private static final long READY_TIMER_INTERVAL = 1000l;
     private int readyTimerValue = (int) (READY_TIMER_DURATION/READY_TIMER_INTERVAL);
     private boolean ifSound=true;
 
+    private CountDownTimer timer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ready_timer);
-
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark)); //Colora barra notifiche
 
+        exitButtonSetup();
+
+        skipButtonSetup();
+
+        countDownSetup();
+
+        timer.start();
+    }
+
+    /**
+     * Imposta il comportamento del timer dei 3 secondi
+     */
+    private void countDownSetup() {
         mCountDownText = findViewById(R.id.countdownTextViewReadyActivity);
-        mButton = findViewById(R.id.buttonReadyActivity);
-
-        /*
-        Se l'utente clicca sulla X chiude questa activity e anche quella dell'allenamento
-        che stava per iniziare
-         */
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.finish();
-                finish();
-            }
-        });
-
         mCountDownText.setText(String.valueOf(readyTimerValue));
 
-        CountDownTimer timer = new CountDownTimer(READY_TIMER_DURATION, READY_TIMER_INTERVAL) {
+        timer = new CountDownTimer(READY_TIMER_DURATION, READY_TIMER_INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
                 readyTimerValue--;
@@ -76,10 +79,41 @@ public class ReadyTimerActivity extends AppCompatActivity {
                 finish();
             }
         };
+    }
 
-        timer.start();
+    /**
+     * Richiama e imposta il comportamento del pulsante skip
+     */
+    private void skipButtonSetup() {
+        mSkipButton = findViewById(R.id.skipButtonReadyTimer);
 
+        mSkipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer.cancel();
+                finish();
+            }
+        });
+    }
 
+    /**
+     * Richiama e imposta il comportamento del pulsante exit
+     */
+    private void exitButtonSetup() {
+        mExitButton = findViewById(R.id.exitButtonReadyActivity);
+
+        /*
+        Se l'utente clicca sulla X chiude questa activity e anche quella dell'allenamento
+        che stava per iniziare
+         */
+        mExitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer.cancel();
+                activity.finish();
+                finish();
+            }
+        });
     }
 
     private void tickSecondSound() {

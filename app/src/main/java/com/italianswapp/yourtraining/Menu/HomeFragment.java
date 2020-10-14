@@ -26,7 +26,7 @@ import com.italianswapp.yourtraining.Timer.CountDownTimers.TabataActivity;
 import com.italianswapp.yourtraining.Timer.TimerActivity;
 import com.italianswapp.yourtraining.Utilities.Utilities;
 
-public class TimerFragment extends Fragment implements View.OnClickListener, NumberPicker.OnValueChangeListener{
+public class HomeFragment extends Fragment implements View.OnClickListener, NumberPicker.OnValueChangeListener{
 
     private View view;
 
@@ -59,7 +59,7 @@ public class TimerFragment extends Fragment implements View.OnClickListener, Num
      */
     private int flag;
 
-    public TimerFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 

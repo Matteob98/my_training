@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardFilterSelectWorkoutsProposedCard"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/white"
+        app:cardCornerRadius="10dp">
+
+        <TextView
+            android:id="@+id/textFilterSelectWorkoutsProposedCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            tools:text="Addominali"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/swansea" />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

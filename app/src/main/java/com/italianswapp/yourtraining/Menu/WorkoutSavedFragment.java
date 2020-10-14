@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
 import com.italianswapp.yourtraining.WorkoutSaved.WorkoutSavedRecyclerViewAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -47,13 +49,9 @@ import java.util.List;
 
 public class WorkoutSavedFragment extends Fragment {
 
-    /*
-    Todo mostrare immagine quando la recycler view è vuota
-     */
-
     private View view;
 
-    private Button mFilterButton;
+    private CardView mFilterCardButton;
     private RecyclerView mRecyclerView;
 
     /**
@@ -73,12 +71,16 @@ public class WorkoutSavedFragment extends Fragment {
     private WorkoutSaved.WorkoutSensation sensationFilter;
     private Workout.WorkoutLevel levelFilter;
 
+    /**
+     * Indica se sto effettuando filtri sulla lista
+     */
+    boolean isFilter;
+
     /*
     Oggetti XML per i filtri
      */
 
-    private ImageButton mEasySensationButton, mNormalSensationButton, mDifficultSensationButton,
-            mBeginnerLevelButton, mIntermediateLevelButton, mAdvancedLevelButton;
+    private ImageButton mSensationButton, mLevelButton;
     AlertDialog alertDialog;
 
 
@@ -94,13 +96,13 @@ public class WorkoutSavedFragment extends Fragment {
 
         layoutSettings();
 
-        WorkoutDatabase db = WorkoutDatabase.getInMemoryDatabase(getActivity());
+        WorkoutDatabase db = WorkoutDatabase.getDatabase(getActivity());
         workoutSavedList = db.workoutDao().getAll();
         visibleWorkoutSavedList = Utilities.arrayCopy(workoutSavedList);
 
         recyclerViewSettings();
 
-        mFilterButton.setOnClickListener(new View.OnClickListener() {
+        mFilterCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 filterSettings();
@@ -111,14 +113,15 @@ public class WorkoutSavedFragment extends Fragment {
     }
 
     private void layoutSettings() {
-        mFilterButton = view.findViewById(R.id.filterButtonWorkoutSaved);
+        mFilterCardButton = view.findViewById(R.id.filterCardWorkoutSaved);
         mRecyclerView = view.findViewById(R.id.recyclerViewWorkoutSaved);
     }
 
     private void recyclerViewSettings() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(new WorkoutSavedRecyclerViewAdapter(visibleWorkoutSavedList, getActivity()));
+        WorkoutSavedRecyclerViewAdapter adapter = new WorkoutSavedRecyclerViewAdapter(visibleWorkoutSavedList, getActivity());
+        mRecyclerView.setAdapter(adapter);
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -130,6 +133,37 @@ public class WorkoutSavedFragment extends Fragment {
                 //Non fare niente
             }
         }));
+
+        /*
+        Se la recyclerView è vuota mostro un immagine
+         */
+        if(adapter.getItemCount()==0) {
+            if(!isFilter) {
+                /*
+                Carico l'immagine di sfondo nenal recyclerView
+                 */
+                mRecyclerView.setBackground(getResources().getDrawable(R.drawable.empty_recycler_view));
+                /*
+                Ridimensiono la recyclerView
+                 */
+                int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 208, getResources().getDisplayMetrics());
+                int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 181, getResources().getDisplayMetrics());
+
+                mRecyclerView.getLayoutParams().width = width;
+                mRecyclerView.getLayoutParams().height = height;
+                mRecyclerView.requestLayout();
+
+                /*
+                Rendo visibile la text view che consiglia di salvare nuovi allenamenti
+                 */
+                TextView emptyTextView = view.findViewById(R.id.emptyTextView);
+                emptyTextView.setVisibility(View.VISIBLE);
+
+                mFilterCardButton.setVisibility(View.INVISIBLE);
+            }
+
+        }
+
     }
 
     private void filterSettings() {
@@ -146,6 +180,8 @@ public class WorkoutSavedFragment extends Fragment {
         Titolo
          */
         final EditText mTitle = dialogView.findViewById(R.id.titleEditTextFilterWorkoutSaved);
+        if(titleFilter!=null)
+            mTitle.setText(titleFilter);
         mTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -227,81 +263,103 @@ public class WorkoutSavedFragment extends Fragment {
         /*
         Sensation
          */
-        mEasySensationButton = dialogView.findViewById(R.id.easySensationButtonFilterWorkoutSaved);
-        mNormalSensationButton = dialogView.findViewById(R.id.normalSensationButtonFilterWorkoutSaved);
-        mDifficultSensationButton = dialogView.findViewById(R.id.difficultSensationButtonFilterWorkoutSaved);
-        setSmileImage(false, false, false);
-
+        mSensationButton = dialogView.findViewById(R.id.sensationImageButtonFilterWorkoutSaved);
         /*
-        Imposto l'onClick delle sensazioni
+        Carico l'immagine della sensazione in base alla precedente selezione nei filtri
          */
-        mEasySensationButton.setOnClickListener(new View.OnClickListener() {
+        if(sensationFilter!=null) {
+            switch (sensationFilter) {
+                case EASY:
+                    mSensationButton.setImageResource(R.drawable.easy);
+                    break;
+                case NORMAL:
+                    mSensationButton.setImageResource(R.drawable.normal);
+                    break;
+                case DIFFICULT:
+                    mSensationButton.setImageResource(R.drawable.difficult);
+                    break;
+
+            }
+        }
+        else
+            mSensationButton.setImageResource(R.drawable.ic_circle_empty);
+        /*
+        Imposto il comportamento alla pressione dell'emoticon
+         */
+        mSensationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                Se clicco due volte su facile deseleziona il filtro
-                 */
-                if (sensationFilter != WorkoutSaved.WorkoutSensation.EASY) {
+                if(sensationFilter==null) {
+                    mSensationButton.setImageResource(R.drawable.easy);
                     sensationFilter = WorkoutSaved.WorkoutSensation.EASY;
-                    setSmileImage(true, false, false);
                 }
                 else {
-                    sensationFilter = null;
-                    setSmileImage(false, false, false);
+                    switch (sensationFilter) {
+                        case EASY:
+                            mSensationButton.setImageResource(R.drawable.normal);
+                            sensationFilter = WorkoutSaved.WorkoutSensation.NORMAL;
+                            break;
+                        case NORMAL:
+                            mSensationButton.setImageResource(R.drawable.difficult);
+                            sensationFilter = WorkoutSaved.WorkoutSensation.DIFFICULT;
+                            break;
+                        case DIFFICULT:
+                            mSensationButton.setImageResource(R.drawable.ic_circle_empty);
+                            sensationFilter = null;
+                            break;
+                    }
                 }
             }
         });
-        mNormalSensationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sensationFilter = WorkoutSaved.WorkoutSensation.NORMAL;
-                setSmileImage(true, true, false);
-            }
-        });
-        mDifficultSensationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sensationFilter = WorkoutSaved.WorkoutSensation.DIFFICULT;
-                setSmileImage(true, true, true);
-            }
-        });
+
         /*
         Level
          */
-
-        mBeginnerLevelButton = dialogView.findViewById(R.id.beginnerLevelButtonFilterWorkoutSaved);
-        mIntermediateLevelButton = dialogView.findViewById(R.id.intermediateLevelButtonFilterWorkoutSaved);
-        mAdvancedLevelButton = dialogView.findViewById(R.id.advancedLevelButtonFilterWorkoutSaved);
-        setLevelImage(false, false, false);
-
+        mLevelButton = dialogView.findViewById(R.id.levelImageButtonFilterWorkoutSaved);
         /*
-        Imposto l'onClick dei livelli
+        Carico l'immagine del livello in base alla precedente selezione nei filtri
          */
-        mBeginnerLevelButton.setOnClickListener(new View.OnClickListener() {
+        if(levelFilter != null) {
+            switch (levelFilter) {
+                case BEGINNER:
+                    mLevelButton.setImageResource(R.drawable.beginner_switch);
+                    break;
+                case INTERMEDIATE:
+                    mLevelButton.setImageResource(R.drawable.intermediate_switch);
+                    break;
+                case ADVANCED:
+                    mLevelButton.setImageResource(R.drawable.difficult_switch);
+                    break;
+            }
+        }
+        else
+            mLevelButton.setImageResource(R.drawable.empty_level);
+        /*
+        Imposto il comportamento alla pressione del livello
+         */
+        mLevelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (levelFilter!= Workout.WorkoutLevel.BEGINNER) {
+                if (levelFilter == null) {
+                    mLevelButton.setImageResource(R.drawable.beginner_switch);
                     levelFilter = Workout.WorkoutLevel.BEGINNER;
-                    setLevelImage(true, false, false);
                 }
                 else {
-                    levelFilter = null;
-                    setLevelImage(false, false, false);
+                    switch (levelFilter) {
+                        case BEGINNER:
+                            mLevelButton.setImageResource(R.drawable.intermediate_switch);
+                            levelFilter = Workout.WorkoutLevel.INTERMEDIATE;
+                            break;
+                        case INTERMEDIATE:
+                            mLevelButton.setImageResource(R.drawable.difficult_switch);
+                            levelFilter = Workout.WorkoutLevel.ADVANCED;
+                            break;
+                        case ADVANCED:
+                            mLevelButton.setImageResource(R.drawable.empty_level);
+                            levelFilter = null;
+                            break;
+                    }
                 }
-            }
-        });
-        mIntermediateLevelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                levelFilter = Workout.WorkoutLevel.INTERMEDIATE;
-                setLevelImage(true, true, false);
-            }
-        });
-        mAdvancedLevelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                levelFilter = Workout.WorkoutLevel.ADVANCED;
-                setLevelImage(true, true, true);
             }
         });
 
@@ -345,8 +403,9 @@ public class WorkoutSavedFragment extends Fragment {
                 Azzera valori visibili
                  */
                 mTitle.setText("");
-                setSmileImage(false, false, false);
-                setLevelImage(false, false, false);
+                mLevelButton.setImageResource(R.drawable.empty_level);
+                mSensationButton.setImageResource(R.drawable.ic_circle_empty);
+
                 mFromDateText.setText(getResources()
                         .getString(R.string.start_date));
 
@@ -384,50 +443,6 @@ public class WorkoutSavedFragment extends Fragment {
     }
 
     /**
-     * Imposta l'immagine dei button del livello in base ai valori passati. Se true imposta il
-     * selezionato, altrimenti imposta il deselezionato
-     * @param first Livello principiante
-     * @param second Livello intermedio
-     * @param third Livello avanzato
-     */
-    private void setLevelImage(boolean first, boolean second, boolean third) {
-        if(first)
-            mBeginnerLevelButton.setImageResource(R.drawable.ic_level_filled);
-        else
-            mBeginnerLevelButton.setImageResource(R.drawable.ic_level_empty);
-        if(second)
-            mIntermediateLevelButton.setImageResource(R.drawable.ic_level_filled);
-        else
-            mIntermediateLevelButton.setImageResource(R.drawable.ic_level_empty);
-        if(third)
-            mAdvancedLevelButton.setImageResource(R.drawable.ic_level_filled);
-        else
-            mAdvancedLevelButton.setImageResource(R.drawable.ic_level_empty);
-    }
-
-    /**
-     * Imposta l'immagine dei button delle sensazioni in base ai valori passati, se true imposta
-     * Il selezionato, se false imposta il deselezionato
-     * @param first sensazione facile
-     * @param second sensazione intermedia
-     * @param third sensazione difficile
-     */
-    private void setSmileImage(boolean first, boolean second, boolean third) {
-        if(first)
-            mEasySensationButton.setImageResource(R.drawable.ic_smile_green);
-        else
-            mEasySensationButton.setImageResource(R.drawable.ic_smile);
-        if(second)
-            mNormalSensationButton.setImageResource(R.drawable.ic_smile_green);
-        else
-            mNormalSensationButton.setImageResource(R.drawable.ic_smile);
-        if(third)
-            mDifficultSensationButton.setImageResource(R.drawable.ic_smile_green);
-        else
-            mDifficultSensationButton.setImageResource(R.drawable.ic_smile);
-    }
-
-    /**
      * Resetta i filtri e porta la lista come era inizialmente, aggiornando anche la recyclerView
      */
     private void resetFilter() {
@@ -446,8 +461,7 @@ public class WorkoutSavedFragment extends Fragment {
                     workoutSaved.getWorkout().getTitle().contains(titleFilter))
                 newFilteredList.add(workoutSaved);
         }
-        visibleWorkoutSavedList = new ArrayList<>();
-        Collections.copy(visibleWorkoutSavedList, newFilteredList);
+        updateVisibleWorkoutSavedList(newFilteredList);
     }
 
     /**
@@ -467,8 +481,7 @@ public class WorkoutSavedFragment extends Fragment {
             if(filterPass)
                 newFilteredList.add(workoutSaved);
         }
-        visibleWorkoutSavedList = new ArrayList<>();
-        Collections.copy(visibleWorkoutSavedList, newFilteredList);
+        updateVisibleWorkoutSavedList(newFilteredList);
     }
 
     /**
@@ -480,8 +493,7 @@ public class WorkoutSavedFragment extends Fragment {
             if (sensationFilter==null || workoutSaved.getSensation().equals(sensationFilter))
                 newFilteredList.add(workoutSaved);
         }
-        visibleWorkoutSavedList = new ArrayList<>();
-        Collections.copy(visibleWorkoutSavedList, newFilteredList);
+        updateVisibleWorkoutSavedList(newFilteredList);
     }
 
     /**
@@ -493,9 +505,27 @@ public class WorkoutSavedFragment extends Fragment {
             if (levelFilter==null || workoutSaved.getWorkout().getLevel().equals(levelFilter))
                 newFilteredList.add(workoutSaved);
         }
-        visibleWorkoutSavedList = new ArrayList<>();
-        Collections.copy(visibleWorkoutSavedList, newFilteredList);
+        updateVisibleWorkoutSavedList(newFilteredList);
     }
+
+    /**
+     * Aggiorna la lista degli allenamenti disponibili data la nuova lista di filtri in inout
+     * @param newFilteredList
+     */
+    private void updateVisibleWorkoutSavedList(ArrayList<WorkoutSaved> newFilteredList) {
+        /*
+        Svuoto l'array visibleWorkoutSavedList e successivamente (nel ciclo) aggiungo dei null per
+        far arrivare l'array visibleWorkoutSavedList alla stessa dimensione di newFilteredList, altrimenti darebbe
+        eccezione
+         */
+        visibleWorkoutSavedList = new ArrayList<>();
+        for(int ind=0; ind<newFilteredList.size(); ind++)
+            visibleWorkoutSavedList.add(null);
+        Collections.copy(visibleWorkoutSavedList, newFilteredList);
+        isFilter=true;
+    }
+
+
 
     private void loadSavedWorkout(WorkoutSaved workoutSaved) {
         Intent intent;

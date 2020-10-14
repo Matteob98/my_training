@@ -25,13 +25,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.italianswapp.yourtraining.FinishActivity;
 import com.italianswapp.yourtraining.OfflineDatabase.WorkoutSaved;
-import com.italianswapp.yourtraining.ReadyTimerActivity;
+import com.italianswapp.yourtraining.Timer.ReadyTimerActivity;
 import com.italianswapp.yourtraining.Utilities.Utilities;
 import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
@@ -43,8 +44,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected final static String WORK_KEY="work";
     protected final static String REST_KEY="rest";
     protected final static String SETS_KEY="sets";
-    protected final static long READY_TIMER=3000L;
-    
+
     protected Resources res;
 
     protected TextView mTimeTextView, mPrimaryTextView, mSecondaryTextView, mOverlinePrimaryTextView, mOverlineSecondaryTextView, mWorkDescriptionTextView, mTimeFromStartTextView;
@@ -60,7 +60,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
     /*
     isWork indica se si sta facendo un esercizio, se è false si sta facendo un riposo
      */
-    protected boolean isRunning, isWork;
+    protected boolean isRunning, isWork, isFirstStart;
     protected final static long interval=10L;
     /*
     work -> millisecondi di lavoro
@@ -79,12 +79,18 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected Runnable progressBarRun;
     protected Handler progressBarHandler;
 
+    //todo leva codice di test
     private final static String TEST_ADS ="ca-app-pub-3940256099942544/1033173712";
     private final static String ADS_CODE = "ca-app-pub-8919261416525349/9438301000";
     /**
      * Banner a schermo intero che viene visualizzato appena viene aperta l'applicazione
      */
     private InterstitialAd mInterstitialAd;
+
+    /**
+     * Banner che viene mostrato in basso sotto il pulsante di start/stop
+     */
+    private AdView mBannerAd;
 
     /**
      * Se vero abilita i suoni (tick, fine circuito, ecc.)
@@ -124,7 +130,9 @@ public abstract class CountDownActivity extends AppCompatActivity {
      * @return Stringa hh:mm:ss
      */
     private String chronoTick() {
-        updateTime = timeSwapBuff + SystemClock.uptimeMillis() - startTime;
+        updateTime = timeSwapBuff +
+                SystemClock.uptimeMillis() -
+                startTime;
 
         String time;
         if(Utilities.getHoursFromMills(updateTime) >0)
@@ -166,6 +174,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
 
         /*
         Carica l'interstitialAds che viene mostrato prima di andare all'activity finish
+        Carica il banner che viene mostrato nell'activity sotto il pulsante di start/stop
          */
         loadAds();
 
@@ -181,13 +190,15 @@ public abstract class CountDownActivity extends AppCompatActivity {
      */
     private void startReadyTimer() {
 
-        Intent intent = ReadyTimerActivity.getInstance(getApplicationContext(), this);
-        startActivity(intent);
-
         /*
         Inizializza il timer
          */
         initializesTimer();
+
+        Intent intent = ReadyTimerActivity.getInstance(getApplicationContext(), this);
+        startActivity(intent);
+
+
 
     }
 
@@ -198,6 +209,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
         ifSound=true;
         isRunning=false;
         isWork=false;
+        isFirstStart=true;
         work=0;
         rest=0;
         setsNumber=1;
@@ -259,14 +271,31 @@ public abstract class CountDownActivity extends AppCompatActivity {
      * mostrare l'activity finish
      */
     private void loadAds() {
+        /*
+        Inizializzazione del intesrtitial ADS
+         */
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(ADS_CODE);
+        mInterstitialAd.setAdUnitId(TEST_ADS);
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        /*
+        Inizializzazione del banner in basso
+         */
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mBannerAd = findViewById(R.id.bannerCountDownActivity);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mBannerAd.loadAd(adRequest);
 
     }
 
@@ -283,14 +312,6 @@ public abstract class CountDownActivity extends AppCompatActivity {
         mTimeTextView.setOnClickListener(clickableTimer());
     }
 
-    /**
-     * Attiva/disattiva il click sui pulsanti che si occupano di gestire il play/pause del timer
-     * @param bool se vero abilita, se falso disabilita
-     */
-    protected void startButtonEnabled(boolean bool) {
-        mStartButton.setEnabled(bool);
-        mTimeTextView.setClickable(bool);
-    }
 
     /**
      * Ritorna l'OnClickListener che gestisace il play/pause del timer
@@ -309,12 +330,15 @@ public abstract class CountDownActivity extends AppCompatActivity {
      * Contiene le operazione che vengono effettuate alla pressione del timer
      */
     private void clickTimerAction() {
+        if(isFirstStart) {
+            isFirstStart = false;
+            startChronometer();
+        }
         if(isRunning) {
             timer.cancel();
             isRunning=false;
-            timeHandler.removeCallbacks(updateTimerThread);
+            //timeHandler.removeCallbacks(updateTimerThread);
             mStartButton.setText(getResources().getString(R.string.start).toUpperCase());
-            //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_blue));
             mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
         }
         else {
@@ -324,20 +348,18 @@ public abstract class CountDownActivity extends AppCompatActivity {
             isRunning=true;
             timeHandler.postDelayed(updateTimerThread, 10);
             mStartButton.setText(getResources().getString(R.string.pause).toUpperCase());
-            //mStartButton.setBackground(getResources().getDrawable(R.drawable.ripple_red));
             mStartButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
-
-            //mStartButton.setImageResource(R.drawable.ic_pause);
         }
     }
 
     /**
-     * Fa partire il cronometro
+     * Fa partire il cronometro prendendo il tempo attuale
      */
     protected void startChronometer() {
         startTime = SystemClock.uptimeMillis();
         timeHandler.postDelayed(updateTimerThread, 10);
     }
+
 
     /**
      * Gestisce il tick del timer per ogni sottoclasse

@@ -60,17 +60,12 @@ public class CircuitActivity extends CountDownActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
         mPrimarySets = findViewById(R.id.primarySetsTextView);
         mSecondarySets = findViewById(R.id.secondarySetsTextView);
         mRepsButton = findViewById(R.id.repsButtonCountDownActivity);
-
-        mOverlinePrimaryTextView.setText(getResources().getString(R.string.this_exercise));
-        mOverlineSecondaryTextView.setText(getResources().getString(R.string.next_exercise));
-
         exercises = new ArrayList<>();
-        currentSet=0; //Indice della lista exercise
+
         exerciseSettings = getIntent().getParcelableArrayListExtra(CIRCUIT_KEY);
         workoutType = WorkoutSaved.WorkoutType.valueOf(
                 getIntent().getStringExtra(CIRCUIT_TYPE));
@@ -84,11 +79,20 @@ public class CircuitActivity extends CountDownActivity {
         } catch (ExerciseTypeNotCorrectException e) {
             e.printStackTrace();
         }
+
+        super.onCreate(savedInstanceState);
+
+        currentSet=0; //Indice della lista exercise
+        mOverlinePrimaryTextView.setText(getResources().getString(R.string.this_exercise));
+        mOverlineSecondaryTextView.setText(getResources().getString(R.string.next_exercise));
+
         initializesColoredView();
 
         startButtonCreator(); //Metodo sovrascritto da questa classe
 
         initializesFloatingButton();
+
+        nextExercise();
 
     }
 
@@ -100,6 +104,7 @@ public class CircuitActivity extends CountDownActivity {
         Impostazioni pulsante skip esercizio/recupero
          */
         mRightFloatingButton.setVisibility(FloatingActionButton.VISIBLE);
+        mRightFloatingButton.setEnabled(true);
         mRightFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,8 +127,10 @@ public class CircuitActivity extends CountDownActivity {
         /*
         Rendo momentaneamente non visibili e disabilitati
         Saranno riabilitati dopo il ready
-         */
+
         mRightFloatingButton.setEnabled(false);
+
+         */
 
     }
 
@@ -199,6 +206,8 @@ public class CircuitActivity extends CountDownActivity {
         mSecondaryView = findViewById(R.id.secondaryView);
         mPrimaryView.setVisibility(View.VISIBLE);
         mSecondaryView.setVisibility(View.VISIBLE);
+        mPrimarySets = findViewById(R.id.primarySetsTextView);
+        mSecondarySets = findViewById(R.id.secondarySetsTextView);
 
         mPrimaryView.setBackground(getLeftColoredView(exercises.get(0)));
 
@@ -237,6 +246,7 @@ public class CircuitActivity extends CountDownActivity {
 
     }
 
+
     @Override
     protected void initializesTimer() {
         mRightFloatingButton.setEnabled(true);
@@ -245,7 +255,7 @@ public class CircuitActivity extends CountDownActivity {
         mLeftFloatingButton.setImageResource(R.drawable.ic_assignament);
         mPrimaryTextView.setVisibility(TextView.VISIBLE);
         mSecondaryTextView.setVisibility(TextView.VISIBLE);
-        nextExercise();
+        //nextExercise();
     }
 
     @Override
@@ -296,9 +306,12 @@ public class CircuitActivity extends CountDownActivity {
      */
     @SuppressLint("SetTextI18n")
     private void nextExercise() {
-        /*
-        Qui non si mette il -1 su currentSet perché sto usando effettivamente il currentSet che mi serve
-         */
+
+        mPrimarySets = findViewById(R.id.primarySetsTextView);
+        mSecondarySets = findViewById(R.id.secondarySetsTextView);
+        mRepsButton = findViewById(R.id.repsButtonCountDownActivity);
+        mPrimaryView = findViewById(R.id.primaryView);
+        mSecondaryView = findViewById(R.id.secondaryView);
         mPrimarySets.setVisibility(TextView.GONE);
         mSecondarySets.setVisibility(TextView.GONE);
 
@@ -307,7 +320,7 @@ public class CircuitActivity extends CountDownActivity {
 
         if (isRepsExercise) {
             workLayoutSettings();
-            mRepsButton.setVisibility(ImageButton.VISIBLE);
+            mRepsButton.setVisibility(View.VISIBLE);
             mStartButton.setVisibility(Button.INVISIBLE);
             work =exercise.getReps();
             mTimeTextView.setText(work + " " + getResources().getString(R.string.reps));
@@ -322,7 +335,7 @@ public class CircuitActivity extends CountDownActivity {
         }
         else {
             mStartButton.setVisibility(Button.VISIBLE);
-            mRepsButton.setVisibility(ImageButton.INVISIBLE);
+            mRepsButton.setVisibility(View.INVISIBLE);
             work = exercise.getReps();
             remainingTime =work;
             currentDuration = work;
@@ -378,9 +391,6 @@ public class CircuitActivity extends CountDownActivity {
         currentSet++;
     }
 
-
-
-
     @Override
     protected void startWork() {
         if (exercises.get(currentSet-1).getType().equals(Exercise.CircuitType.REST)) {
@@ -408,8 +418,10 @@ public class CircuitActivity extends CountDownActivity {
     /**
      * Crea i listener dei pulsanti del cronometro
      */
+    @Override
     protected void startButtonCreator() {
         mStartButton.setOnClickListener(this.clickableTimer());
+        mRepsButton = findViewById(R.id.repsButtonCountDownActivity);
         mRepsButton.setOnClickListener(this.clickableTimer());
 
     }
@@ -422,6 +434,10 @@ public class CircuitActivity extends CountDownActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isFirstStart) {
+                    isFirstStart = false;
+                    startChronometer();
+                }
                 if (isRepsExercise && isWork) {
                         if (currentSet < exercises.size()) {
 
@@ -507,8 +523,6 @@ public class CircuitActivity extends CountDownActivity {
             }
             else if (currentSet < exercises.size()) {
                 // Se ci sono altri elementi
-                //mStartButton.setText(res.getString(R.string.pause).toUpperCase());
-                //mStartButton.setBackgroundTintList(ColorStateList.valueOf(res.getColor(R.color.red)));
                 nextExercise();
                 startWork();
             }

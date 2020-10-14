@@ -1,12 +1,12 @@
-package com.italianswapp.yourtraining.WorkoutProposed.WorkoutProposedType;
+package com.italianswapp.yourtraining.WorkoutProposed.WorkoutProposed;
 
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseBuilder;
 import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
 import com.italianswapp.yourtraining.WorkoutProposed.Workout.WorkoutBuilder;
 
-class FunctionalTrainingWorkoutProposed extends ProposedWorkoutList {
+public class StretchingWorkoutProposed extends  ProposedWorkoutList {
 
-    public FunctionalTrainingWorkoutProposed() {
+    public StretchingWorkoutProposed() {
         super();
         initializeWorkoutList();
     }
@@ -14,7 +14,7 @@ class FunctionalTrainingWorkoutProposed extends ProposedWorkoutList {
     private void initializeWorkoutList() {
         workoutList.add(
                 WorkoutBuilder.newBuilder()
-                        .setCategory(Workout.WorkoutCategory.FUNCTIONALTRAINING)
+                        .setCategory(Workout.WorkoutCategory.STRETCHING)
                         .setLevel(Workout.WorkoutLevel.INTERMEDIATE)
                         .addExercise(ExerciseBuilder.newBuilder().
                                 setName("Prova").build())

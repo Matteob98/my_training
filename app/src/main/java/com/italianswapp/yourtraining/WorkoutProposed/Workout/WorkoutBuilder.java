@@ -12,12 +12,13 @@ public class WorkoutBuilder {
     private static ArrayList<Exercise> exerciseList;
     private static String title;
     private static ArrayList<Workout.MuscleGroup> muscleGroupList;
+    private static boolean isPremium;
 
     /**
      * Essendo un builder non ha costruttore pubblico
      */
     private WorkoutBuilder () {
-
+        isPremium = false;
         exerciseList = new ArrayList<>();
         muscleGroupList = new ArrayList<>();
     }
@@ -51,11 +52,22 @@ public class WorkoutBuilder {
         return this;
     }
 
+    public WorkoutBuilder setPremium() {
+        isPremium = true;
+        return this;
+    }
+
+    public WorkoutBuilder setNotPremium() {
+        isPremium = false;
+        return this;
+    }
+
 
     public Workout build() {
         Workout workout = new Workout();
         if(category!=null) workout.setCategory(category);
         if(level!=null) workout.setLevel(level);
+        workout.setPremium(isPremium);
         workout.setExerciseList(exerciseList);
         workout.setTitle(title);
         workout.setMuscleGroupList(muscleGroupList);

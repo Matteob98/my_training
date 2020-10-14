@@ -27,14 +27,6 @@ public class TabataActivity extends CountDownActivity {
 
         startButtonCreator();
 
-        /*
-        Le imposto momentaneamente come invisibili
-        Dopo il ready tornano visibili
-         */
-        mPrimaryTextView.setVisibility(TextView.INVISIBLE);
-        mSecondaryTextView.setVisibility(TextView.INVISIBLE);
-        mOverlineSecondaryTextView.setVisibility(TextView.INVISIBLE);
-
     }
 
     @Override

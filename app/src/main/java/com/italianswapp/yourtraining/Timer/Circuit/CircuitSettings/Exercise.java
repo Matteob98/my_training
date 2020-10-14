@@ -11,6 +11,8 @@ import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
  */
 public class Exercise implements Parcelable {
 
+    //todo Il recupero del superset non viene mostrato nel riepilogo
+
     private int reps, repetition, numberSets, totalSets;
     private long rec;
     private boolean isReps, hasRecs, hasSets;
@@ -24,6 +26,10 @@ public class Exercise implements Parcelable {
         REST,
         EMOM,
         SUPERSET
+        //todo aggiungere riscaldamento
+        //todo aggiungere defaticamento
+        //todo aggiungere corsa
+        //todo aggiungere circuito
     }
 
     private CircuitType type;

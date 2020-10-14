@@ -73,7 +73,7 @@
 
     <!-- Finish activity -->
     <string name="well_done">Well done!</string>
-    <string name="subtitle_finish_activity">Return to homepage to start another training</string>
+    <string name="subtitle_finish_activity">Save your workout or return to homepage to start another training</string>
 
     <!-- Help activity -->
     <string name="subtitle_help_activity">Workout manager and training timer</string>
@@ -129,11 +129,22 @@
     <string name="select_date_for_filter">Select date for filter</string>
     <string name="From">From</string>
     <string name="To">To</string>
-    <string name="start_date">01/01/2000</string>
+    <string name="start_date" translatable="false">01/01/2000</string>
     <string name="ready_activity_text">The circuit will \nstarts in:</string>
     <string name="saved">saved</string>
     <string name="Home">Home</string>
     <string name="Saved">Saved</string>
     <string name="Workouts">Workouts</string>
+    <string name="bodybuilding">bodybuilding</string>
+    <string name="free_body">free body</string>
+    <string name="stretching" translatable="false">stretching</string>
+    <string name="functional_training">functional training</string>
+    <string name="Difficulty">Difficulty</string>
+    <string name="Muscles">Muscles</string>
+    <string name="Sensation">Sensation</string>
+    <string name="general_error">oops, something went wrong!</string>
+    <string name="none_circuit_saved">None workout saved!\n\n  Hey! Now you can save your favourite workouts,  just starts a new workout and at the end saves it.</string>
+    <string name="skip">skip</string>
+    <string name="Apply">Apply</string>
 
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReadyTimerActivity"
+    tools:context=".Timer.ReadyTimerActivity"
     android:background="@color/colorPrimaryDark">
 
     <TextView
@@ -15,7 +15,7 @@
         android:gravity="center_horizontal"
         android:letterSpacing="0.06"
         android:lineSpacingExtra="7.5sp"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/countdownTextViewReadyActivity"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
 
 
     <ImageButton
-        android:id="@+id/buttonReadyActivity"
+        android:id="@+id/exitButtonReadyActivity"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="35dp"
@@ -47,6 +47,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/skipButtonReadyTimer"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:text="@string/skip"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:letterSpacing="0.06"
+        android:fontFamily="@font/swansea"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

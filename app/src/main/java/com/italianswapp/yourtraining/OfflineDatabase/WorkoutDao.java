@@ -9,7 +9,7 @@ import java.util.List;
 @Dao
 public interface WorkoutDao {
 
-    @Query("SELECT * FROM workoutsaved")
+    @Query("SELECT * FROM workoutsaved ORDER BY date DESC")
     List<WorkoutSaved> getAll();
 
     @Insert

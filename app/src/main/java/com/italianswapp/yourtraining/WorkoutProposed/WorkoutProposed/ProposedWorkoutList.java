@@ -1,8 +1,7 @@
-package com.italianswapp.yourtraining.WorkoutProposed.WorkoutProposedType;
+package com.italianswapp.yourtraining.WorkoutProposed.WorkoutProposed;
 import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public abstract class ProposedWorkoutList {
 
@@ -20,7 +19,7 @@ public abstract class ProposedWorkoutList {
      * La funzione prende in come parametri i filtri e restituisce una copia dela lista filtrata
      * Se i filtri sono vuoti restituisce la lista intera
      */
-    public ArrayList<Workout> getWorkoutListWithFilter(Set<Workout.WorkoutLevel> levelFilterSet, Set<Workout.MuscleGroup> muscleFilterSet) {
+    public ArrayList<Workout> getWorkoutListWithFilter(ArrayList<Workout.WorkoutLevel> levelFilterSet, ArrayList<Workout.MuscleGroup> muscleFilterSet) {
         ArrayList<Workout> filteredWorkoutList = new ArrayList<>();
         boolean filterPassed;
         for (Workout w: workoutList) {

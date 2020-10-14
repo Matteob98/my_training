@@ -1,4 +1,4 @@
-package com.italianswapp.yourtraining.WorkoutProposed.WorkoutProposedType;
+package com.italianswapp.yourtraining.WorkoutProposed.WorkoutProposed;
 
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.Exercise;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.ExerciseBuilder;

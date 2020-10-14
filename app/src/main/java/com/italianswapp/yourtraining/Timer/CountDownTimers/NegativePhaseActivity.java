@@ -35,11 +35,6 @@ public class NegativePhaseActivity extends CountDownActivity {
         timer = createTimer();
         startButtonCreator();
 
-        /*
-        Metto tutto invisible, saranno rese nuovamente visibili dopo il ready
-         */
-        mPrimaryTextView.setVisibility(TextView.INVISIBLE);
-        mSecondaryTextView.setVisibility(TextView.INVISIBLE);
         mOverlineSecondaryTextView.setText(getResources().getString(R.string.current_repetition));
     }
 

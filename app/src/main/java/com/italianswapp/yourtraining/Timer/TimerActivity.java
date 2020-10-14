@@ -50,15 +50,6 @@ public class TimerActivity extends CountDownActivity {
             }
         });
 
-        /*
-        Imposto momentaneamente come disabilitati
-        Saranno riabilitati dopo il ready
-         */
-        mLeftFloatingButton.setEnabled(false);
-        mRightFloatingButton.setImageResource(R.drawable.ic_forward10);
-        mRightFloatingButton.setEnabled(false);
-        mLeftFloatingButton.setImageResource(R.drawable.ic_replay);
-
     }
 
     @Override

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.italianswapp.yourtraining"
     android:targetSandboxVersion="2"
-    android:versionCode="4"
-    android:versionName="2.2" >
+    android:versionCode="5"
+    android:versionName="3.0" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -26,12 +26,12 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        <activity android:name="com.italianswapp.yourtraining.ReadyTimerActivity" />
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8919261416525349~1732676159" />
 
+        <activity android:name="com.italianswapp.yourtraining.Timer.ReadyTimerActivity" >
+        </activity>
         <activity
             android:name="com.italianswapp.yourtraining.HelpActivity"
             android:screenOrientation="portrait" />
@@ -74,7 +74,7 @@
         <activity
             android:name="com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

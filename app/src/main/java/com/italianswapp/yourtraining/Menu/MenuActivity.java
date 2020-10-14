@@ -14,6 +14,11 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
 
     private BottomNavigationView bottomNavigationView;
 
+    /**
+     * Variabile che indica se l'ultima volta che mi sono spostato di activity mi sono spostato alla home
+     */
+    private boolean isHome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +29,11 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        isHome=true;
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().
-                    replace(R.id.frameLayoutMenuActivity, new TimerFragment()).commit();
+                    replace(R.id.frameLayoutMenuActivity, new HomeFragment()).commit();
         }
 
 
@@ -37,13 +43,15 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         Fragment selectedFragment = null;
+        isHome=false;
 
         switch (id){
             case R.id.savedItem:
                 selectedFragment = new WorkoutSavedFragment();
                 break;
             case R.id.timerItem:
-                selectedFragment = new TimerFragment();
+                selectedFragment = new HomeFragment();
+                isHome=true;
                 break;
             case R.id.proposedItem:
                 selectedFragment = new WorkoutsProposedFragment();
@@ -54,6 +62,20 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
         getSupportFragmentManager().beginTransaction().
                 replace(R.id.frameLayoutMenuActivity, selectedFragment).commit();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (!isHome) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameLayoutMenuActivity, new HomeFragment())
+                    .commit();
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+            isHome=true;
+        }
+        else
+            System.exit(0);
     }
 
 

@@ -42,7 +42,7 @@ public class WorkoutSavedRecyclerViewAdapter  extends RecyclerView.Adapter<Worko
     public void onBindViewHolder(@NonNull WorkoutSavedViewHolder holder, int position) {
         WorkoutSaved workoutSaved = workoutSavedList.get(position);
 
-        holder.mImage.setBackgroundResource(getImageByWorkoutType(workoutSaved.getType()));
+        holder.mImage.setImageResource(getImageByWorkoutType(workoutSaved.getType()));
         holder.mSensation.setBackgroundResource(getSensationImage(workoutSaved.getSensation()));
         holder.mLevel.setBackgroundResource(getLevelImage(workoutSaved.getWorkout().getLevel()));
 
@@ -55,17 +55,16 @@ public class WorkoutSavedRecyclerViewAdapter  extends RecyclerView.Adapter<Worko
     public int getItemCount() { return workoutSavedList.size(); }
 
     private int getLevelImage(Workout.WorkoutLevel level) {
-        //todo aggiorna immagini nello switch
         int res;
         switch (level) {
             case BEGINNER:
-                res = R.drawable.ic_level;
+                res = R.drawable.beginner;
                 break;
             case INTERMEDIATE:
-                res = R.drawable.ic_level;
+                res = R.drawable.intermediate;
                 break;
             case ADVANCED:
-                res = R.drawable.ic_level;
+                res = R.drawable.advanced;
                 break;
             default:
                 Log.d("levelImage", "Livello sbagliato");
@@ -76,17 +75,16 @@ public class WorkoutSavedRecyclerViewAdapter  extends RecyclerView.Adapter<Worko
     }
 
     private int getSensationImage(WorkoutSaved.WorkoutSensation sensation) {
-        //todo aggiorna immagini nello switch
         int res;
         switch (sensation) {
             case EASY:
-                res = R.drawable.ic_smile;
+                res = R.drawable.easy;
                 break;
             case NORMAL:
-                res = R.drawable.ic_smile;
+                res = R.drawable.normal;
                 break;
             case DIFFICULT:
-                res = R.drawable.ic_smile;
+                res = R.drawable.difficult;
                 break;
             default:
                 Log.d("sensationImage", "sensazione sbagliata");
@@ -97,7 +95,6 @@ public class WorkoutSavedRecyclerViewAdapter  extends RecyclerView.Adapter<Worko
     }
 
     private int getImageByWorkoutType(WorkoutSaved.WorkoutType type) {
-        //todo aggiorna immagini nello switch
         int res;
         switch (type) {
             case WORKOUT:
@@ -122,16 +119,16 @@ public class WorkoutSavedRecyclerViewAdapter  extends RecyclerView.Adapter<Worko
                 res = R.drawable.concentrich_phase;
                 break;
             case BODYBUILDING:
-                res = R.drawable.ic_smile;
+                res = R.drawable.bodybuilding_img;
                 break;
             case FUNCTIONALTRAINING:
-                res = R.drawable.ic_smile;
+                res = R.drawable.functional_img;
                 break;
             case FREEBODY:
-                res = R.drawable.ic_smile;
+                res = R.drawable.freebody_img;
                 break;
             case STRETCHING:
-                res = R.drawable.ic_smile;
+                res = R.drawable.stretching_img;
                 break;
             default:
                 Log.d("typeImage", "tipo sbagliato");

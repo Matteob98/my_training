@@ -15,6 +15,7 @@ public abstract class WorkoutDatabase extends RoomDatabase {
     public abstract WorkoutDao workoutDao();
 
 
+    /*
     public static WorkoutDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
@@ -24,6 +25,8 @@ public abstract class WorkoutDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+     */
 
     public static WorkoutDatabase getDatabase(Context context) {
         if (INSTANCE == null) {

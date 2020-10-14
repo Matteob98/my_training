@@ -46,8 +46,7 @@ public class FinishActivity extends AppCompatActivity {
     private WorkoutSaved.WorkoutType workoutType;
     private Workout.WorkoutLevel workoutLevel;
     private Workout workout;
-    private ImageButton mEasySensationButton, mNormalSensationButton, mDifficultSensationButton,
-            mBeginnerLevelButton, mIntermediateLevelButton, mAdvancedLevelButton;
+    private ImageButton mLevelButton, mSensationButton;
     private AlertDialog alertDialog;
 
 
@@ -124,72 +123,57 @@ public class FinishActivity extends AppCompatActivity {
         });
 
         /*
-        Richiamo gli oggetti sensazione
+        Level
          */
-        mEasySensationButton = dialogView.findViewById(R.id.easySensationButton);
-        mNormalSensationButton = dialogView.findViewById(R.id.normalSensationButton);
-        mDifficultSensationButton = dialogView.findViewById(R.id.difficultSensationButton);
-        setSmileImage(true, false, false);
 
-        /*
-        Imposto l'onClick delle sensazioni
-         */
-        mEasySensationButton.setOnClickListener(new View.OnClickListener() {
+        mLevelButton = dialogView.findViewById(R.id.levelImageButtonSaveWorkoutDialog);
+        mLevelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workoutSensation = WorkoutSaved.WorkoutSensation.EASY;
-                setSmileImage(true, false, false);
-            }
-        });
-        mNormalSensationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workoutSensation = WorkoutSaved.WorkoutSensation.NORMAL;
-                setSmileImage(true, true, false);
-            }
-        });
-        mDifficultSensationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workoutSensation = WorkoutSaved.WorkoutSensation.DIFFICULT;
-                setSmileImage(true, true, true);
+                switch (workoutLevel) {
+                    case BEGINNER:
+                        mLevelButton.setImageResource(R.drawable.intermediate_switch);
+                        workoutLevel = Workout.WorkoutLevel.INTERMEDIATE;
+                        break;
+                    case INTERMEDIATE:
+                        mLevelButton.setImageResource(R.drawable.difficult_switch);
+                        workoutLevel = Workout.WorkoutLevel.ADVANCED;
+                        break;
+                    case ADVANCED:
+                        mLevelButton.setImageResource(R.drawable.beginner_switch);
+                        workoutLevel = Workout.WorkoutLevel.BEGINNER;
+                        break;
+                }
             }
         });
 
         /*
-        Richimo gli oggetti livello
+        Sensation
          */
-
-        mBeginnerLevelButton = dialogView.findViewById(R.id.beginnerLevelButton);
-        mIntermediateLevelButton = dialogView.findViewById(R.id.intermediateLevelButton);
-        mAdvancedLevelButton = dialogView.findViewById(R.id.advancedLevelButton);
-        setLevelImage(true, false, false);
+        mSensationButton = dialogView.findViewById(R.id.sensationImageButtonSaveWorkoutDialog);
+        mSensationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (workoutSensation) {
+                    case EASY:
+                        mSensationButton.setImageResource(R.drawable.normal);
+                        workoutSensation = WorkoutSaved.WorkoutSensation.NORMAL;
+                        break;
+                    case NORMAL:
+                        mSensationButton.setImageResource(R.drawable.difficult);
+                        workoutSensation = WorkoutSaved.WorkoutSensation.DIFFICULT;
+                        break;
+                    case DIFFICULT:
+                        mSensationButton.setImageResource(R.drawable.easy);
+                        workoutSensation = WorkoutSaved.WorkoutSensation.EASY;
+                        break;
+                }
+            }
+        });
 
         /*
-        Imposto l'onClick dei livelli
+        Gestisto pulsante salva
          */
-        mBeginnerLevelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workoutLevel = Workout.WorkoutLevel.BEGINNER;
-                setLevelImage(true, false, false);
-            }
-        });
-        mIntermediateLevelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workoutLevel = Workout.WorkoutLevel.INTERMEDIATE;
-                setLevelImage(true, true, false);
-            }
-        });
-        mAdvancedLevelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workoutLevel = Workout.WorkoutLevel.ADVANCED;
-                setLevelImage(true, true, true);
-            }
-        });
-
         Button mSaveButtonDialog = dialogView.findViewById(R.id.saveButtonSaveWorkoutDialog);
         mSaveButtonDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,54 +182,21 @@ public class FinishActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        Gestisco pulsante esci, che seplicemente chiude il dialog
+         */
+        Button mExitButtonDialog = dialogView.findViewById(R.id.exitButtonSaveWorkoutDialog);
+        mExitButtonDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
         alertDialog = builder.create();
         alertDialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
-    }
-
-    /**
-     * Imposta l'immagine dei button del livello in base ai valori passati. Se true imposta il
-     * selezionato, altrimenti imposta il deselezionato
-     * @param first Livello principiante
-     * @param second Livello intermedio
-     * @param third Livello avanzato
-     */
-    private void setLevelImage(boolean first, boolean second, boolean third) {
-        if(first)
-            mBeginnerLevelButton.setImageResource(R.drawable.ic_level_filled);
-        else
-            mBeginnerLevelButton.setImageResource(R.drawable.ic_level_empty);
-        if(second)
-            mIntermediateLevelButton.setImageResource(R.drawable.ic_level_filled);
-        else
-            mIntermediateLevelButton.setImageResource(R.drawable.ic_level_empty);
-        if(third)
-            mAdvancedLevelButton.setImageResource(R.drawable.ic_level_filled);
-        else
-            mAdvancedLevelButton.setImageResource(R.drawable.ic_level_empty);
-    }
-
-    /**
-     * Imposta l'immagine dei button delle sensazioni in base ai valori passati, se true imposta
-     * Il selezionato, se false imposta il deselezionato
-     * @param first sensazione facile
-     * @param second sensazione intermedia
-     * @param third sensazione difficile
-     */
-    private void setSmileImage(boolean first, boolean second, boolean third) {
-        if(first)
-            mEasySensationButton.setImageResource(R.drawable.ic_smile_green);
-        else
-            mEasySensationButton.setImageResource(R.drawable.ic_smile);
-        if(second)
-            mNormalSensationButton.setImageResource(R.drawable.ic_smile_green);
-        else
-            mNormalSensationButton.setImageResource(R.drawable.ic_smile);
-        if(third)
-            mDifficultSensationButton.setImageResource(R.drawable.ic_smile_green);
-        else
-            mDifficultSensationButton.setImageResource(R.drawable.ic_smile);
     }
 
     private void goToHome() {
@@ -278,11 +229,9 @@ public class FinishActivity extends AppCompatActivity {
         workout.setTitle(workoutName);
         workoutSaved.setWorkout(workout);
 
-        WorkoutDatabase db = WorkoutDatabase.getInMemoryDatabase(getApplicationContext());
+        WorkoutDatabase db = WorkoutDatabase.getDatabase(getApplicationContext());
         db.workoutDao().insertAll(workoutSaved);
 
-
-        Toast.makeText(getApplicationContext(), "Test", Toast.LENGTH_SHORT).show();
         alertDialog.dismiss();
         goToHome();
     }

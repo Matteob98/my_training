@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity;
 import com.italianswapp.yourtraining.R;
@@ -32,13 +31,14 @@ public class WorkoutsProposedFragment extends Fragment implements View.OnClickLi
         view = inflater.inflate(R.layout.fragment_workouts_proposed, container, false);
 
         mbodybuildingButton = view.findViewById(R.id.bodybuildingButton);
-        mFunctionalTrainingButton = view.findViewById(R.id.functionalTrainingButton);
         mFreeBodyButton = view.findViewById(R.id.freeBodyButton);
         mStretchingButton = view.findViewById(R.id.stretchingButton);
+        mFunctionalTrainingButton = view.findViewById(R.id.functionalTrainingButton);
 
         mbodybuildingButton.setOnClickListener(this);
         mFunctionalTrainingButton.setOnClickListener(this);
         mFreeBodyButton.setOnClickListener(this);
+        mStretchingButton.setOnClickListener(this);
 
         return view;
     }
@@ -52,14 +52,14 @@ public class WorkoutsProposedFragment extends Fragment implements View.OnClickLi
             case R.id.bodybuildingButton:
                 workoutCategory = Workout.WorkoutCategory.BODYBUILDING;
                 break;
-            case R.id.functionalTrainingButton:
-                workoutCategory = Workout.WorkoutCategory.FUNCTIONALTRAINING;
-                break;
             case R.id.freeBodyButton:
                 workoutCategory = Workout.WorkoutCategory.FREEBODY;
                 break;
             case R.id.stretchingButton:
                 workoutCategory = Workout.WorkoutCategory.STRETCHING;
+                break;
+            case R.id.functionalTrainingButton:
+                workoutCategory = Workout.WorkoutCategory.FUNCTIONALTRAINING;
                 break;
             default:
                 Log.d("levelSelection", "Selezionato un tipo non valido");
