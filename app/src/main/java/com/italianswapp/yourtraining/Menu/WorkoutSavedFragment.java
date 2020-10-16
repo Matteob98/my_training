@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -207,24 +208,65 @@ public class WorkoutSavedFragment extends Fragment {
         final int currentMonth = calendar.get(Calendar.MONTH) ;
         final int currentYear = calendar.get(Calendar.YEAR);
 
+        /*
+        Se i filtri per le date sono ancora nulli li inizializzo rispettivamente al:
+        from: 01/01/2020
+        to: data odierna
+         */
+        if(fromDateFilter==null)
+            fromDateFilter = new Date(
+                    currentYear>=2020 ? 2020-1900 : currentYear-1900,
+                    0,
+                    1); //01/01/2020 oppure un anno precedente se l'utente usa un anno precedente
+        if(toDateFilter==null) {
+            toDateFilter = new Date(
+                    currentYear - 1900,
+                    currentMonth,
+                    currentDay); //data di oggi
+
+            toDateFilter.setHours(23);
+            toDateFilter.setMinutes(59);
+            toDateFilter.setSeconds(59);
+        }
+
         //Richiamo gli oggetti XML e inizializzo la data
         final TextView mFromDateText = dialogView.findViewById(R.id.fromDateTextViewFilterWorkoutSaved);
         final TextView mToDateText = dialogView.findViewById(R.id.toDateTextViewFilterWorkoutSaved);
         final CardView mFromDateCard = dialogView.findViewById(R.id.fromDateCardFilterWorkoutSaved);
-        CardView mToDateCard = dialogView.findViewById(R.id.toDateCardFilterWorkoutSaved);
+        final CardView mToDateCard = dialogView.findViewById(R.id.toDateCardFilterWorkoutSaved);
 
-        setDataText(mToDateText, currentDay, currentMonth, currentYear);
+        /*
+        Imposto il testo del fromDate
+         */
+        Calendar filterCalendar = Calendar.getInstance();
+        filterCalendar.setTime(fromDateFilter);
+        setDataText(mFromDateText,
+                filterCalendar.get(Calendar.DAY_OF_MONTH),
+                filterCalendar.get(Calendar.MONTH),
+                filterCalendar.get(Calendar.YEAR));
 
+        /*
+        Imposto il testo del toDate
+         */
+        filterCalendar.setTime(toDateFilter);
+        setDataText(mToDateText,
+                filterCalendar.get(Calendar.DAY_OF_MONTH),
+                filterCalendar.get(Calendar.MONTH),
+                filterCalendar.get(Calendar.YEAR));
+
+        /*
+        onClick del fromDate
+         */
         mFromDateCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fromDateFilter = new Date(year, month, dayOfMonth);
+                        fromDateFilter = new Date(year-1900, month, dayOfMonth);
                         setDataText(mFromDateText, dayOfMonth, month, year);
 
-                        if (toDateFilter==null || fromDateFilter.compareTo(toDateFilter) > 0 ) {
+                        if (toDateFilter!=null && fromDateFilter.compareTo(toDateFilter) > 0 ) {
                             toDateFilter = fromDateFilter;
                             setDataText(mToDateText, dayOfMonth, month, year);
                         }
@@ -237,19 +279,31 @@ public class WorkoutSavedFragment extends Fragment {
             }
         });
 
+        /*
+        onClick del toDate
+         */
         mToDateCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        toDateFilter = new Date(year, month, dayOfMonth);
+                        toDateFilter = new Date(year-1900, month, dayOfMonth);
                         setDataText(mToDateText, dayOfMonth, month, year);
 
                         if (fromDateFilter==null || toDateFilter.compareTo(fromDateFilter) < 0 ) {
-                            fromDateFilter = toDateFilter;
+                            fromDateFilter = new Date(year-1900, month, dayOfMonth);
+
                             setDataText(mFromDateText, dayOfMonth, month, year);
                         }
+
+                        /*
+                        toDateFilter si riferisce sempre all'ultima ora del giorno (23:59:59), per fare in modo che tutti gli allenamenti
+                        di quel giorno vengano inclusi
+                         */
+                        toDateFilter.setHours(23);
+                        toDateFilter.setMinutes(59);
+                        toDateFilter.setSeconds(59);
                     }
                 },
                         currentYear,
@@ -370,6 +424,11 @@ public class WorkoutSavedFragment extends Fragment {
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
+                Per prima cosa resetto i filtri altrimenti vado solo a sommare filtri su filtri
+                 */
+                resetFilter();
+
                 if(titleFilter != null && (!titleFilter.equals("")))
                     applyTitleFilter();
                 if(fromDateFilter!=null || toDateFilter!=null)
@@ -458,7 +517,7 @@ public class WorkoutSavedFragment extends Fragment {
         for (WorkoutSaved workoutSaved: visibleWorkoutSavedList) {
             if ( titleFilter==null ||
                     titleFilter.equals("") ||
-                    workoutSaved.getWorkout().getTitle().contains(titleFilter))
+                    workoutSaved.getWorkout().getTitle().toLowerCase().contains(titleFilter.toLowerCase()))
                 newFilteredList.add(workoutSaved);
         }
         updateVisibleWorkoutSavedList(newFilteredList);
@@ -476,6 +535,7 @@ public class WorkoutSavedFragment extends Fragment {
             E se non c'è data di arrivo o se la data è antecedente alla data di arrivo
             L'allenamento supera il filtro
              */
+
             filterPass = ( fromDateFilter == null || workoutSaved.getDate().compareTo(fromDateFilter) >= 0 ) &&
                     (toDateFilter == null || workoutSaved.getDate().compareTo(toDateFilter) <= 0);
             if(filterPass)

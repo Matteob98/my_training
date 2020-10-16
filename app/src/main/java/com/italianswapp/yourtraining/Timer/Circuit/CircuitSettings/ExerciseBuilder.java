@@ -69,6 +69,7 @@ public class ExerciseBuilder {
     }
 
     public Exercise build() {
-        return Exercise.copyOf(exercise);
+        return exercise;
+        //return Exercise.copyOf(exercise);
     }
 }

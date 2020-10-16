@@ -36,11 +36,15 @@ public class CircuitActivity extends CountDownActivity {
     private TextView mPrimarySets,mSecondarySets;
     private ImageButton mRepsButton;
 
-    /*
-    Lista di esercizi che mi viene passata
+    /**
+    Lista di esercizi che mi viene passata che utilizzo durante l'allenamento
      */
-
     private ArrayList<Exercise> exerciseSettings;
+
+    /**
+     * Lista di esercizi originale che mi viene passata che non viene modificata per tutta la durata dell'allenamento
+     */
+    private ArrayList<Exercise> exerciseOriginalList;
 
     /*
     Tipo di workout che viene passato
@@ -66,7 +70,15 @@ public class CircuitActivity extends CountDownActivity {
         mRepsButton = findViewById(R.id.repsButtonCountDownActivity);
         exercises = new ArrayList<>();
 
+        /*
+        Prendo la lista degli esercizi che mi è stata passata in input
+         */
         exerciseSettings = getIntent().getParcelableArrayListExtra(CIRCUIT_KEY);
+        /*
+        Mi salvo una copia dell'allenamento per passarla poi alla schermata di finish
+        perché la copia originale viene modificata durante l'allenamento
+         */
+        initializeOriginalList();
         workoutType = WorkoutSaved.WorkoutType.valueOf(
                 getIntent().getStringExtra(CIRCUIT_TYPE));
 
@@ -97,6 +109,15 @@ public class CircuitActivity extends CountDownActivity {
     }
 
     /**
+     * Inizializza una copia della lista originale dell'allenamento
+     */
+    private void initializeOriginalList() {
+        exerciseOriginalList = new ArrayList<>();
+        for (Exercise exercise: exerciseSettings)
+            exerciseOriginalList.add(Exercise.copyOf(exercise));
+    }
+
+    /**
      *
      */
     private void initializesFloatingButton() {
@@ -124,14 +145,6 @@ public class CircuitActivity extends CountDownActivity {
         });
         mLeftFloatingButton.setImageResource(R.drawable.ic_assignament);
 
-        /*
-        Rendo momentaneamente non visibili e disabilitati
-        Saranno riabilitati dopo il ready
-
-        mRightFloatingButton.setEnabled(false);
-
-         */
-
     }
 
     private void initializesExerciseList( ArrayList<Exercise> exerciseSettings) throws ExerciseTypeNotCorrectException {
@@ -157,8 +170,6 @@ public class CircuitActivity extends CountDownActivity {
                 Exercise supersetExercise = null;
                 Exercise.SupersetExercise supersetExercisePassed = null;
                 supersetExercisePassed = e.getSupersetExercise();
-
-                Log.d("EccPass", "Ho passato l'eccezione");
 
                 supersetExercise = new Exercise(
                         supersetExercisePassed.getName(),
@@ -255,7 +266,6 @@ public class CircuitActivity extends CountDownActivity {
         mLeftFloatingButton.setImageResource(R.drawable.ic_assignament);
         mPrimaryTextView.setVisibility(TextView.VISIBLE);
         mSecondaryTextView.setVisibility(TextView.VISIBLE);
-        //nextExercise();
     }
 
     @Override
@@ -266,7 +276,7 @@ public class CircuitActivity extends CountDownActivity {
     @Override
     protected Workout getWorkout() {
         Workout workout = new Workout();
-        workout.setExerciseList(exerciseSettings);
+        workout.setExerciseList(exerciseOriginalList);
         return workout;
     }
 
@@ -485,6 +495,10 @@ public class CircuitActivity extends CountDownActivity {
      * Gestisce il floating button di destra
      */
     private void rightButtonClick() {
+        if(isFirstStart) {
+            isFirstStart = false;
+            startChronometer();
+        }
         if(!isRepsExercise || !isWork)
             //Se è un riposo
             timer.cancel(); //Annullo il timer
@@ -559,7 +573,7 @@ public class CircuitActivity extends CountDownActivity {
 
         //Carico i dati nella recycler View
         RecyclerView recyclerView = dialog.findViewById(R.id.recyclerViewExerciseListDialog);
-        ExerciseCardRecyclerViewAdapter mAdapter = new ExerciseCardRecyclerViewAdapter(exerciseSettings);
+        ExerciseCardRecyclerViewAdapter mAdapter = new ExerciseCardRecyclerViewAdapter(exerciseOriginalList);
         mAdapter.setCircuitCreatorActivity(null);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));

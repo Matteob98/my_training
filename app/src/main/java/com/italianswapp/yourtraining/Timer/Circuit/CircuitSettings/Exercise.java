@@ -83,10 +83,12 @@ public class Exercise implements Parcelable {
         hasRecs = in.readByte() != 0;
         name = in.readString();
         type = CircuitType.valueOf(in.readString());
-        supersetExercise = new SupersetExercise(
-                in.readInt(),
-                in.readByte() != 0,
-                in.readString());
+        if(type.equals(CircuitType.SUPERSET)) {
+            supersetExercise = new SupersetExercise(
+                    in.readInt(),
+                    in.readByte() != 0,
+                    in.readString());
+        }
     }
 
     public static final Creator<Exercise> CREATOR = new Creator<Exercise>() {
@@ -209,6 +211,16 @@ public class Exercise implements Parcelable {
         supersetExercise.setName(name);
     }
 
+    /**
+     * Imposta l'esercizio in superserie
+     * Se l'esercizio non è una superserie lo imposta in questo metodo
+     * @param supersetExercise l'esercizio in superserie da impostare
+     */
+    public void setSupersetExercise(Exercise.SupersetExercise supersetExercise) {
+        this.type=CircuitType.SUPERSET;
+        this.supersetExercise=supersetExercise;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -228,9 +240,11 @@ public class Exercise implements Parcelable {
         dest.writeByte((byte) (hasRecs ? 1 : 0));
         dest.writeString(name);
         dest.writeString(type.name());
-        dest.writeInt(supersetExercise.getReps());
-        dest.writeByte((byte) (supersetExercise.isReps() ? 1: 0));
-        dest.writeString(supersetExercise.getName());
+        if(type.equals(CircuitType.SUPERSET)) {
+            dest.writeInt(supersetExercise.getReps());
+            dest.writeByte((byte) (supersetExercise.isReps() ? 1 : 0));
+            dest.writeString(supersetExercise.getName());
+        }
 
     }
 
@@ -241,10 +255,30 @@ public class Exercise implements Parcelable {
      * @return Una copia Exercise
      */
     public static Exercise copyOf(Exercise e) {
-        Exercise copy = new Exercise(e.name, e.reps, e.rec, e.repetition, e.isReps, e.hasRecs, e.type);
-        copy.setNumberSets(e.getNumberSets());
-        copy.setTotalSets(e.getTotalSets());
-        copy.setHasSets(e.isHasSets());
+        Exercise copy = ExerciseBuilder.newBuilder()
+                .setName(e.name)
+                .setReps(e.reps)
+                .setRec(e.rec)
+                .setRepetition(e.repetition)
+                .setIsReps(e.isReps)
+                .setHasRecs(e.hasRecs)
+                .setType(e.type)
+                .setNumberSets(e.getNumberSets())
+                .setTotalSets(e.getTotalSets())
+                .setHasSets(e.isHasSets())
+                .build();
+
+        /*
+        Se è un esercizio in superserie copia anche la superserie
+         */
+        if(e.type.equals(CircuitType.SUPERSET)) {
+            try {
+                SupersetExercise supersetExercise = e.getSupersetExercise();
+                copy.setSupersetExercise(supersetExercise);
+            } catch (ExerciseTypeNotCorrectException ex) {
+                ex.printStackTrace();
+            }
+        }
 
         return copy;
     }
