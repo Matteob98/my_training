@@ -37,7 +37,8 @@ import java.util.ArrayList;
  */
 public class WorkoutSummaryRecyclerViewAdapter extends  RecyclerView.Adapter<WorkoutSummaryRecyclerViewAdapter.ViewHolder> {
 
-    private static final String AD_CODE = "ca-app-pub-3940256099942544/5224354917";
+    private static final String AD_CODE_TEST = "ca-app-pub-3940256099942544/5224354917";
+    private static final String AD_CODE = "ca-app-pub-8919261416525349/5604075110";
     /**
      * Lista che popolerà la RecyclerView
      */
@@ -92,6 +93,7 @@ public class WorkoutSummaryRecyclerViewAdapter extends  RecyclerView.Adapter<Wor
 
                 @Override
                 public void onRewardedAdClosed() {
+                    loadAd();
                     // Ad closed.
                 }
 
@@ -99,6 +101,7 @@ public class WorkoutSummaryRecyclerViewAdapter extends  RecyclerView.Adapter<Wor
                 public void onUserEarnedReward(@NonNull RewardItem reward) {
                     Intent intent = CircuitCreatorActivity.getInstance(context, thisWorkout);
                     context.startActivity(intent);
+                    ((Activity)context).finish();
                 }
 
                 @Override
@@ -144,6 +147,7 @@ public class WorkoutSummaryRecyclerViewAdapter extends  RecyclerView.Adapter<Wor
                 else {
                     Intent intent = CircuitCreatorActivity.getInstance(context, thisWorkout);
                     context.startActivity(intent);
+                    ((Activity)context).finish();
                 }
             }
         });
@@ -153,6 +157,8 @@ public class WorkoutSummaryRecyclerViewAdapter extends  RecyclerView.Adapter<Wor
          */
         if(workout.isPremium())
             holder.mPremiumImage.setVisibility(View.VISIBLE);
+        else
+            holder.mPremiumImage.setVisibility(View.GONE);
 
         /*
         In base alla difficoltà imposto l'immagine sulla card

@@ -79,9 +79,8 @@ public abstract class CountDownActivity extends AppCompatActivity {
     protected Runnable progressBarRun;
     protected Handler progressBarHandler;
 
-    //todo leva codice di test
-    private final static String TEST_ADS ="ca-app-pub-3940256099942544/1033173712";
-    private final static String ADS_CODE = "ca-app-pub-8919261416525349/9438301000";
+    private final static String TEST_INTERSTITIAL_ADS ="ca-app-pub-3940256099942544/1033173712";
+    private final static String INTERSTITIAL_ADS_CODE = "ca-app-pub-8919261416525349/9438301000";
     /**
      * Banner a schermo intero che viene visualizzato appena viene aperta l'applicazione
      */
@@ -280,7 +279,7 @@ public abstract class CountDownActivity extends AppCompatActivity {
             }
         });
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(TEST_ADS);
+        mInterstitialAd.setAdUnitId(INTERSTITIAL_ADS_CODE);
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         /*

@@ -109,11 +109,20 @@ public class ReadyTimerActivity extends AppCompatActivity {
         mExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer.cancel();
-                activity.finish();
-                finish();
+                exit();
             }
         });
+    }
+
+    private void exit() {
+        timer.cancel();
+        activity.finish();
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        exit();
     }
 
     private void tickSecondSound() {

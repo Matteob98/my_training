@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
 import android.widget.TextView;
 
 import com.italianswapp.yourtraining.OfflineDatabase.WorkoutSaved;
@@ -100,6 +101,10 @@ public class TabataActivity extends CountDownActivity {
             mSecondaryTextView.setText(setSetsText(round, currentRound));
             mSecondaryTextView.setVisibility(TextView.VISIBLE);
             mOverlineSecondaryTextView.setVisibility(TextView.VISIBLE);
+        }
+        else {
+            mSecondaryTextView.setVisibility(TextView.INVISIBLE);
+            mOverlineSecondaryTextView.setVisibility(TextView.INVISIBLE);
         }
 
         mPrimaryTextView.setVisibility(TextView.VISIBLE);

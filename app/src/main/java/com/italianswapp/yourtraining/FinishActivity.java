@@ -68,7 +68,7 @@ public class FinishActivity extends AppCompatActivity {
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveWorkout(v);
+                save();
             }
         });
 
@@ -82,29 +82,30 @@ public class FinishActivity extends AppCompatActivity {
 
     }
 
+    /*
     private void saveWorkout(View v) {
-        /*
-        Inizializzo le variabili
-         */
+
+        //Inizializzo le variabili
+
         workoutSensation = WorkoutSaved.WorkoutSensation.EASY;
         workoutLevel = Workout.WorkoutLevel.BEGINNER;
         workoutName = "";
 
-        /*
-        Creo il builder del dialog
-         */
+
+        //Creo il builder del dialog
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.save_workout_dialog, null);
         builder.setView(dialogView);
 
-        /*
-        Imposto il cambiamento del nome dell'allenamento
-         */
+
+        //Imposto il cambiamento del nome dell'allenamento
+
         final EditText mTitle = dialogView.findViewById(R.id.workoutTitleSaveWorkoutDialog);
-        /*
-        Ogni volta che cambia il testo modifico workoutName
-         */
+
+        //Ogni volta che cambia il testo modifico workoutName
+
         mTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -122,9 +123,8 @@ public class FinishActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        Level
-         */
+
+        //Level
 
         mLevelButton = dialogView.findViewById(R.id.levelImageButtonSaveWorkoutDialog);
         mLevelButton.setOnClickListener(new View.OnClickListener() {
@@ -147,9 +147,9 @@ public class FinishActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        Sensation
-         */
+
+        //Sensation
+
         mSensationButton = dialogView.findViewById(R.id.sensationImageButtonSaveWorkoutDialog);
         mSensationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,9 +171,9 @@ public class FinishActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        Gestisto pulsante salva
-         */
+
+        //Gestisto pulsante salva
+
         Button mSaveButtonDialog = dialogView.findViewById(R.id.saveButtonSaveWorkoutDialog);
         mSaveButtonDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,9 +182,8 @@ public class FinishActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        Gestisco pulsante esci, che seplicemente chiude il dialog
-         */
+        //Gestisco pulsante esci, che seplicemente chiude il dialog
+
         Button mExitButtonDialog = dialogView.findViewById(R.id.exitButtonSaveWorkoutDialog);
         mExitButtonDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,6 +198,8 @@ public class FinishActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+     */
+
     private void goToHome() {
         finish();
     }
@@ -207,10 +208,14 @@ public class FinishActivity extends AppCompatActivity {
     public void onBackPressed() { goToHome();}
 
     public void save() {
+        SaveWorkout.saveWorkout(this, workoutDuration, workoutType, workout);
+    }
+    /*
+    public void save() {
 
-        /*
-            Se il titolo del workout è vuoto lo imposto di default
-         */
+
+        //Se il titolo del workout è vuoto lo imposto di default
+
 
         if (workoutName.equals("")) {
             Calendar calendar = Calendar.getInstance();
@@ -235,6 +240,8 @@ public class FinishActivity extends AppCompatActivity {
         alertDialog.dismiss();
         goToHome();
     }
+
+     */
 
     /**
      * Ritorna un istanza di finish activity

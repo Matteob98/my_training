@@ -38,7 +38,7 @@ public class LevelFilterSelectRecyclerViewAdapter extends  RecyclerView.Adapter<
     public void onBindViewHolder(@NonNull final LevelFilterSelectRecyclerViewAdapter.ViewHolder holder, int position) {
         final Workout.WorkoutLevel level = levelGroupsList.get(position);
 
-        holder.mTextView.setText(level.name());
+        holder.mTextView.setText(level.toString());
 
         if( levelFilterList.contains(level)){
             holder.mTextView.setTextColor(context.getResources().getColor(R.color.white));

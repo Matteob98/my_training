@@ -10,9 +10,9 @@
       "apkData": {
         "type": "MAIN",
         "splits": [],
-        "versionCode": 4,
-        "versionName": "2.2",
-        "outputFile": "app-release-unsigned.apk",
+        "versionCode": 5,
+        "versionName": "3.0",
+        "outputFile": "app-release.apk",
         "fullName": "release",
         "baseName": "release",
         "dirName": ""

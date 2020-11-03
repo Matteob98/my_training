@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/titleEmomCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -58,8 +58,8 @@
                 android:letterSpacing="0.03"
                 android:textColor="#000000"
                 android:textSize="17sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
-                app:layout_constraintStart_toEndOf="@+id/textView14"
+                app:layout_constraintBaseline_toBaselineOf="@+id/titleEmomCardView"
+                app:layout_constraintStart_toEndOf="@+id/titleEmomCardView"
                 tools:text="x4" />
 
             <ImageButton
@@ -84,7 +84,7 @@
                 android:background="@color/lightGray"
                 app:layout_constraintEnd_toStartOf="@+id/deleteSupersetCard"
                 app:layout_constraintStart_toEndOf="@+id/colorLeftBarSupersetCard"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                app:layout_constraintTop_toBottomOf="@+id/titleEmomCardView" />
 
             <TextView
                 android:id="@+id/firstExerciseSupersetCard"
@@ -93,7 +93,7 @@
                 android:fontFamily="@font/swansea"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/firstExerciseRepsSupersetCard"
-                app:layout_constraintStart_toStartOf="@+id/textView14"
+                app:layout_constraintStart_toStartOf="@+id/titleEmomCardView"
                 app:layout_constraintTop_toTopOf="@+id/firstExerciseRepsSupersetCard"
                 tools:text="Push up" />
 

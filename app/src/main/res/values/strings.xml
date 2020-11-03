@@ -42,7 +42,7 @@
     <string name="Resume">Resume</string>
 
     <!-- Amrap activity -->
-    <string name="round_completed">round completed in</string>
+    <string name="round_completed_in">round completed in</string>
     <string name="many_round_completed">How many rounds have you completed?</string>
 
     <!-- Circuit activity e creator-->
@@ -146,5 +146,24 @@
     <string name="none_circuit_saved">None workout saved!\n\n  Hey! Now you can save your favourite workouts,  just starts a new workout and at the end saves it.</string>
     <string name="skip">skip</string>
     <string name="Apply">Apply</string>
+    <string name="ABS">ABS</string>
+    <string name="CHEST">CHEST</string>
+    <string name="BICEPS">BICEPS</string>
+    <string name="DELTOIDS">DELTOIDS</string>
+    <string name="TRICEPS">TRICEPS</string>
+    <string name="DORSALS">DORSALS</string>
+    <string name="QUADRICEPS">QUADRICEPS</string>
+    <string name="BUTTOCKS">BUTTOCKS</string>
+    <string name="FEMORAL_BICEPS">FEMORAL BICEPS</string>
+    <string name="LUMBAR">LUMBAR</string>
+    <string name="NECK">NECK</string>
+    <string name="SHOULDER">SHOULDERS</string>
+    <string name="FEET">FEET</string>
+    <string name="CALVES">CALVES</string>
+    <string name="BEGINNER">BEGINNER</string>
+    <string name="INTERMEDIATE">INTERMEDIATE</string>
+    <string name="ADVANCED">ADVANCED</string>
+    <string name="CARDIO">CARDIO</string>
+    <string name="round_completed">"Round completed: "</string>
 
 </resources>

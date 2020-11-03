@@ -58,13 +58,12 @@ public class ExerciseSummaryRecyclerViewAdapter extends RecyclerView.Adapter<Exe
             }
         }
         holder.mReps.setText(getRepsString(exercise));
-        //holder.mOperator.setText(getOperatorOfExercise(exercise));
 
         /*
         Se non è REST imposto normalmente le serie, altrimenti se è rest oscuro sia sets che operator
          */
         if (exercise.getType()!= Exercise.CircuitType.REST)
-            holder.mSets.setText(String.valueOf(exercise.getTotalSets()));
+            holder.mSets.setText(String.valueOf(exercise.getRepetition()));
         else {
             holder.mSets.setText("");
             holder.mOperator.setText("");
@@ -97,7 +96,7 @@ public class ExerciseSummaryRecyclerViewAdapter extends RecyclerView.Adapter<Exe
                 /*
                 00:30
                  */
-                    reps = String.valueOf(exercise.getRec());
+                    reps = Utilities.getStringTimeFromMillsWithoutHours((int) exercise.getRec());
                 break;
             case SUPERSET:
                 /*

@@ -24,6 +24,7 @@
         android:layout_width="13dp"
         android:layout_height="60dp"
         android:visibility="invisible"
+        tools:visibility="visible"
         android:background="@drawable/bottom_right_corner_accent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarEmomActivity" />
@@ -58,6 +59,7 @@
     <TextView
         android:id="@+id/primarySetsTextView"
         android:visibility="gone"
+        tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/swansea"
@@ -72,6 +74,7 @@
     <View
         android:id="@+id/secondaryView"
         android:visibility="invisible"
+        tools:visibility="visible"
         android:layout_width="13dp"
         android:layout_height="60dp"
         android:background="@drawable/bottom_left_corner_accent"
@@ -106,6 +109,7 @@
     <TextView
         android:id="@+id/secondarySetsTextView"
         android:visibility="gone"
+        tools:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/swansea"
@@ -284,7 +288,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        ads:adUnitId="ca-app-pub-8919261416525349/6004025207"
         android:layout_marginBottom="6dp"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintStart_toStartOf="parent"

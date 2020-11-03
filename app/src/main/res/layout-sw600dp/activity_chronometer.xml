@@ -29,7 +29,7 @@
         android:letterSpacing="0.05"
         android:text="@string/time_00_00_00"
         android:textColor="@color/black"
-        android:textSize="50sp"
+        android:textSize="55sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarChronometerActivity" />
@@ -44,7 +44,7 @@
         android:letterSpacing="0.05"
         android:text="@string/time_00_00_00"
         android:textColor="#595959"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textChronometerActivity" />
@@ -58,7 +58,7 @@
         android:letterSpacing="0.05"
         android:text="@string/Lap"
         android:textColor="#757575"
-        android:textSize="15sp"
+        android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent" />
@@ -73,7 +73,7 @@
         android:letterSpacing="0.05"
         android:text="@string/lap_times"
         android:textColor="#757575"
-        android:textSize="15sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lapTimeTextChronometerActivity" />
@@ -86,7 +86,7 @@
         android:letterSpacing="0.05"
         android:text="Overal time"
         android:textColor="#757575"
-        android:textSize="15sp"
+        android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4" />
@@ -116,15 +116,15 @@
 
     <Button
         android:id="@+id/startButtonChronometerActivity"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/ripple_blue"
         android:elevation="20dp"
         android:text="@string/start"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline" />
 
@@ -144,15 +144,15 @@
 
     <Button
         android:id="@+id/resetButtonChronometerActivity"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
         android:layout_marginStart="20dp"
         android:background="@drawable/ripple_blue"
         android:backgroundTint="@color/colorPrimaryDark"
         android:elevation="20dp"
         android:text="@string/Reset"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintBaseline_toBaselineOf="@+id/startButtonChronometerActivity"
         app:layout_constraintStart_toStartOf="@+id/guideline" />

@@ -34,12 +34,12 @@ public class FilterRecyclerViewAdapter extends RecyclerView.Adapter<FilterRecycl
         Aggiungo ai filtri i livelli
          */
         for (Workout.WorkoutLevel level : levelFilter)
-            filterList.add(new FilterCard(level.name(), FilterCard.Type.LEVEL));
+            filterList.add(new FilterCard(level));
         /*
         Aggiungo ai filtri i gruppi muscolari
          */
         for (Workout.MuscleGroup muscleGroup: muscleFilter)
-            filterList.add(new FilterCard(muscleGroup.name(), FilterCard.Type.MUSCLE));
+            filterList.add(new FilterCard(muscleGroup));
     }
 
     @NonNull
@@ -58,10 +58,10 @@ public class FilterRecyclerViewAdapter extends RecyclerView.Adapter<FilterRecycl
             @Override
             public void onClick(View v) {
                 if(filterCard.getType()== FilterCard.Type.LEVEL) {
-                    levelFilter.remove(Workout.WorkoutLevel.valueOf(filterCard.getName()));
+                    levelFilter.remove(filterCard.getWorkoutLevel());
                 }
                 else {
-                    muscleFilter.remove(Workout.MuscleGroup.valueOf(filterCard.getName()));
+                    muscleFilter.remove(filterCard.getMuscleGroup());
                 }
                 activity.updateFilterRecyclerView();
                 activity.updateWorkoutList();

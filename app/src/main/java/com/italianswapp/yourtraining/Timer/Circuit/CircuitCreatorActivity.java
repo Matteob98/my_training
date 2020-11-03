@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
@@ -33,6 +34,7 @@ import com.italianswapp.yourtraining.DialogBuilders.Dialog2PickerBuilder;
 import com.italianswapp.yourtraining.DialogBuilders.Dialog3PickerBuilder;
 import com.italianswapp.yourtraining.OfflineDatabase.WorkoutSaved;
 import com.italianswapp.yourtraining.R;
+import com.italianswapp.yourtraining.SaveWorkout;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.Exercise;
 import com.italianswapp.yourtraining.Utilities.Utilities;
 import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
@@ -48,7 +50,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
     private static final String CREATOR_KEY="creatorKey";
 
     private Toolbar mToolbar;
-    private Button mCreateCircuitButton;
+    private FloatingActionButton mCreateCircuitButton, mSaveCircuitButton;
     private RecyclerView mExerciseRecyclerView;
 
     private LinearLayoutManager linearLayoutManager;
@@ -92,6 +94,7 @@ public class CircuitCreatorActivity extends AppCompatActivity {
 
         mToolbar = findViewById(R.id.toolbarCircuitCreator);
         mCreateCircuitButton = findViewById(R.id.createButtonCircuitCreator);
+        mSaveCircuitButton = findViewById(R.id.saveButtonCircuitCreator);
         mExerciseRecyclerView = findViewById(R.id.circuitCreatorRecyclerView);
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
@@ -152,6 +155,13 @@ public class CircuitCreatorActivity extends AppCompatActivity {
             }
         });
 
+        mSaveCircuitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                save();
+            }
+        });
+
         /*
         Cancella card con swipe
          */
@@ -170,6 +180,12 @@ public class CircuitCreatorActivity extends AppCompatActivity {
         });
         helper.attachToRecyclerView(mExerciseRecyclerView);
 
+    }
+
+    private void save() {
+        Workout workout = new Workout();
+        workout.setExerciseList(exerciseList);
+        SaveWorkout.saveWorkout(this, Utilities.getStringTimeFromMills(0), WorkoutSaved.WorkoutType.WORKOUT, workout);
     }
 
     /**

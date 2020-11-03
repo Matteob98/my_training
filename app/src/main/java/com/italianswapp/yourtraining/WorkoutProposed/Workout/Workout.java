@@ -1,9 +1,13 @@
 package com.italianswapp.yourtraining.WorkoutProposed.Workout;
 
+import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
+import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings.Exercise;
+import com.italianswapp.yourtraining.Utilities.App;
 
 import java.util.ArrayList;
 
@@ -24,13 +28,81 @@ public class Workout implements Parcelable {
     public enum WorkoutLevel {
         BEGINNER,
         INTERMEDIATE,
-        ADVANCED
+        ADVANCED;
+
+        @Override
+        public String toString() {
+            Resources res = App.getContext().getResources();
+            switch (this) {
+                case BEGINNER:
+                    return res.getString(R.string.BEGINNER);
+                case INTERMEDIATE:
+                    return res.getString(R.string.INTERMEDIATE);
+                case ADVANCED:
+                    return res.getString(R.string.ADVANCED);
+                default:
+                    return "ErrorToString";
+            }
+        }
+
     }
 
     public enum MuscleGroup {
         ABS,
-        BACK,
-        CHEST
+        CHEST,
+        BICEPS,
+        DELTOIDS,
+        TRICEPS,
+        DORSALS,
+        QUADRICEPS,
+        BUTTOCKS,
+        FEMORAL_BICEPS,
+        LUMBAR,
+        CARDIO,
+        NECK,
+        SHOULDER,
+        FEET,
+        CALVES;
+
+        @Override
+        public String toString() {
+            Resources res = App.getContext().getResources();
+            switch (this) {
+                case ABS:
+                    return res.getString(R.string.ABS);
+                case CHEST:
+                    return res.getString(R.string.CHEST);
+                case BICEPS:
+                    return res.getString(R.string.BICEPS);
+                case DELTOIDS:
+                    return res.getString(R.string.DELTOIDS);
+                case TRICEPS:
+                    return res.getString(R.string.TRICEPS);
+                case DORSALS:
+                    return res.getString(R.string.DORSALS);
+                case QUADRICEPS:
+                    return res.getString(R.string.QUADRICEPS);
+                case BUTTOCKS:
+                    return res.getString(R.string.BUTTOCKS);
+                case FEMORAL_BICEPS:
+                    return res.getString(R.string.FEMORAL_BICEPS);
+                case LUMBAR:
+                    return res.getString(R.string.LUMBAR);
+                case CARDIO:
+                    return res.getString(R.string.CARDIO);
+                case NECK:
+                    return res.getString(R.string.NECK);
+                case SHOULDER:
+                    return res.getString(R.string.SHOULDER);
+                case FEET:
+                    return res.getString(R.string.FEET);
+                case CALVES:
+                    return res.getString(R.string.CALVES);
+                default:
+                    return "ErrorToString";
+            }
+        }
+
     }
 
     private String title;

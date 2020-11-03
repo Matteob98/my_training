@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.italianswapp.yourtraining"
-    android:versionCode="4"
-    android:versionName="2.2" >
+    android:versionCode="5"
+    android:versionName="3.0" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -16,19 +16,22 @@
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 
     <application
+        android:name="com.italianswapp.yourtraining.Utilities.App"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_logo"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        <activity android:name="com.italianswapp.yourtraining.ReadyTimerActivity" />
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8919261416525349~1732676159" />
 
+        <activity
+            android:name="com.italianswapp.yourtraining.Timer.ReadyTimerActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.italianswapp.yourtraining.HelpActivity"
             android:screenOrientation="portrait" />
@@ -71,7 +74,7 @@
         <activity
             android:name="com.italianswapp.yourtraining.WorkoutProposed.ProposedWorkoutsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

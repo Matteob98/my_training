@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
 import com.italianswapp.yourtraining.HelpActivity;
@@ -97,9 +98,6 @@ public class ProposedWorkoutsActivity extends AppCompatActivity{
         initializeActivity();
 
         /*
-        Gestisco la toolbar
-         */
-        /*
         Gestisco il back button
          */
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -121,45 +119,12 @@ public class ProposedWorkoutsActivity extends AppCompatActivity{
         /*
         Imposto il titolo della toolbar con la prima lettera in maiuscolo e il resto in minuscolo
          */
-        String title = "";
-        switch (Workout.WorkoutCategory.valueOf(getIntent().getStringExtra(CATEGORY))) {
-            case BODYBUILDING:
-                title = getResources().getString(R.string.bodybuilding);
-                break;
-            case FREEBODY:
-                title = getResources().getString(R.string.free_body);
-                break;
-            case FUNCTIONALTRAINING:
-                title = getResources().getString(R.string.functional_training);
-                break;
-            case STRETCHING:
-                title = getResources().getString(R.string.stretching);
-                break;
-            default:
-                try {
-                    throw new ExerciseTypeNotCorrectException("Categoria di allenamento non valida");
-                } catch (ExerciseTypeNotCorrectException e) {
-                    e.printStackTrace();
-                }
-        }
-        mTitleTextView.setText(
-                title.toUpperCase().charAt(0) +
-                title.toLowerCase().substring(1, title.length()));
+        titleSettings();
 
         /*
         RecyclerView per i filtri
          */
-        LinearLayoutManager linearLayoutManagerFilter =
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mFilterRecyclerView.setLayoutManager(linearLayoutManagerFilter);
-        /*
-        Adapter per la recyclerView
-         */
-        mFilterAdapter = new FilterRecyclerViewAdapter(levelFilter, muscleFilter,this, getApplicationContext());
-        mFilterRecyclerView.setAdapter(mFilterAdapter);
-        /*
-        Gestisco il tocco sulle card dei filtri che provoca la rimozione della card e del filtro relativo
-         */
+        filterRecyclerViewSettings();
 
         /*
         Carica gli esercizi proposti in base alla categoria passata all'intent quando
@@ -198,6 +163,44 @@ public class ProposedWorkoutsActivity extends AppCompatActivity{
 
         updateWorkoutList();
 
+    }
+
+    private void filterRecyclerViewSettings() {
+        LinearLayoutManager linearLayoutManagerFilter =
+                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mFilterRecyclerView.setLayoutManager(linearLayoutManagerFilter);
+        /*
+        Adapter per la recyclerView
+         */
+        mFilterAdapter = new FilterRecyclerViewAdapter(levelFilter, muscleFilter,this, getApplicationContext());
+        mFilterRecyclerView.setAdapter(mFilterAdapter);
+    }
+
+    private void titleSettings() {
+        String title = "";
+        switch (Workout.WorkoutCategory.valueOf(getIntent().getStringExtra(CATEGORY))) {
+            case BODYBUILDING:
+                title = getResources().getString(R.string.bodybuilding);
+                break;
+            case FREEBODY:
+                title = getResources().getString(R.string.free_body);
+                break;
+            case FUNCTIONALTRAINING:
+                title = getResources().getString(R.string.functional_training);
+                break;
+            case STRETCHING:
+                title = getResources().getString(R.string.stretching);
+                break;
+            default:
+                try {
+                    throw new ExerciseTypeNotCorrectException("Categoria di allenamento non valida");
+                } catch (ExerciseTypeNotCorrectException e) {
+                    e.printStackTrace();
+                }
+        }
+        mTitleTextView.setText(
+                title.toUpperCase().charAt(0) +
+                        title.toLowerCase().substring(1, title.length()));
     }
 
     /**

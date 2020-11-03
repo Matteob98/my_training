@@ -27,33 +27,45 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:scrollbars="vertical"
         android:background="@color/backgroundColor"
-        app:layout_constraintBottom_toTopOf="@+id/createButtonCircuitCreator"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarCircuitCreator" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createButtonCircuitCreator"
-        android:layout_height="45dp"
-        android:layout_width="125dp"
-        android:background="@drawable/ripple_blue"
-        android:text="@string/Start"
-        android:fontFamily="@font/swansea_bold"
-        android:textColor="@color/white"
-        android:letterSpacing="0.05"
-        android:textSize="15sp"
-        android:elevation="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_height="56dp"
+        android:layout_width="56dp"
+        android:src="@drawable/play"
+        app:maxImageSize="15dp"
+        android:scaleType="center"
+        app:backgroundTint="@color/colorPrimary"
+        app:borderWidth="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="95dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveButtonCircuitCreator"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/save"
+        android:tint="@color/darkGray"
+        app:backgroundTint="@color/lightGray"
+        app:borderWidth="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/createButtonCircuitCreator"
+        app:layout_constraintEnd_toEndOf="@+id/createButtonCircuitCreator" />
+
 
     <!-- Menu espandibile -->
 
     <RelativeLayout
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="25dp">
@@ -62,14 +74,15 @@
         <!-- Your FAB implementation -->
         <com.italianswapp.yourtraining.Timer.Circuit.Fab
             android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="30dp"
             android:backgroundTint="@color/colorAccent"
             android:src="@drawable/ic_add_black"
+            android:tint="@color/black"
             android:visibility="visible"
             app:borderWidth="0dp" />
 
@@ -234,6 +247,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_add_black"
+                            android:tint="@color/black"
                             android:background="@null"
                             android:layout_gravity="center"/>
                         <TextView

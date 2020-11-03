@@ -39,7 +39,7 @@ public class MuscleFilterSelectRecyclerViewAdapter extends RecyclerView.Adapter<
     public void onBindViewHolder(@NonNull final MuscleFilterSelectRecyclerViewAdapter.ViewHolder holder, int position) {
         final Workout.MuscleGroup muscleGroup = muscleGroupsList.get(position);
 
-        holder.mTextView.setText(muscleGroup.name());
+        holder.mTextView.setText(muscleGroup.toString());
 
         if( muscleFilterList.contains(muscleGroup)){
             holder.mTextView.setTextColor(context.getResources().getColor(R.color.white));

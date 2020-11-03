@@ -29,7 +29,7 @@
     <string name="every">ogni</string>
     <string name="For">per</string>
     <string name="invalid_time">Tempo inserito non valido</string>
-    <string name="round_completed">round completati in</string>
+    <string name="round_completed_in">round completati in</string>
     <string name="many_round_completed">Quanti round hai completato?</string>
     <string name="ready">Pronto?</string>
     <string name="tap_to_start">Tocca per iniziare</string>
@@ -114,4 +114,23 @@
     <string name="none_circuit_saved">Nessun allenamento salvato!\n\n  Hey! Ora puoi salvare i tuoi allenamenti preferiti, devi solo iniziare un allenamento e salvarlo nella schermata finale!</string>
     <string name="skip">salta</string>
     <string name="Apply">Applica</string>
+    <string name="ABS">ADDOMINALI</string>
+    <string name="CHEST">PETTO</string>
+    <string name="BICEPS">BICIPITI</string>
+    <string name="DELTOIDS">DELTOIDI</string>
+    <string name="TRICEPS">TRICIPITI</string>
+    <string name="DORSALS">DORSALI</string>
+    <string name="QUADRICEPS">QUADRICIPITI</string>
+    <string name="BUTTOCKS">GLUTEI</string>
+    <string name="FEMORAL_BICEPS">BICIPITI FEMORALI</string>
+    <string name="LUMBAR">LOMBARI</string>
+    <string name="NECK">COLLO</string>
+    <string name="SHOULDER">SPALLE</string>
+    <string name="FEET">PIEDI</string>
+    <string name="CALVES">POLPACCI</string>
+    <string name="BEGINNER">PRINCIPIANTE</string>
+    <string name="INTERMEDIATE">INTERMEDIO</string>
+    <string name="ADVANCED">AVANZATO</string>
+    <string name="CARDIO">CARDIO</string>
+    <string name="round_completed">"Round completati: "</string>
 </resources>

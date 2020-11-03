@@ -11,8 +11,6 @@ import com.italianswapp.yourtraining.ExerciseTypeNotCorrectException;
  */
 public class Exercise implements Parcelable {
 
-    //todo Il recupero del superset non viene mostrato nel riepilogo
-
     private int reps, repetition, numberSets, totalSets;
     private long rec;
     private boolean isReps, hasRecs, hasSets;
@@ -149,6 +147,7 @@ public class Exercise implements Parcelable {
 
     public void setRec(long rec) {
         this.rec = rec;
+        this.hasRecs = rec>0;
     }
 
     public int getRepetition() {
@@ -206,6 +205,7 @@ public class Exercise implements Parcelable {
      */
     public void setSupersetExercise(int reps, boolean isReps, String name) {
         this.type=CircuitType.SUPERSET;
+        supersetExercise = new SupersetExercise();
         supersetExercise.setReps(reps);
         supersetExercise.setIsReps(isReps);
         supersetExercise.setName(name);
@@ -331,6 +331,12 @@ public class Exercise implements Parcelable {
             this.supersetReps = supersetReps;
             this.supersetIsReps = supersetIsReps;
             this.supersetName = supersetName;
+        }
+
+        public SupersetExercise() {
+            supersetReps=0;
+            supersetIsReps=true;
+            supersetName="";
         }
 
         public int getReps() {

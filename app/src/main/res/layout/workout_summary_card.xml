@@ -23,29 +23,31 @@
 
             <TextView
                 android:id="@+id/titleWorkoutSummary"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Primo allenamento"
-                android:textColor="@color/black"
-                android:fontFamily="@font/swansea_bold"
-                android:textSize="15sp"
-                android:letterSpacing="0.04"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/swansea_bold"
+                android:letterSpacing="0.04"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/premiumImageWorkoutSummary"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Primo allenamento" />
 
             <ImageView
                 android:id="@+id/premiumImageWorkoutSummary"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/premium_ex"
-                android:visibility="invisible"
-                tools:visibility="visible"
-                android:layout_marginStart="16dp"
-                app:layout_constraintStart_toEndOf="@id/titleWorkoutSummary"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/titleWorkoutSummary"
+                app:layout_constraintEnd_toStartOf="@+id/levelImageWorkoutSummary"
                 app:layout_constraintTop_toTopOf="@+id/titleWorkoutSummary"
-                app:layout_constraintBottom_toBottomOf="@+id/titleWorkoutSummary" />
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/levelImageWorkoutSummary"
@@ -61,6 +63,7 @@
                 android:id="@+id/exerciseSummaryRecyclerView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="27dp"
                 android:layout_marginBottom="18dp"

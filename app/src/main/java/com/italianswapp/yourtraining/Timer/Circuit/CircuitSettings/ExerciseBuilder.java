@@ -1,5 +1,10 @@
 package com.italianswapp.yourtraining.Timer.Circuit.CircuitSettings;
 
+import android.content.res.Resources;
+
+import com.italianswapp.yourtraining.R;
+import com.italianswapp.yourtraining.Utilities.App;
+
 public class ExerciseBuilder {
 
     private static Exercise exercise;
@@ -65,11 +70,24 @@ public class ExerciseBuilder {
 
     public ExerciseBuilder setType(Exercise.CircuitType type) {
         exercise.setType(type);
+        if(exercise.getName().equals("")) {
+            switch (type) {
+                case EMOM:
+                    exercise.setName(App.getContext().getString(R.string.emom));
+                    break;
+                case REST:
+                    exercise.setName(App.getContext().getString(R.string.rest));
+                    break;
+                case TABATA:
+                    exercise.setName(App.getContext().getString(R.string.tabata));
+                    break;
+        }
+
+        }
         return this;
     }
 
     public Exercise build() {
         return exercise;
-        //return Exercise.copyOf(exercise);
     }
 }

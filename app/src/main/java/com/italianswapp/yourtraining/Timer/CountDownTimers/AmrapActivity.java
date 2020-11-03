@@ -204,7 +204,7 @@ public class AmrapActivity extends CountDownActivity {
                                 Utilities.getStringTimeFromMills(updateTime) + " " + res.getString(R.string.hours) :
                                 Utilities.getStringTimeNoHour(updateTime) + " " + res.getString(R.string.minutes));
 
-                        finishCountDown(roundAmrap + " " + res.getString(R.string.round_completed) + " " + workoutDuration);
+                        finishCountDown(roundAmrap + " " + res.getString(R.string.round_completed_in) + " " + workoutDuration);
                         Dialog1PickerBuilder.getAlertDialog().dismiss();
                     }
                 })

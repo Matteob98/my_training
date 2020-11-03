@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/titleEmomCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -58,8 +58,8 @@
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:fontFamily="@font/swansea_bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
-                app:layout_constraintStart_toEndOf="@+id/textView14"
+                app:layout_constraintBaseline_toBaselineOf="@+id/titleEmomCardView"
+                app:layout_constraintStart_toEndOf="@+id/titleEmomCardView"
                 tools:text="x4" />
 
             <ImageButton
@@ -86,54 +86,61 @@
 
             <TextView
                 android:id="@+id/firstExerciseSupersetCard"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Push up"
+                android:layout_marginEnd="6dp"
                 android:fontFamily="@font/swansea"
+                android:maxLines="1"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/firstExerciseRepsSupersetCard"
-                app:layout_constraintStart_toStartOf="@+id/textView14"
-                app:layout_constraintTop_toTopOf="@+id/firstExerciseRepsSupersetCard" />
+                app:layout_constraintEnd_toStartOf="@+id/firstExerciseRepsSupersetCard"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/titleEmomCardView"
+                app:layout_constraintTop_toTopOf="@+id/firstExerciseRepsSupersetCard"
+                tools:text="Push up" />
 
             <TextView
                 android:id="@+id/firstExerciseRepsSupersetCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/swansea_bold"
                 android:gravity="end"
                 android:letterSpacing="0.03"
                 android:textColor="#000000"
                 android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/firstExerciseSupersetCard"
+                app:layout_constraintEnd_toStartOf="@+id/sleepImage"
                 app:layout_constraintTop_toBottomOf="@+id/view"
                 tools:text="01:15" />
 
             <TextView
                 android:id="@+id/secondExerciseSupersetCard"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Crunch"
+                android:layout_marginEnd="6dp"
                 android:fontFamily="@font/swansea"
+                android:maxLines="1"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/secondExerciseRepsSupersetCard"
+                app:layout_constraintEnd_toStartOf="@+id/secondExerciseRepsSupersetCard"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/firstExerciseSupersetCard"
-                app:layout_constraintTop_toTopOf="@+id/secondExerciseRepsSupersetCard" />
+                app:layout_constraintTop_toTopOf="@+id/secondExerciseRepsSupersetCard"
+                tools:text="Crunch" />
 
             <TextView
                 android:id="@+id/secondExerciseRepsSupersetCard"
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/swansea_bold"
                 android:gravity="end"
                 android:letterSpacing="0.03"
                 android:textColor="#000000"
                 android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/secondExerciseSupersetCard"
+                app:layout_constraintEnd_toEndOf="@+id/firstExerciseRepsSupersetCard"
                 app:layout_constraintTop_toBottomOf="@+id/firstExerciseRepsSupersetCard"
                 tools:text="01:15" />
 

@@ -123,11 +123,16 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             case EMOM:
                 /*
                 EMOM:
+                    Titolo
                     Numero lap
                     Numero secondi per ogni lap
                  */
 
+
                 EmomSettingsViewHolder emomSettingsViewHolder = (EmomSettingsViewHolder)holder;
+                if(!exercise.getName().equals(""))
+                    emomSettingsViewHolder.mTitle.setText(exercise.getName());
+
                 emomSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
                         exercise.getRepetition())));
 
@@ -149,11 +154,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             case TABATA:
                 /*
                 Tabata:
+                    Titolo
                     Numero lap
                     Secondi ripetizioni
                     Secondi recupero
                  */
                 TabataSettingsViewHolder tabataSettingsViewHolder = (TabataSettingsViewHolder)holder;
+                if(!exercise.getName().equals(""))
+                    tabataSettingsViewHolder.mTitle.setText(exercise.getName());
                 tabataSettingsViewHolder.mLap.setText(String.format("x %s", String.valueOf(
                         exercise.getRepetition())));
 
@@ -371,13 +379,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     public class TabataSettingsViewHolder extends RecyclerView.ViewHolder{
 
         CardView mCardView;
-        TextView mLap, mReps, mRec;
+        TextView mTitle, mLap, mReps, mRec;
         ImageButton mDeleteButton;
 
         public TabataSettingsViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mCardView = itemView.findViewById(R.id.tabataCard);
+            mTitle = itemView.findViewById(R.id.titleEmomCardView);
             mLap = itemView.findViewById(R.id.lapTabataCard);
             mDeleteButton = itemView.findViewById(R.id.deleteTabataCard);
             mReps = itemView.findViewById(R.id.repsTabataCard);
@@ -421,13 +430,14 @@ public class ExerciseCardRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     public class EmomSettingsViewHolder extends RecyclerView.ViewHolder{
 
         CardView mCardView;
-        TextView mLap, mReps;
+        TextView mTitle, mLap, mReps;
         ImageButton mDeleteButton;
 
         public EmomSettingsViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mCardView = itemView.findViewById(R.id.emomCardView);
+            mTitle = itemView.findViewById(R.id.titleEmomCardView);
             mLap = itemView.findViewById(R.id.lapEmomCard);
             mDeleteButton = itemView.findViewById(R.id.deleteEmomCard);
             mReps = itemView.findViewById(R.id.repsEmomCard);

@@ -14,20 +14,6 @@ public abstract class WorkoutDatabase extends RoomDatabase {
     private static WorkoutDatabase INSTANCE;
     public abstract WorkoutDao workoutDao();
 
-
-    /*
-    public static WorkoutDatabase getInMemoryDatabase(Context context) {
-        if (INSTANCE == null) {
-            INSTANCE =
-                    Room.inMemoryDatabaseBuilder(context.getApplicationContext(), WorkoutDatabase.class)
-                            .allowMainThreadQueries()
-                            .build();
-        }
-        return INSTANCE;
-    }
-
-     */
-
     public static WorkoutDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
