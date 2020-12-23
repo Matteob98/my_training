@@ -1,5 +1,4 @@
 # my_training
-
 Android application used as fitness assistant
 
 MyTraining is avaible on GooglePlay at the follow link:
