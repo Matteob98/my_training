@@ -133,4 +133,9 @@
     <string name="ADVANCED">AVANZATO</string>
     <string name="CARDIO">CARDIO</string>
     <string name="round_completed">"Round completati: "</string>
+    <string name="item_removed">L\'elemento è stato rimosso dalla lista</string>
+    <string name="leave_review">Vuoi lasciare una recensione?</string>
+    <string name="leave_review_description">La tua opinione è molto importante per noi, lascia una recensione</string>
+    <string name="remind_later">Ricordamelo dopo</string>
+    <string name="yes">Si</string>
 </resources>

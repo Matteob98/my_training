@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.google.gms.google-services'
 
 android {
@@ -9,10 +10,15 @@ android {
         applicationId "com.italianswapp.yourtraining"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 5
-        versionName "3.0"
+        versionCode 9
+        versionName "3.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -30,9 +36,9 @@ dependencies {
     implementation 'com.gordonwong:material-sheet-fab:1.2.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment:2.3.0'
-    implementation 'androidx.navigation:navigation-ui:2.3.0'
-    implementation 'com.google.firebase:firebase-database:19.4.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
+    implementation 'com.google.firebase:firebase-database:19.5.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -40,13 +46,19 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.nex3z:toggle-button-group:0.2.3'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'com.google.firebase:firebase-analytics:17.5.0'
-    implementation 'com.google.android.gms:play-services-ads:19.4.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+    implementation 'com.google.android.gms:play-services-ads:19.5.0'
     implementation "android.arch.persistence.room:runtime:1.1.1"
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
-    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.google.android.gms:play-services-basement:17.4.0'
+    implementation 'com.google.android.gms:play-services-basement:17.5.0'
+    implementation "androidx.core:core-ktx:+"
+    implementation 'com.google.android.play:core:1.10.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 
+}
+repositories {
+    mavenCentral()
 }

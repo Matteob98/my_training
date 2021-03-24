@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -295,6 +296,12 @@ public abstract class CountDownActivity extends AppCompatActivity {
         mBannerAd = findViewById(R.id.bannerCountDownActivity);
         AdRequest adRequest = new AdRequest.Builder().build();
         mBannerAd.loadAd(adRequest);
+        mBannerAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.d("onAdFailedToLoad", "This is why: " + errorCode);
+            }
+        });
 
     }
 

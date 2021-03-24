@@ -15,8 +15,10 @@ import com.italianswapp.yourtraining.OfflineDatabase.WorkoutSaved;
 import com.italianswapp.yourtraining.R;
 import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
 
+import java.io.ObjectInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutSavedRecyclerViewAdapter  extends RecyclerView.Adapter<WorkoutSavedRecyclerViewAdapter.WorkoutSavedViewHolder> {
@@ -138,7 +140,19 @@ public class WorkoutSavedRecyclerViewAdapter  extends RecyclerView.Adapter<Worko
         return res;
     }
 
+    public ArrayList<WorkoutSaved> getData() {
+        return (ArrayList<WorkoutSaved>) workoutSavedList;
+    }
 
+    public void removeItem(int position) {
+        workoutSavedList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(WorkoutSaved item, int position) {
+        workoutSavedList.add(position, item);
+        notifyItemInserted(position);
+    }
 
 
     public class WorkoutSavedViewHolder extends RecyclerView.ViewHolder {

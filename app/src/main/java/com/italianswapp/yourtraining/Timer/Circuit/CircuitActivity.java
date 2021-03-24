@@ -501,7 +501,8 @@ public class CircuitActivity extends CountDownActivity {
         }
         if(!isRepsExercise || !isWork)
             //Se è un riposo
-            timer.cancel(); //Annullo il timer
+            if(timer!=null)
+                timer.cancel(); //Annullo il timer
         if(( !isRepsExercise) && (currentSet==0))
             return;
 

@@ -6,9 +6,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,7 +26,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.italianswapp.yourtraining.Chronometer.ChronometerActivity;
 import com.italianswapp.yourtraining.OfflineDatabase.WorkoutDatabase;
 import com.italianswapp.yourtraining.OfflineDatabase.WorkoutSaved;
@@ -39,7 +43,10 @@ import com.italianswapp.yourtraining.Timer.TimerActivity;
 import com.italianswapp.yourtraining.Utilities.RecyclerItemClickListener;
 import com.italianswapp.yourtraining.Utilities.Utilities;
 import com.italianswapp.yourtraining.WorkoutProposed.Workout.Workout;
+import com.italianswapp.yourtraining.WorkoutSaved.SwipeToDeleteCallback;
 import com.italianswapp.yourtraining.WorkoutSaved.WorkoutSavedRecyclerViewAdapter;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,6 +61,7 @@ public class WorkoutSavedFragment extends Fragment {
 
     private CardView mFilterCardButton;
     private RecyclerView mRecyclerView;
+    private WorkoutSavedRecyclerViewAdapter mAdapter;
 
     /**
      * Lista completa degli allenamenti caricata dal dib
@@ -84,6 +92,11 @@ public class WorkoutSavedFragment extends Fragment {
     private ImageButton mSensationButton, mLevelButton;
     AlertDialog alertDialog;
 
+    /**
+     * Database al quale si collega il fragment
+     */
+    private WorkoutDatabase db;
+
 
 
     public WorkoutSavedFragment() {
@@ -97,7 +110,7 @@ public class WorkoutSavedFragment extends Fragment {
 
         layoutSettings();
 
-        WorkoutDatabase db = WorkoutDatabase.getDatabase(getActivity());
+        db = WorkoutDatabase.getDatabase(getActivity());
         workoutSavedList = db.workoutDao().getAll();
         visibleWorkoutSavedList = Utilities.arrayCopy(workoutSavedList);
 
@@ -121,8 +134,8 @@ public class WorkoutSavedFragment extends Fragment {
     private void recyclerViewSettings() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        WorkoutSavedRecyclerViewAdapter adapter = new WorkoutSavedRecyclerViewAdapter(visibleWorkoutSavedList, getActivity());
-        mRecyclerView.setAdapter(adapter);
+        mAdapter = new WorkoutSavedRecyclerViewAdapter(visibleWorkoutSavedList, getActivity());
+        mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -138,7 +151,7 @@ public class WorkoutSavedFragment extends Fragment {
         /*
         Se la recyclerView è vuota mostro un immagine
          */
-        if(adapter.getItemCount()==0) {
+        if(mAdapter.getItemCount()==0) {
             if(!isFilter) {
                 /*
                 Carico l'immagine di sfondo nenal recyclerView
@@ -165,7 +178,51 @@ public class WorkoutSavedFragment extends Fragment {
 
         }
 
+        /*
+        Allo swipe mostro il bottone per eliminare l'allenamento salvato
+         */
+        enableSwipeToDeleteAndUndo();
+
     }
+
+    /**
+     * Gestisce lo swipe per eliminare un allenamento salvato
+     */
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+
+                final int position = viewHolder.getAdapterPosition();
+                final WorkoutSaved item = mAdapter.getData().get(position);
+
+                mAdapter.removeItem(position);
+                db.workoutDao().delete(item);
+
+                Snackbar snackbar = Snackbar
+                        .make(view,getResources().getString(R.string.item_removed), Snackbar.LENGTH_SHORT);
+                snackbar.setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        mAdapter.restoreItem(item, position);
+                        mRecyclerView.scrollToPosition(position);
+                        db.workoutDao().insertAll(item);
+                    }
+                });
+
+                snackbar.setActionTextColor(Color.YELLOW);
+                snackbar.show();
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(mRecyclerView);
+
+    }
+
 
     private void filterSettings() {
 

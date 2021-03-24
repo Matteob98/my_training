@@ -4,13 +4,26 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.OnCompleteListener;
+import com.google.android.play.core.tasks.Task;
 import com.italianswapp.yourtraining.R;
 
 public class MenuActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private static final String REVIEW_PREFERENCE_KEY = "in-app-key";
+    private static final String NO_REVIEW_PREFERENCE = "no-review";
 
     private BottomNavigationView bottomNavigationView;
 
@@ -19,6 +32,12 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
      */
     private boolean isHome;
 
+    /*
+    Variabili per chiedere la recensione all'utente
+     */
+    ReviewManager reviewManager;
+    ReviewInfo reviewInfo = null;
+    SharedPreferences sharedPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +55,10 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
                     replace(R.id.frameLayoutMenuActivity, new HomeFragment()).commit();
         }
 
+        sharedPref = getSharedPreferences(REVIEW_PREFERENCE_KEY, Context.MODE_PRIVATE);
+        if (!(sharedPref.getString(REVIEW_PREFERENCE_KEY, "si-review").equals(NO_REVIEW_PREFERENCE))) {
+            getReviewInfo();
+        }
 
     }
 
@@ -76,6 +99,54 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
         }
         else
             System.exit(0);
+    }
+
+    private void getReviewInfo() {
+        reviewManager = ReviewManagerFactory.create(getApplicationContext());
+        Task<ReviewInfo> manager = reviewManager.requestReviewFlow();
+        manager.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                reviewInfo = task.getResult();
+            }
+        });
+
+        showReviewDialog();
+    }
+
+    private void showReviewDialog() {
+        MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(this);
+        dialog
+                .setTitle(getResources().getString(R.string.leave_review))
+                .setMessage(getResources().getString(R.string.leave_review_description))
+                .setNeutralButton(getResources().getString(R.string.remind_later), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startReviewFlow();
+                    }
+                })
+                .show();
+    }
+
+    public void startReviewFlow() {
+        if (reviewInfo != null) {
+            Task<Void> flow = reviewManager.launchReviewFlow(this, reviewInfo);
+            flow.addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(Task<Void> task) {
+                    setNoReviewPreference();
+                }
+            });
+        }
+    }
+
+    public void setNoReviewPreference() {
+        sharedPref.edit().putString(REVIEW_PREFERENCE_KEY, NO_REVIEW_PREFERENCE).apply();
     }
 
 

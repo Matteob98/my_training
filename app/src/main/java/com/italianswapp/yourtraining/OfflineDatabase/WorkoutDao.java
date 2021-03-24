@@ -1,6 +1,7 @@
 package com.italianswapp.yourtraining.OfflineDatabase;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -14,4 +15,7 @@ public interface WorkoutDao {
 
     @Insert
     void insertAll(WorkoutSaved... workouts);
+
+    @Delete
+    void delete(WorkoutSaved workoutSaved);
 }

@@ -165,5 +165,10 @@
     <string name="ADVANCED">ADVANCED</string>
     <string name="CARDIO">CARDIO</string>
     <string name="round_completed">"Round completed: "</string>
+    <string name="item_removed">" Item was removed from the list."</string>
+    <string name="leave_review">Do you want to leave a review?</string>
+    <string name="leave_review_description">Your opinion is very important to us, please leave a review</string>
+    <string name="remind_later">Remind me later</string>
+    <string name="yes">Yes</string>
 
 </resources>
