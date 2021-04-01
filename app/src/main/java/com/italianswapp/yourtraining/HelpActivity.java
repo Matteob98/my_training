@@ -17,14 +17,15 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.italianswapp.yourtraining.Utilities.Utilities;
+
 import java.lang.*;
 
 import static java.lang.System.exit;
 
 public class HelpActivity extends AppCompatActivity {
     private DatabaseReference myRef;
-    private final String
-            PLAY_STORE_ADDRESS ="https://play.google.com/store/apps/details?id=com.italianswapp.yourtraining";
+
 
     private CardView mBugCard, mReviewCard, mExitCard, mShareCard;
     private TextView mVersionTextView;
@@ -72,7 +73,7 @@ public class HelpActivity extends AppCompatActivity {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.setType("text/plain");
-                sendIntent.putExtra(Intent.EXTRA_TEXT, PLAY_STORE_ADDRESS + '\n' + getResources().getString(R.string.share_text) );
+                sendIntent.putExtra(Intent.EXTRA_TEXT, Utilities.PLAY_STORE_ADDRESS + '\n' + getResources().getString(R.string.share_text) );
                 startActivity(sendIntent);
             }
         });
@@ -99,7 +100,7 @@ public class HelpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent viewIntent =
                         new Intent("android.intent.action.VIEW",
-                                Uri.parse(PLAY_STORE_ADDRESS));
+                                Uri.parse(Utilities.PLAY_STORE_ADDRESS));
                 startActivity(viewIntent);
             }
         });

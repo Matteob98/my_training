@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.Task;
 import com.italianswapp.yourtraining.R;
+import com.italianswapp.yourtraining.Utilities.Utilities;
 
 public class MenuActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -127,7 +130,10 @@ public class MenuActivity extends AppCompatActivity implements BottomNavigationV
                 .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startReviewFlow();
+                        Intent viewIntent =
+                                new Intent("android.intent.action.VIEW",
+                                        Uri.parse(Utilities.PLAY_STORE_ADDRESS));
+                        startActivity(viewIntent);
                     }
                 })
                 .show();
